@@ -50,15 +50,16 @@ a[href^="http"]:not([href*="./"]):after{content:"\2197";font-size:.75em;margin-l
 /* layout */
 .wrap{max-width:1100px;margin:0 auto;padding:24px 16px 80px}
 h1.pagetitle{
-  font-family:var(--serif);
   font-size:2.2rem;
   line-height:1.15;
   margin:0 0 .2em;
   padding-bottom:.15em;
   border-bottom:1px solid var(--rule);
-  font-weight:400;
+  font-weight:700;
 }
-h1.pagetitle .romaji{display:block;font-size:1.05rem;color:var(--muted);margin-top:.35em;font-family:var(--sans)}
+h1.pagetitle .romaji{display:block;font-size:1.05rem;color:var(--muted);margin-top:.35em;font-weight:400}
+ruby rt{font-size:.5em;line-height:1;font-weight:400}
+ruby{ruby-align:center}
 .subtitle{color:var(--muted);font-size:.92rem;margin:0 0 1.2em}
 
 .layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:32px;align-items:start}
@@ -76,7 +77,7 @@ h1.pagetitle .romaji{display:block;font-size:1.05rem;color:var(--muted);margin-t
   line-height:1.5;
   padding:12px;
 }
-.infobox .ib-title{text-align:center;font-weight:700;font-size:1.05rem;padding:4px 0 10px;border-bottom:1px solid var(--rule-soft);margin-bottom:10px;font-family:var(--serif)}
+.infobox .ib-title{text-align:center;font-weight:700;font-size:1.15rem;padding:4px 0 10px;border-bottom:1px solid var(--rule-soft);margin-bottom:10px}
 .infobox .ib-photo{width:160px;height:200px;border-radius:4px;background:#dcdcdc;margin:4px auto 12px;display:block;object-fit:cover;border:1px solid var(--rule-soft)}
 .infobox .ib-caption{text-align:center;color:var(--muted);font-size:12px;margin:-8px 0 10px}
 .infobox table{width:100%;border-collapse:collapse}
@@ -88,17 +89,15 @@ h1.pagetitle .romaji{display:block;font-size:1.05rem;color:var(--muted);margin-t
 /* main */
 main{min-width:0}
 main h2{
-  font-family:var(--serif);
   font-size:1.5rem;
-  font-weight:400;
+  font-weight:700;
   margin:1.8em 0 .5em;
   padding-bottom:.15em;
   border-bottom:1px solid var(--rule);
 }
 main h3{
-  font-family:var(--serif);
   font-size:1.15rem;
-  font-weight:600;
+  font-weight:700;
   margin:1.4em 0 .4em;
 }
 main h4{
@@ -256,7 +255,7 @@ body.editing [contenteditable="true"]:focus{
       <p class="hatnote">本項は、公開されているプロフィール情報に基づいて構成された人物記事である。</p>
 
       <div class="lead">
-        <p><b>柳 東均</b>（유동균、<i>Dong-Gyun You</i>）は、日本を拠点に活動する大韓民国出身の音響工学分野の研究者である。現在は<b>東京藝術大学 音楽音響創造科 研究生</b>として、<b>音像定位</b>を中心に空間オーディオおよび拡声（PA）システムの研究に従事している<sup class="ref"><a href="#ref-1">[1]</a></sup>。</p>
+        <p><b><ruby>柳<rt>ゆ</rt></ruby> <ruby>東均<rt>どんぎゅん</rt></ruby></b>（유동균、<i>Dong-Gyun You</i>）は、日本を拠点に活動する大韓民国出身の音響工学分野の研究者である。現在は<b>東京藝術大学 音楽音響創造科 研究生</b>として、<b>音像定位</b>を中心に空間オーディオおよび拡声（PA）システムの研究に従事している<sup class="ref"><a href="#ref-1">[1]</a></sup>。</p>
         <p>研究上の主な関心は、コンサートホールにおける舞台からの直接音と拡声音との時間差（ITDG）およびレベル比が、聴衆の音像定位判断に及ぼす影響である。ホール環境シミュレーション下で聴取実験を設計・実施し、実験室条件で得られた先行音効果に関する知見が、残響やスピーカー指向性を含む実際の拡声環境にどこまで適用可能かを検証している<sup class="ref"><a href="#ref-1">[1]</a></sup>。</p>
         <p>研究の予備的成果は、韓国音響学会 2026年度 第5回 電気音響・舞台音響学術大会にて発表され、<b>優秀発表賞</b>を受賞した<sup class="ref"><a href="#ref-1">[1]</a></sup>。</p>
       </div>
@@ -427,13 +426,13 @@ body.editing [contenteditable="true"]:focus{
     </main>
 
     <aside class="infobox" aria-label="Infobox">
-      <div class="ib-title">柳 東均</div>
+      <div class="ib-title"><ruby>柳<rt>ゆ</rt></ruby> <ruby>東均<rt>どんぎゅん</rt></ruby></div>
       <img src="assets/photo.jpg" alt="柳 東均の証明写真" class="ib-photo">
       <div class="ib-caption">柳 東均の証明写真</div>
       <table>
         <tbody>
           <tr><td colspan="2" class="ib-sect-cell">個人情報</td></tr>
-          <tr><th>氏名</th><td>柳 東均</td></tr>
+          <tr><th>氏名</th><td><ruby>柳<rt>ゆ</rt></ruby> <ruby>東均<rt>どんぎゅん</rt></ruby></td></tr>
           <tr><th>ローマ字</th><td>Dong-Gyun You</td></tr>
           <tr><th>韓国語表記</th><td>유동균</td></tr>
           <tr><th>生年</th><td>2000年</td></tr>
