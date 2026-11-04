@@ -2,7 +2,7 @@
 <html lang="ko"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>유동균 (Dong-Gyun You) — 음향공학 연구자</title>
+<title>유동균 (Dong-Gyun You) — 음향학 연구자</title>
 <meta name="description" content="유동균(Dong-Gyun You)은 도쿄예술대학 음악음향창조과 연구생으로, 확성 시스템·믹싱·공간 오디오를 연구하는 음향학 연구자이다.">
 <meta property="og:type" content="profile">
 <meta property="og:title" content="柳 東均 (Dong-Gyun You)">
@@ -15,917 +15,957 @@
 <link rel="alternate" hreflang="ko" href="./#/ko">
 <link rel="alternate" hreflang="en" href="./#/en">
 <link rel="alternate" hreflang="x-default" href="./#/ja">
+<script>
+/* apply saved appearance before first paint */
+(function(){try{
+  var t=localStorage.getItem('theme'); if(t==='light'||t==='dark') document.documentElement.setAttribute('data-theme',t);
+  var s=localStorage.getItem('textsize'); if(s==='small'||s==='large') document.documentElement.setAttribute('data-size',s);
+  if(localStorage.getItem('tochidden')==='1') document.documentElement.classList.add('toc-hidden');
+}catch(e){}})();
+</script>
 <style>
 :root{
   --bg:#ffffff;
+  --bg-sub:#f8f9fa;
+  --bg-head:#eaecf0;
+  --ib-head:#cedff2;
   --fg:#202122;
-  --muted:#54595d;
-  --link:#0645ad;
-  --link-visited:#0b0080;
-  --rule:#a2a9b1;
-  --rule-soft:#eaecf0;
-  --infobox-bg:#f8f9fa;
-  --toc-bg:#f8f9fa;
-  --serif: "Linux Libertine","Georgia","Times New Roman","Nanum Myeongjo","Noto Serif JP",serif;
-  --sans: -apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Hiragino Kaku Gothic ProN","Noto Sans JP","Noto Sans KR",Arial,sans-serif;
+  --fg-sub:#54595d;
+  --fg-faint:#72777d;
+  --link:#3366cc;
+  --link-visited:#795cb2;
+  --link-ext:#3366cc;
+  --border:#a2a9b1;
+  --border-soft:#c8ccd1;
+  --border-faint:#eaecf0;
+  --accent:#36c;
+  --hl:#fef6e7;
+  --shadow:0 2px 6px rgba(0,0,0,.18);
+  --serif:"Linux Libertine","Georgia","Times","Source Serif Pro","Noto Serif KR","Noto Serif JP","Nanum Myeongjo",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Inter","Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic","Hiragino Kaku Gothic ProN","Noto Sans KR","Noto Sans JP",Arial,sans-serif;
+  color-scheme:light;
 }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#101418; --bg-sub:#202122; --bg-head:#27292d; --ib-head:#233044;
+    --fg:#eaecf0; --fg-sub:#a2a9b1; --fg-faint:#8c9196;
+    --link:#88a3e8; --link-visited:#a799cd; --link-ext:#88a3e8;
+    --border:#72777d; --border-soft:#54595d; --border-faint:#2e3136;
+    --accent:#88a3e8; --hl:#3a3220; --shadow:0 2px 8px rgba(0,0,0,.6);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101418; --bg-sub:#202122; --bg-head:#27292d; --ib-head:#233044;
+  --fg:#eaecf0; --fg-sub:#a2a9b1; --fg-faint:#8c9196;
+  --link:#88a3e8; --link-visited:#a799cd; --link-ext:#88a3e8;
+  --border:#72777d; --border-soft:#54595d; --border-faint:#2e3136;
+  --accent:#88a3e8; --hl:#3a3220; --shadow:0 2px 8px rgba(0,0,0,.6);
+  color-scheme:dark;
+}
+html{font-size:16px}
+html[data-size="small"]{font-size:14px}
+html[data-size="large"]{font-size:18px}
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:15px;line-height:1.65;-webkit-text-size-adjust:100%}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:1rem;line-height:1.6;-webkit-text-size-adjust:100%}
 a{color:var(--link);text-decoration:none}
 a:hover{text-decoration:underline}
 a:visited{color:var(--link-visited)}
-a[href^="http"]:not([href*="./"]):after{content:"\2197";font-size:.75em;margin-left:.15em;color:var(--muted)}
-
-/* top bar */
-.topbar{border-bottom:1px solid var(--rule);background:var(--infobox-bg);font-size:13px}
-.topbar-inner{max-width:1100px;margin:0 auto;padding:8px 16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
-.brand{font-weight:600;letter-spacing:.02em}
-.brand small{color:var(--muted);font-weight:400;margin-left:.4em}
-.lang{display:flex;gap:0;align-items:center}
-.lang button{background:none;border:0;color:var(--link);cursor:pointer;padding:2px 8px;font:inherit;font-size:13px;border-radius:2px}
-.lang button:hover{text-decoration:underline}
-.lang button[aria-current="true"]{color:var(--fg);font-weight:600;text-decoration:none;cursor:default}
-.lang .sep{color:var(--rule);padding:0 2px}
-
-/* layout */
-.wrap{max-width:1100px;margin:0 auto;padding:24px 16px 80px}
-h1.pagetitle{
-  font-size:2.2rem;
-  line-height:1.15;
-  margin:0 0 .2em;
-  padding-bottom:.15em;
-  border-bottom:1px solid var(--rule);
-  font-weight:700;
-}
-h1.pagetitle .romaji{display:block;font-size:1.05rem;color:var(--muted);margin-top:.35em;font-weight:400}
-ruby rt{font-size:.5em;line-height:1;font-weight:400}
-ruby{ruby-align:center}
-.subtitle{color:var(--muted);font-size:.92rem;margin:0 0 1.2em}
-
-.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:32px;align-items:start}
-@media (max-width: 900px){
-  .layout{grid-template-columns:1fr}
-  .infobox{order:-1;width:100% !important;float:none !important;margin:0 0 20px !important}
-}
-
-/* infobox */
-.infobox{
-  width:300px;
-  border:1px solid var(--rule);
-  background:var(--infobox-bg);
-  font-size:13px;
-  line-height:1.5;
-  padding:12px;
-}
-.infobox .ib-title{text-align:center;font-weight:700;font-size:1.15rem;padding:4px 0 10px;border-bottom:1px solid var(--rule-soft);margin-bottom:10px}
-.infobox .ib-photo{width:160px;height:200px;border-radius:4px;background:#dcdcdc;margin:4px auto 12px;display:block;object-fit:cover;border:1px solid var(--rule-soft)}
-.infobox .ib-caption{text-align:center;color:var(--muted);font-size:12px;margin:-8px 0 10px}
-.infobox table{width:100%;border-collapse:collapse}
-.infobox th,.infobox td{text-align:left;vertical-align:top;padding:5px 4px;border-top:1px solid var(--rule-soft)}
-.infobox th{width:38%;font-weight:600;color:var(--fg)}
-.infobox td{color:var(--fg)}
-.infobox td.ib-sect-cell{background:#eaecf0;text-align:center;font-weight:700;padding:5px 4px;font-size:12px;letter-spacing:.04em;border-top:1px solid var(--rule)}
-
-/* main */
-main{min-width:0}
-main h2{
-  font-size:1.5rem;
-  font-weight:700;
-  margin:1.8em 0 .5em;
-  padding-bottom:.15em;
-  border-bottom:1px solid var(--rule);
-}
-main h3{
-  font-size:1.15rem;
-  font-weight:700;
-  margin:1.4em 0 .4em;
-}
-main h4{
-  font-size:1rem;
-  margin:1em 0 .3em;
-}
-main p{margin:.6em 0}
-main ul,main ol{margin:.5em 0 .5em 1.4em;padding:0}
-main li{margin:.2em 0}
-
-/* lead */
-.lead{font-size:1.02rem}
-
-/* toc */
-.toc{
-  display:inline-block;
-  background:var(--toc-bg);
-  border:1px solid var(--rule);
-  padding:10px 16px 10px 12px;
-  margin:14px 0 20px;
-  font-size:14px;
-  min-width:260px;
-}
-.toc .toc-title{font-weight:700;text-align:center;margin-bottom:6px}
-.toc ol{margin:0;padding-left:1.4em;list-style:decimal}
-.toc ol ol{list-style:decimal;padding-left:1.4em}
-.toc a{color:var(--link)}
-
-/* tables */
-table.wiki{
-  border-collapse:collapse;
-  width:100%;
-  margin:.8em 0 1.2em;
-  font-size:14px;
-  background:#fff;
-}
-table.wiki th, table.wiki td{
-  border:1px solid var(--rule);
-  padding:6px 10px;
-  text-align:left;
-  vertical-align:top;
-}
-table.wiki th{background:var(--infobox-bg);font-weight:600}
-table.wiki caption{caption-side:top;text-align:left;font-size:13px;color:var(--muted);padding:4px 0}
-
-/* callouts */
-.hatnote{color:var(--muted);font-size:13px;font-style:italic;margin:2px 0 14px;padding-left:1.6em}
-
-/* footnotes / refs */
-sup.ref a{font-size:.8em}
-.refs ol{padding-left:1.4em}
-.refs li{font-size:13.5px;color:var(--fg);margin:.35em 0}
-
-/* project card */
-.project{
-  border:1px solid var(--rule-soft);
-  padding:12px 16px;
-  background:#fcfcfc;
-  margin:.8em 0;
-}
-.project h4{margin-top:.2em}
-.project .meta{color:var(--muted);font-size:13px;margin:.2em 0 .6em}
-.project dl{margin:.4em 0;display:grid;grid-template-columns:130px 1fr;gap:4px 12px;font-size:14px}
-.project dt{font-weight:600;color:var(--muted)}
-.project dd{margin:0}
-@media (max-width:520px){.project dl{grid-template-columns:1fr}.project dt{margin-top:.4em}}
-
-/* footer */
-footer.site{
-  margin-top:60px;
-  padding-top:14px;
-  border-top:1px solid var(--rule);
-  color:var(--muted);
-  font-size:12.5px;
-  display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px
-}
-
+main a.ext:after,.refs a.ext:after{content:"";display:inline-block;width:.7em;height:.7em;margin-left:.2em;vertical-align:baseline;
+  background:currentColor;opacity:.75;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M6 1h5v5L8.86 3.85 4.7 8 4 7.3l4.15-4.16zM2 3h2v1H2v6h6V8h1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1'/%3E%3C/svg%3E") center/contain no-repeat;
+          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M6 1h5v5L8.86 3.85 4.7 8 4 7.3l4.15-4.16zM2 3h2v1H2v6h6V8h1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1'/%3E%3C/svg%3E") center/contain no-repeat}
+button{font:inherit;color:inherit}
 .skip{position:absolute;left:-9999px;top:0}
-.skip:focus{left:8px;top:8px;background:#fff;padding:6px 10px;border:1px solid var(--rule);z-index:100}
+.skip:focus{left:8px;top:8px;background:var(--bg);padding:6px 10px;border:1px solid var(--border);z-index:300}
 
 [data-lang]{display:none}
 [data-lang].active{display:block}
 [data-lang-inline]{display:none}
 [data-lang-inline].active{display:inline}
 
+/* ===== header ===== */
+.vh{max-width:1596px;margin:0 auto;padding:8px 24px;display:flex;align-items:center;gap:16px;min-height:56px}
+.logo{display:flex;align-items:center;gap:10px;color:var(--fg)!important;text-decoration:none!important;flex:0 0 auto}
+.logo-mark{width:40px;height:40px;border-radius:50%;border:1px solid var(--border-soft);display:grid;place-items:center;font-family:var(--serif);font-size:22px;background:var(--bg-sub)}
+.logo-text{display:flex;flex-direction:column;line-height:1.15}
+.logo-text b{font-family:var(--serif);font-weight:400;font-size:1.15rem;letter-spacing:.01em}
+.logo-text small{font-size:.72rem;color:var(--fg-sub)}
+.search{position:relative;flex:1 1 auto;max-width:560px;display:flex}
+.search input{flex:1;min-width:0;height:34px;padding:0 10px 0 34px;border:1px solid var(--border);border-right:0;border-radius:2px 0 0 2px;background:var(--bg);color:var(--fg);font:inherit;font-size:.875rem}
+.search input:focus{outline:none;border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.search .ico{position:absolute;left:10px;top:9px;width:16px;height:16px;opacity:.6;pointer-events:none}
+.search button{height:34px;padding:0 12px;border:1px solid var(--border);border-radius:0 2px 2px 0;background:var(--bg-sub);cursor:pointer;font-size:.875rem;font-weight:700}
+.search button:hover{background:var(--bg-head)}
+.search-res{position:absolute;top:36px;left:0;right:0;background:var(--bg);border:1px solid var(--border);box-shadow:var(--shadow);z-index:150;max-height:60vh;overflow:auto;display:none}
+.search-res.show{display:block}
+.search-res a{display:block;padding:7px 12px;color:var(--fg);border-top:1px solid var(--border-faint);font-size:.875rem}
+.search-res a:first-child{border-top:0}
+.search-res a:hover,.search-res a.sel{background:var(--bg-sub);text-decoration:none}
+.search-res a b{color:var(--link);font-weight:600}
+.search-res .snip{display:block;color:var(--fg-sub);font-size:.8rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.search-res .none{padding:8px 12px;color:var(--fg-sub);font-size:.875rem}
+.vh-right{margin-left:auto;display:flex;align-items:center;gap:4px;flex:0 0 auto}
+.icon-btn{background:none;border:0;border-radius:2px;padding:6px 8px;cursor:pointer;display:flex;align-items:center;gap:6px;font-size:.875rem;color:var(--fg)}
+.icon-btn:hover{background:var(--bg-sub)}
+.icon-btn svg{width:18px;height:18px;fill:currentColor}
+.dropdown{position:relative}
+.menu{position:absolute;right:0;top:calc(100% + 4px);background:var(--bg);border:1px solid var(--border-soft);box-shadow:var(--shadow);z-index:160;min-width:220px;padding:10px 14px;display:none;font-size:.875rem}
+.menu.show{display:block}
+.menu .mh{font-weight:700;margin:4px 0 4px}
+.menu .mh:not(:first-child){margin-top:12px;padding-top:10px;border-top:1px solid var(--border-faint)}
+.menu label{display:flex;align-items:center;gap:8px;padding:3px 0;cursor:pointer}
+.menu a{display:block;padding:4px 0}
+.menu a[aria-current="true"]{color:var(--fg);font-weight:700;pointer-events:none}
+
+/* ===== sticky header ===== */
+.sticky{position:fixed;top:0;left:0;right:0;z-index:120;background:var(--bg);box-shadow:0 1px 1px rgba(0,0,0,.08),0 1px 3px rgba(0,0,0,.12);transform:translateY(-110%);transition:transform .2s ease;}
+.sticky.show{transform:none}
+.sticky-in{max-width:1596px;margin:0 auto;padding:6px 24px;display:flex;align-items:center;gap:10px;min-height:48px}
+.sticky .st-title{font-family:var(--serif);font-size:1.2rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sticky .st-sec{color:var(--fg-sub);font-size:.85rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sticky .st-sec:before{content:"/";margin:0 8px;color:var(--border)}
+
+/* ===== page grid ===== */
+.page{max-width:1596px;margin:0 auto;padding:0 24px}
+.cols{display:grid;grid-template-columns:15.5rem minmax(0,1fr);column-gap:28px;align-items:start}
+html.toc-hidden .cols{grid-template-columns:minmax(0,1fr)}
+html.toc-hidden .sidetoc{display:none}
+@media (max-width:1000px){
+  .cols{grid-template-columns:minmax(0,1fr)}
+  .sidetoc{display:none}
+}
+
+/* ===== sidebar toc ===== */
+.sidetoc{position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto;padding:14px 0 24px;font-size:.875rem;transition:top .2s}
+body.stuck .sidetoc{top:60px;max-height:calc(100vh - 72px)}
+.toc-head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border-soft);padding-bottom:6px;margin-bottom:6px}
+.toc-head .tt{font-weight:700}
+.toc-hide{background:var(--bg-sub);border:1px solid var(--border-soft);border-radius:2px;font-size:.78rem;padding:1px 8px;cursor:pointer}
+.toc-hide:hover{background:var(--bg-head)}
+.toc ul{list-style:none;margin:0;padding:0}
+.toc ul ul{padding-left:14px;display:none}
+.toc li.open>ul{display:block}
+.toc li{position:relative;margin:0}
+.toc a{display:block;padding:4px 0 4px 18px;color:var(--link);line-height:1.35}
+.toc a.active{color:var(--fg);font-weight:700}
+.toc .tg{position:absolute;left:-4px;top:3px;width:20px;height:20px;border:0;background:none;cursor:pointer;padding:0;color:var(--fg-sub);display:grid;place-items:center;border-radius:2px}
+.toc .tg:hover{background:var(--bg-sub)}
+.toc .tg svg{width:12px;height:12px;fill:currentColor;transition:transform .15s}
+.toc li.open>.tg svg{transform:rotate(90deg)}
+
+/* toc popup (hidden sidebar / narrow) */
+.toc-btn{display:none;flex:0 0 auto;width:32px;height:32px;border:1px solid var(--border-soft);border-radius:2px;background:var(--bg);cursor:pointer;margin-right:10px;padding:0;place-items:center}
+.toc-btn svg{width:18px;height:18px;fill:var(--fg)}
+.toc-btn:hover{background:var(--bg-sub)}
+html.toc-hidden .toc-btn{display:grid}
+@media (max-width:1000px){.toc-btn{display:grid}.toc-head .toc-hide{display:none}}
+.sticky .toc-btn{display:grid}
+#toc-pop{position:fixed;z-index:200;background:var(--bg);border:1px solid var(--border-soft);box-shadow:var(--shadow);padding:10px 14px 12px;width:min(320px,calc(100vw - 32px));max-height:70vh;overflow:auto;display:none;font-size:.875rem}
+#toc-pop.show{display:block}
+
+/* ===== title area ===== */
+.content{min-width:0;padding-top:14px}
+.title-row{display:flex;align-items:flex-end;gap:12px;border-bottom:1px solid var(--border);padding-bottom:2px}
+.title-row h1{font-family:var(--serif);font-weight:400;font-size:1.8rem;line-height:1.3;margin:0;flex:1 1 auto;min-width:0;padding:2px 0}
+.title-row h1 .alt{font-size:.6em;color:var(--fg-sub);margin-left:.4em;white-space:nowrap}
+.lang-btn{display:flex;align-items:center;gap:6px;background:none;border:0;cursor:pointer;color:var(--link);font-weight:700;font-size:.875rem;padding:4px 6px;border-radius:2px;white-space:nowrap}
+.lang-btn:hover{background:var(--bg-sub)}
+.lang-btn svg{width:16px;height:16px;fill:currentColor}
+.tabs{display:flex;justify-content:space-between;align-items:flex-end;font-size:.875rem;margin-bottom:6px;flex-wrap:wrap}
+.tabs ul{list-style:none;margin:0;padding:0;display:flex;gap:2px}
+.tabs li a,.tabs li span{display:block;padding:8px 8px 6px;color:var(--link)}
+.tabs li.sel a,.tabs li.sel span{color:var(--fg);border-bottom:2px solid var(--fg);text-decoration:none}
+.tagline{color:var(--fg-sub);font-size:.8rem;margin:6px 0 14px}
+
+/* ===== article body ===== */
+main{min-width:0;font-size:.95rem}
+main p{margin:.5em 0 .7em}
+main h2{font-family:var(--serif);font-weight:400;font-size:1.5rem;line-height:1.3;margin:1.2em 0 .3em;padding-bottom:2px;border-bottom:1px solid var(--border);overflow:hidden}
+main h3{font-size:1.2rem;font-weight:700;line-height:1.5;margin:.9em 0 .2em}
+main h4{font-size:1.05rem;font-weight:700;margin:.8em 0 .2em}
+main ul,main ol{margin:.3em 0 .6em 1.6em;padding:0}
+main li{margin:.15em 0}
+main h2,main h3,main h4{scroll-margin-top:64px}
+.hatnote{padding-left:1.6em;margin:.2em 0 .8em;font-size:.9rem;color:var(--fg)}
+.hatnote:before{content:"";display:inline-block;width:14px;height:14px;margin-right:6px;vertical-align:-2px;background:currentColor;opacity:.55;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 0a10 10 0 1 0 0 20 10 10 0 0 0 0-20m1 15H9V9h2zm0-8H9V5h2z'/%3E%3C/svg%3E") center/contain no-repeat;
+          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 0a10 10 0 1 0 0 20 10 10 0 0 0 0-20m1 15H9V9h2zm0-8H9V5h2z'/%3E%3C/svg%3E") center/contain no-repeat}
+.mainlink{padding-left:1.6em;margin:-.1em 0 .6em;font-size:.9rem;font-style:italic;color:var(--fg-sub)}
+sup.ref{line-height:1;font-size:.75em;white-space:nowrap}
+sup.ref a{padding:0 1px}
+.flash{animation:flash 1.6s ease}
+@keyframes flash{0%,40%{background:var(--hl)}100%{background:transparent}}
+
+/* infobox */
+.infobox{float:right;clear:right;width:22em;margin:.2em 0 1em 1.4em;border:1px solid var(--border);background:var(--bg-sub);font-size:.85rem;line-height:1.45;padding:3px;border-collapse:separate}
+.infobox .ib-title{background:var(--ib-head);text-align:center;font-size:1.25em;font-weight:700;padding:6px 4px;line-height:1.3}
+.infobox .ib-title small{display:block;font-weight:400;font-size:.72em;color:var(--fg-sub)}
+.infobox .ib-img{text-align:center;padding:8px 4px 2px}
+.infobox .ib-img img{width:170px;height:auto;aspect-ratio:3/4;object-fit:cover;display:inline-block;border:1px solid var(--border-faint);background:var(--bg-head)}
+.infobox .ib-cap{text-align:center;font-size:.92em;color:var(--fg);padding:0 4px 6px}
+.infobox table{width:100%;border-collapse:collapse}
+.infobox th,.infobox td{text-align:left;vertical-align:top;padding:4px 6px}
+.infobox th{width:35%;font-weight:700}
+.infobox .sec td{background:var(--ib-head);text-align:center;font-weight:700;padding:4px}
+@media (max-width:720px){
+  .infobox{float:none;width:100%;margin:0 0 1em}
+}
+
+/* tables */
+table.wikitable{border-collapse:collapse;margin:.6em 0 1em;background:var(--bg-sub);color:var(--fg);border:1px solid var(--border);font-size:.9rem;max-width:100%}
+table.wikitable th,table.wikitable td{border:1px solid var(--border);padding:.25em .6em;vertical-align:top;text-align:left}
+table.wikitable th{background:var(--bg-head);text-align:center}
+table.wikitable caption{font-weight:700;padding:4px 0;text-align:center}
+.tbl-wrap{overflow-x:auto;max-width:100%}
+.muted{color:var(--fg-sub);font-size:.88em}
+@media (min-width:721px){table.wikitable td:first-child{white-space:nowrap}}
+
+/* refs */
+.refs{font-size:.88rem}
+.refs ol{margin:.3em 0 .5em 2.4em}
+.refs li{margin:.2em 0}
+.refs li:target{background:var(--hl)}
+.refs .up{margin-right:.35em;font-weight:700}
+.refs cite{font-style:normal}
+
+/* navbox */
+.navbox{clear:both;border:1px solid var(--border);margin:1.6em 0 0;font-size:.85rem;background:var(--bg)}
+.navbox .nb-title{background:var(--ib-head);text-align:center;font-weight:700;padding:3px 52px;position:relative}
+.navbox .nb-toggle{position:absolute;right:6px;top:2px;background:none;border:0;color:var(--link);cursor:pointer;font-size:.85em;font-weight:400}
+.navbox table{width:100%;border-collapse:separate;border-spacing:2px}
+.navbox th{background:var(--bg-head);text-align:right;padding:3px 8px;white-space:nowrap;width:1%;font-weight:700}
+.navbox td{padding:3px 8px;background:var(--bg-sub)}
+.navbox td a:not(:last-child):after{content:" · ";color:var(--fg);font-weight:700}
+.navbox.collapsed table{display:none}
+
+/* category bar */
+.catlinks{border:1px solid var(--border);background:var(--bg-sub);padding:5px 8px;margin:1em 0 0;font-size:.85rem}
+.catlinks b{font-weight:400}
+.catlinks span:not(:last-child):after{content:" | ";color:var(--fg-sub)}
+
+/* footer */
+footer.site{max-width:1596px;margin:2.5em auto 0;padding:14px 24px 40px;font-size:.78rem;color:var(--fg)}
+footer.site .in{border-top:1px solid var(--border-soft);padding-top:14px}
+footer.site .in p{margin:.3em 0}
+footer.site ul{list-style:none;padding:0;margin:.8em 0 0;display:flex;flex-wrap:wrap;gap:4px 16px}
+
+@media (max-width:720px){
+  .vh{padding:8px 12px;gap:10px}
+  .page{padding:0 16px}
+  .logo-text{display:none}
+  .search{min-width:0}
+  .search button{display:none}
+  .search input{border-right:1px solid var(--border);border-radius:2px}
+  #appear-btn > span{display:none}
+  .tabs li a,.tabs li span{padding:8px 6px 6px}
+  .sticky-in{padding:6px 12px}
+  footer.site{padding:14px 16px 40px}
+  .title-row h1{font-size:1.55rem}
+}
+
 /* ===== in-page editor ===== */
-#edit-bar{
-  position:fixed;left:0;right:0;bottom:0;z-index:200;
-  background:#202122;color:#fff;
-  padding:10px 16px;
-  display:none;
-  align-items:center;gap:10px;flex-wrap:wrap;
-  font-size:13px;
-  box-shadow:0 -2px 8px rgba(0,0,0,.15);
-}
+#edit-bar{position:fixed;left:0;right:0;bottom:0;z-index:250;background:#202122;color:#fff;padding:10px 16px;display:none;align-items:center;gap:10px;flex-wrap:wrap;font-size:13px;box-shadow:0 -2px 8px rgba(0,0,0,.15)}
 #edit-bar.show{display:flex}
-#edit-bar button{
-  background:#36c;color:#fff;border:0;
-  padding:6px 12px;border-radius:2px;cursor:pointer;font:inherit;font-size:13px;
-}
+#edit-bar button{background:#36c;color:#fff;border:0;padding:6px 12px;border-radius:2px;cursor:pointer;font-size:13px}
 #edit-bar button.secondary{background:#54595d}
-#edit-bar button.danger{background:#b32424}
 #edit-bar button:disabled{opacity:.5;cursor:not-allowed}
 #edit-bar .status{margin-left:auto;color:#dcdcdc}
-body.editing [data-lang].active main,
-body.editing [data-lang].active .infobox{
-  outline:2px dashed #36c;
-  outline-offset:4px;
-  background:#fafcff;
-}
-body.editing [contenteditable="true"]:focus{
-  outline:2px solid #ffa500;
-  background:#fffbe6;
-}
-#edit-toggle{
-  background:none;border:1px solid var(--rule);
-  color:var(--link);padding:2px 8px;border-radius:2px;
-  font:inherit;font-size:13px;cursor:pointer;margin-left:10px;
-  display:none;
-}
-#edit-toggle.hidden{display:none}
+body.editing [data-lang].active main{outline:2px dashed #36c;outline-offset:4px}
+body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
+#edit-toggle{display:none}
+#edit-toggle.show{display:flex}
 </style>
 </head>
-<body class="">
-<a class="skip" href="#main">Skip to content</a>
+<body>
+<a class="skip" href="#content">Skip to content</a>
 
-<div class="topbar">
-  <div class="topbar-inner">
-    <div class="brand">
-      <span data-lang-inline="ja">柳 東均</span><span data-lang-inline="ko" class="active">유동균</span><span data-lang-inline="en">Dong-Gyun You</span>
-      <small>
-        <span data-lang-inline="ja">研究者プロフィール</span>
-        <span data-lang-inline="ko" class="active">연구자 프로필</span>
-        <span data-lang-inline="en">Researcher Profile</span>
-      </small>
+<!-- ============ header ============ -->
+<header class="vh">
+  <a class="logo" href="#" data-top>
+    <span class="logo-mark" aria-hidden="true">柳</span>
+    <span class="logo-text">
+      <b>Dong-Gyun You</b>
+      <small><span data-lang-inline="ja">研究者プロフィール</span><span data-lang-inline="ko" class="active">연구자 프로필</span><span data-lang-inline="en">Researcher profile</span></small>
+    </span>
+  </a>
+  <form class="search" role="search" id="search-form" autocomplete="off">
+    <svg class="ico" viewBox="0 0 20 20" aria-hidden="true"><path fill="currentColor" d="M12.2 13.6a7 7 0 1 1 1.4-1.4l5.4 5.4-1.4 1.4zM3 8a5 5 0 1 0 10 0A5 5 0 0 0 3 8"/></svg>
+    <input id="search" type="search" placeholder="이 문서 검색" aria-label="Search">
+    <button type="submit" id="search-btn">검색</button>
+    <div class="search-res" id="search-res" role="listbox"></div>
+  </form>
+  <div class="vh-right">
+    <button class="icon-btn" id="edit-toggle" title="Edit mode">✎ Edit</button>
+    <div class="dropdown">
+      <button class="icon-btn" id="appear-btn" aria-haspopup="true" aria-expanded="false" title="Appearance">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0a10 10 0 1 0 0 20 1.9 1.9 0 0 0 1.4-3.2 1.9 1.9 0 0 1 1.4-3.2H15a5 5 0 0 0 5-5C20 3.9 15.5 0 10 0M4.5 10a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m3-4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m3 4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/></svg>
+        <span><span data-lang-inline="ja">表示</span><span data-lang-inline="ko" class="active">보기</span><span data-lang-inline="en">Appearance</span></span>
+      </button>
+      <div class="menu" id="appear-menu">
+        <div class="mh"><span data-lang-inline="ja">文字サイズ</span><span data-lang-inline="ko" class="active">글자 크기</span><span data-lang-inline="en">Text</span></div>
+        <label><input type="radio" name="size" value="small"> <span data-lang-inline="ja">小</span><span data-lang-inline="ko" class="active">작게</span><span data-lang-inline="en">Small</span></label>
+        <label><input type="radio" name="size" value="standard"> <span data-lang-inline="ja">標準</span><span data-lang-inline="ko" class="active">표준</span><span data-lang-inline="en">Standard</span></label>
+        <label><input type="radio" name="size" value="large"> <span data-lang-inline="ja">大</span><span data-lang-inline="ko" class="active">크게</span><span data-lang-inline="en">Large</span></label>
+        <div class="mh"><span data-lang-inline="ja">色</span><span data-lang-inline="ko" class="active">색</span><span data-lang-inline="en">Color</span></div>
+        <label><input type="radio" name="theme" value="auto"> <span data-lang-inline="ja">自動</span><span data-lang-inline="ko" class="active">자동</span><span data-lang-inline="en">Automatic</span></label>
+        <label><input type="radio" name="theme" value="light"> <span data-lang-inline="ja">ライト</span><span data-lang-inline="ko" class="active">라이트</span><span data-lang-inline="en">Light</span></label>
+        <label><input type="radio" name="theme" value="dark"> <span data-lang-inline="ja">ダーク</span><span data-lang-inline="ko" class="active">다크</span><span data-lang-inline="en">Dark</span></label>
+      </div>
     </div>
-    <nav class="lang" aria-label="Language">
-      <button data-set="ja" lang="ja">日本語</button><span class="sep">|</span>
-      <button data-set="ko" lang="ko" aria-current="true">한국어</button><span class="sep">|</span>
-      <button data-set="en" lang="en">English</button>
-      <button id="edit-toggle" title="Enter edit mode">✎ Edit</button>
-    </nav>
+  </div>
+</header>
+
+<div class="sticky" id="sticky" aria-hidden="true">
+  <div class="sticky-in">
+    <button class="toc-btn" id="st-toc" title="Contents"><svg viewBox="0 0 20 20"><path d="M1 3h18v2H1zm0 6h18v2H1zm0 6h18v2H1z"/></svg></button>
+    <span class="st-title" id="st-title"></span>
+    <span class="st-sec" id="st-sec"></span>
   </div>
 </div>
+<div id="toc-pop" class="toc" role="dialog" aria-label="Contents"></div>
 
-<div class="wrap">
+<div class="page" id="content">
 
-<!-- ============ JA ============ -->
-<div data-lang="ja">
-  <h1 class="pagetitle">柳 東均<span class="romaji">Dong-Gyun You / 유동균</span></h1>
-  <p class="subtitle">音響学研究者 — 東京藝術大学 音楽音響創造科 研究生</p>
+<!-- ======================================================= JA -->
+<div data-lang="ja" lang="ja">
+ <div class="cols">
+  <nav class="sidetoc toc" aria-label="目次"></nav>
+  <div class="content">
+   <div class="title-row">
+    <button class="toc-btn" title="目次"><svg viewBox="0 0 20 20"><path d="M1 3h18v2H1zm0 6h18v2H1zm0 6h18v2H1z"/></svg></button>
+    <h1 id="top-ja">柳 東均<span class="alt">Dong-Gyun You</span></h1>
+    <div class="dropdown">
+     <button class="lang-btn" aria-haspopup="true"><svg viewBox="0 0 20 20"><path d="M20 18h-1.4l-1.1-3H12l-1.1 3H9.5L14 6h1.5zm-3-4.1-2-5.5-2 5.5zM11 5V3H7V1H5v2H1v2h7a10 10 0 0 1-2.4 4.7A10 10 0 0 1 4 7H2a12 12 0 0 0 2.2 4L1 13.6l1.3 1.4 3.3-2.6 2.1 1.7.7-1.9-1.3-1A12 12 0 0 0 10 5z"/></svg>3言語 ▾</button>
+     <div class="menu lang-menu"><a href="#/ja" data-set="ja">日本語</a><a href="#/ko" data-set="ko">한국어</a><a href="#/en" data-set="en">English</a></div>
+    </div>
+   </div>
+   <div class="tabs">
+    <ul><li class="sel"><span>記事</span></li></ul>
+    <ul><li class="sel"><span>閲覧</span></li><li><a href="https://github.com/dlrjtt1/researcher-site/blob/main/index.html">ソースを閲覧</a></li><li><a href="https://github.com/dlrjtt1/researcher-site/commits/main">履歴表示</a></li></ul>
+   </div>
+   <div class="tagline">柳 東均 研究者プロフィール</div>
 
-  <div class="layout">
-    <main id="main">
-      <p class="hatnote">本項は、公開されているプロフィール情報に基づいて構成された人物記事である。</p>
+   <main>
+    <p class="hatnote">本項は、本人が公開しているプロフィールおよびGitHubリポジトリの情報に基づいて構成された人物記事である。</p>
 
-      <div class="lead">
-        <p><b><ruby>柳<rt>ゆ</rt></ruby> <ruby>東均<rt>どんぎゅん</rt></ruby></b>（유동균、<i>Dong-Gyun You</i>）は、日本を拠点に活動する大韓民国出身の音響学分野の研究者である。現在は<b>東京藝術大学 音楽音響創造科 研究生</b>として、<b>拡声（PA）システム</b>、<b>ミキシング</b>、<b>空間オーディオ</b>を主な分野として研究に従事している。2027年4月からは同大学大学院 音楽研究科 音楽音響創造 修士課程に進学する予定である。</p>
-        <p>研究上の主な関心は、コンサートホールにおける舞台からの直接音と拡声音との時間差（ITDG）およびレベル比が、聴衆の音像定位判断に及ぼす影響である。ホール環境シミュレーション下で聴取実験を設計・実施し、実験室条件で得られた先行音効果に関する知見が、残響やスピーカー指向性を含む実際の拡声環境にどこまで適用可能かを検証している<sup class="ref"><a href="#ref-1">[1]</a></sup>。</p>
-        <p>研究の予備的成果は、韓国音響学会 2026年度 第5回 電気音響・舞台音響学術大会にて発表され、<b>優秀発表賞</b>を受賞した<sup class="ref"><a href="#ref-1">[1]</a></sup>。</p>
-      </div>
+    <aside class="infobox" aria-label="基本情報">
+     <div class="ib-title">柳 東均<small>Dong-Gyun You / 유동균</small></div>
+     <div class="ib-img"><img src="assets/photo.jpg" alt="柳 東均"></div>
+     <div class="ib-cap">柳 東均</div>
+     <table><tbody>
+      <tr class="sec"><td colspan="2">基本情報</td></tr>
+      <tr><th>本名</th><td><ruby>柳<rt>ゆ</rt></ruby> <ruby>東均<rt>どんぎゅん</rt></ruby>（유동균）</td></tr>
+      <tr><th>ローマ字</th><td>Dong-Gyun You</td></tr>
+      <tr><th>生誕</th><td>2000年<br>大韓民国</td></tr>
+      <tr><th>国籍</th><td>大韓民国</td></tr>
+      <tr><th>居住地</th><td>日本・東京都</td></tr>
+      <tr><th>職業</th><td>音響学研究者</td></tr>
+      <tr class="sec"><td colspan="2">学術情報</td></tr>
+      <tr><th>分野</th><td>拡声システム（PA）<br>ミキシング<br>空間オーディオ</td></tr>
+      <tr><th>所属</th><td>東京藝術大学<br>音楽音響創造科</td></tr>
+      <tr><th>現在</th><td>研究生（2025.10–2027.3）</td></tr>
+      <tr><th>進学予定</th><td>大学院 音楽研究科<br>修士課程（2027.4–）</td></tr>
+      <tr><th>主な受賞</th><td>優秀発表賞<br>（韓国音響学会, 2026）</td></tr>
+      <tr class="sec"><td colspan="2">個人プロジェクト</td></tr>
+      <tr><th>名義</th><td>LABO 1557</td></tr>
+      <tr><th>作品</th><td><a href="#ja-auralpaths">AuralPaths</a></td></tr>
+      <tr class="sec"><td colspan="2">リンク</td></tr>
+      <tr><th>LinkedIn</th><td><a href="https://www.linkedin.com/in/dong-gyun-you/">dong-gyun-you</a></td></tr>
+      <tr><th>GitHub</th><td><a href="https://github.com/dlrjtt1">dlrjtt1</a></td></tr>
+      <tr><th>Instagram</th><td><a href="https://www.instagram.com/dlrjtt1_/">@dlrjtt1_</a></td></tr>
+      <tr><th>E-mail</th><td><a href="mailto:donggyun0920@gmail.com">donggyun0920@gmail.com</a></td></tr>
+     </tbody></table>
+    </aside>
 
-      <nav class="toc" aria-label="目次">
-        <div class="toc-title">目次</div>
-        <ol>
-          <li><a href="#ja-outline">概要</a></li>
-          <li><a href="#ja-edu">学歴</a></li>
-          <li><a href="#ja-career">経歴</a></li>
-          <li><a href="#ja-research">研究活動</a>
-            <ol>
-              <li><a href="#ja-research-field">研究分野</a></li>
-              <li><a href="#ja-research-project">研究プロジェクト</a></li>
-            </ol>
-          </li>
-          <li><a href="#ja-academic">学術活動</a>
-            <ol>
-              <li><a href="#ja-pubs">発表・論文</a></li>
-              <li><a href="#ja-awards">受賞歴</a></li>
-            </ol>
-          </li>
-          <li><a href="#ja-labo">個人プロジェクト — LABO 1557</a></li>
-          <li><a href="#ja-certs">資格・免許</a></li>
-          <li><a href="#ja-skills">専門分野・技術</a></li>
-          <li><a href="#ja-lang">言語</a></li>
-          <li><a href="#ja-links">外部リンク</a></li>
-          <li><a href="#ja-refs">参考資料</a></li>
-        </ol>
-      </nav>
+    <p><b><ruby>柳<rt>ゆ</rt></ruby> <ruby>東均<rt>どんぎゅん</rt></ruby></b>（유동균、<i>Dong-Gyun You</i>、2000年 - ）は、日本を拠点に活動する大韓民国出身の音響学研究者である。<b>東京藝術大学 音楽音響創造科 研究生</b>として、<b>拡声（PA）システム</b>、<b>ミキシング</b>、<b>空間オーディオ</b>を主な分野として研究に従事しており、2027年4月からは同大学大学院 音楽研究科 音楽音響創造 修士課程に進学する予定である<sup class="ref"><a href="#ja-cite-1">[1]</a></sup>。</p>
+    <p>研究上の主な関心は、コンサートホールにおける舞台からの直接音と拡声音との時間差（ITDG）およびレベル比が、聴衆の音像定位判断に及ぼす影響である。ホール環境シミュレーション下で聴取実験を設計・実施し、実験室条件で得られた先行音効果に関する知見が、残響やスピーカー指向性を含む実際の拡声環境にどこまで適用可能かを検証している<sup class="ref"><a href="#ja-cite-1">[1]</a></sup>。</p>
+    <p>個人プロジェクトとして、<b>LABO 1557</b>の名義でミキシングを支援するオーディオプラグインのほか、直接音と拡声音の経路を比較するブラウザベースのバイノーラル室内音響シミュレータ<b><a href="#ja-auralpaths">AuralPaths</a></b>を制作・公開している<sup class="ref"><a href="#ja-cite-2">[2]</a></sup>。研究の予備的成果は韓国音響学会 2026年度 第5回 電気音響・舞台音響学術大会にて発表され、<b>優秀発表賞</b>を受賞した<sup class="ref"><a href="#ja-cite-1">[1]</a></sup>。</p>
 
-      <h2 id="ja-outline">概要</h2>
-      <p>柳東均は、大韓民国出身の音響学研究者であり、日本・東京に在住して研究活動を行っている。学部段階では白石芸術大学（準学士）および学分銀行制（韓国・国家生涯教育振興院、学士）を通じて実用音楽を修めた後、韓国・国立国楽院（National Gugak Center）における舞台音響業務、および放送分野におけるインターンシップを通じて実務経験を積んだ。とりわけ、部分的な拡声時に音像が演奏者ではなくスピーカー側に定位するという聴衆からの指摘を繰り返し受けた経験が、現在の研究テーマの直接的な動機となっている<sup class="ref"><a href="#ref-1">[1]</a></sup>。</p>
+    <h2 id="ja-life">生涯</h2>
+    <h3 id="ja-life-edu">学業</h3>
+    <p>2019年3月から2021年2月まで白石芸術大学 音楽学部 教会実用音楽学科で学び、準学士を取得した。続いて2021年9月から2023年8月まで、韓国・国家生涯教育振興院の学分銀行制を通じて実用音楽の学士を取得した。この間、2021年2月にAvid Certified Pro Tools Specialist、2022年8月に舞台芸術専門人資格・舞台音響3級を取得している<sup class="ref"><a href="#ja-cite-1">[1]</a></sup>。</p>
 
-      <h2 id="ja-edu">学歴</h2>
-      <table class="wiki">
-        <thead><tr><th>期間</th><th>機関</th><th>課程</th></tr></thead>
-        <tbody>
-          <tr><td>2019年3月 – 2021年2月</td><td>白石芸術大学</td><td>音楽学部 教会実用音楽学科<br>（短期大学 / 準学士）</td></tr>
-          <tr><td>2021年9月 – 2023年8月</td><td>学分銀行制<br><span style="color:var(--muted);font-size:12px">韓国・国家生涯教育振興院</span></td><td>実用音楽<br>（学士）</td></tr>
-          <tr><td>2025年10月 – 2027年3月<br>（在籍中）</td><td>東京藝術大学</td><td>音楽音響創造科 研究生</td></tr>
-          <tr><td>2027年4月 –<br>（進学予定）</td><td>東京藝術大学 大学院</td><td>音楽研究科 音楽音響創造<br>（修士課程）</td></tr>
-        </tbody>
-      </table>
+    <h3 id="ja-life-career">音響エンジニアとしての経歴</h3>
+    <h4 id="ja-life-arte">Hankyung Arte TV</h4>
+    <p>2023年8月から2024年2月まで、Hankyung Arte TV 公演制作部に音響エンジニア（インターンシップ）として勤務し、公演中継用音響設備の設置、音源の録音・制作、放送コンテンツの音響設備の操作・録音・制作を担当した<sup class="ref"><a href="#ja-cite-1">[1]</a></sup>。</p>
+    <h4 id="ja-life-ngc">国立国楽院</h4>
+    <p>2024年4月から2025年9月まで、ソウルの国立国楽院（National Gugak Center）舞台課に音響エンジニア（正社員）として勤務し、舞台音響設備の操作・設置・技術運用、公演音源の録音・制作、電気回路および設備の安全点検を担当した。この時期、部分的な拡声を行った際に音像が演奏者ではなくスピーカー側に定位するという聴衆からの指摘を繰り返し受けた経験が、現在の研究テーマの直接的な動機となっている<sup class="ref"><a href="#ja-cite-1">[1]</a></sup>。</p>
 
-      <h2 id="ja-career">経歴</h2>
-      <table class="wiki">
-        <thead><tr><th>期間</th><th>所属</th><th>職位</th><th>内容</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>2024年4月 – 2025年9月<br>（1年5ヶ月）</td>
-            <td>National Gugak Center（国立国楽院）<br><span style="color:var(--muted);font-size:12px">大韓民国 ソウル特別市</span></td>
-            <td>舞台課 音響エンジニア<br>（正社員）</td>
-            <td>舞台音響設備の操作・設置・技術運用、公演音源の録音・制作、電気回路および設備の安全点検を担当。</td>
-          </tr>
-          <tr>
-            <td>2023年8月 – 2024年2月<br>（7ヶ月）</td>
-            <td>Hankyung Arte TV<br><span style="color:var(--muted);font-size:12px">大韓民国 ソウル特別市</span></td>
-            <td>公演制作部 音響エンジニア<br>（インターンシップ）</td>
-            <td>公演中継用音響設備の設置、音源の録音・制作、放送コンテンツ音響設備の操作・録音・制作。</td>
-          </tr>
-        </tbody>
-      </table>
+    <h3 id="ja-life-geidai">東京藝術大学</h3>
+    <p>2025年10月、東京藝術大学 音楽音響創造科に研究生として入学した（2027年3月まで在籍）<sup class="ref"><a href="#ja-cite-1">[1]</a></sup>。2026年7月には韓国音響学会の電気音響・舞台音響学術大会で予備的研究成果を韓国語で発表して優秀発表賞を受賞し、同年9月には日本音響学会 第156回（2026年秋季）研究発表会の日韓音響学会ジョイントセッションにおいて英語で発表した。2027年4月からは同大学大学院 音楽研究科 音楽音響創造 修士課程に進学する予定である。</p>
 
-      <h2 id="ja-research">研究活動</h2>
+    <h2 id="ja-research">研究活動</h2>
+    <h3 id="ja-research-field">研究分野</h3>
+    <p>柳の主な研究分野は次の3つである。</p>
+    <ul>
+     <li>拡声システム / PA（Sound reinforcement）</li>
+     <li>ミキシング（Mixing）</li>
+     <li>空間オーディオ（Spatial audio）</li>
+    </ul>
 
-      <h3 id="ja-research-field">研究分野</h3>
-      <p>柳の主な研究分野は次の3つである。</p>
-      <ul>
-        <li>拡声システム / PA（Sound reinforcement）</li>
-        <li>ミキシング（Mixing）</li>
-        <li>空間オーディオ（Spatial audio）</li>
-      </ul>
+    <h3 id="ja-research-pilot">パイロット聴取実験</h3>
+    <p>2026年5月から7月にかけて、コンサートホールにおける舞台直接音とPA補強音の時間差（ITDG: 0/20/40 ms）およびレベル比（−6/0/+6 dB）を組み合わせた9条件を対象に、バイノーラル室内インパルス応答（BRIR）を用いたWebベースの聴取実験システムを設計・実装した。刺激はランダム順で提示され、音像方向の明瞭さ、音色の自然さ、音像の安定性の3項目について回答を収集した。品質管理として、左右チャンネルの確認手順、再生機器（ヘッドホン／イヤホン）の申告、同一条件の反復提示による回答一貫性の確認を組み込んでいる<sup class="ref"><a href="#ja-cite-3">[3]</a></sup>。</p>
+    <p>12名の参加者から計324件の回答が得られ、線形混合効果モデルにより傾向を確認した。パイロット段階では、レベル比が評価に強く反映される傾向が観察された<sup class="ref"><a href="#ja-cite-1">[1]</a></sup>。</p>
 
-      <h3 id="ja-research-project">研究プロジェクト</h3>
+    <h3 id="ja-pubs">発表・論文</h3>
+    <div class="tbl-wrap"><table class="wikitable">
+     <thead><tr><th>年月日</th><th>タイトル</th><th>発表学会</th><th>備考</th></tr></thead>
+     <tbody>
+      <tr>
+       <td>2026年9月9日</td>
+       <td>Effect of the time gap and level ratio between direct and PA-reinforced sound on localization judgments: a BRIR-based pilot listening experiment<br><span class="muted">共著：柳 東均、亀川 徹、丸井 淳史</span></td>
+       <td>日本音響学会 第156回（2026年秋季）研究発表会<br>SS 第3回 日韓音響学会ジョイントセッション</td>
+       <td>英語で発表</td>
+      </tr>
+      <tr>
+       <td>2026年7月3日</td>
+       <td>직접음-PA 보강음 시간차와 레벨비가 정위감 평가에 미치는 영향: BRIR 기반 파일럿 청취실험<br><span class="muted">（邦題：直接音とPA補強音の時間差とレベル比が定位感に及ぼす影響 ― BRIRを用いたパイロット聴取実験）</span><br><span class="muted">共著：柳 東均、亀川 徹、丸井 淳史</span></td>
+       <td>韓国音響学会 2026年度 第5回 電気音響・舞台音響学術大会</td>
+       <td>韓国語で発表<br>優秀発表賞受賞<sup class="ref"><a href="#ja-cite-1">[1]</a></sup></td>
+      </tr>
+     </tbody>
+    </table></div>
 
-      <div class="project">
-        <h4>オンライン聴取実験システムの構築 — 直接音と拡声音の音像定位評価</h4>
-        <div class="meta">2026年5月 – 2026年7月</div>
-        <dl>
-          <dt>背景</dt><dd>コンサートホールにおける舞台からの直接音とPA補強音との時間差およびレベル比が音像定位に及ぼす影響を、統制された条件下で評価する必要があった。</dd>
-          <dt>研究課題</dt><dd>実験室条件で得られた先行音効果の知見は、残響やスピーカー指向性を含む実際の拡声環境にどこまで適用可能か。</dd>
-          <dt>方法</dt><dd>BRIRにより生成した9条件の刺激（ITDG × レベル比の組合せ）をランダム順で提示するWebベース聴取実験システムを設計・実装。音像方向の明瞭さ・音色の自然さ・音像の安定性の3項目について回答を収集。</dd>
-          <dt>品質管理</dt><dd>左右チャンネルの確認手順、再生機器（ヘッドホン／イヤホン）の申告、同一条件の反復提示による回答一貫性の確認を組み込んだ。</dd>
-          <dt>結果</dt><dd>12名の参加者から計324件の回答を取得。</dd>
-          <dt>実装</dt><dd><a href="https://github.com/dlrjtt1/pilot-experiment">GitHub: dlrjtt1/pilot-experiment</a></dd>
-        </dl>
-      </div>
+    <h2 id="ja-projects">個人プロジェクト</h2>
+    <h3 id="ja-labo">LABO 1557</h3>
+    <p><b>LABO 1557</b>は、「誰もが速く、簡単にミキシングできるようにしたい」という思いから始めた柳の個人プロジェクトである。この名義のもとで、ミキシング作業を手助けするオーディオプラグインを自ら設計・制作している。後述のAuralPathsもLABO 1557の名義で公開されている<sup class="ref"><a href="#ja-cite-2">[2]</a></sup>。</p>
 
-      <h2 id="ja-academic">学術活動</h2>
+    <h3 id="ja-auralpaths">AuralPaths</h3>
+    <p class="mainlink">リポジトリ: <a class="ext" href="https://github.com/dlrjtt1/AuralPaths">github.com/dlrjtt1/AuralPaths</a></p>
+    <p><b>AuralPaths</b>は、舞台からの直接音と拡声スピーカー（PA）の経路を比較するための、ブラウザベースのバイノーラル室内音響シミュレータである。平面図と断面図からホールを作図し、舞台音源とPAスピーカー1対を配置すると、客席位置ごとに両経路間の到達時間差（ITDG）とレベル比がどのように変化するかを聴取・測定できる。処理はすべてブラウザ内で行われ、読み込んだ図面や音声ファイルは利用者のコンピュータの外に送信されない<sup class="ref"><a href="#ja-cite-2">[2]</a></sup>。</p>
+    <h4 id="ja-ap-features">機能</h4>
+    <ul>
+     <li><b>ホール</b>：直方体（シューボックス）、または利用者自身のPDF／画像図面をトレースした2.5次元ホール（平面形状 × 床・天井断面）。既知の寸法による縮尺設定と、PDFの線へのスナップに対応する。</li>
+     <li><b>音響モデル</b>：初期部分に鏡像法、拡散部分に音線追跡法、一次エッジ回折（UTD）を用いる。Neumann KU100のHRIRによるバイノーラル再生を行い、後期残響は音線追跡で得た到来方向の両耳エネルギーおよび両耳間コヒーレンスに基づいて生成する。</li>
+     <li><b>出力</b>：エコーグラム、方向別の到来音、C80 / D50 / Ts / EDT / T30 / IACC、実効ITDGおよびレベル比の客席分布図、利用者自身のドライ録音を用いたA/B聴取（Sennheiser HD600用ヘッドホン補正は任意）。</li>
+     <li><b>研究用Pythonツール</b>：同一モデルによるBRIRセット生成（<code>run.py</code>）、聴取実験用刺激の生成（<code>make_stimuli.py</code>）、実測T30への吸音率の当てはめ（<code>calibrate.py</code>）、BRASを用いた回折の検証（<code>validate_bras.py</code>）。</li>
+    </ul>
+    <h4 id="ja-ap-limits">精度と限界</h4>
+    <p>AuralPathsは実在のホールを再現することを主張するものではない。室内音響シミュレーションツールの結果は実測と無視できない差を示すことが報告されており<sup class="ref"><a href="#ja-cite-4">[4]</a></sup>、実在の空間について結論を導く前に、実測T30による吸音率の校正と実測値との照合が求められる。幾何形状は2.5次元（幅方向に断面が一様）であり、回折は一次のみ、座席ディップ効果は扱わず、散乱はランダム（ランベルト）モデル、HRIRは最近傍方向、HRTFは非個人化（ダミーヘッド）である<sup class="ref"><a href="#ja-cite-2">[2]</a></sup>。</p>
+    <p>回折の検証として、BRASのシーンRS5（硬い床面上の高さ2.07 mの衝立、16受音点）と比較した結果、500 Hz–2 kHzの1/3オクターブ帯域における平均絶対差は1.8 dB（陰領域の11点では2.2 dB）であった。ただしこれは単純な1シーンに対する結果であり、ホール全体の精度を示すものではない<sup class="ref"><a href="#ja-cite-2">[2]</a></sup><sup class="ref"><a href="#ja-cite-5">[5]</a></sup>。スピーカー指向性ファイルは近似値である。</p>
+    <h4 id="ja-ap-license">ライセンス</h4>
+    <p>ソースコードはMITライセンスで公開されている。第三者データはそれぞれのライセンスに従う（KU100 HRIRおよびヘッドホン補正フィルタ：CC BY 3.0、BRAS由来の検証結果：CC BY-SA 4.0）<sup class="ref"><a href="#ja-cite-2">[2]</a></sup>。</p>
 
-      <h3 id="ja-pubs">発表・論文</h3>
-      <table class="wiki">
-        <thead><tr><th>年月日</th><th>タイトル</th><th>発表学会</th><th>備考</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>2026年9月9日</td>
-            <td>Effect of the time gap and level ratio between direct and PA-reinforced sound on localization judgments: a BRIR-based pilot listening experiment<br>
-              <span style="color:var(--muted);font-size:13px">共著：유동균（柳東均）、카메카와 토오루（亀川 徹）、마루이 아츠시（丸井 淳史）</span>
-            </td>
-            <td>日本音響学会 第156回（2026年秋季）研究発表会<br>SS 第3回 日韓音響学会ジョイントセッション</td>
-            <td>英語での発表</td>
-          </tr>
-          <tr>
-            <td>2026年7月3日</td>
-            <td>직접음-PA 보강음 시간차와 레벨비가 정위감 평가에 미치는 영향: BRIR 기반 파일럿 청취실험<br>
-              <span style="color:var(--muted);font-size:13px">（邦題：直接音とPA補強音の時間差とレベル比が定位感に及ぼす影響 ― BRIRを用いたパイロット聴取実験）</span><br>
-              <span style="color:var(--muted);font-size:13px">共著：유동균（柳東均）、카메카와 토오루（亀川 徹）、마루이 아츠시（丸井 淳史）</span>
-            </td>
-            <td>韓国音響学会 2026年度 第5回 電気音響・舞台音響学術大会</td>
-            <td>韓国語での発表<br>優秀発表賞受賞<sup class="ref"><a href="#ref-1">[1]</a></sup></td>
-          </tr>
-        </tbody>
-      </table>
-      <p>研究の概要は次のとおりである。コンサートホールにおける舞台直接音とPA補強音の時間差（ITDG: 0/20/40 ms）およびレベル比（−6/0/+6 dB）を組み合わせた9条件について、BRIRを用いた聴取実験を実施。音像方向の明瞭さ、音色の自然さ、音像の安定性の3項目を評価し、線形混合効果モデルにより傾向を確認した。パイロット段階では、レベル比が評価に強く反映される傾向が観察された<sup class="ref"><a href="#ref-1">[1]</a></sup>。</p>
+    <h2 id="ja-awards">受賞歴</h2>
+    <div class="tbl-wrap"><table class="wikitable">
+     <thead><tr><th>年月</th><th>受賞</th><th>授与機関</th></tr></thead>
+     <tbody><tr><td>2026年7月</td><td>優秀発表賞</td><td>韓国音響学会 2026年度 第5回 電気音響・舞台音響学術大会</td></tr></tbody>
+    </table></div>
 
-      <h3 id="ja-awards">受賞歴</h3>
-      <table class="wiki">
-        <thead><tr><th>年月</th><th>受賞</th><th>授与機関</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>2026年7月</td>
-            <td>優秀発表賞</td>
-            <td>韓国音響学会 2026年度 第5回 電気音響・舞台音響学術大会</td>
-          </tr>
-        </tbody>
-      </table>
+    <h2 id="ja-certs">資格・免許</h2>
+    <div class="tbl-wrap"><table class="wikitable">
+     <thead><tr><th>取得年月</th><th>資格名</th><th>発行機関</th></tr></thead>
+     <tbody>
+      <tr><td>2024年12月</td><td>日本語能力試験（JLPT）N2</td><td>日本国際教育支援協会 / 国際交流基金</td></tr>
+      <tr><td>2023年4月</td><td>TOEIC 800点</td><td>ETS</td></tr>
+      <tr><td>2022年8月</td><td>舞台芸術専門人資格・舞台音響 3級</td><td>舞台芸術専門人資格検定委員会（韓国・文化体育観光部）</td></tr>
+      <tr><td>2021年2月</td><td>Avid Certified — Pro Tools Specialist</td><td>Avid Technology</td></tr>
+     </tbody>
+    </table></div>
 
-      <h2 id="ja-labo">個人プロジェクト — LABO 1557</h2>
-      <div class="project">
-        <h4>LABO 1557</h4>
-        <div class="meta">個人プロジェクト</div>
-        <p>「誰もが速く、簡単にミキシングできるようにしたい」という思いから始めた個人プロジェクトである。ミキシング作業を手助けするオーディオプラグインを自ら設計・制作している。</p>
-      </div>
+    <h2 id="ja-skills">専門分野・技術</h2>
+    <ul>
+     <li>拡声システム（PA / Sound Reinforcement）</li>
+     <li>ミキシング（Mixing）</li>
+     <li>空間オーディオ（Spatial Audio）</li>
+     <li>Pro Tools</li>
+    </ul>
 
-      <h2 id="ja-certs">資格・免許</h2>
-      <table class="wiki">
-        <thead><tr><th>取得年月</th><th>資格名</th><th>発行機関</th></tr></thead>
-        <tbody>
-          <tr><td>2024年12月</td><td>日本語能力試験 (JLPT) N2</td><td>日本国際教育支援協会 / 国際交流基金</td></tr>
-          <tr><td>2023年4月</td><td>TOEIC 800点</td><td>ETS</td></tr>
-          <tr><td>2022年8月</td><td>舞台芸術専門人資格・舞台音響 3級</td><td>舞台芸術専門人資格検定委員会（韓国・文化体育観光部）</td></tr>
-          <tr><td>2021年2月</td><td>Avid Certified — Pro Tools Specialist</td><td>Avid Technology</td></tr>
-        </tbody>
-      </table>
+    <h2 id="ja-lang">言語</h2>
+    <div class="tbl-wrap"><table class="wikitable">
+     <thead><tr><th>言語</th><th>水準</th></tr></thead>
+     <tbody>
+      <tr><td>韓国語</td><td>母語</td></tr>
+      <tr><td>日本語</td><td>ビジネス中級（JLPT N2）</td></tr>
+      <tr><td>英語</td><td>ビジネス初級（TOEIC 800）</td></tr>
+     </tbody>
+    </table></div>
 
-      <h2 id="ja-skills">専門分野・技術</h2>
-      <ul>
-        <li>拡声システム（PA / Sound Reinforcement）</li>
-        <li>ミキシング（Mixing）</li>
-        <li>空間オーディオ（Spatial Audio）</li>
-        <li>Pro Tools</li>
-      </ul>
+    <h2 id="ja-history">学歴・経歴一覧</h2>
+    <div class="tbl-wrap"><table class="wikitable">
+     <caption>学歴</caption>
+     <thead><tr><th>期間</th><th>機関</th><th>課程</th></tr></thead>
+     <tbody>
+      <tr><td>2019年3月 – 2021年2月</td><td>白石芸術大学</td><td>音楽学部 教会実用音楽学科（準学士）</td></tr>
+      <tr><td>2021年9月 – 2023年8月</td><td>学分銀行制<br><span class="muted">韓国・国家生涯教育振興院</span></td><td>実用音楽（学士）</td></tr>
+      <tr><td>2025年10月 – 2027年3月</td><td>東京藝術大学</td><td>音楽音響創造科 研究生（在籍中）</td></tr>
+      <tr><td>2027年4月 –</td><td>東京藝術大学 大学院</td><td>音楽研究科 音楽音響創造 修士課程（進学予定）</td></tr>
+     </tbody>
+    </table></div>
+    <div class="tbl-wrap"><table class="wikitable">
+     <caption>職歴</caption>
+     <thead><tr><th>期間</th><th>所属</th><th>職位</th></tr></thead>
+     <tbody>
+      <tr><td>2024年4月 – 2025年9月<br><span class="muted">（1年5ヶ月）</span></td><td>国立国楽院（National Gugak Center）<br><span class="muted">大韓民国 ソウル特別市</span></td><td>舞台課 音響エンジニア（正社員）</td></tr>
+      <tr><td>2023年8月 – 2024年2月<br><span class="muted">（7ヶ月）</span></td><td>Hankyung Arte TV<br><span class="muted">大韓民国 ソウル特別市</span></td><td>公演制作部 音響エンジニア（インターンシップ）</td></tr>
+     </tbody>
+    </table></div>
 
-      <h2 id="ja-lang">言語</h2>
-      <table class="wiki">
-        <thead><tr><th>言語</th><th>水準</th></tr></thead>
-        <tbody>
-          <tr><td>韓国語</td><td>母国語</td></tr>
-          <tr><td>日本語</td><td>ビジネス中級（JLPT N2）</td></tr>
-          <tr><td>英語</td><td>ビジネス初級（TOEIC 800）</td></tr>
-        </tbody>
-      </table>
+    <h2 id="ja-refs">脚注</h2>
+    <div class="refs"><ol>
+     <li id="ja-cite-1"><a class="up" href="#top-ja">↑</a><cite>「柳 東均 (Dong-Gyun You)」LinkedInプロフィール.</cite> <a class="ext" href="https://www.linkedin.com/in/dong-gyun-you/">https://www.linkedin.com/in/dong-gyun-you/</a></li>
+     <li id="ja-cite-2"><a class="up" href="#ja-auralpaths">↑</a><cite>dlrjtt1「AuralPaths」GitHubリポジトリ（README.md, NOTICE.md）.</cite> <a class="ext" href="https://github.com/dlrjtt1/AuralPaths">https://github.com/dlrjtt1/AuralPaths</a></li>
+     <li id="ja-cite-3"><a class="up" href="#ja-research-pilot">↑</a><cite>dlrjtt1「pilot-experiment」GitHubリポジトリ.</cite> <a class="ext" href="https://github.com/dlrjtt1/pilot-experiment">https://github.com/dlrjtt1/pilot-experiment</a></li>
+     <li id="ja-cite-4"><a class="up" href="#ja-ap-limits">↑</a><cite>Brinkmann, F. et al. (2019). "A round robin on room acoustical simulation and auralization." <i>The Journal of the Acoustical Society of America</i>.</cite> <a class="ext" href="https://doi.org/10.1121/1.5096178">doi:10.1121/1.5096178</a></li>
+     <li id="ja-cite-5"><a class="up" href="#ja-ap-limits">↑</a><cite>Aspöck, L., Brinkmann, F., Ackermann, D., Weinzierl, S., Vorländer, M. (2020). <i>BRAS – Benchmark for Room Acoustical Simulation</i>, version 3. TU Berlin DepositOnce.</cite> <a class="ext" href="https://doi.org/10.14279/depositonce-6726.3">doi:10.14279/depositonce-6726.3</a></li>
+    </ol></div>
 
-      <h2 id="ja-links">外部リンク</h2>
-      <ul>
-        <li><a href="https://www.linkedin.com/in/dong-gyun-you/">LinkedIn — dong-gyun-you</a></li>
-        <li><a href="https://github.com/dlrjtt1/pilot-experiment">GitHub — dlrjtt1/pilot-experiment</a>（研究プロジェクト実装）</li>
-        <li><a href="https://www.instagram.com/dlrjtt1_/">Instagram — @dlrjtt1_</a></li>
-        <li>E-mail: <a href="mailto:donggyun0920@gmail.com">donggyun0920@gmail.com</a></li>
-      </ul>
+    <h2 id="ja-links">外部リンク</h2>
+    <ul>
+     <li><a class="ext" href="https://www.linkedin.com/in/dong-gyun-you/">LinkedIn — dong-gyun-you</a></li>
+     <li><a class="ext" href="https://github.com/dlrjtt1/AuralPaths">GitHub — dlrjtt1/AuralPaths</a>（室内音響シミュレータ）</li>
+     <li><a class="ext" href="https://github.com/dlrjtt1/pilot-experiment">GitHub — dlrjtt1/pilot-experiment</a>（パイロット聴取実験の実装）</li>
+     <li><a class="ext" href="https://www.instagram.com/dlrjtt1_/">Instagram — @dlrjtt1_</a></li>
+     <li>E-mail: <a href="mailto:donggyun0920@gmail.com">donggyun0920@gmail.com</a></li>
+    </ul>
+   </main>
 
-      <h2 id="ja-refs">参考資料</h2>
-      <div class="refs">
-        <ol>
-          <li id="ref-1">「柳 東均 (Dong-Gyun You)」LinkedInプロフィール. <a href="https://www.linkedin.com/in/dong-gyun-you/">https://www.linkedin.com/in/dong-gyun-you/</a></li>
-        </ol>
-      </div>
-    </main>
+   <div class="navbox">
+    <div class="nb-title">柳 東均<button class="nb-toggle">[非表示]</button></div>
+    <table><tbody>
+     <tr><th>研究</th><td><a href="#ja-research-pilot">パイロット聴取実験</a><a href="#ja-pubs">発表・論文</a></td></tr>
+     <tr><th>個人プロジェクト</th><td><a href="#ja-labo">LABO 1557</a><a href="#ja-auralpaths">AuralPaths</a></td></tr>
+     <tr><th>経歴</th><td><a href="#ja-life-arte">Hankyung Arte TV</a><a href="#ja-life-ngc">国立国楽院</a><a href="#ja-life-geidai">東京藝術大学</a></td></tr>
+    </tbody></table>
+   </div>
+   <div class="catlinks"><b>分類:</b> <span>2000年生</span><span>大韓民国の音響学者</span><span>東京藝術大学</span><span>拡声</span><span>空間オーディオ</span></div>
+  </div>
+ </div>
+</div>
+
+<!-- ======================================================= KO -->
+<div data-lang="ko" lang="ko" class="active">
+ <div class="cols">
+  <nav class="sidetoc toc" aria-label="목차"></nav>
+  <div class="content">
+   <div class="title-row">
+    <button class="toc-btn" title="목차"><svg viewBox="0 0 20 20"><path d="M1 3h18v2H1zm0 6h18v2H1zm0 6h18v2H1z"/></svg></button>
+    <h1 id="top-ko">유동균<span class="alt">柳 東均</span></h1>
+    <div class="dropdown">
+     <button class="lang-btn" aria-haspopup="true"><svg viewBox="0 0 20 20"><path d="M20 18h-1.4l-1.1-3H12l-1.1 3H9.5L14 6h1.5zm-3-4.1-2-5.5-2 5.5zM11 5V3H7V1H5v2H1v2h7a10 10 0 0 1-2.4 4.7A10 10 0 0 1 4 7H2a12 12 0 0 0 2.2 4L1 13.6l1.3 1.4 3.3-2.6 2.1 1.7.7-1.9-1.3-1A12 12 0 0 0 10 5z"/></svg>3개 언어 ▾</button>
+     <div class="menu lang-menu"><a href="#/ja" data-set="ja">日本語</a><a href="#/ko" data-set="ko">한국어</a><a href="#/en" data-set="en">English</a></div>
+    </div>
+   </div>
+   <div class="tabs">
+    <ul><li class="sel"><span>문서</span></li></ul>
+    <ul><li class="sel"><span>읽기</span></li><li><a href="https://github.com/dlrjtt1/researcher-site/blob/main/index.html">원본 보기</a></li><li><a href="https://github.com/dlrjtt1/researcher-site/commits/main">역사 보기</a></li></ul>
+   </div>
+   <div class="tagline">유동균 연구자 프로필</div>
+
+   <main>
+    <p class="hatnote">이 문서는 본인이 공개한 프로필과 GitHub 저장소의 정보에 기반하여 구성한 인물 문서이다.</p>
+
+    <aside class="infobox" aria-label="기본 정보">
+     <div class="ib-title">유동균<small>柳 東均 / Dong-Gyun You</small></div>
+     <div class="ib-img"><img src="assets/photo.jpg" alt="유동균"></div>
+     <div class="ib-cap">유동균</div>
+     <table><tbody>
+      <tr class="sec"><td colspan="2">기본 정보</td></tr>
+      <tr><th>본명</th><td>유동균 (柳 東均)</td></tr>
+      <tr><th>로마자</th><td>Dong-Gyun You</td></tr>
+      <tr><th>출생</th><td>2000년<br>대한민국</td></tr>
+      <tr><th>국적</th><td>대한민국</td></tr>
+      <tr><th>거주지</th><td>일본 도쿄</td></tr>
+      <tr><th>직업</th><td>음향학 연구자</td></tr>
+      <tr class="sec"><td colspan="2">학술 정보</td></tr>
+      <tr><th>분야</th><td>확성 시스템 (PA)<br>믹싱<br>공간 오디오</td></tr>
+      <tr><th>소속</th><td>도쿄예술대학<br>음악음향창조과</td></tr>
+      <tr><th>현재</th><td>연구생 (2025.10–2027.3)</td></tr>
+      <tr><th>진학 예정</th><td>대학원 음악연구과<br>석사과정 (2027.4–)</td></tr>
+      <tr><th>주요 수상</th><td>우수발표상<br>(한국음향학회, 2026)</td></tr>
+      <tr class="sec"><td colspan="2">개인 프로젝트</td></tr>
+      <tr><th>이름</th><td>LABO 1557</td></tr>
+      <tr><th>작품</th><td><a href="#ko-auralpaths">AuralPaths</a></td></tr>
+      <tr class="sec"><td colspan="2">링크</td></tr>
+      <tr><th>LinkedIn</th><td><a href="https://www.linkedin.com/in/dong-gyun-you/">dong-gyun-you</a></td></tr>
+      <tr><th>GitHub</th><td><a href="https://github.com/dlrjtt1">dlrjtt1</a></td></tr>
+      <tr><th>Instagram</th><td><a href="https://www.instagram.com/dlrjtt1_/">@dlrjtt1_</a></td></tr>
+      <tr><th>이메일</th><td><a href="mailto:donggyun0920@gmail.com">donggyun0920@gmail.com</a></td></tr>
+     </tbody></table>
+    </aside>
+
+    <p><b>유동균</b>(柳 東均, <i>Dong-Gyun You</i>, 2000년 ~ )은 일본을 거점으로 활동하는 대한민국의 음향학 연구자이다. <b>도쿄예술대학 음악음향창조과 연구생</b>으로서 <b>확성(PA) 시스템</b>, <b>믹싱</b>, <b>공간 오디오</b>를 주요 분야로 연구하고 있으며, 2027년 4월부터 같은 대학 대학원 음악연구과 음악음향창조 석사과정에 진학할 예정이다<sup class="ref"><a href="#ko-cite-1">[1]</a></sup>.</p>
+    <p>주요 관심사는 콘서트홀에서 무대로부터의 직접음과 확성음 사이의 시간차(ITDG) 및 레벨비가 청중의 음상정위 판단에 미치는 영향이다. 홀 환경 시뮬레이션 하에서 청취실험을 설계·수행하며, 실험실 조건에서 얻어진 선행음 효과(precedence effect)에 관한 지식이 잔향과 스피커 지향성을 포함한 실제 확성 환경에 어디까지 적용 가능한지를 검증하고 있다<sup class="ref"><a href="#ko-cite-1">[1]</a></sup>.</p>
+    <p>개인 프로젝트로 <b>LABO 1557</b>이라는 이름 아래 믹싱을 돕는 오디오 플러그인을 만들고 있으며, 직접음과 확성음의 경로를 비교하는 브라우저 기반 바이노럴 실내음향 시뮬레이터 <b><a href="#ko-auralpaths">AuralPaths</a></b>를 제작·공개하였다<sup class="ref"><a href="#ko-cite-2">[2]</a></sup>. 연구의 예비 성과는 한국음향학회 2026년도 제5회 전기음향·무대음향 학술대회에서 발표되어 <b>우수발표상</b>을 수상하였다<sup class="ref"><a href="#ko-cite-1">[1]</a></sup>.</p>
+
+    <h2 id="ko-life">생애</h2>
+    <h3 id="ko-life-edu">학업</h3>
+    <p>2019년 3월부터 2021년 2월까지 백석예술대학교 음악학부 교회실용음악학과에서 수학하여 전문학사를 취득하였다. 이어 2021년 9월부터 2023년 8월까지 국가평생교육진흥원 학점은행제를 통해 실용음악 학사를 취득하였다. 이 기간 중 2021년 2월에 Avid Certified Pro Tools Specialist, 2022년 8월에 무대예술전문인 무대음향 3급 자격을 취득하였다<sup class="ref"><a href="#ko-cite-1">[1]</a></sup>.</p>
+
+    <h3 id="ko-life-career">음향 엔지니어 경력</h3>
+    <h4 id="ko-life-arte">한경 arte TV</h4>
+    <p>2023년 8월부터 2024년 2월까지 한경 arte TV 공연제작부에서 음향 엔지니어 인턴으로 근무하며 공연 중계용 음향 설비 설치, 음원 녹음·제작, 방송 콘텐츠 음향 설비의 조작·녹음·제작을 담당하였다<sup class="ref"><a href="#ko-cite-1">[1]</a></sup>.</p>
+    <h4 id="ko-life-ngc">국립국악원</h4>
+    <p>2024년 4월부터 2025년 9월까지 서울 국립국악원(National Gugak Center) 무대과에서 음향 엔지니어(정규직)로 근무하며 무대음향 설비의 조작·설치·기술 운용, 공연 음원 녹음·제작, 전기 회로 및 설비의 안전 점검을 담당하였다. 이 시기 부분 확성 시 음상이 연주자가 아닌 스피커 쪽으로 정위된다는 청중의 지적을 반복적으로 접한 경험이 현재 연구 주제의 직접적인 동기가 되었다<sup class="ref"><a href="#ko-cite-1">[1]</a></sup>.</p>
+
+    <h3 id="ko-life-geidai">도쿄예술대학</h3>
+    <p>2025년 10월 도쿄예술대학 음악음향창조과에 연구생으로 입학하였다(2027년 3월까지 재적)<sup class="ref"><a href="#ko-cite-1">[1]</a></sup>. 2026년 7월 한국음향학회 전기음향·무대음향 학술대회에서 예비 연구 성과를 한국어로 발표하여 우수발표상을 받았고, 같은 해 9월에는 일본음향학회 제156회(2026년 추계) 연구발표회의 한일음향학회 조인트 세션에서 영어로 발표하였다. 2027년 4월부터 같은 대학 대학원 음악연구과 음악음향창조 석사과정에 진학할 예정이다.</p>
+
+    <h2 id="ko-research">연구 활동</h2>
+    <h3 id="ko-research-field">연구 분야</h3>
+    <p>유동균의 주요 연구 분야는 다음 세 가지이다.</p>
+    <ul>
+     <li>확성 시스템 / PA (Sound reinforcement)</li>
+     <li>믹싱 (Mixing)</li>
+     <li>공간 오디오 (Spatial audio)</li>
+    </ul>
+
+    <h3 id="ko-research-pilot">파일럿 청취실험</h3>
+    <p>2026년 5월부터 7월까지, 콘서트홀 무대 직접음과 PA 보강음의 시간차(ITDG: 0/20/40 ms) 및 레벨비(−6/0/+6 dB)를 조합한 9개 조건을 대상으로 바이노럴 실내 임펄스 응답(BRIR)을 이용한 웹 기반 청취실험 시스템을 설계·구현하였다. 자극은 무작위 순서로 제시되었으며, 음상 방향의 명료성·음색의 자연스러움·음상의 안정성 3항목에 대해 응답을 수집하였다. 품질 관리를 위해 좌우 채널 확인 절차, 재생 기기(헤드폰/이어폰) 신고, 동일 조건 반복 제시를 통한 응답 일관성 확인을 도입하였다<sup class="ref"><a href="#ko-cite-3">[3]</a></sup>.</p>
+    <p>참가자 12명으로부터 총 324건의 응답을 수집하였고, 선형혼합효과모형(LMM)으로 경향을 확인하였다. 파일럿 단계에서는 레벨비가 평가에 강하게 반영되는 경향이 관찰되었다<sup class="ref"><a href="#ko-cite-1">[1]</a></sup>.</p>
+
+    <h3 id="ko-pubs">발표·논문</h3>
+    <div class="tbl-wrap"><table class="wikitable">
+     <thead><tr><th>일자</th><th>제목</th><th>발표 학회</th><th>비고</th></tr></thead>
+     <tbody>
+      <tr>
+       <td>2026년 9월 9일</td>
+       <td>Effect of the time gap and level ratio between direct and PA-reinforced sound on localization judgments: a BRIR-based pilot listening experiment<br><span class="muted">공저: 유동균, 카메카와 토오루(亀川 徹), 마루이 아츠시(丸井 淳史)</span></td>
+       <td>일본음향학회 제156회(2026년 추계) 연구발표회<br>SS 제3회 한일음향학회 조인트 세션</td>
+       <td>영어 발표</td>
+      </tr>
+      <tr>
+       <td>2026년 7월 3일</td>
+       <td>직접음-PA 보강음 시간차와 레벨비가 정위감 평가에 미치는 영향: BRIR 기반 파일럿 청취실험<br><span class="muted">공저: 유동균, 카메카와 토오루(亀川 徹), 마루이 아츠시(丸井 淳史)</span></td>
+       <td>한국음향학회 2026년도 제5회 전기음향·무대음향 학술대회</td>
+       <td>한국어 발표<br>우수발표상 수상<sup class="ref"><a href="#ko-cite-1">[1]</a></sup></td>
+      </tr>
+     </tbody>
+    </table></div>
+
+    <h2 id="ko-projects">개인 프로젝트</h2>
+    <h3 id="ko-labo">LABO 1557</h3>
+    <p><b>LABO 1557</b>은 "누구라도 빠르고 쉽게 믹싱을 할 수 있도록 만들고 싶다"는 생각에서 시작한 유동균의 개인 프로젝트이다. 이 이름 아래 믹싱 작업을 돕는 오디오 플러그인을 직접 설계·제작하고 있다. 아래의 AuralPaths도 LABO 1557 이름으로 공개되었다<sup class="ref"><a href="#ko-cite-2">[2]</a></sup>.</p>
+
+    <h3 id="ko-auralpaths">AuralPaths</h3>
+    <p class="mainlink">저장소: <a class="ext" href="https://github.com/dlrjtt1/AuralPaths">github.com/dlrjtt1/AuralPaths</a></p>
+    <p><b>AuralPaths</b>는 무대 직접음과 확성 스피커(PA) 경로를 비교하기 위한 브라우저 기반 바이노럴 실내음향 시뮬레이터이다. 평면도와 단면도로 홀을 그리고 무대 음원과 PA 스피커 한 쌍을 배치하면, 객석 위치에 따라 두 경로 사이의 도달 시간차(ITDG)와 레벨비가 어떻게 달라지는지 듣고 측정할 수 있다. 모든 처리는 브라우저 안에서 이루어지며, 불러온 도면과 음원 파일은 사용자의 컴퓨터 밖으로 전송되지 않는다<sup class="ref"><a href="#ko-cite-2">[2]</a></sup>.</p>
+    <h4 id="ko-ap-features">기능</h4>
+    <ul>
+     <li><b>홀</b>: 직육면체(슈박스) 또는 사용자 자신의 PDF·이미지 도면을 따라 그린 2.5차원 홀(평면 윤곽 × 바닥·천장 단면). 알고 있는 치수로 축척을 맞추고 PDF의 선에 스냅할 수 있다.</li>
+     <li><b>음향 모델</b>: 초기 부분은 허상법(image source), 확산 부분은 음선 추적(ray tracing), 여기에 1차 모서리 회절(UTD)을 더한다. Neumann KU100 HRIR로 바이노럴 렌더링을 하며, 후기 잔향은 음선 추적으로 얻은 도래 방향의 양이 에너지와 양이간 코히어런스를 반영해 생성한다.</li>
+     <li><b>출력</b>: 에코그램, 방향별 도래음, C80 / D50 / Ts / EDT / T30 / IACC, 유효 ITDG 및 레벨비의 객석 분포도, 사용자의 드라이 녹음을 이용한 A/B 청취(Sennheiser HD600용 헤드폰 보정은 선택).</li>
+     <li><b>연구용 Python 도구</b>: 같은 모델로 BRIR 세트 생성(<code>run.py</code>), 청취실험 자극 생성(<code>make_stimuli.py</code>), 실측 T30에 맞춘 흡음률 보정(<code>calibrate.py</code>), BRAS를 이용한 회절 검증(<code>validate_bras.py</code>).</li>
+    </ul>
+    <h4 id="ko-ap-limits">정확도와 한계</h4>
+    <p>AuralPaths는 실제 홀을 재현한다고 주장하지 않는다. 실내음향 시뮬레이션 도구들의 결과는 실측과 눈에 띄는 차이를 보인다고 보고되어 있으며<sup class="ref"><a href="#ko-cite-4">[4]</a></sup>, 실제 공간에 대한 결론을 내리기 전에 실측 T30으로 흡음률을 보정하고 측정값과 대조해야 한다. 형상은 2.5차원(폭 방향으로 단면이 동일)이고, 회절은 1차까지만 다루며, 객석 딥(seat-dip) 효과는 포함하지 않는다. 산란은 랜덤(램버트) 모델, HRIR은 최근접 방향, HRTF는 비개인화(더미 헤드) 데이터이다<sup class="ref"><a href="#ko-cite-2">[2]</a></sup>.</p>
+    <p>회절 검증으로 BRAS의 RS5 장면(단단한 바닥 위 높이 2.07 m 칸막이, 수음점 16곳)과 비교한 결과, 500 Hz–2 kHz 1/3옥타브 대역에서 평균 절대 차이는 1.8 dB(음영 영역 11곳에서는 2.2 dB)였다. 다만 이는 단순한 한 장면에 대한 결과일 뿐 홀 전체의 정확도를 뜻하지는 않는다<sup class="ref"><a href="#ko-cite-2">[2]</a></sup><sup class="ref"><a href="#ko-cite-5">[5]</a></sup>. 스피커 지향성 파일은 근삿값이다.</p>
+    <h4 id="ko-ap-license">라이선스</h4>
+    <p>소스 코드는 MIT 라이선스로 공개되어 있다. 제3자 데이터는 각자의 라이선스를 따른다(KU100 HRIR 및 헤드폰 보정 필터: CC BY 3.0, BRAS에서 파생된 검증 결과: CC BY-SA 4.0)<sup class="ref"><a href="#ko-cite-2">[2]</a></sup>.</p>
+
+    <h2 id="ko-awards">수상</h2>
+    <div class="tbl-wrap"><table class="wikitable">
+     <thead><tr><th>연월</th><th>수상</th><th>수여 기관</th></tr></thead>
+     <tbody><tr><td>2026년 7월</td><td>우수발표상</td><td>한국음향학회 2026년도 제5회 전기음향·무대음향 학술대회</td></tr></tbody>
+    </table></div>
+
+    <h2 id="ko-certs">자격증</h2>
+    <div class="tbl-wrap"><table class="wikitable">
+     <thead><tr><th>취득 연월</th><th>자격명</th><th>발행 기관</th></tr></thead>
+     <tbody>
+      <tr><td>2024년 12월</td><td>일본어능력시험(JLPT) N2</td><td>일본국제교육지원협회 / 국제교류기금</td></tr>
+      <tr><td>2023년 4월</td><td>TOEIC 800점</td><td>ETS</td></tr>
+      <tr><td>2022년 8월</td><td>무대예술전문인 자격 · 무대음향 3급</td><td>무대예술전문인 자격검정위원회 (문화체육관광부)</td></tr>
+      <tr><td>2021년 2월</td><td>Avid Certified — Pro Tools Specialist</td><td>Avid Technology</td></tr>
+     </tbody>
+    </table></div>
+
+    <h2 id="ko-skills">전문 분야·기술</h2>
+    <ul>
+     <li>확성 시스템 (PA / Sound Reinforcement)</li>
+     <li>믹싱 (Mixing)</li>
+     <li>공간 오디오 (Spatial Audio)</li>
+     <li>Pro Tools</li>
+    </ul>
+
+    <h2 id="ko-lang">언어</h2>
+    <div class="tbl-wrap"><table class="wikitable">
+     <thead><tr><th>언어</th><th>수준</th></tr></thead>
+     <tbody>
+      <tr><td>한국어</td><td>모국어</td></tr>
+      <tr><td>일본어</td><td>비즈니스 중급 (JLPT N2)</td></tr>
+      <tr><td>영어</td><td>비즈니스 초급 (TOEIC 800)</td></tr>
+     </tbody>
+    </table></div>
+
+    <h2 id="ko-history">학력·경력 일람</h2>
+    <div class="tbl-wrap"><table class="wikitable">
+     <caption>학력</caption>
+     <thead><tr><th>기간</th><th>기관</th><th>과정</th></tr></thead>
+     <tbody>
+      <tr><td>2019년 3월 – 2021년 2월</td><td>백석예술대학교</td><td>음악학부 교회실용음악학과 (전문학사)</td></tr>
+      <tr><td>2021년 9월 – 2023년 8월</td><td>국가평생교육진흥원 학점은행제</td><td>음악학부 실용음악학과 (학사)</td></tr>
+      <tr><td>2025년 10월 – 2027년 3월</td><td>도쿄예술대학</td><td>음악음향창조과 연구생 (재학 중)</td></tr>
+      <tr><td>2027년 4월 –</td><td>도쿄예술대학 대학원</td><td>음악연구과 음악음향창조 석사과정 (진학 예정)</td></tr>
+     </tbody>
+    </table></div>
+    <div class="tbl-wrap"><table class="wikitable">
+     <caption>경력</caption>
+     <thead><tr><th>기간</th><th>소속</th><th>직위</th></tr></thead>
+     <tbody>
+      <tr><td>2024년 4월 – 2025년 9월<br><span class="muted">(1년 5개월)</span></td><td>국립국악원 (National Gugak Center)<br><span class="muted">대한민국 서울특별시</span></td><td>무대과 음향 엔지니어 (정규직)</td></tr>
+      <tr><td>2023년 8월 – 2024년 2월<br><span class="muted">(7개월)</span></td><td>한경 arte TV<br><span class="muted">대한민국 서울특별시</span></td><td>공연제작부 음향 엔지니어 (인턴)</td></tr>
+     </tbody>
+    </table></div>
+
+    <h2 id="ko-refs">각주</h2>
+    <div class="refs"><ol>
+     <li id="ko-cite-1"><a class="up" href="#top-ko">↑</a><cite>「柳 東均 (Dong-Gyun You)」 LinkedIn 프로필.</cite> <a class="ext" href="https://www.linkedin.com/in/dong-gyun-you/">https://www.linkedin.com/in/dong-gyun-you/</a></li>
+     <li id="ko-cite-2"><a class="up" href="#ko-auralpaths">↑</a><cite>dlrjtt1, 「AuralPaths」 GitHub 저장소 (README.md, NOTICE.md).</cite> <a class="ext" href="https://github.com/dlrjtt1/AuralPaths">https://github.com/dlrjtt1/AuralPaths</a></li>
+     <li id="ko-cite-3"><a class="up" href="#ko-research-pilot">↑</a><cite>dlrjtt1, 「pilot-experiment」 GitHub 저장소.</cite> <a class="ext" href="https://github.com/dlrjtt1/pilot-experiment">https://github.com/dlrjtt1/pilot-experiment</a></li>
+     <li id="ko-cite-4"><a class="up" href="#ko-ap-limits">↑</a><cite>Brinkmann, F. et al. (2019). "A round robin on room acoustical simulation and auralization." <i>The Journal of the Acoustical Society of America</i>.</cite> <a class="ext" href="https://doi.org/10.1121/1.5096178">doi:10.1121/1.5096178</a></li>
+     <li id="ko-cite-5"><a class="up" href="#ko-ap-limits">↑</a><cite>Aspöck, L., Brinkmann, F., Ackermann, D., Weinzierl, S., Vorländer, M. (2020). <i>BRAS – Benchmark for Room Acoustical Simulation</i>, version 3. TU Berlin DepositOnce.</cite> <a class="ext" href="https://doi.org/10.14279/depositonce-6726.3">doi:10.14279/depositonce-6726.3</a></li>
+    </ol></div>
+
+    <h2 id="ko-links">외부 링크</h2>
+    <ul>
+     <li><a class="ext" href="https://www.linkedin.com/in/dong-gyun-you/">LinkedIn — dong-gyun-you</a></li>
+     <li><a class="ext" href="https://github.com/dlrjtt1/AuralPaths">GitHub — dlrjtt1/AuralPaths</a> (실내음향 시뮬레이터)</li>
+     <li><a class="ext" href="https://github.com/dlrjtt1/pilot-experiment">GitHub — dlrjtt1/pilot-experiment</a> (파일럿 청취실험 구현)</li>
+     <li><a class="ext" href="https://www.instagram.com/dlrjtt1_/">Instagram — @dlrjtt1_</a></li>
+     <li>이메일: <a href="mailto:donggyun0920@gmail.com">donggyun0920@gmail.com</a></li>
+    </ul>
+   </main>
+
+   <div class="navbox">
+    <div class="nb-title">유동균<button class="nb-toggle">[숨기기]</button></div>
+    <table><tbody>
+     <tr><th>연구</th><td><a href="#ko-research-pilot">파일럿 청취실험</a><a href="#ko-pubs">발표·논문</a></td></tr>
+     <tr><th>개인 프로젝트</th><td><a href="#ko-labo">LABO 1557</a><a href="#ko-auralpaths">AuralPaths</a></td></tr>
+     <tr><th>경력</th><td><a href="#ko-life-arte">한경 arte TV</a><a href="#ko-life-ngc">국립국악원</a><a href="#ko-life-geidai">도쿄예술대학</a></td></tr>
+    </tbody></table>
+   </div>
+   <div class="catlinks"><b>분류:</b> <span>2000년 출생</span><span>대한민국의 음향학자</span><span>도쿄예술대학</span><span>확성</span><span>공간 오디오</span></div>
+  </div>
+ </div>
+</div>
+
+<!-- ======================================================= EN -->
+<div data-lang="en" lang="en">
+ <div class="cols">
+  <nav class="sidetoc toc" aria-label="Contents"></nav>
+  <div class="content">
+   <div class="title-row">
+    <button class="toc-btn" title="Contents"><svg viewBox="0 0 20 20"><path d="M1 3h18v2H1zm0 6h18v2H1zm0 6h18v2H1z"/></svg></button>
+    <h1 id="top-en">Dong-Gyun You<span class="alt">柳 東均</span></h1>
+    <div class="dropdown">
+     <button class="lang-btn" aria-haspopup="true"><svg viewBox="0 0 20 20"><path d="M20 18h-1.4l-1.1-3H12l-1.1 3H9.5L14 6h1.5zm-3-4.1-2-5.5-2 5.5zM11 5V3H7V1H5v2H1v2h7a10 10 0 0 1-2.4 4.7A10 10 0 0 1 4 7H2a12 12 0 0 0 2.2 4L1 13.6l1.3 1.4 3.3-2.6 2.1 1.7.7-1.9-1.3-1A12 12 0 0 0 10 5z"/></svg>3 languages ▾</button>
+     <div class="menu lang-menu"><a href="#/ja" data-set="ja">日本語</a><a href="#/ko" data-set="ko">한국어</a><a href="#/en" data-set="en">English</a></div>
+    </div>
+   </div>
+   <div class="tabs">
+    <ul><li class="sel"><span>Article</span></li></ul>
+    <ul><li class="sel"><span>Read</span></li><li><a href="https://github.com/dlrjtt1/researcher-site/blob/main/index.html">View source</a></li><li><a href="https://github.com/dlrjtt1/researcher-site/commits/main">View history</a></li></ul>
+   </div>
+   <div class="tagline">Dong-Gyun You — researcher profile</div>
+
+   <main>
+    <p class="hatnote">This article is compiled from the subject's public professional profile and GitHub repositories.</p>
 
     <aside class="infobox" aria-label="Infobox">
-      <div class="ib-title"><ruby>柳<rt>ゆ</rt></ruby> <ruby>東均<rt>どんぎゅん</rt></ruby></div>
-      <img src="assets/photo.jpg" alt="柳 東均の証明写真" class="ib-photo">
-      <div class="ib-caption">柳 東均の証明写真</div>
-      <table>
-        <tbody>
-          <tr><td colspan="2" class="ib-sect-cell">個人情報</td></tr>
-          <tr><th>氏名</th><td><ruby>柳<rt>ゆ</rt></ruby> <ruby>東均<rt>どんぎゅん</rt></ruby></td></tr>
-          <tr><th>ローマ字</th><td>Dong-Gyun You</td></tr>
-          <tr><th>韓国語表記</th><td>유동균</td></tr>
-          <tr><th>生年</th><td>2000年</td></tr>
-          <tr><th>国籍</th><td>大韓民国</td></tr>
-          <tr><th>居住地</th><td>日本・東京都</td></tr>
-          <tr><td colspan="2" class="ib-sect-cell">学術情報</td></tr>
-          <tr><th>分野</th><td>音響学</td></tr>
-          <tr><th>研究分野</th><td>拡声システム（PA）<br>ミキシング<br>空間オーディオ</td></tr>
-          <tr><th>所属</th><td>東京藝術大学<br>音楽音響創造科</td></tr>
-          <tr><th>現在</th><td>研究生（2025.10–2027.3）</td></tr>
-          <tr><th>進学予定</th><td>大学院 音楽研究科<br>修士課程（2027.4–）</td></tr>
-          <tr><th>個人プロジェクト</th><td>LABO 1557</td></tr>
-          <tr><th>主な受賞</th><td>優秀発表賞（韓国音響学会, 2026）</td></tr>
-          <tr><td colspan="2" class="ib-sect-cell">リンク</td></tr>
-          <tr><th>LinkedIn</th><td><a href="https://www.linkedin.com/in/dong-gyun-you/">dong-gyun-you</a></td></tr>
-          <tr><th>GitHub</th><td><a href="https://github.com/dlrjtt1">dlrjtt1</a></td></tr>
-          <tr><th>Instagram</th><td><a href="https://www.instagram.com/dlrjtt1_/">@dlrjtt1_</a></td></tr>
-          <tr><th>E-mail</th><td><a href="mailto:donggyun0920@gmail.com">donggyun0920@gmail.com</a></td></tr>
-        </tbody>
-      </table>
+     <div class="ib-title">Dong-Gyun You<small>柳 東均 / 유동균</small></div>
+     <div class="ib-img"><img src="assets/photo.jpg" alt="Dong-Gyun You"></div>
+     <div class="ib-cap">Dong-Gyun You</div>
+     <table><tbody>
+      <tr class="sec"><td colspan="2">Personal</td></tr>
+      <tr><th>Native name</th><td>유동균 / 柳 東均</td></tr>
+      <tr><th>Born</th><td>2000<br>Republic of Korea</td></tr>
+      <tr><th>Nationality</th><td>Republic of Korea</td></tr>
+      <tr><th>Residence</th><td>Tokyo, Japan</td></tr>
+      <tr><th>Occupation</th><td>Acoustics researcher</td></tr>
+      <tr class="sec"><td colspan="2">Academic</td></tr>
+      <tr><th>Fields</th><td>Sound reinforcement (PA)<br>Mixing<br>Spatial audio</td></tr>
+      <tr><th>Institution</th><td>Tokyo University of the Arts</td></tr>
+      <tr><th>Current</th><td>Research Student<br>(Oct 2025 – Mar 2027)</td></tr>
+      <tr><th>Next</th><td>Master's programme,<br>Graduate School of Music<br>(from Apr 2027)</td></tr>
+      <tr><th>Notable award</th><td>Best Presentation Award<br>(ASK, 2026)</td></tr>
+      <tr class="sec"><td colspan="2">Personal projects</td></tr>
+      <tr><th>Label</th><td>LABO 1557</td></tr>
+      <tr><th>Works</th><td><a href="#en-auralpaths">AuralPaths</a></td></tr>
+      <tr class="sec"><td colspan="2">Links</td></tr>
+      <tr><th>LinkedIn</th><td><a href="https://www.linkedin.com/in/dong-gyun-you/">dong-gyun-you</a></td></tr>
+      <tr><th>GitHub</th><td><a href="https://github.com/dlrjtt1">dlrjtt1</a></td></tr>
+      <tr><th>Instagram</th><td><a href="https://www.instagram.com/dlrjtt1_/">@dlrjtt1_</a></td></tr>
+      <tr><th>E-mail</th><td><a href="mailto:donggyun0920@gmail.com">donggyun0920@gmail.com</a></td></tr>
+     </tbody></table>
     </aside>
+
+    <p><b>Dong-Gyun You</b> (Korean: 유동균; Japanese: 柳 東均; born 2000) is a Korean acoustics researcher based in Japan. He is a <b>Research Student in the Department of Musical Creativity and the Environment, Tokyo University of the Arts</b>, working mainly on <b>sound reinforcement (PA) systems</b>, <b>mixing</b> and <b>spatial audio</b>, and is scheduled to enter the master's programme in Musical Creativity and the Environment at the university's Graduate School of Music in April 2027<sup class="ref"><a href="#en-cite-1">[1]</a></sup>.</p>
+    <p>His primary research interest is the effect of the time gap (ITDG) and level ratio between direct stage sound and reinforced sound on listeners' localization judgments in concert halls. He designs and conducts listening experiments under simulated hall conditions, testing how far laboratory findings on the precedence effect extend to realistic reinforcement environments involving reverberation and loudspeaker directivity<sup class="ref"><a href="#en-cite-1">[1]</a></sup>.</p>
+    <p>As personal projects under the name <b>LABO 1557</b>, he builds audio plug-ins that help with mixing and has released <b><a href="#en-auralpaths">AuralPaths</a></b>, a browser-based binaural room simulator for comparing direct and loudspeaker paths<sup class="ref"><a href="#en-cite-2">[2]</a></sup>. Preliminary results of his research were presented at the Acoustical Society of Korea (ASK) 2026 5th Conference on Electroacoustics and Stage Acoustics, where the work received the <b>Best Presentation Award</b><sup class="ref"><a href="#en-cite-1">[1]</a></sup>.</p>
+
+    <h2 id="en-life">Life</h2>
+    <h3 id="en-life-edu">Education</h3>
+    <p>He studied in the Department of Church Contemporary Music, Faculty of Music, at Baekseok Arts University from March 2019 to February 2021, earning an associate degree, and then completed a bachelor's degree in applied music from September 2021 to August 2023 through the Academic Credit Bank System operated by Korea's National Institute for Lifelong Education (NILE). During this period he obtained the Avid Certified Pro Tools Specialist certification (February 2021) and the Stage Arts Certified Professional — Sound, Grade 3 (August 2022)<sup class="ref"><a href="#en-cite-1">[1]</a></sup>.</p>
+
+    <h3 id="en-life-career">Sound engineering career</h3>
+    <h4 id="en-life-arte">Hankyung Arte TV</h4>
+    <p>From August 2023 to February 2024 he worked as a sound engineering intern in the production department of Hankyung Arte TV, setting up sound equipment for live performance broadcasts and recording and producing audio for broadcast content<sup class="ref"><a href="#en-cite-1">[1]</a></sup>.</p>
+    <h4 id="en-life-ngc">National Gugak Center</h4>
+    <p>From April 2024 to September 2025 he was a full-time sound engineer in the Stage Division of the National Gugak Center in Seoul, responsible for operating, installing and maintaining stage-sound equipment, recording and producing performance audio, and safety inspection of electrical circuits and equipment. Repeated feedback from audiences during this period — that under partial sound reinforcement the perceived source shifted from the performer to the loudspeaker — became the direct motivation for his current research<sup class="ref"><a href="#en-cite-1">[1]</a></sup>.</p>
+
+    <h3 id="en-life-geidai">Tokyo University of the Arts</h3>
+    <p>In October 2025 he entered the Department of Musical Creativity and the Environment at Tokyo University of the Arts as a Research Student (until March 2027)<sup class="ref"><a href="#en-cite-1">[1]</a></sup>. In July 2026 he presented preliminary results in Korean at the ASK Conference on Electroacoustics and Stage Acoustics, receiving the Best Presentation Award, and in September 2026 he presented in English at the Japan–Korea joint session of the 156th (Autumn 2026) Meeting of the Acoustical Society of Japan. He is scheduled to enter the master's programme at the university's Graduate School of Music in April 2027.</p>
+
+    <h2 id="en-research">Research</h2>
+    <h3 id="en-research-field">Research areas</h3>
+    <p>His principal research areas are:</p>
+    <ul>
+     <li>Sound reinforcement (PA)</li>
+     <li>Mixing</li>
+     <li>Spatial audio</li>
+    </ul>
+
+    <h3 id="en-research-pilot">Pilot listening experiment</h3>
+    <p>Between May and July 2026 he designed and implemented a web-based listening experiment using binaural room impulse responses (BRIRs) covering nine combinations of ITDG (0/20/40 ms) and level ratio (−6/0/+6 dB) between direct stage sound and PA-reinforced sound in a concert hall. Stimuli were presented in randomised order, and responses were collected on three items: clarity of image direction, naturalness of timbre, and stability of the auditory image. Quality control included a left/right channel check, self-reported playback device (headphones/earphones), and a consistency check through repeated presentation of identical conditions<sup class="ref"><a href="#en-cite-3">[3]</a></sup>.</p>
+    <p>324 responses were collected from 12 participants and analysed with a linear mixed-effects model. At the pilot stage, the level ratio was observed to have a strong effect on the ratings<sup class="ref"><a href="#en-cite-1">[1]</a></sup>.</p>
+
+    <h3 id="en-pubs">Presentations</h3>
+    <div class="tbl-wrap"><table class="wikitable">
+     <thead><tr><th>Date</th><th>Title</th><th>Society</th><th>Notes</th></tr></thead>
+     <tbody>
+      <tr>
+       <td>9 Sep 2026</td>
+       <td>Effect of the time gap and level ratio between direct and PA-reinforced sound on localization judgments: a BRIR-based pilot listening experiment<br><span class="muted">Co-authors: Dong-Gyun You, Toru Kamekawa, Atsushi Marui</span></td>
+       <td>Acoustical Society of Japan, 156th (Autumn 2026) Meeting<br>SS: 3rd Japan–Korea Joint Session on Acoustics</td>
+       <td>Presented in English</td>
+      </tr>
+      <tr>
+       <td>3 Jul 2026</td>
+       <td>Effect of the time gap and level ratio between direct and PA-reinforced sound on localization judgments: a BRIR-based pilot listening experiment<br><span class="muted">(Original title in Korean: 직접음-PA 보강음 시간차와 레벨비가 정위감 평가에 미치는 영향: BRIR 기반 파일럿 청취실험)</span><br><span class="muted">Co-authors: Dong-Gyun You, Toru Kamekawa, Atsushi Marui</span></td>
+       <td>Acoustical Society of Korea, 2026 5th Conference on Electroacoustics and Stage Acoustics</td>
+       <td>Presented in Korean<br>Best Presentation Award<sup class="ref"><a href="#en-cite-1">[1]</a></sup></td>
+      </tr>
+     </tbody>
+    </table></div>
+
+    <h2 id="en-projects">Personal projects</h2>
+    <h3 id="en-labo">LABO 1557</h3>
+    <p><b>LABO 1557</b> is a personal project that began from his wish to let anyone mix quickly and easily. Under this name he designs and builds audio plug-ins that help with the mixing process. AuralPaths, described below, is also released under the LABO 1557 name<sup class="ref"><a href="#en-cite-2">[2]</a></sup>.</p>
+
+    <h3 id="en-auralpaths">AuralPaths</h3>
+    <p class="mainlink">Repository: <a class="ext" href="https://github.com/dlrjtt1/AuralPaths">github.com/dlrjtt1/AuralPaths</a></p>
+    <p><b>AuralPaths</b> is a browser-based binaural room simulator for comparing direct and loudspeaker (PA) paths. The user draws a hall from its plan and section, places a stage source and a pair of PA loudspeakers, and can then hear and measure how the arrival-time gap (ITDG) and the level ratio between the paths change from seat to seat. Everything runs in the browser; drawings and audio files loaded by the user stay on their computer<sup class="ref"><a href="#en-cite-2">[2]</a></sup>.</p>
+    <h4 id="en-ap-features">Features</h4>
+    <ul>
+     <li><b>Hall</b>: a shoebox, or a 2.5D hall (plan outline × floor and ceiling profile) traced over the user's own PDF or image drawings, with scale from a known dimension and snapping to the PDF's lines.</li>
+     <li><b>Acoustics</b>: image sources for the early part, ray tracing for the diffuse part, and first-order edge diffraction (UTD); binaural rendering with Neumann KU100 HRIRs; late reverberation built from the ear energies and interaural coherence of the ray-traced arrival directions.</li>
+     <li><b>Output</b>: echogram, arrivals by direction, C80 / D50 / Ts / EDT / T30 / IACC, seat maps of effective ITDG and level ratio, and A/B listening with the user's own dry recordings (optional headphone EQ for Sennheiser HD600).</li>
+     <li><b>Python tools for research</b>: BRIR sets from the same model (<code>run.py</code>), listening-test stimuli (<code>make_stimuli.py</code>), fitting absorption to measured T30 (<code>calibrate.py</code>), and a diffraction check against BRAS (<code>validate_bras.py</code>).</li>
+    </ul>
+    <h4 id="en-ap-limits">Accuracy and limitations</h4>
+    <p>AuralPaths does not claim to reproduce a real hall. Room-acoustic simulation tools have been reported to differ noticeably from measurements<sup class="ref"><a href="#en-cite-4">[4]</a></sup>, so absorption should be calibrated with measured T30 and results checked against measurements before conclusions are drawn about a real room. The geometry is 2.5D (the cross-section is the same across the width); diffraction is first-order only; the seat-dip effect is not modelled; scattering uses a random (Lambert) model; HRIRs are taken from the nearest direction; and the HRTFs are non-individual (dummy head)<sup class="ref"><a href="#en-cite-2">[2]</a></sup>.</p>
+    <p>As a diffraction check against BRAS scene RS5 (a 2.07 m partition on a hard floor, 16 receiver positions), the mean absolute difference in third-octave bands from 500 Hz to 2 kHz was 1.8 dB (2.2 dB at the 11 shadow-zone positions). This is a single simple scene, not a measure of whole-hall accuracy<sup class="ref"><a href="#en-cite-2">[2]</a></sup><sup class="ref"><a href="#en-cite-5">[5]</a></sup>. Loudspeaker directivity files are approximations.</p>
+    <h4 id="en-ap-license">Licence</h4>
+    <p>The source code is released under the MIT License. Third-party data keep their own licences (KU100 HRIRs and headphone filter: CC BY 3.0; BRAS-derived validation results: CC BY-SA 4.0)<sup class="ref"><a href="#en-cite-2">[2]</a></sup>.</p>
+
+    <h2 id="en-awards">Awards</h2>
+    <div class="tbl-wrap"><table class="wikitable">
+     <thead><tr><th>Date</th><th>Award</th><th>Awarding body</th></tr></thead>
+     <tbody><tr><td>Jul 2026</td><td>Best Presentation Award</td><td>Acoustical Society of Korea, 2026 5th Conference on Electroacoustics and Stage Acoustics</td></tr></tbody>
+    </table></div>
+
+    <h2 id="en-certs">Licenses and certifications</h2>
+    <div class="tbl-wrap"><table class="wikitable">
+     <thead><tr><th>Date</th><th>Certification</th><th>Issuing body</th></tr></thead>
+     <tbody>
+      <tr><td>Dec 2024</td><td>Japanese Language Proficiency Test (JLPT) N2</td><td>Japan Foundation / JEES</td></tr>
+      <tr><td>Apr 2023</td><td>TOEIC 800</td><td>ETS</td></tr>
+      <tr><td>Aug 2022</td><td>Stage Arts Certified Professional — Sound, Grade 3</td><td>Stage Arts Certified Professional Examination Committee (Ministry of Culture, Sports and Tourism, Republic of Korea)</td></tr>
+      <tr><td>Feb 2021</td><td>Avid Certified — Pro Tools Specialist</td><td>Avid Technology</td></tr>
+     </tbody>
+    </table></div>
+
+    <h2 id="en-skills">Skills and expertise</h2>
+    <ul>
+     <li>Sound reinforcement (PA)</li>
+     <li>Mixing</li>
+     <li>Spatial audio</li>
+     <li>Pro Tools</li>
+    </ul>
+
+    <h2 id="en-lang">Languages</h2>
+    <div class="tbl-wrap"><table class="wikitable">
+     <thead><tr><th>Language</th><th>Level</th></tr></thead>
+     <tbody>
+      <tr><td>Korean</td><td>Native</td></tr>
+      <tr><td>Japanese</td><td>Business intermediate (JLPT N2)</td></tr>
+      <tr><td>English</td><td>Business elementary (TOEIC 800)</td></tr>
+     </tbody>
+    </table></div>
+
+    <h2 id="en-history">Education and career summary</h2>
+    <div class="tbl-wrap"><table class="wikitable">
+     <caption>Education</caption>
+     <thead><tr><th>Period</th><th>Institution</th><th>Programme</th></tr></thead>
+     <tbody>
+      <tr><td>Mar 2019 – Feb 2021</td><td>Baekseok Arts University</td><td>Faculty of Music, Department of Church Contemporary Music (associate degree)</td></tr>
+      <tr><td>Sep 2021 – Aug 2023</td><td>Academic Credit Bank System<br><span class="muted">NILE, Republic of Korea</span></td><td>Applied Music (bachelor's degree)</td></tr>
+      <tr><td>Oct 2025 – Mar 2027</td><td>Tokyo University of the Arts</td><td>Research Student, Department of Musical Creativity and the Environment (enrolled)</td></tr>
+      <tr><td>Apr 2027 –</td><td>Tokyo University of the Arts</td><td>Graduate School of Music, Musical Creativity and the Environment, master's programme (scheduled)</td></tr>
+     </tbody>
+    </table></div>
+    <div class="tbl-wrap"><table class="wikitable">
+     <caption>Career</caption>
+     <thead><tr><th>Period</th><th>Affiliation</th><th>Role</th></tr></thead>
+     <tbody>
+      <tr><td>Apr 2024 – Sep 2025<br><span class="muted">(1 year 5 months)</span></td><td>National Gugak Center<br><span class="muted">Seoul, Republic of Korea</span></td><td>Sound Engineer, Stage Division (full-time)</td></tr>
+      <tr><td>Aug 2023 – Feb 2024<br><span class="muted">(7 months)</span></td><td>Hankyung Arte TV<br><span class="muted">Seoul, Republic of Korea</span></td><td>Sound Engineer, Production Dept. (internship)</td></tr>
+     </tbody>
+    </table></div>
+
+    <h2 id="en-refs">References</h2>
+    <div class="refs"><ol>
+     <li id="en-cite-1"><a class="up" href="#top-en">↑</a><cite>"Dong-Gyun You (柳 東均)", LinkedIn profile.</cite> <a class="ext" href="https://www.linkedin.com/in/dong-gyun-you/">https://www.linkedin.com/in/dong-gyun-you/</a></li>
+     <li id="en-cite-2"><a class="up" href="#en-auralpaths">↑</a><cite>dlrjtt1, "AuralPaths", GitHub repository (README.md, NOTICE.md).</cite> <a class="ext" href="https://github.com/dlrjtt1/AuralPaths">https://github.com/dlrjtt1/AuralPaths</a></li>
+     <li id="en-cite-3"><a class="up" href="#en-research-pilot">↑</a><cite>dlrjtt1, "pilot-experiment", GitHub repository.</cite> <a class="ext" href="https://github.com/dlrjtt1/pilot-experiment">https://github.com/dlrjtt1/pilot-experiment</a></li>
+     <li id="en-cite-4"><a class="up" href="#en-ap-limits">↑</a><cite>Brinkmann, F. et al. (2019). "A round robin on room acoustical simulation and auralization." <i>The Journal of the Acoustical Society of America</i>.</cite> <a class="ext" href="https://doi.org/10.1121/1.5096178">doi:10.1121/1.5096178</a></li>
+     <li id="en-cite-5"><a class="up" href="#en-ap-limits">↑</a><cite>Aspöck, L., Brinkmann, F., Ackermann, D., Weinzierl, S., Vorländer, M. (2020). <i>BRAS – Benchmark for Room Acoustical Simulation</i>, version 3. TU Berlin DepositOnce.</cite> <a class="ext" href="https://doi.org/10.14279/depositonce-6726.3">doi:10.14279/depositonce-6726.3</a></li>
+    </ol></div>
+
+    <h2 id="en-links">External links</h2>
+    <ul>
+     <li><a class="ext" href="https://www.linkedin.com/in/dong-gyun-you/">LinkedIn — dong-gyun-you</a></li>
+     <li><a class="ext" href="https://github.com/dlrjtt1/AuralPaths">GitHub — dlrjtt1/AuralPaths</a> (room-acoustic simulator)</li>
+     <li><a class="ext" href="https://github.com/dlrjtt1/pilot-experiment">GitHub — dlrjtt1/pilot-experiment</a> (pilot listening experiment)</li>
+     <li><a class="ext" href="https://www.instagram.com/dlrjtt1_/">Instagram — @dlrjtt1_</a></li>
+     <li>E-mail: <a href="mailto:donggyun0920@gmail.com">donggyun0920@gmail.com</a></li>
+    </ul>
+   </main>
+
+   <div class="navbox">
+    <div class="nb-title">Dong-Gyun You<button class="nb-toggle">[hide]</button></div>
+    <table><tbody>
+     <tr><th>Research</th><td><a href="#en-research-pilot">Pilot listening experiment</a><a href="#en-pubs">Presentations</a></td></tr>
+     <tr><th>Personal projects</th><td><a href="#en-labo">LABO 1557</a><a href="#en-auralpaths">AuralPaths</a></td></tr>
+     <tr><th>Career</th><td><a href="#en-life-arte">Hankyung Arte TV</a><a href="#en-life-ngc">National Gugak Center</a><a href="#en-life-geidai">Tokyo University of the Arts</a></td></tr>
+    </tbody></table>
+   </div>
+   <div class="catlinks"><b>Categories:</b> <span>2000 births</span><span>South Korean acousticians</span><span>Tokyo University of the Arts</span><span>Sound reinforcement</span><span>Spatial audio</span></div>
   </div>
+ </div>
 </div>
 
-<!-- ============ KO ============ -->
-<div data-lang="ko" class="active">
-  <h1 class="pagetitle">유동균<span class="romaji">柳 東均 / Dong-Gyun You</span></h1>
-  <p class="subtitle">음향학 연구자 — 도쿄예술대학 음악음향창조과 연구생</p>
-
-  <div class="layout">
-    <main>
-      <p class="hatnote">본 문서는 공개된 프로필 정보에 기반하여 구성한 인물 문서이다.</p>
-
-      <div class="lead">
-        <p><b>유동균</b>(柳 東均, <i>Dong-Gyun You</i>)은 일본을 거점으로 활동하는 대한민국 출신의 음향학 분야 연구자이다. 현재는 <b>도쿄예술대학 음악음향창조과 연구생</b>으로서 <b>확성(PA) 시스템</b>, <b>믹싱</b>, <b>공간 오디오</b>를 주요 분야로 연구를 수행하고 있으며, 2027년 4월부터 같은 대학 대학원 음악연구과 음악음향창조 석사과정에 진학할 예정이다.</p>
-        <p>주요 관심사는 콘서트홀에서 무대로부터의 직접음과 확성음 사이의 시간차(ITDG) 및 레벨비가 청중의 음원 정위 판단에 미치는 영향이다. 홀 환경 시뮬레이션 하에서 청취실험을 설계·수행하며, 실험실 조건에서 얻어진 선행음 효과(precedence effect)의 지식이 잔향과 스피커 지향성을 포함한 실제 확성 환경에 어디까지 적용 가능한지를 검증하고 있다<sup class="ref"><a href="#ref-1-ko">[1]</a></sup>.</p>
-        <p>연구의 예비 성과는 한국음향학회 2026년도 제5회 전기음향·무대음향 학술대회에서 발표되어 <b>우수발표상</b>을 수상하였다<sup class="ref"><a href="#ref-1-ko">[1]</a></sup>.</p>
-      </div>
-
-      <nav class="toc" aria-label="목차">
-        <div class="toc-title">목차</div>
-        <ol>
-          <li><a href="#ko-outline">개요</a></li>
-          <li><a href="#ko-edu">학력</a></li>
-          <li><a href="#ko-career">경력</a></li>
-          <li><a href="#ko-research">연구 활동</a>
-            <ol>
-              <li><a href="#ko-research-field">연구 분야</a></li>
-              <li><a href="#ko-research-project">연구 프로젝트</a></li>
-            </ol>
-          </li>
-          <li><a href="#ko-academic">학술 활동</a>
-            <ol>
-              <li><a href="#ko-pubs">발표·논문</a></li>
-              <li><a href="#ko-awards">수상</a></li>
-            </ol>
-          </li>
-          <li><a href="#ko-labo">개인 프로젝트 — LABO 1557</a></li>
-          <li><a href="#ko-certs">자격증</a></li>
-          <li><a href="#ko-skills">전문 분야·기술</a></li>
-          <li><a href="#ko-lang">언어</a></li>
-          <li><a href="#ko-links">외부 링크</a></li>
-          <li><a href="#ko-refs">참고자료</a></li>
-        </ol>
-      </nav>
-
-      <h2 id="ko-outline">개요</h2>
-      <p>유동균은 대한민국 출신의 음향학 연구자로, 일본 도쿄에 거주하며 연구 활동을 이어가고 있다. 학부 과정에서는 백석예술대학교(전문학사)와 학점은행제(학사)를 통해 실용음악을 전공하였으며, 이후 국립국악원에서의 무대음향 업무와 방송 분야 인턴십을 통해 실무 경험을 쌓았다. 특히 부분 확성 시 음원이 연주자가 아닌 스피커 쪽으로 정위된다는 청중의 지적을 반복적으로 접한 경험이, 현재의 연구 주제의 직접적 동기가 되었다<sup class="ref"><a href="#ref-1-ko">[1]</a></sup>.</p>
-
-      <h2 id="ko-edu">학력</h2>
-      <table class="wiki">
-        <thead><tr><th>기간</th><th>기관</th><th>과정</th></tr></thead>
-        <tbody>
-          <tr><td>2019년 3월 – 2021년 2월</td><td>백석예술대학교</td><td>음악학부 교회실용음악학과<br>(전문학사)</td></tr>
-          <tr><td>2021년 9월 – 2023년 8월</td><td>국가평생교육진흥원 학점은행제</td><td>음악학부 실용음악학과<br>(학사)</td></tr>
-          <tr><td>2025년 10월 – 2027년 3월<br>(재학 중)</td><td>도쿄예술대학</td><td>음악음향창조과 연구생</td></tr>
-          <tr><td>2027년 4월 –<br>(진학 예정)</td><td>도쿄예술대학 대학원</td><td>음악연구과 음악음향창조<br>(석사과정)</td></tr>
-        </tbody>
-      </table>
-
-      <h2 id="ko-career">경력</h2>
-      <table class="wiki">
-        <thead><tr><th>기간</th><th>소속</th><th>직위</th><th>내용</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>2024년 4월 – 2025년 9월<br>(1년 5개월)</td>
-            <td>국립국악원 (National Gugak Center)<br><span style="color:var(--muted);font-size:12px">대한민국 서울특별시</span></td>
-            <td>무대과 음향 엔지니어<br>(정규직)</td>
-            <td>무대음향 설비의 조작·설치·기술 운용, 공연 음원 녹음·제작, 전기 회로 및 설비의 안전 점검을 담당.</td>
-          </tr>
-          <tr>
-            <td>2023년 8월 – 2024년 2월<br>(7개월)</td>
-            <td>한경 arte TV (Hankyung Arte TV)<br><span style="color:var(--muted);font-size:12px">대한민국 서울특별시</span></td>
-            <td>공연제작부 음향 엔지니어<br>(인턴)</td>
-            <td>공연 중계용 음향 설비 설치, 음원 녹음·제작, 방송 콘텐츠 음향 설비의 조작·녹음·제작.</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h2 id="ko-research">연구 활동</h2>
-
-      <h3 id="ko-research-field">연구 분야</h3>
-      <p>유동균의 주요 연구 분야는 다음 세 가지이다.</p>
-      <ul>
-        <li>확성 시스템 / PA (Sound reinforcement)</li>
-        <li>믹싱 (Mixing)</li>
-        <li>공간 오디오 (Spatial audio)</li>
-      </ul>
-
-      <h3 id="ko-research-project">연구 프로젝트</h3>
-
-      <div class="project">
-        <h4>온라인 청취실험 시스템 구축 — 직접음과 확성음의 음원 정위 평가</h4>
-        <div class="meta">2026년 5월 – 2026년 7월</div>
-        <dl>
-          <dt>배경</dt><dd>콘서트홀 무대 직접음과 PA 보강음 사이의 시간차 및 레벨비가 음원 정위에 미치는 영향을 통제된 조건에서 평가할 필요가 있었다.</dd>
-          <dt>연구 질문</dt><dd>실험실 조건에서 얻어진 선행음 효과에 관한 지식은 잔향과 스피커 지향성을 포함한 실제 확성 환경에 어디까지 적용 가능한가.</dd>
-          <dt>방법</dt><dd>BRIR로 생성한 9개 조건(ITDG × 레벨비)의 자극을 무작위 순으로 제시하는 웹 기반 청취실험 시스템을 설계·구현. 음상 방향의 명료성·음색의 자연스러움·음상의 안정성 3항목에 대해 응답을 수집.</dd>
-          <dt>품질 관리</dt><dd>좌우 채널 확인 절차, 재생 기기(헤드폰/이어폰) 신고, 동일 조건 반복 제시를 통한 응답 일관성 확인을 도입.</dd>
-          <dt>결과</dt><dd>참가자 12명으로부터 총 324건의 응답을 수집.</dd>
-          <dt>구현</dt><dd><a href="https://github.com/dlrjtt1/pilot-experiment">GitHub: dlrjtt1/pilot-experiment</a></dd>
-        </dl>
-      </div>
-
-      <h2 id="ko-academic">학술 활동</h2>
-
-      <h3 id="ko-pubs">발표·논문</h3>
-      <table class="wiki">
-        <thead><tr><th>일자</th><th>제목</th><th>발표 학회</th><th>비고</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>2026년 9월 9일</td>
-            <td>Effect of the time gap and level ratio between direct and PA-reinforced sound on localization judgments: a BRIR-based pilot listening experiment<br>
-              <span style="color:var(--muted);font-size:13px">공저: 유동균, 카메카와 토오루(亀川 徹), 마루이 아츠시(丸井 淳史)</span>
-            </td>
-            <td>일본음향학회 제156회(2026년 추계) 연구발표회<br>SS 제3회 한일음향학회 조인트 세션</td>
-            <td>영어 발표</td>
-          </tr>
-          <tr>
-            <td>2026년 7월 3일</td>
-            <td>직접음-PA 보강음 시간차와 레벨비가 정위감 평가에 미치는 영향: BRIR 기반 파일럿 청취실험<br>
-              <span style="color:var(--muted);font-size:13px">공저: 유동균, 카메카와 토오루(亀川 徹), 마루이 아츠시(丸井 淳史)</span>
-            </td>
-            <td>한국음향학회 2026년도 제5회 전기음향·무대음향 학술대회</td>
-            <td>한국어 발표<br>우수발표상 수상<sup class="ref"><a href="#ref-1-ko">[1]</a></sup></td>
-          </tr>
-        </tbody>
-      </table>
-      <p>연구의 개요는 다음과 같다. 콘서트홀 무대 직접음과 PA 보강음의 시간차(ITDG: 0/20/40 ms) 및 레벨비(−6/0/+6 dB)를 조합한 9개 조건에 대해 BRIR을 이용한 청취실험을 실시하였다. 음상 방향의 명료성, 음색의 자연스러움, 음상의 안정성 3항목을 평가하고 선형혼합효과모형(LMM)으로 경향을 확인하였다. 파일럿 단계에서는 레벨비가 평가에 강하게 반영되는 경향이 관찰되었다<sup class="ref"><a href="#ref-1-ko">[1]</a></sup>.</p>
-
-      <h3 id="ko-awards">수상</h3>
-      <table class="wiki">
-        <thead><tr><th>연월</th><th>수상</th><th>수여 기관</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>2026년 7월</td>
-            <td>우수발표상</td>
-            <td>한국음향학회 2026년도 제5회 전기음향·무대음향 학술대회</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h2 id="ko-labo">개인 프로젝트 — LABO 1557</h2>
-      <div class="project">
-        <h4>LABO 1557</h4>
-        <div class="meta">개인 프로젝트</div>
-        <p>"누구라도 빠르고 쉽게 믹싱을 할 수 있도록 만들고 싶다"는 생각에서 시작한 개인 프로젝트이다. 믹싱 작업을 돕는 오디오 플러그인을 직접 설계·제작하고 있다.</p>
-      </div>
-
-      <h2 id="ko-certs">자격증</h2>
-      <table class="wiki">
-        <thead><tr><th>취득 연월</th><th>자격명</th><th>발행 기관</th></tr></thead>
-        <tbody>
-          <tr><td>2024년 12월</td><td>일본어능력시험(JLPT) N2</td><td>일본국제교육지원협회 / 국제교류기금</td></tr>
-          <tr><td>2023년 4월</td><td>TOEIC 800점</td><td>ETS</td></tr>
-          <tr><td>2022년 8월</td><td>무대예술전문인 자격 · 무대음향 3급</td><td>무대예술전문인 자격검정위원회 (문체부)</td></tr>
-          <tr><td>2021년 2월</td><td>Avid Certified — Pro Tools Specialist</td><td>Avid Technology</td></tr>
-        </tbody>
-      </table>
-
-      <h2 id="ko-skills">전문 분야·기술</h2>
-      <ul>
-        <li>확성 시스템 (PA / Sound Reinforcement)</li>
-        <li>믹싱 (Mixing)</li>
-        <li>공간 오디오 (Spatial Audio)</li>
-        <li>Pro Tools</li>
-      </ul>
-
-      <h2 id="ko-lang">언어</h2>
-      <table class="wiki">
-        <thead><tr><th>언어</th><th>수준</th></tr></thead>
-        <tbody>
-          <tr><td>한국어</td><td>모국어</td></tr>
-          <tr><td>일본어</td><td>비즈니스 중급 (JLPT N2)</td></tr>
-          <tr><td>영어</td><td>비즈니스 초급 (TOEIC 800)</td></tr>
-        </tbody>
-      </table>
-
-      <h2 id="ko-links">외부 링크</h2>
-      <ul>
-        <li><a href="https://www.linkedin.com/in/dong-gyun-you/">LinkedIn — dong-gyun-you</a></li>
-        <li><a href="https://github.com/dlrjtt1/pilot-experiment">GitHub — dlrjtt1/pilot-experiment</a> (연구 프로젝트 구현)</li>
-        <li><a href="https://www.instagram.com/dlrjtt1_/">Instagram — @dlrjtt1_</a></li>
-        <li>이메일: <a href="mailto:donggyun0920@gmail.com">donggyun0920@gmail.com</a></li>
-      </ul>
-
-      <h2 id="ko-refs">참고자료</h2>
-      <div class="refs">
-        <ol>
-          <li id="ref-1-ko">「柳 東均 (Dong-Gyun You)」LinkedIn 프로필. <a href="https://www.linkedin.com/in/dong-gyun-you/">https://www.linkedin.com/in/dong-gyun-you/</a></li>
-        </ol>
-      </div>
-    </main>
-
-    <aside class="infobox" aria-label="Infobox">
-      <div class="ib-title">유동균</div>
-      <img src="assets/photo.jpg" alt="유동균 증명사진" class="ib-photo">
-      <div class="ib-caption">유동균 증명사진</div>
-      <table>
-        <tbody>
-          <tr><td colspan="2" class="ib-sect-cell">개인정보</td></tr>
-          <tr><th>성명</th><td>유동균 / 柳 東均</td></tr>
-          <tr><th>로마자</th><td>Dong-Gyun You</td></tr>
-          <tr><th>출생</th><td>2000년</td></tr>
-          <tr><th>국적</th><td>대한민국</td></tr>
-          <tr><th>거주지</th><td>일본 · 도쿄</td></tr>
-          <tr><td colspan="2" class="ib-sect-cell">학술 정보</td></tr>
-          <tr><th>분야</th><td>음향학</td></tr>
-          <tr><th>연구 분야</th><td>확성 시스템 (PA)<br>믹싱<br>공간 오디오</td></tr>
-          <tr><th>소속</th><td>도쿄예술대학<br>음악음향창조과</td></tr>
-          <tr><th>현재</th><td>연구생 (2025.10–2027.3)</td></tr>
-          <tr><th>진학 예정</th><td>대학원 음악연구과<br>석사과정 (2027.4–)</td></tr>
-          <tr><th>개인 프로젝트</th><td>LABO 1557</td></tr>
-          <tr><th>주요 수상</th><td>우수발표상<br>(한국음향학회, 2026)</td></tr>
-          <tr><td colspan="2" class="ib-sect-cell">링크</td></tr>
-          <tr><th>LinkedIn</th><td><a href="https://www.linkedin.com/in/dong-gyun-you/">dong-gyun-you</a></td></tr>
-          <tr><th>GitHub</th><td><a href="https://github.com/dlrjtt1">dlrjtt1</a></td></tr>
-          <tr><th>Instagram</th><td><a href="https://www.instagram.com/dlrjtt1_/">@dlrjtt1_</a></td></tr>
-          <tr><th>이메일</th><td><a href="mailto:donggyun0920@gmail.com">donggyun0920@gmail.com</a></td></tr>
-        </tbody>
-      </table>
-    </aside>
-  </div>
-</div>
-
-<!-- ============ EN ============ -->
-<div data-lang="en">
-  <h1 class="pagetitle">Dong-Gyun You<span class="romaji">柳 東均 / 유동균</span></h1>
-  <p class="subtitle">Acoustics researcher — Research Student, Tokyo University of the Arts</p>
-
-  <div class="layout">
-    <main>
-      <p class="hatnote">This article is compiled primarily from the subject's public professional profile.</p>
-
-      <div class="lead">
-        <p><b>Dong-Gyun You</b> (Korean: 유동균; Japanese: 柳 東均) is a Korean acoustics researcher based in Japan. He is currently a <b>Research Student in the Department of Musical Creativity and the Environment (Music &amp; Sound Design), Tokyo University of the Arts (Tokyo Geidai)</b>, working mainly on <b>sound reinforcement (PA) systems</b>, <b>mixing</b> and <b>spatial audio</b>. He is scheduled to enter the master's programme in Musical Creativity and the Environment at the university's Graduate School of Music in April 2027.</p>
-        <p>His primary research interest is the effect of the time gap (ITDG) and level ratio between direct stage sound and reinforced sound on listeners' localization judgments in concert halls. He designs and conducts listening experiments under simulated hall conditions, testing how far laboratory findings on the precedence effect extend to realistic reinforcement environments involving reverberation and loudspeaker directivity<sup class="ref"><a href="#ref-1-en">[1]</a></sup>.</p>
-        <p>Preliminary results were presented at the Acoustical Society of Korea (ASK) 2026 5th Conference on Electroacoustics and Stage Acoustics, where the work received the <b>Best Presentation Award</b><sup class="ref"><a href="#ref-1-en">[1]</a></sup>.</p>
-      </div>
-
-      <nav class="toc" aria-label="Table of contents">
-        <div class="toc-title">Contents</div>
-        <ol>
-          <li><a href="#en-outline">Overview</a></li>
-          <li><a href="#en-edu">Education</a></li>
-          <li><a href="#en-career">Career</a></li>
-          <li><a href="#en-research">Research</a>
-            <ol>
-              <li><a href="#en-research-field">Research areas</a></li>
-              <li><a href="#en-research-project">Research projects</a></li>
-            </ol>
-          </li>
-          <li><a href="#en-academic">Academic activity</a>
-            <ol>
-              <li><a href="#en-pubs">Presentations</a></li>
-              <li><a href="#en-awards">Awards</a></li>
-            </ol>
-          </li>
-          <li><a href="#en-labo">Personal project — LABO 1557</a></li>
-          <li><a href="#en-certs">Licenses &amp; certifications</a></li>
-          <li><a href="#en-skills">Skills and expertise</a></li>
-          <li><a href="#en-lang">Languages</a></li>
-          <li><a href="#en-links">External links</a></li>
-          <li><a href="#en-refs">References</a></li>
-        </ol>
-      </nav>
-
-      <h2 id="en-outline">Overview</h2>
-      <p>You is a Korean acoustics researcher currently residing in Tokyo, Japan. He studied applied (contemporary) music at Baekseok Arts University (associate) and completed his bachelor's degree through the Academic Credit Bank System operated by Korea's National Institute for Lifelong Education (NILE), and later built practical experience through stage-sound work at the National Gugak Center in Seoul and a broadcast-audio internship. Repeated feedback from audiences — that during partial sound reinforcement the perceived source shifted from the performer to the loudspeaker — became the direct motivation for his current research programme<sup class="ref"><a href="#ref-1-en">[1]</a></sup>.</p>
-
-      <h2 id="en-edu">Education</h2>
-      <table class="wiki">
-        <thead><tr><th>Period</th><th>Institution</th><th>Programme</th></tr></thead>
-        <tbody>
-          <tr><td>Mar 2019 – Feb 2021</td><td>Baekseok Arts University</td><td>Faculty of Music, Department of Church Contemporary Music<br>(Associate degree)</td></tr>
-          <tr><td>Sep 2021 – Aug 2023</td><td>Academic Credit Bank System<br><span style="color:var(--muted);font-size:12px">NILE, Republic of Korea</span></td><td>Applied Music<br>(Bachelor's degree)</td></tr>
-          <tr><td>Oct 2025 – Mar 2027<br>(enrolled)</td><td>Tokyo University of the Arts</td><td>Research Student, Department of Musical Creativity and the Environment (Music &amp; Sound Design)</td></tr>
-          <tr><td>Apr 2027 –<br>(scheduled)</td><td>Tokyo University of the Arts</td><td>Graduate School of Music, Musical Creativity and the Environment<br>(Master's programme)</td></tr>
-        </tbody>
-      </table>
-
-      <h2 id="en-career">Career</h2>
-      <table class="wiki">
-        <thead><tr><th>Period</th><th>Affiliation</th><th>Role</th><th>Description</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Apr 2024 – Sep 2025<br>(1 year 5 months)</td>
-            <td>National Gugak Center<br><span style="color:var(--muted);font-size:12px">Seoul, Republic of Korea</span></td>
-            <td>Sound Engineer, Stage Division<br>(Full-time)</td>
-            <td>Operation, installation and technical handling of stage-sound equipment; recording and production of performance audio; safety inspection of electrical circuits and equipment.</td>
-          </tr>
-          <tr>
-            <td>Aug 2023 – Feb 2024<br>(7 months)</td>
-            <td>Hankyung Arte TV<br><span style="color:var(--muted);font-size:12px">Seoul, Republic of Korea</span></td>
-            <td>Sound Engineer, Production Dept.<br>(Internship)</td>
-            <td>Setup of sound equipment for live performance broadcasts; recording and production of audio content for broadcast programming.</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h2 id="en-research">Research</h2>
-
-      <h3 id="en-research-field">Research areas</h3>
-      <p>You's principal research areas are:</p>
-      <ul>
-        <li>Sound reinforcement (PA)</li>
-        <li>Mixing</li>
-        <li>Spatial audio</li>
-      </ul>
-
-      <h3 id="en-research-project">Research projects</h3>
-
-      <div class="project">
-        <h4>Web-based Listening Experiment System — Evaluating Localization under Direct and Reinforced Sound</h4>
-        <div class="meta">May 2026 – Jul 2026</div>
-        <dl>
-          <dt>Background</dt><dd>The effect of the time gap and level ratio between direct stage sound and PA-reinforced sound on localization needed to be assessed under controlled conditions.</dd>
-          <dt>Question</dt><dd>To what extent do laboratory findings on the precedence effect apply to realistic reinforcement environments that include reverberation and loudspeaker directivity?</dd>
-          <dt>Method</dt><dd>Designed and implemented a web-based listening experiment that presents nine BRIR-based stimuli (combinations of ITDG × level ratio) in randomised order, collecting responses on three items: clarity of image direction, naturalness of timbre, and stability of the auditory image.</dd>
-          <dt>Quality control</dt><dd>Built-in left/right channel check, self-reported playback device (headphones/earphones), and consistency check via repeated presentation of identical conditions.</dd>
-          <dt>Result</dt><dd>324 responses collected from 12 participants online.</dd>
-          <dt>Implementation</dt><dd><a href="https://github.com/dlrjtt1/pilot-experiment">GitHub: dlrjtt1/pilot-experiment</a></dd>
-        </dl>
-      </div>
-
-      <h2 id="en-academic">Academic activity</h2>
-
-      <h3 id="en-pubs">Presentations</h3>
-      <table class="wiki">
-        <thead><tr><th>Date</th><th>Title</th><th>Society</th><th>Notes</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>9 Sep 2026</td>
-            <td>Effect of the time gap and level ratio between direct and PA-reinforced sound on localization judgments: a BRIR-based pilot listening experiment<br>
-              <span style="color:var(--muted);font-size:13px">Co-authors: Dong-Gyun You, Toru Kamekawa, Atsushi Marui</span>
-            </td>
-            <td>Acoustical Society of Japan, 156th (2026 Autumn) Meeting<br>SS: 3rd Japan–Korea Joint Session on Acoustics</td>
-            <td>Presented in English</td>
-          </tr>
-          <tr>
-            <td>3 Jul 2026</td>
-            <td>Effect of the time gap and level ratio between direct and PA-reinforced sound on localization judgments: a BRIR-based pilot listening experiment<br>
-              <span style="color:var(--muted);font-size:13px">(Original title in Korean: 직접음-PA 보강음 시간차와 레벨비가 정위감 평가에 미치는 영향: BRIR 기반 파일럿 청취실험)</span><br>
-              <span style="color:var(--muted);font-size:13px">Co-authors: Dong-Gyun You, Toru Kamekawa, Atsushi Marui</span>
-            </td>
-            <td>Acoustical Society of Korea, 2026 5th Conference on Electroacoustics and Stage Acoustics</td>
-            <td>Presented in Korean<br>Best Presentation Award<sup class="ref"><a href="#ref-1-en">[1]</a></sup></td>
-          </tr>
-        </tbody>
-      </table>
-      <p>A brief summary of the study: nine combinations of ITDG (0/20/40 ms) and level ratio (−6/0/+6 dB) between direct stage sound and PA-reinforced sound in a concert hall were evaluated in a BRIR-based listening experiment. Three items — clarity of image direction, naturalness of timbre, and stability of the auditory image — were assessed and analysed with a linear mixed-effects model. At the pilot stage, the level ratio was observed to have a strong effect on the ratings<sup class="ref"><a href="#ref-1-en">[1]</a></sup>.</p>
-
-      <h3 id="en-awards">Awards</h3>
-      <table class="wiki">
-        <thead><tr><th>Date</th><th>Award</th><th>Awarding body</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Jul 2026</td>
-            <td>Best Presentation Award</td>
-            <td>Acoustical Society of Korea, 2026 5th Conference on Electroacoustics and Stage Acoustics</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h2 id="en-labo">Personal project — LABO 1557</h2>
-      <div class="project">
-        <h4>LABO 1557</h4>
-        <div class="meta">Personal project</div>
-        <p>A personal project that began from the wish to let anyone mix quickly and easily. Under this name he designs and builds audio plug-ins that help with the mixing process.</p>
-      </div>
-
-      <h2 id="en-certs">Licenses &amp; certifications</h2>
-      <table class="wiki">
-        <thead><tr><th>Date</th><th>Certification</th><th>Issuing body</th></tr></thead>
-        <tbody>
-          <tr><td>Dec 2024</td><td>Japanese Language Proficiency Test (JLPT) N2</td><td>Japan Foundation / JEES</td></tr>
-          <tr><td>Apr 2023</td><td>TOEIC 800</td><td>ETS</td></tr>
-          <tr><td>Aug 2022</td><td>Stage Arts Certified Professional — Sound, Grade 3</td><td>Stage Arts Certified Professional Examination Committee (Ministry of Culture, Sports and Tourism, Republic of Korea)</td></tr>
-          <tr><td>Feb 2021</td><td>Avid Certified — Pro Tools Specialist</td><td>Avid Technology</td></tr>
-        </tbody>
-      </table>
-
-      <h2 id="en-skills">Skills and expertise</h2>
-      <ul>
-        <li>Sound reinforcement (PA)</li>
-        <li>Mixing</li>
-        <li>Spatial audio</li>
-        <li>Pro Tools</li>
-      </ul>
-
-      <h2 id="en-lang">Languages</h2>
-      <table class="wiki">
-        <thead><tr><th>Language</th><th>Level</th></tr></thead>
-        <tbody>
-          <tr><td>Korean</td><td>Native</td></tr>
-          <tr><td>Japanese</td><td>Business intermediate (JLPT N2)</td></tr>
-          <tr><td>English</td><td>Business elementary (TOEIC 800)</td></tr>
-        </tbody>
-      </table>
-
-      <h2 id="en-links">External links</h2>
-      <ul>
-        <li><a href="https://www.linkedin.com/in/dong-gyun-you/">LinkedIn — dong-gyun-you</a></li>
-        <li><a href="https://github.com/dlrjtt1/pilot-experiment">GitHub — dlrjtt1/pilot-experiment</a> (research project implementation)</li>
-        <li><a href="https://www.instagram.com/dlrjtt1_/">Instagram — @dlrjtt1_</a></li>
-        <li>E-mail: <a href="mailto:donggyun0920@gmail.com">donggyun0920@gmail.com</a></li>
-      </ul>
-
-      <h2 id="en-refs">References</h2>
-      <div class="refs">
-        <ol>
-          <li id="ref-1-en">"Dong-Gyun You (柳 東均)", LinkedIn profile. <a href="https://www.linkedin.com/in/dong-gyun-you/">https://www.linkedin.com/in/dong-gyun-you/</a></li>
-        </ol>
-      </div>
-    </main>
-
-    <aside class="infobox" aria-label="Infobox">
-      <div class="ib-title">Dong-Gyun You</div>
-      <img src="assets/photo.jpg" alt="Portrait of Dong-Gyun You" class="ib-photo">
-      <div class="ib-caption">Portrait of Dong-Gyun You</div>
-      <table>
-        <tbody>
-          <tr><td colspan="2" class="ib-sect-cell">Personal</td></tr>
-          <tr><th>Name</th><td>Dong-Gyun You</td></tr>
-          <tr><th>Hanja</th><td>柳 東均</td></tr>
-          <tr><th>Hangul</th><td>유동균</td></tr>
-          <tr><th>Born</th><td>2000</td></tr>
-          <tr><th>Nationality</th><td>Republic of Korea</td></tr>
-          <tr><th>Residence</th><td>Tokyo, Japan</td></tr>
-          <tr><td colspan="2" class="ib-sect-cell">Academic</td></tr>
-          <tr><th>Field</th><td>Acoustics</td></tr>
-          <tr><th>Research</th><td>Sound reinforcement (PA)<br>Mixing<br>Spatial audio</td></tr>
-          <tr><th>Institution</th><td>Tokyo University<br>of the Arts</td></tr>
-          <tr><th>Current</th><td>Research Student<br>(Oct 2025 – Mar 2027)</td></tr>
-          <tr><th>Next</th><td>Master's programme,<br>Graduate School of Music<br>(from Apr 2027)</td></tr>
-          <tr><th>Personal project</th><td>LABO 1557</td></tr>
-          <tr><th>Notable award</th><td>Best Presentation Award<br>(ASK, 2026)</td></tr>
-          <tr><td colspan="2" class="ib-sect-cell">Links</td></tr>
-          <tr><th>LinkedIn</th><td><a href="https://www.linkedin.com/in/dong-gyun-you/">dong-gyun-you</a></td></tr>
-          <tr><th>GitHub</th><td><a href="https://github.com/dlrjtt1">dlrjtt1</a></td></tr>
-          <tr><th>Instagram</th><td><a href="https://www.instagram.com/dlrjtt1_/">@dlrjtt1_</a></td></tr>
-          <tr><th>E-mail</th><td><a href="mailto:donggyun0920@gmail.com">donggyun0920@gmail.com</a></td></tr>
-        </tbody>
-      </table>
-    </aside>
-  </div>
-</div>
+</div><!-- /page -->
 
 <footer class="site">
-  <div>
-    <span data-lang-inline="ja">© 柳 東均 (Dong-Gyun You)</span>
-    <span data-lang-inline="ko" class="active">© 유동균 (Dong-Gyun You)</span>
-    <span data-lang-inline="en">© Dong-Gyun You</span>
-  </div>
-  <div>
-    <span data-lang-inline="ja">情報源: 本人のLinkedInプロフィール</span>
-    <span data-lang-inline="ko" class="active">출처: 본인의 LinkedIn 프로필</span>
-    <span data-lang-inline="en">Source: subject's LinkedIn profile</span>
-  </div>
+ <div class="in">
+  <p id="lastmod"></p>
+  <p>
+   <span data-lang-inline="ja">© 柳 東均 (Dong-Gyun You)。情報源：本人のLinkedInプロフィールおよびGitHubリポジトリ。</span>
+   <span data-lang-inline="ko" class="active">© 유동균 (Dong-Gyun You). 출처: 본인의 LinkedIn 프로필 및 GitHub 저장소.</span>
+   <span data-lang-inline="en">© Dong-Gyun You. Sources: the subject's LinkedIn profile and GitHub repositories.</span>
+  </p>
+  <ul>
+   <li><a href="https://www.linkedin.com/in/dong-gyun-you/">LinkedIn</a></li>
+   <li><a href="https://github.com/dlrjtt1">GitHub</a></li>
+   <li><a href="https://www.instagram.com/dlrjtt1_/">Instagram</a></li>
+   <li><a href="mailto:donggyun0920@gmail.com">E-mail</a></li>
+  </ul>
+ </div>
 </footer>
-
-</div><!-- /wrap -->
 
 <div id="edit-bar" role="region" aria-label="Editor toolbar">
   <strong>편집 모드 / Edit mode</strong>
@@ -939,252 +979,325 @@ body.editing [contenteditable="true"]:focus{
 (function(){
   var LANGS = ['ja','ko','en'];
   var DEFAULT = 'ja';
+  var BUILD_DATE = '2026-11-04T22:30:00+09:00';
   var META = {
-    ja: {
-      title: '柳 東均 (Dong-Gyun You) — 音響学研究者',
-      desc: '柳東均（Dong-Gyun You）は、東京藝術大学 音楽音響創造科の研究生として、拡声システム・ミキシング・空間オーディオを研究する音響学研究者である。'
-    },
-    ko: {
-      title: '유동균 (Dong-Gyun You) — 음향학 연구자',
-      desc: '유동균(Dong-Gyun You)은 도쿄예술대학 음악음향창조과 연구생으로, 확성 시스템·믹싱·공간 오디오를 연구하는 음향학 연구자이다.'
-    },
-    en: {
-      title: 'Dong-Gyun You — Acoustics Researcher',
-      desc: 'Dong-Gyun You is an acoustics researcher, Research Student at Tokyo University of the Arts, working on sound reinforcement, mixing and spatial audio.'
-    }
+    ja: { title: '柳 東均 (Dong-Gyun You) — 音響学研究者',
+          desc: '柳東均（Dong-Gyun You）は、東京藝術大学 音楽音響創造科の研究生として、拡声システム・ミキシング・空間オーディオを研究する音響学研究者である。' },
+    ko: { title: '유동균 (Dong-Gyun You) — 음향학 연구자',
+          desc: '유동균(Dong-Gyun You)은 도쿄예술대학 음악음향창조과 연구생으로, 확성 시스템·믹싱·공간 오디오를 연구하는 음향학 연구자이다.' },
+    en: { title: 'Dong-Gyun You — Acoustics Researcher',
+          desc: 'Dong-Gyun You is an acoustics researcher, Research Student at Tokyo University of the Arts, working on sound reinforcement, mixing and spatial audio.' }
   };
+  var L = {
+    ja: { toc:'目次', hide:'非表示', show:'表示', top:'（トップ）', search:'このページを検索', go:'検索', none:'一致する項目はありません' },
+    ko: { toc:'목차', hide:'숨기기', show:'보이기', top:'처음 위치', search:'이 문서 검색', go:'검색', none:'일치하는 항목이 없습니다' },
+    en: { toc:'Contents', hide:'hide', show:'show', top:'(Top)', search:'Search this page', go:'Search', none:'No matches' }
+  };
+  var CHEV = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 1.5 8.5 6 4 10.5 3 9.5 6.5 6 3 2.5z"/></svg>';
+  var cur = DEFAULT;
+  function $(s,r){ return (r||document).querySelector(s); }
+  function $$(s,r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); }
+  function store(k,v){ try{ if(v===null) localStorage.removeItem(k); else localStorage.setItem(k,v); }catch(e){} }
+  function read(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function block(){ return $('[data-lang="'+cur+'"]'); }
 
-  function parseHash(){
-    var m = location.hash.match(/^#\/(ja|ko|en)(?:\/|$)/);
-    return m ? m[1] : null;
+  /* ---------- TOC ---------- */
+  function headingText(h){ return h.textContent.trim(); }
+  function buildToc(b){
+    var lang = b.getAttribute('data-lang'), nav = $('.sidetoc', b), main = $('main', b), t = L[lang];
+    nav.innerHTML = '';
+    var head = document.createElement('div'); head.className = 'toc-head';
+    head.innerHTML = '<span class="tt"></span><button class="toc-hide" type="button"></button>';
+    head.firstChild.textContent = t.toc; head.lastChild.textContent = t.hide;
+    nav.appendChild(head);
+    var root = document.createElement('ul');
+    var top = document.createElement('li'); top.innerHTML = '<a></a>';
+    top.firstChild.textContent = t.top; top.firstChild.href = '#top-'+lang; top.firstChild.setAttribute('data-target','top-'+lang);
+    root.appendChild(top);
+    var stack = [{lvl:1, ul:root, li:null}];
+    $$('h2,h3,h4', main).forEach(function(h){
+      if(!h.id) return;
+      var lvl = +h.tagName[1];
+      while(stack.length>1 && stack[stack.length-1].lvl >= lvl) stack.pop();
+      var parent = stack[stack.length-1];
+      if(parent.li && !parent.ul.parentNode){ parent.li.appendChild(parent.ul); }
+      var li = document.createElement('li'); var a = document.createElement('a');
+      a.href = '#'+h.id; a.textContent = headingText(h); a.setAttribute('data-target', h.id);
+      li.appendChild(a); parent.ul.appendChild(li);
+      if(parent.li && !parent.li.querySelector(':scope > .tg')){
+        var tg = document.createElement('button'); tg.type='button'; tg.className='tg'; tg.innerHTML=CHEV;
+        tg.setAttribute('aria-label','toggle'); parent.li.insertBefore(tg, parent.li.firstChild);
+      }
+      stack.push({lvl:lvl, ul:document.createElement('ul'), li:li});
+    });
+    nav.appendChild(root);
   }
-  function pick(){
-    var h = parseHash();
-    if(h) return h;
-    try{
-      var s = localStorage.getItem('lang');
-      if(s && LANGS.indexOf(s)>=0) return s;
-    }catch(e){}
-    return DEFAULT;
+  function wireToc(container){
+    container.addEventListener('click', function(e){
+      var tg = e.target.closest('.tg');
+      if(tg){ tg.parentNode.classList.toggle('open'); e.preventDefault(); return; }
+      var hide = e.target.closest('.toc-hide');
+      if(hide && !hide.classList.contains('toc-show')){ document.documentElement.classList.add('toc-hidden'); store('tochidden','1'); return; }
+      var a = e.target.closest('a[data-target]');
+      if(a){ e.preventDefault(); jump(a.getAttribute('data-target')); closePop(); }
+    });
+  }
+  function jump(id){
+    var el = document.getElementById(id); if(!el) return;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - (id.indexOf('top-')===0 ? 80 : 58);
+    window.scrollTo({top: Math.max(0,y), behavior:'smooth'});
   }
 
+  /* ---------- scroll spy + sticky header ---------- */
+  var ticking = false;
+  function spy(){
+    ticking = false;
+    var b = block(); if(!b) return;
+    var hs = $$('main h2[id], main h3[id], main h4[id]', b), activeId = 'top-'+cur, activeText = '';
+    for(var i=0;i<hs.length;i++){ if(hs[i].getBoundingClientRect().top < 90){ activeId = hs[i].id; activeText = headingText(hs[i]); } else break; }
+    $$('.sidetoc a', b).forEach(function(a){
+      var on = a.getAttribute('data-target') === activeId;
+      a.classList.toggle('active', on);
+      if(on){ var p = a.parentNode; while(p && p.tagName==='LI'){ var lis = p.parentNode && p.parentNode.closest('li'); if(lis) lis.classList.add('open'); p = lis; } if(a.parentNode.querySelector('ul')) a.parentNode.classList.add('open'); }
+    });
+    var h1 = $('h1', b), st = $('#sticky');
+    var stuck = h1.getBoundingClientRect().bottom < 0;
+    st.classList.toggle('show', stuck); document.body.classList.toggle('stuck', stuck);
+    st.setAttribute('aria-hidden', stuck ? 'false' : 'true');
+    $('#st-title').textContent = h1.firstChild.textContent.trim();
+    $('#st-sec').textContent = activeText; $('#st-sec').style.display = activeText ? '' : 'none';
+  }
+  window.addEventListener('scroll', function(){ if(!ticking){ ticking = true; requestAnimationFrame(spy); } }, {passive:true});
+  window.addEventListener('resize', function(){ closePop(); spy(); });
+
+  /* ---------- floating TOC ---------- */
+  var pop = $('#toc-pop');
+  function openPop(btn){
+    var src = $('.sidetoc', block()); if(!src) return;
+    pop.innerHTML = src.innerHTML;
+    var hb = $('.toc-hide', pop);
+    if(document.documentElement.classList.contains('toc-hidden') && window.innerWidth > 1000){
+      hb.textContent = L[cur].show; hb.className = 'toc-hide toc-show';
+    } else if(hb){ hb.remove(); }
+    var r = btn.getBoundingClientRect();
+    pop.style.top = (r.bottom + 6) + 'px';
+    pop.style.left = Math.max(16, Math.min(r.left, window.innerWidth - pop.offsetWidth - 16)) + 'px';
+    pop.classList.add('show');
+    pop.style.left = Math.max(16, Math.min(r.left, window.innerWidth - pop.offsetWidth - 16)) + 'px';
+  }
+  function closePop(){ pop.classList.remove('show'); }
+  wireToc(pop);
+  pop.addEventListener('click', function(e){
+    if(e.target.closest('.toc-show')){ document.documentElement.classList.remove('toc-hidden'); store('tochidden',null); closePop(); spy(); }
+  });
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('.toc-btn');
+    if(btn){ e.stopPropagation(); if(pop.classList.contains('show')) closePop(); else openPop(btn); return; }
+    if(!e.target.closest('#toc-pop')) closePop();
+  });
+
+  /* ---------- dropdown menus ---------- */
+  function closeMenus(except){ $$('.menu.show').forEach(function(m){ if(m!==except) m.classList.remove('show'); }); }
+  document.addEventListener('click', function(e){
+    var lb = e.target.closest('.lang-btn, #appear-btn');
+    if(lb){ var m = lb.parentNode.querySelector('.menu'); closeMenus(m); m.classList.toggle('show'); lb.setAttribute('aria-expanded', m.classList.contains('show')); return; }
+    if(!e.target.closest('.menu')) closeMenus();
+  });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ closeMenus(); closePop(); hideRes(); } });
+
+  /* ---------- appearance ---------- */
+  function initAppearance(){
+    var size = read('textsize') || 'standard', theme = read('theme') || 'auto';
+    $$('#appear-menu input[name="size"]').forEach(function(i){ i.checked = i.value===size; });
+    $$('#appear-menu input[name="theme"]').forEach(function(i){ i.checked = i.value===theme; });
+    $('#appear-menu').addEventListener('change', function(e){
+      var i = e.target, de = document.documentElement;
+      if(i.name==='size'){ if(i.value==='standard'){ de.removeAttribute('data-size'); store('textsize',null);} else { de.setAttribute('data-size', i.value); store('textsize', i.value);} }
+      if(i.name==='theme'){ if(i.value==='auto'){ de.removeAttribute('data-theme'); store('theme',null);} else { de.setAttribute('data-theme', i.value); store('theme', i.value);} }
+      spy();
+    });
+  }
+
+  /* ---------- navbox ---------- */
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('.nb-toggle'); if(!t) return;
+    var nb = t.closest('.navbox'); nb.classList.toggle('collapsed');
+    var lang = t.closest('[data-lang]').getAttribute('data-lang');
+    t.textContent = '[' + (nb.classList.contains('collapsed') ? L[lang].show : L[lang].hide) + ']';
+  });
+
+  /* in-article anchor links: smooth jump with sticky offset */
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('main a[href^="#"], .navbox a[href^="#"], .infobox a[href^="#"]');
+    if(!a || a.closest('.sidetoc')) return;
+    var id = a.getAttribute('href').slice(1);
+    if(!id || id.charAt(0)==='/') return;
+    var el = document.getElementById(id); if(!el) return;
+    e.preventDefault(); jump(id);
+    if(el.tagName==='LI'){ el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash'); }
+  });
+  $$('[data-top]').forEach(function(a){ a.addEventListener('click', function(e){ e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}); }); });
+
+  /* ---------- search ---------- */
+  var sIn = $('#search'), sRes = $('#search-res'), sel = -1;
+  function hideRes(){ sRes.classList.remove('show'); sel = -1; }
+  function esc(s){ return s.replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function search(q){
+    q = q.trim().toLowerCase(); sRes.innerHTML = ''; sel = -1;
+    if(!q){ hideRes(); return; }
+    var b = block(), main = $('main', b), out = [], lastH = null;
+    $$('h2,h3,h4,p,li,td', main).forEach(function(el){
+      if(/^H\d$/.test(el.tagName)){ lastH = el; if(headingText(el).toLowerCase().indexOf(q)>=0) out.push({el:el, title:headingText(el), snip:''}); return; }
+      if(el.closest('.infobox')) return;
+      if(el.tagName==='TD' && el.querySelector('p')) return;
+      var tx = el.textContent.replace(/\s+/g,' ').trim(), i = tx.toLowerCase().indexOf(q);
+      if(i<0) return;
+      var s = Math.max(0, i-24);
+      out.push({el:el, title: lastH ? headingText(lastH) : L[cur].top, snip: (s>0?'…':'') + tx.slice(s, i+q.length+48)});
+    });
+    out = out.slice(0, 10);
+    if(!out.length){ sRes.innerHTML = '<div class="none"></div>'; sRes.firstChild.textContent = L[cur].none; sRes.classList.add('show'); return; }
+    out.forEach(function(r){
+      var a = document.createElement('a'); a.href = '#';
+      a.innerHTML = '<b></b>' + (r.snip ? '<span class="snip"></span>' : '');
+      a.firstChild.textContent = r.title; if(r.snip) a.lastChild.textContent = r.snip;
+      a.addEventListener('mousedown', function(e){ e.preventDefault(); go(r.el); });
+      sRes.appendChild(a);
+    });
+    sRes.classList.add('show');
+  }
+  function go(el){
+    hideRes(); sIn.blur();
+    var y = el.getBoundingClientRect().top + window.pageYOffset - 70;
+    window.scrollTo({top:Math.max(0,y), behavior:'smooth'});
+    el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash');
+  }
+  sIn.addEventListener('input', function(){ search(sIn.value); });
+  sIn.addEventListener('focus', function(){ if(sIn.value) search(sIn.value); });
+  sIn.addEventListener('blur', function(){ setTimeout(hideRes, 120); });
+  sIn.addEventListener('keydown', function(e){
+    var items = $$('a', sRes); if(!items.length) return;
+    if(e.key==='ArrowDown'||e.key==='ArrowUp'){ e.preventDefault(); sel = (sel + (e.key==='ArrowDown'?1:-1) + items.length) % items.length; items.forEach(function(a,i){ a.classList.toggle('sel', i===sel); }); }
+  });
+  $('#search-form').addEventListener('submit', function(e){
+    e.preventDefault(); var items = $$('a', sRes);
+    if(!sRes.classList.contains('show')) search(sIn.value);
+    items = $$('a', sRes); if(items.length){ var ev = new MouseEvent('mousedown'); items[Math.max(sel,0)].dispatchEvent(ev); }
+  });
+
+  /* ---------- last modified ---------- */
+  function lastMod(lang){
+    var d = new Date(document.lastModified);
+    if(isNaN(d) || Math.abs(Date.now() - d.getTime()) < 10000) d = new Date(BUILD_DATE);
+    var p = $('#lastmod'), pad = function(n){ return (n<10?'0':'')+n; };
+    var hm = pad(d.getHours()) + ':' + pad(d.getMinutes());
+    if(lang==='ko'){ var wk='일월화수목금토'[d.getDay()]; p.textContent = '이 문서는 '+d.getFullYear()+'년 '+(d.getMonth()+1)+'월 '+d.getDate()+'일 ('+wk+') '+hm+'에 마지막으로 편집되었습니다.'; }
+    else if(lang==='ja'){ var wj='日月火水木金土'[d.getDay()]; p.textContent = 'このページの最終更新日時は '+d.getFullYear()+'年'+(d.getMonth()+1)+'月'+d.getDate()+'日 ('+wj+') '+hm+' です。'; }
+    else { var M=['January','February','March','April','May','June','July','August','September','October','November','December']; p.textContent = 'This page was last edited on '+d.getDate()+' '+M[d.getMonth()]+' '+d.getFullYear()+', at '+hm+'.'; }
+  }
+
+  /* ---------- language ---------- */
+  function parseHash(){ var m = location.hash.match(/^#\/(ja|ko|en)(?:\/|$)/); return m ? m[1] : null; }
+  function pick(){ var h = parseHash(); if(h) return h; var s = read('lang'); if(s && LANGS.indexOf(s)>=0) return s; return DEFAULT; }
   function apply(lang){
     if(LANGS.indexOf(lang)<0) lang = DEFAULT;
+    cur = lang;
     document.documentElement.lang = lang;
-    document.querySelectorAll('[data-lang]').forEach(function(el){
-      el.classList.toggle('active', el.getAttribute('data-lang')===lang);
-    });
-    document.querySelectorAll('[data-lang-inline]').forEach(function(el){
-      el.classList.toggle('active', el.getAttribute('data-lang-inline')===lang);
-    });
-    document.querySelectorAll('.lang button').forEach(function(b){
-      if(b.getAttribute('data-set')===lang) b.setAttribute('aria-current','true');
-      else b.removeAttribute('aria-current');
-    });
-    if(META[lang]){
-      document.title = META[lang].title;
-      var d = document.querySelector('meta[name="description"]');
-      if(d) d.setAttribute('content', META[lang].desc);
-    }
-    try{ localStorage.setItem('lang', lang); }catch(e){}
+    $$('[data-lang]').forEach(function(el){ el.classList.toggle('active', el.getAttribute('data-lang')===lang); });
+    $$('[data-lang-inline]').forEach(function(el){ el.classList.toggle('active', el.getAttribute('data-lang-inline')===lang); });
+    $$('.lang-menu a').forEach(function(a){ if(a.getAttribute('data-set')===lang) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current'); });
+    document.title = META[lang].title;
+    var d = $('meta[name="description"]'); if(d) d.setAttribute('content', META[lang].desc);
+    sIn.placeholder = L[lang].search; $('#search-btn').textContent = L[lang].go; sIn.value = ''; hideRes();
+    lastMod(lang); store('lang', lang); closePop(); spy();
   }
-
-  document.querySelectorAll('.lang button').forEach(function(b){
-    b.addEventListener('click', function(){
-      var l = b.getAttribute('data-set');
-      if (!l) return;
-      history.replaceState(null,'', '#/'+l);
-      apply(l);
-      window.scrollTo({top:0, behavior:'smooth'});
-    });
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('.lang-menu a[data-set]'); if(!a) return;
+    e.preventDefault(); closeMenus();
+    history.replaceState(null,'','#/'+a.getAttribute('data-set'));
+    apply(a.getAttribute('data-set')); window.scrollTo({top:0});
   });
+  window.addEventListener('hashchange', function(){ var h = parseHash(); if(h) apply(h); });
 
-  window.addEventListener('hashchange', function(){
-    var h = parseHash();
-    if(h) apply(h);
-  });
-
+  /* ---------- init ---------- */
+  $$('[data-lang]').forEach(function(b){ buildToc(b); wireToc($('.sidetoc', b)); });
+  window.__rebuildToc = function(){ $$('[data-lang]').forEach(buildToc); spy(); };
+  initAppearance();
   var initial = pick();
-  if(!parseHash()){
-    history.replaceState(null,'','#/'+initial);
-  }
+  if(!parseHash()) history.replaceState(null,'','#/'+initial);
   apply(initial);
 })();
 
 /* =========================================================
- * In-page local editor — Korean block only.
- * "Save" tries File System Access API (Chromium over http://
- * or https://); falls back to file download otherwise.
+ * In-page local editor — Korean block only (Ctrl/Cmd+Alt+E).
+ * "Save" tries the File System Access API; falls back to download.
  * ========================================================= */
 (function(){
   var $ = function(id){ return document.getElementById(id); };
   var bar = $('edit-bar'), toggle = $('edit-toggle'), status = $('ed-status');
   var editing = false;
-
-  if (/[?&]edit=0(&|$)/.test(location.search)) toggle.classList.add('hidden');
   document.addEventListener('keydown', function(e){
-    if ((e.ctrlKey || e.metaKey) && e.altKey && (e.key === 'e' || e.key === 'E')) {
-      toggle.classList.remove('hidden'); toggle.focus();
-    }
+    if ((e.ctrlKey || e.metaKey) && e.altKey && (e.key === 'e' || e.key === 'E')) { toggle.classList.add('show'); toggle.focus(); }
   });
-
-  function setStatus(msg, kind){
-    status.textContent = msg || '';
-    status.style.color = kind === 'err' ? '#ff8a8a' : (kind === 'ok' ? '#8affaa' : '#dcdcdc');
-  }
-
+  function setStatus(msg, kind){ status.textContent = msg || ''; status.style.color = kind === 'err' ? '#ff8a8a' : (kind === 'ok' ? '#8affaa' : '#dcdcdc'); }
   var EDIT_LANG = 'ko';
-  function editRoot(){
-    return document.querySelector('[data-lang="' + EDIT_LANG + '"]');
-  }
-  function editableRegions(){
-    var root = editRoot();
-    if (!root) return [];
-    return [root.querySelector('main'), root.querySelector('.infobox')].filter(Boolean);
-  }
-
+  function editRoot(){ return document.querySelector('[data-lang="' + EDIT_LANG + '"]'); }
+  function editableRegions(){ var root = editRoot(); return root ? [root.querySelector('main')].filter(Boolean) : []; }
   function enterEdit(){
     editing = true;
-    var koBtn = document.querySelector('.lang button[data-set="' + EDIT_LANG + '"]');
-    if (koBtn) koBtn.click();
-    document.body.classList.add('editing');
-    bar.classList.add('show');
+    location.hash = '#/' + EDIT_LANG;
+    document.body.classList.add('editing'); bar.classList.add('show');
     editableRegions().forEach(function(el){ el.setAttribute('contenteditable','true'); });
-    setStatus('편집 모드: 한국어 블록만 편집 가능합니다. 본문과 인포박스를 직접 클릭해서 수정하세요.');
+    setStatus('편집 모드: 한국어 본문만 편집 가능합니다. 본문과 정보상자를 직접 클릭해서 수정하세요.');
   }
-  function exitEdit(){
-    editing = false;
-    document.body.classList.remove('editing');
-    bar.classList.remove('show');
-    document.querySelectorAll('[contenteditable="true"]').forEach(function(el){
-      el.removeAttribute('contenteditable');
-    });
-    setStatus('');
-  }
-
   toggle.addEventListener('click', function(){ if (!editing) enterEdit(); });
-  $('ed-cancel').addEventListener('click', function(){
-    if (confirm('변경을 버리고 새로고침할까요?')) location.reload();
-  });
-
+  $('ed-cancel').addEventListener('click', function(){ if (confirm('변경을 버리고 새로고침할까요?')) location.reload(); });
   function serializeDocument(){
     var clone = document.documentElement.cloneNode(true);
-    clone.querySelectorAll('[contenteditable]').forEach(function(el){
-      el.removeAttribute('contenteditable');
-    });
-    var b = clone.querySelector('body'); if (b) b.classList.remove('editing');
-    var t = clone.querySelector('#edit-toggle'); if (t) t.classList.remove('show');
-    var eb = clone.querySelector('#edit-bar'); if (eb) eb.classList.remove('show');
+    clone.querySelectorAll('[contenteditable]').forEach(function(el){ el.removeAttribute('contenteditable'); });
+    clone.querySelectorAll('.sidetoc').forEach(function(el){ el.innerHTML = ''; });
+    var pop = clone.querySelector('#toc-pop'); if (pop) { pop.innerHTML = ''; pop.classList.remove('show'); }
+    clone.querySelectorAll('.show').forEach(function(el){ el.classList.remove('show'); });
+    clone.querySelectorAll('.flash').forEach(function(el){ el.classList.remove('flash'); });
+    clone.removeAttribute('data-theme'); clone.removeAttribute('data-size'); clone.classList.remove('toc-hidden');
+    var b = clone.querySelector('body'); if (b) { b.classList.remove('editing'); b.classList.remove('stuck'); }
     return '<!doctype html>\n' + clone.outerHTML + '\n';
   }
-
   var DB_NAME = 'site-editor', STORE = 'handles', KEY = 'file';
-  function idb(){
-    return new Promise(function(res, rej){
-      var r = indexedDB.open(DB_NAME, 1);
-      r.onupgradeneeded = function(){ r.result.createObjectStore(STORE); };
-      r.onsuccess = function(){ res(r.result); };
-      r.onerror   = function(){ rej(r.error); };
-    });
-  }
-  async function saveHandle(h){
-    var db = await idb();
-    return new Promise(function(res, rej){
-      var tx = db.transaction(STORE, 'readwrite');
-      tx.objectStore(STORE).put(h, KEY);
-      tx.oncomplete = function(){ res(); };
-      tx.onerror    = function(){ rej(tx.error); };
-    });
-  }
-  async function loadHandle(){
-    var db = await idb();
-    return new Promise(function(res, rej){
-      var tx = db.transaction(STORE, 'readonly');
-      var r  = tx.objectStore(STORE).get(KEY);
-      r.onsuccess = function(){ res(r.result || null); };
-      r.onerror   = function(){ rej(r.error); };
-    });
-  }
-  async function ensurePermission(handle){
-    var opts = { mode: 'readwrite' };
-    if ((await handle.queryPermission(opts)) === 'granted') return true;
-    return (await handle.requestPermission(opts)) === 'granted';
-  }
-  async function writeToHandle(handle, text){
-    var w = await handle.createWritable();
-    await w.write(text); await w.close();
-  }
-  function downloadFallback(text){
-    var blob = new Blob([text], { type: 'text/html;charset=utf-8' });
-    var url  = URL.createObjectURL(blob);
-    var a = document.createElement('a');
-    a.href = url; a.download = 'index.html';
-    document.body.appendChild(a); a.click();
-    setTimeout(function(){ URL.revokeObjectURL(url); a.remove(); }, 0);
-  }
-  function canUseFsApi(){
-    return !!window.showSaveFilePicker && window.isSecureContext;
-  }
+  function idb(){ return new Promise(function(res, rej){ var r = indexedDB.open(DB_NAME, 1); r.onupgradeneeded = function(){ r.result.createObjectStore(STORE); }; r.onsuccess = function(){ res(r.result); }; r.onerror = function(){ rej(r.error); }; }); }
+  async function saveHandle(h){ var db = await idb(); return new Promise(function(res, rej){ var tx = db.transaction(STORE, 'readwrite'); tx.objectStore(STORE).put(h, KEY); tx.oncomplete = function(){ res(); }; tx.onerror = function(){ rej(tx.error); }; }); }
+  async function loadHandle(){ var db = await idb(); return new Promise(function(res, rej){ var tx = db.transaction(STORE, 'readonly'); var r = tx.objectStore(STORE).get(KEY); r.onsuccess = function(){ res(r.result || null); }; r.onerror = function(){ rej(r.error); }; }); }
+  async function ensurePermission(handle){ var opts = { mode: 'readwrite' }; if ((await handle.queryPermission(opts)) === 'granted') return true; return (await handle.requestPermission(opts)) === 'granted'; }
+  async function writeToHandle(handle, text){ var w = await handle.createWritable(); await w.write(text); await w.close(); }
+  function downloadFallback(text){ var blob = new Blob([text], { type: 'text/html;charset=utf-8' }); var url = URL.createObjectURL(blob); var a = document.createElement('a'); a.href = url; a.download = 'index.html'; document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(url); a.remove(); }, 0); }
+  function canUseFsApi(){ return !!window.showSaveFilePicker && window.isSecureContext; }
   async function pickAndSave(html){
     if (!canUseFsApi()) { downloadFallback(html); return null; }
-    try {
-      var handle = await window.showSaveFilePicker({
-        suggestedName: 'index.html',
-        types: [{ description: 'HTML', accept: {'text/html': ['.html']} }]
-      });
-      await writeToHandle(handle, html);
-      try { await saveHandle(handle); } catch(e){}
-      return handle;
-    } catch (err) {
-      if (err && err.name === 'AbortError') throw err;
-      downloadFallback(html); return null;
-    }
+    try { var handle = await window.showSaveFilePicker({ suggestedName: 'index.html', types: [{ description: 'HTML', accept: {'text/html': ['.html']} }] });
+      await writeToHandle(handle, html); try { await saveHandle(handle); } catch(e){} return handle;
+    } catch (err) { if (err && err.name === 'AbortError') throw err; downloadFallback(html); return null; }
   }
-
   $('ed-save').addEventListener('click', async function(){
     var btn = this; btn.disabled = true; setStatus('저장 중…');
     try {
-      var html = serializeDocument();
-      var handle = null;
+      var html = serializeDocument(), handle = null;
       if (canUseFsApi()) { try { handle = await loadHandle(); } catch(e){} }
-      if (handle && canUseFsApi()) {
-        var ok = await ensurePermission(handle);
-        if (!ok) throw new Error('권한이 거부되었습니다.');
-        await writeToHandle(handle, html);
-        setStatus('✔ 저장했습니다 → ' + (handle.name || 'index.html'), 'ok');
-      } else if (canUseFsApi()) {
-        await pickAndSave(html);
-        setStatus('✔ 저장했습니다. 다음부터는 같은 파일에 자동으로 덮어씁니다.', 'ok');
-      } else {
-        downloadFallback(html);
-        setStatus('✔ 다운로드했습니다. Downloads의 index.html로 원본을 교체하세요.', 'ok');
-      }
-    } catch (err) {
-      if (err && err.name === 'AbortError') { setStatus(''); return; }
-      console.error(err);
-      setStatus('✗ 실패: ' + (err && err.message || err), 'err');
-    } finally { btn.disabled = false; }
+      if (handle && canUseFsApi()) { var ok = await ensurePermission(handle); if (!ok) throw new Error('권한이 거부되었습니다.'); await writeToHandle(handle, html); setStatus('✔ 저장했습니다 → ' + (handle.name || 'index.html'), 'ok'); }
+      else if (canUseFsApi()) { await pickAndSave(html); setStatus('✔ 저장했습니다. 다음부터는 같은 파일에 자동으로 덮어씁니다.', 'ok'); }
+      else { downloadFallback(html); setStatus('✔ 다운로드했습니다. Downloads의 index.html로 원본을 교체하세요.', 'ok'); }
+      if (window.__rebuildToc) window.__rebuildToc();
+    } catch (err) { if (err && err.name === 'AbortError') { setStatus(''); return; } console.error(err); setStatus('✗ 실패: ' + (err && err.message || err), 'err'); }
+    finally { btn.disabled = false; }
   });
-
   $('ed-saveas').addEventListener('click', async function(){
     var btn = this; btn.disabled = true; setStatus('다른 이름으로 저장…');
-    try {
-      var html = serializeDocument();
-      if (canUseFsApi()) {
-        var h = await pickAndSave(html);
-        setStatus('✔ 저장했습니다' + (h ? ' → ' + h.name : '') + '.', 'ok');
-      } else {
-        downloadFallback(html);
-        setStatus('✔ 다운로드했습니다.', 'ok');
-      }
-    } catch (err) {
-      if (err && err.name === 'AbortError') { setStatus(''); return; }
-      setStatus('✗ 실패: ' + (err && err.message || err), 'err');
-    } finally { btn.disabled = false; }
+    try { var html = serializeDocument();
+      if (canUseFsApi()) { var h = await pickAndSave(html); setStatus('✔ 저장했습니다' + (h ? ' → ' + h.name : '') + '.', 'ok'); }
+      else { downloadFallback(html); setStatus('✔ 다운로드했습니다.', 'ok'); }
+    } catch (err) { if (err && err.name === 'AbortError') { setStatus(''); return; } setStatus('✗ 실패: ' + (err && err.message || err), 'err'); }
+    finally { btn.disabled = false; }
   });
 })();
 </script>
-
-
-
-</body></html>
+</body>
+</html>
