@@ -41,8 +41,8 @@
   --accent:#36c;
   --hl:#fef6e7;
   --shadow:0 2px 6px rgba(0,0,0,.18);
-  --serif:"Linux Libertine","Georgia","Times","Source Serif Pro","Noto Serif KR","Noto Serif JP","Nanum Myeongjo",serif;
-  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Inter","Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic","Hiragino Kaku Gothic ProN","Noto Sans KR","Noto Sans JP",Arial,sans-serif;
+  --sans:sans-serif;
+  --serif:var(--sans);
   color-scheme:light;
 }
 @media (prefers-color-scheme: dark){
@@ -76,6 +76,7 @@ main a.ext:after,.refs a.ext:after{content:"";display:inline-block;width:.7em;he
   background:currentColor;opacity:.75;
   -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M6 1h5v5L8.86 3.85 4.7 8 4 7.3l4.15-4.16zM2 3h2v1H2v6h6V8h1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1'/%3E%3C/svg%3E") center/contain no-repeat;
           mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M6 1h5v5L8.86 3.85 4.7 8 4 7.3l4.15-4.16zM2 3h2v1H2v6h6V8h1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1'/%3E%3C/svg%3E") center/contain no-repeat}
+button,input,code{font-family:var(--sans)}
 button{font:inherit;color:inherit}
 .skip{position:absolute;left:-9999px;top:0}
 .skip:focus{left:8px;top:8px;background:var(--bg);padding:6px 10px;border:1px solid var(--border);z-index:300}
@@ -361,16 +362,11 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
       <tr><th>生誕</th><td>2000年<br>大韓民国</td></tr>
       <tr><th>国籍</th><td>大韓民国</td></tr>
       <tr><th>居住地</th><td>日本・東京都</td></tr>
-      <tr><th>職業</th><td>音響学研究者</td></tr>
       <tr class="sec"><td colspan="2">学術情報</td></tr>
       <tr><th>分野</th><td>拡声システム（PA）<br>ミキシング<br>空間オーディオ</td></tr>
       <tr><th>所属</th><td>東京藝術大学<br>音楽音響創造科</td></tr>
-      <tr><th>現在</th><td>研究生（2025.10–2027.3）</td></tr>
-      <tr><th>進学予定</th><td>大学院 音楽研究科<br>修士課程（2027.4–）</td></tr>
+      <tr><th>個人プロジェクト</th><td><a href="#ja-labo">LABO 1557</a></td></tr>
       <tr><th>主な受賞</th><td>優秀発表賞<br>（韓国音響学会, 2026）</td></tr>
-      <tr class="sec"><td colspan="2">個人プロジェクト</td></tr>
-      <tr><th>名義</th><td>LABO 1557</td></tr>
-      <tr><th>作品</th><td><a href="#ja-auralpaths">AuralPaths</a></td></tr>
       <tr class="sec"><td colspan="2">リンク</td></tr>
       <tr><th>LinkedIn</th><td><a href="https://www.linkedin.com/in/dong-gyun-you/">dong-gyun-you</a></td></tr>
       <tr><th>GitHub</th><td><a href="https://github.com/dlrjtt1">dlrjtt1</a></td></tr>
@@ -433,7 +429,7 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
     <p><b>LABO 1557</b>は、「誰もが速く、簡単にミキシングできるようにしたい」という思いから始めた柳の個人プロジェクトである。この名義のもとで、ミキシング作業を手助けするオーディオプラグインを自ら設計・制作している。後述のAuralPathsもLABO 1557の名義で公開されている<sup class="ref"><a href="#ja-cite-2">[2]</a></sup>。</p>
 
     <h3 id="ja-auralpaths">AuralPaths</h3>
-    <p class="mainlink">リポジトリ: <a class="ext" href="https://github.com/dlrjtt1/AuralPaths">github.com/dlrjtt1/AuralPaths</a></p>
+    <p class="mainlink">シミュレータ: <a class="ext" href="https://dlrjtt1.github.io/AuralPaths/">dlrjtt1.github.io/AuralPaths</a> ・ リポジトリ: <a class="ext" href="https://github.com/dlrjtt1/AuralPaths">github.com/dlrjtt1/AuralPaths</a></p>
     <p><b>AuralPaths</b>は、舞台からの直接音と拡声スピーカー（PA）の経路を比較するための、ブラウザベースのバイノーラル室内音響シミュレータである。平面図と断面図からホールを作図し、舞台音源とPAスピーカー1対を配置すると、客席位置ごとに両経路間の到達時間差（ITDG）とレベル比がどのように変化するかを聴取・測定できる。処理はすべてブラウザ内で行われ、読み込んだ図面や音声ファイルは利用者のコンピュータの外に送信されない<sup class="ref"><a href="#ja-cite-2">[2]</a></sup>。</p>
     <h4 id="ja-ap-features">機能</h4>
     <ul>
@@ -515,7 +511,8 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
     <h2 id="ja-links">外部リンク</h2>
     <ul>
      <li><a class="ext" href="https://www.linkedin.com/in/dong-gyun-you/">LinkedIn — dong-gyun-you</a></li>
-     <li><a class="ext" href="https://github.com/dlrjtt1/AuralPaths">GitHub — dlrjtt1/AuralPaths</a>（室内音響シミュレータ）</li>
+     <li><a class="ext" href="https://dlrjtt1.github.io/AuralPaths/">AuralPaths</a>（室内音響シミュレータ）</li>
+     <li><a class="ext" href="https://github.com/dlrjtt1/AuralPaths">GitHub — dlrjtt1/AuralPaths</a>（ソースコード）</li>
      <li><a class="ext" href="https://github.com/dlrjtt1/pilot-experiment">GitHub — dlrjtt1/pilot-experiment</a>（パイロット聴取実験の実装）</li>
      <li><a class="ext" href="https://www.instagram.com/dlrjtt1_/">Instagram — @dlrjtt1_</a></li>
      <li>E-mail: <a href="mailto:donggyun0920@gmail.com">donggyun0920@gmail.com</a></li>
@@ -568,16 +565,11 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
       <tr><th>출생</th><td>2000년<br>대한민국</td></tr>
       <tr><th>국적</th><td>대한민국</td></tr>
       <tr><th>거주지</th><td>일본 도쿄</td></tr>
-      <tr><th>직업</th><td>음향학 연구자</td></tr>
       <tr class="sec"><td colspan="2">학술 정보</td></tr>
       <tr><th>분야</th><td>확성 시스템 (PA)<br>믹싱<br>공간 오디오</td></tr>
       <tr><th>소속</th><td>도쿄예술대학<br>음악음향창조과</td></tr>
-      <tr><th>현재</th><td>연구생 (2025.10–2027.3)</td></tr>
-      <tr><th>진학 예정</th><td>대학원 음악연구과<br>석사과정 (2027.4–)</td></tr>
+      <tr><th>개인 프로젝트</th><td><a href="#ko-labo">LABO 1557</a></td></tr>
       <tr><th>주요 수상</th><td>우수발표상<br>(한국음향학회, 2026)</td></tr>
-      <tr class="sec"><td colspan="2">개인 프로젝트</td></tr>
-      <tr><th>이름</th><td>LABO 1557</td></tr>
-      <tr><th>작품</th><td><a href="#ko-auralpaths">AuralPaths</a></td></tr>
       <tr class="sec"><td colspan="2">링크</td></tr>
       <tr><th>LinkedIn</th><td><a href="https://www.linkedin.com/in/dong-gyun-you/">dong-gyun-you</a></td></tr>
       <tr><th>GitHub</th><td><a href="https://github.com/dlrjtt1">dlrjtt1</a></td></tr>
@@ -640,7 +632,7 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
     <p><b>LABO 1557</b>은 "누구라도 빠르고 쉽게 믹싱을 할 수 있도록 만들고 싶다"는 생각에서 시작한 유동균의 개인 프로젝트이다. 이 이름 아래 믹싱 작업을 돕는 오디오 플러그인을 직접 설계·제작하고 있다. 아래의 AuralPaths도 LABO 1557 이름으로 공개되었다<sup class="ref"><a href="#ko-cite-2">[2]</a></sup>.</p>
 
     <h3 id="ko-auralpaths">AuralPaths</h3>
-    <p class="mainlink">저장소: <a class="ext" href="https://github.com/dlrjtt1/AuralPaths">github.com/dlrjtt1/AuralPaths</a></p>
+    <p class="mainlink">시뮬레이터: <a class="ext" href="https://dlrjtt1.github.io/AuralPaths/">dlrjtt1.github.io/AuralPaths</a> · 저장소: <a class="ext" href="https://github.com/dlrjtt1/AuralPaths">github.com/dlrjtt1/AuralPaths</a></p>
     <p><b>AuralPaths</b>는 무대 직접음과 확성 스피커(PA) 경로를 비교하기 위한 브라우저 기반 바이노럴 실내음향 시뮬레이터이다. 평면도와 단면도로 홀을 그리고 무대 음원과 PA 스피커 한 쌍을 배치하면, 객석 위치에 따라 두 경로 사이의 도달 시간차(ITDG)와 레벨비가 어떻게 달라지는지 듣고 측정할 수 있다. 모든 처리는 브라우저 안에서 이루어지며, 불러온 도면과 음원 파일은 사용자의 컴퓨터 밖으로 전송되지 않는다<sup class="ref"><a href="#ko-cite-2">[2]</a></sup>.</p>
     <h4 id="ko-ap-features">기능</h4>
     <ul>
@@ -722,7 +714,8 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
     <h2 id="ko-links">외부 링크</h2>
     <ul>
      <li><a class="ext" href="https://www.linkedin.com/in/dong-gyun-you/">LinkedIn — dong-gyun-you</a></li>
-     <li><a class="ext" href="https://github.com/dlrjtt1/AuralPaths">GitHub — dlrjtt1/AuralPaths</a> (실내음향 시뮬레이터)</li>
+     <li><a class="ext" href="https://dlrjtt1.github.io/AuralPaths/">AuralPaths</a> (실내음향 시뮬레이터)</li>
+     <li><a class="ext" href="https://github.com/dlrjtt1/AuralPaths">GitHub — dlrjtt1/AuralPaths</a> (소스 코드)</li>
      <li><a class="ext" href="https://github.com/dlrjtt1/pilot-experiment">GitHub — dlrjtt1/pilot-experiment</a> (파일럿 청취실험 구현)</li>
      <li><a class="ext" href="https://www.instagram.com/dlrjtt1_/">Instagram — @dlrjtt1_</a></li>
      <li>이메일: <a href="mailto:donggyun0920@gmail.com">donggyun0920@gmail.com</a></li>
@@ -774,16 +767,11 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
       <tr><th>Born</th><td>2000<br>Republic of Korea</td></tr>
       <tr><th>Nationality</th><td>Republic of Korea</td></tr>
       <tr><th>Residence</th><td>Tokyo, Japan</td></tr>
-      <tr><th>Occupation</th><td>Acoustics researcher</td></tr>
       <tr class="sec"><td colspan="2">Academic</td></tr>
       <tr><th>Fields</th><td>Sound reinforcement (PA)<br>Mixing<br>Spatial audio</td></tr>
-      <tr><th>Institution</th><td>Tokyo University of the Arts</td></tr>
-      <tr><th>Current</th><td>Research Student<br>(Oct 2025 – Mar 2027)</td></tr>
-      <tr><th>Next</th><td>Master's programme,<br>Graduate School of Music<br>(from Apr 2027)</td></tr>
+      <tr><th>Institution</th><td>Tokyo University of the Arts<br>Musical Creativity and the Environment</td></tr>
+      <tr><th>Personal project</th><td><a href="#en-labo">LABO 1557</a></td></tr>
       <tr><th>Notable award</th><td>Best Presentation Award<br>(ASK, 2026)</td></tr>
-      <tr class="sec"><td colspan="2">Personal projects</td></tr>
-      <tr><th>Label</th><td>LABO 1557</td></tr>
-      <tr><th>Works</th><td><a href="#en-auralpaths">AuralPaths</a></td></tr>
       <tr class="sec"><td colspan="2">Links</td></tr>
       <tr><th>LinkedIn</th><td><a href="https://www.linkedin.com/in/dong-gyun-you/">dong-gyun-you</a></td></tr>
       <tr><th>GitHub</th><td><a href="https://github.com/dlrjtt1">dlrjtt1</a></td></tr>
@@ -846,7 +834,7 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
     <p><b>LABO 1557</b> is a personal project that began from his wish to let anyone mix quickly and easily. Under this name he designs and builds audio plug-ins that help with the mixing process. AuralPaths, described below, is also released under the LABO 1557 name<sup class="ref"><a href="#en-cite-2">[2]</a></sup>.</p>
 
     <h3 id="en-auralpaths">AuralPaths</h3>
-    <p class="mainlink">Repository: <a class="ext" href="https://github.com/dlrjtt1/AuralPaths">github.com/dlrjtt1/AuralPaths</a></p>
+    <p class="mainlink">Simulator: <a class="ext" href="https://dlrjtt1.github.io/AuralPaths/">dlrjtt1.github.io/AuralPaths</a> · Repository: <a class="ext" href="https://github.com/dlrjtt1/AuralPaths">github.com/dlrjtt1/AuralPaths</a></p>
     <p><b>AuralPaths</b> is a browser-based binaural room simulator for comparing direct and loudspeaker (PA) paths. The user draws a hall from its plan and section, places a stage source and a pair of PA loudspeakers, and can then hear and measure how the arrival-time gap (ITDG) and the level ratio between the paths change from seat to seat. Everything runs in the browser; drawings and audio files loaded by the user stay on their computer<sup class="ref"><a href="#en-cite-2">[2]</a></sup>.</p>
     <h4 id="en-ap-features">Features</h4>
     <ul>
@@ -928,7 +916,8 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
     <h2 id="en-links">External links</h2>
     <ul>
      <li><a class="ext" href="https://www.linkedin.com/in/dong-gyun-you/">LinkedIn — dong-gyun-you</a></li>
-     <li><a class="ext" href="https://github.com/dlrjtt1/AuralPaths">GitHub — dlrjtt1/AuralPaths</a> (room-acoustic simulator)</li>
+     <li><a class="ext" href="https://dlrjtt1.github.io/AuralPaths/">AuralPaths</a> (room-acoustic simulator)</li>
+     <li><a class="ext" href="https://github.com/dlrjtt1/AuralPaths">GitHub — dlrjtt1/AuralPaths</a> (source code)</li>
      <li><a class="ext" href="https://github.com/dlrjtt1/pilot-experiment">GitHub — dlrjtt1/pilot-experiment</a> (pilot listening experiment)</li>
      <li><a class="ext" href="https://www.instagram.com/dlrjtt1_/">Instagram — @dlrjtt1_</a></li>
      <li>E-mail: <a href="mailto:donggyun0920@gmail.com">donggyun0920@gmail.com</a></li>
@@ -979,7 +968,7 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
 (function(){
   var LANGS = ['ja','ko','en'];
   var DEFAULT = 'ja';
-  var BUILD_DATE = '2026-11-04T22:30:00+09:00';
+  var BUILD_DATE = '2026-11-04T22:45:00+09:00';
   var META = {
     ja: { title: '柳 東均 (Dong-Gyun You) — 音響学研究者',
           desc: '柳東均（Dong-Gyun You）は、東京藝術大学 音楽音響創造科の研究生として、拡声システム・ミキシング・空間オーディオを研究する音響学研究者である。' },
