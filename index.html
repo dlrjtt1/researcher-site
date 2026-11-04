@@ -87,26 +87,12 @@ button{font:inherit;color:inherit}
 [data-lang-inline].active{display:inline}
 
 /* ===== header ===== */
-.vh{max-width:1596px;margin:0 auto;padding:8px 24px;display:flex;align-items:center;gap:16px;min-height:56px}
+.vh{max-width:1596px;margin:0 auto;padding:6px 24px 0;display:flex;align-items:center;gap:16px;min-height:40px}
 .logo{display:flex;align-items:center;gap:10px;color:var(--fg)!important;text-decoration:none!important;flex:0 0 auto}
 .logo-mark{width:40px;height:40px;border-radius:50%;border:1px solid var(--border-soft);display:grid;place-items:center;font-family:var(--serif);font-size:22px;background:var(--bg-sub)}
 .logo-text{display:flex;flex-direction:column;line-height:1.15}
 .logo-text b{font-family:var(--serif);font-weight:400;font-size:1.15rem;letter-spacing:.01em}
 .logo-text small{font-size:.72rem;color:var(--fg-sub)}
-.search{position:relative;flex:1 1 auto;max-width:560px;display:flex}
-.search input{flex:1;min-width:0;height:34px;padding:0 10px 0 34px;border:1px solid var(--border);border-right:0;border-radius:2px 0 0 2px;background:var(--bg);color:var(--fg);font:inherit;font-size:.875rem}
-.search input:focus{outline:none;border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
-.search .ico{position:absolute;left:10px;top:9px;width:16px;height:16px;opacity:.6;pointer-events:none}
-.search button{height:34px;padding:0 12px;border:1px solid var(--border);border-radius:0 2px 2px 0;background:var(--bg-sub);cursor:pointer;font-size:.875rem;font-weight:700}
-.search button:hover{background:var(--bg-head)}
-.search-res{position:absolute;top:36px;left:0;right:0;background:var(--bg);border:1px solid var(--border);box-shadow:var(--shadow);z-index:150;max-height:60vh;overflow:auto;display:none}
-.search-res.show{display:block}
-.search-res a{display:block;padding:7px 12px;color:var(--fg);border-top:1px solid var(--border-faint);font-size:.875rem}
-.search-res a:first-child{border-top:0}
-.search-res a:hover,.search-res a.sel{background:var(--bg-sub);text-decoration:none}
-.search-res a b{color:var(--link);font-weight:600}
-.search-res .snip{display:block;color:var(--fg-sub);font-size:.8rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.search-res .none{padding:8px 12px;color:var(--fg-sub);font-size:.875rem}
 .vh-right{margin-left:auto;display:flex;align-items:center;gap:4px;flex:0 0 auto}
 .icon-btn{background:none;border:0;border-radius:2px;padding:6px 8px;cursor:pointer;display:flex;align-items:center;gap:6px;font-size:.875rem;color:var(--fg)}
 .icon-btn:hover{background:var(--bg-sub)}
@@ -178,7 +164,6 @@ html.toc-hidden .toc-btn{display:grid}
 .tabs ul{list-style:none;margin:0;padding:0;display:flex;gap:2px}
 .tabs li a,.tabs li span{display:block;padding:8px 8px 6px;color:var(--link)}
 .tabs li.sel a,.tabs li.sel span{color:var(--fg);border-bottom:2px solid var(--fg);text-decoration:none}
-.tagline{color:var(--fg-sub);font-size:.8rem;margin:6px 0 14px}
 
 /* ===== article body ===== */
 main{min-width:0;font-size:.95rem}
@@ -256,9 +241,6 @@ footer.site ul{list-style:none;padding:0;margin:.8em 0 0;display:flex;flex-wrap:
   .vh{padding:8px 12px;gap:10px}
   .page{padding:0 16px}
   .logo-text{display:none}
-  .search{min-width:0}
-  .search button{display:none}
-  .search input{border-right:1px solid var(--border);border-radius:2px}
   #appear-btn > span{display:none}
   .tabs li a,.tabs li span{padding:8px 6px 6px}
   .sticky-in{padding:6px 12px}
@@ -284,19 +266,6 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
 
 <!-- ============ header ============ -->
 <header class="vh">
-  <a class="logo" href="#" data-top>
-    <span class="logo-mark" aria-hidden="true">柳</span>
-    <span class="logo-text">
-      <b>Dong-Gyun You</b>
-      <small><span data-lang-inline="ja">研究者プロフィール</span><span data-lang-inline="ko" class="active">연구자 프로필</span><span data-lang-inline="en">Researcher profile</span></small>
-    </span>
-  </a>
-  <form class="search" role="search" id="search-form" autocomplete="off">
-    <svg class="ico" viewBox="0 0 20 20" aria-hidden="true"><path fill="currentColor" d="M12.2 13.6a7 7 0 1 1 1.4-1.4l5.4 5.4-1.4 1.4zM3 8a5 5 0 1 0 10 0A5 5 0 0 0 3 8"/></svg>
-    <input id="search" type="search" placeholder="이 문서 검색" aria-label="Search">
-    <button type="submit" id="search-btn">검색</button>
-    <div class="search-res" id="search-res" role="listbox"></div>
-  </form>
   <div class="vh-right">
     <button class="icon-btn" id="edit-toggle" title="Edit mode">✎ Edit</button>
     <div class="dropdown">
@@ -346,11 +315,8 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
     <ul><li class="sel"><span>記事</span></li></ul>
     <ul><li class="sel"><span>閲覧</span></li><li><a href="https://github.com/dlrjtt1/researcher-site/blob/main/index.html">ソースを閲覧</a></li><li><a href="https://github.com/dlrjtt1/researcher-site/commits/main">履歴表示</a></li></ul>
    </div>
-   <div class="tagline">柳 東均 研究者プロフィール</div>
 
    <main>
-    <p class="hatnote">本項は、本人が公開しているプロフィールおよびGitHubリポジトリの情報に基づいて構成された人物記事である。</p>
-
     <aside class="infobox" aria-label="基本情報">
      <div class="ib-title">柳 東均<small>Dong-Gyun You / 유동균</small></div>
      <div class="ib-img"><img src="assets/photo.jpg" alt="柳 東均"></div>
@@ -549,11 +515,8 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
     <ul><li class="sel"><span>문서</span></li></ul>
     <ul><li class="sel"><span>읽기</span></li><li><a href="https://github.com/dlrjtt1/researcher-site/blob/main/index.html">원본 보기</a></li><li><a href="https://github.com/dlrjtt1/researcher-site/commits/main">역사 보기</a></li></ul>
    </div>
-   <div class="tagline">유동균 연구자 프로필</div>
 
    <main>
-    <p class="hatnote">이 문서는 본인이 공개한 프로필과 GitHub 저장소의 정보에 기반하여 구성한 인물 문서이다.</p>
-
     <aside class="infobox" aria-label="기본 정보">
      <div class="ib-title">유동균<small>柳 東均 / Dong-Gyun You</small></div>
      <div class="ib-img"><img src="assets/photo.jpg" alt="유동균"></div>
@@ -752,11 +715,8 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
     <ul><li class="sel"><span>Article</span></li></ul>
     <ul><li class="sel"><span>Read</span></li><li><a href="https://github.com/dlrjtt1/researcher-site/blob/main/index.html">View source</a></li><li><a href="https://github.com/dlrjtt1/researcher-site/commits/main">View history</a></li></ul>
    </div>
-   <div class="tagline">Dong-Gyun You — researcher profile</div>
 
    <main>
-    <p class="hatnote">This article is compiled from the subject's public professional profile and GitHub repositories.</p>
-
     <aside class="infobox" aria-label="Infobox">
      <div class="ib-title">Dong-Gyun You<small>柳 東均 / 유동균</small></div>
      <div class="ib-img"><img src="assets/photo.jpg" alt="Dong-Gyun You"></div>
@@ -968,7 +928,7 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
 (function(){
   var LANGS = ['ja','ko','en'];
   var DEFAULT = 'ja';
-  var BUILD_DATE = '2026-11-04T22:45:00+09:00';
+  var BUILD_DATE = '2026-11-05T00:00:00+09:00';
   var META = {
     ja: { title: '柳 東均 (Dong-Gyun You) — 音響学研究者',
           desc: '柳東均（Dong-Gyun You）は、東京藝術大学 音楽音響創造科の研究生として、拡声システム・ミキシング・空間オーディオを研究する音響学研究者である。' },
@@ -1092,7 +1052,7 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
     if(lb){ var m = lb.parentNode.querySelector('.menu'); closeMenus(m); m.classList.toggle('show'); lb.setAttribute('aria-expanded', m.classList.contains('show')); return; }
     if(!e.target.closest('.menu')) closeMenus();
   });
-  document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ closeMenus(); closePop(); hideRes(); } });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ closeMenus(); closePop(); } });
 
   /* ---------- appearance ---------- */
   function initAppearance(){
@@ -1127,53 +1087,6 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
   });
   $$('[data-top]').forEach(function(a){ a.addEventListener('click', function(e){ e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}); }); });
 
-  /* ---------- search ---------- */
-  var sIn = $('#search'), sRes = $('#search-res'), sel = -1;
-  function hideRes(){ sRes.classList.remove('show'); sel = -1; }
-  function esc(s){ return s.replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
-  function search(q){
-    q = q.trim().toLowerCase(); sRes.innerHTML = ''; sel = -1;
-    if(!q){ hideRes(); return; }
-    var b = block(), main = $('main', b), out = [], lastH = null;
-    $$('h2,h3,h4,p,li,td', main).forEach(function(el){
-      if(/^H\d$/.test(el.tagName)){ lastH = el; if(headingText(el).toLowerCase().indexOf(q)>=0) out.push({el:el, title:headingText(el), snip:''}); return; }
-      if(el.closest('.infobox')) return;
-      if(el.tagName==='TD' && el.querySelector('p')) return;
-      var tx = el.textContent.replace(/\s+/g,' ').trim(), i = tx.toLowerCase().indexOf(q);
-      if(i<0) return;
-      var s = Math.max(0, i-24);
-      out.push({el:el, title: lastH ? headingText(lastH) : L[cur].top, snip: (s>0?'…':'') + tx.slice(s, i+q.length+48)});
-    });
-    out = out.slice(0, 10);
-    if(!out.length){ sRes.innerHTML = '<div class="none"></div>'; sRes.firstChild.textContent = L[cur].none; sRes.classList.add('show'); return; }
-    out.forEach(function(r){
-      var a = document.createElement('a'); a.href = '#';
-      a.innerHTML = '<b></b>' + (r.snip ? '<span class="snip"></span>' : '');
-      a.firstChild.textContent = r.title; if(r.snip) a.lastChild.textContent = r.snip;
-      a.addEventListener('mousedown', function(e){ e.preventDefault(); go(r.el); });
-      sRes.appendChild(a);
-    });
-    sRes.classList.add('show');
-  }
-  function go(el){
-    hideRes(); sIn.blur();
-    var y = el.getBoundingClientRect().top + window.pageYOffset - 70;
-    window.scrollTo({top:Math.max(0,y), behavior:'smooth'});
-    el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash');
-  }
-  sIn.addEventListener('input', function(){ search(sIn.value); });
-  sIn.addEventListener('focus', function(){ if(sIn.value) search(sIn.value); });
-  sIn.addEventListener('blur', function(){ setTimeout(hideRes, 120); });
-  sIn.addEventListener('keydown', function(e){
-    var items = $$('a', sRes); if(!items.length) return;
-    if(e.key==='ArrowDown'||e.key==='ArrowUp'){ e.preventDefault(); sel = (sel + (e.key==='ArrowDown'?1:-1) + items.length) % items.length; items.forEach(function(a,i){ a.classList.toggle('sel', i===sel); }); }
-  });
-  $('#search-form').addEventListener('submit', function(e){
-    e.preventDefault(); var items = $$('a', sRes);
-    if(!sRes.classList.contains('show')) search(sIn.value);
-    items = $$('a', sRes); if(items.length){ var ev = new MouseEvent('mousedown'); items[Math.max(sel,0)].dispatchEvent(ev); }
-  });
-
   /* ---------- last modified ---------- */
   function lastMod(lang){
     var d = new Date(document.lastModified);
@@ -1197,7 +1110,6 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
     $$('.lang-menu a').forEach(function(a){ if(a.getAttribute('data-set')===lang) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current'); });
     document.title = META[lang].title;
     var d = $('meta[name="description"]'); if(d) d.setAttribute('content', META[lang].desc);
-    sIn.placeholder = L[lang].search; $('#search-btn').textContent = L[lang].go; sIn.value = ''; hideRes();
     lastMod(lang); store('lang', lang); closePop(); spy();
   }
   document.addEventListener('click', function(e){
