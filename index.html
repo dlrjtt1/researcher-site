@@ -368,8 +368,50 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
     </ul>
 
     <h3 id="ja-research-pilot">パイロット聴取実験</h3>
-    <p>2026年5月から7月にかけて、コンサートホールにおける舞台直接音とPA補強音の時間差（ITDG: 0/20/40 ms）およびレベル比（−6/0/+6 dB）を組み合わせた9条件を対象に、バイノーラル室内インパルス応答（BRIR）を用いたWebベースの聴取実験システムを設計・実装した。刺激はランダム順で提示され、音像方向の明瞭さ、音色の自然さ、音像の安定性の3項目について回答を収集した。品質管理として、左右チャンネルの確認手順、再生機器（ヘッドホン／イヤホン）の申告、同一条件の反復提示による回答一貫性の確認を組み込んでいる<sup class="ref"><a href="#ja-cite-3">[3]</a></sup>。</p>
-    <p>12名の参加者から計324件の回答が得られ、線形混合効果モデルにより傾向を確認した。パイロット段階では、レベル比が評価に強く反映される傾向が観察された<sup class="ref"><a href="#ja-cite-1">[1]</a></sup>。</p>
+    <p class="mainlink">実験ページ: <a class="ext" href="https://dlrjtt1.github.io/pilot-experiment/">dlrjtt1.github.io/pilot-experiment</a> ・ リポジトリ: <a class="ext" href="https://github.com/dlrjtt1/pilot-experiment">github.com/dlrjtt1/pilot-experiment</a></p>
+    <p>2026年5月から7月にかけて設計・実装・実施したブラウザベースのオンライン聴取実験である。コンサートホールを模擬した条件において、舞台直接音とPA補強音との時間差（ITDG）およびレベル比が音像定位判断に及ぼす影響を予備的に調べた<sup class="ref"><a href="#ja-cite-1">[1]</a></sup>。本実験に先立ち、評価インターフェース、設問文、回答分布の妥当性を確認することを目的としており、実験画面は日本語と韓国語で提供される<sup class="ref"><a href="#ja-cite-3">[3]</a></sup>。</p>
+    <h4 id="ja-pilot-stimuli">刺激と条件</h4>
+    <ul>
+     <li><b>条件</b>：ITDG 0 / 20 / 40 ms × レベル比 −6 / 0 / +6 dBの9条件。</li>
+     <li><b>刺激</b>：公開BRIRデータベース（残響のあるコンサートホールにおいてNeumann KU100ダミーヘッドで測定）<sup class="ref"><a href="#ja-cite-8">[8]</a></sup>の聴取位置C8（舞台から8 mの中央席）のBRIRで合成したバイノーラル音源。音は舞台中央（直接音）と左右のスピーカー（PA補強音）の2方向から同時に再生される<sup class="ref"><a href="#ja-cite-3">[3]</a></sup>。</li>
+     <li><b>リファレンス</b>：直接音経路のみを再生する基準音。実験中いつでも再生して比較できる。</li>
+    </ul>
+    <h4 id="ja-pilot-procedure">実験手順</h4>
+    <ol>
+     <li>言語の選択と研究参加の説明・同意</li>
+     <li>使用機器の記録：ヘッドホン・イヤホン・その他から選択、モデル名（任意）</li>
+     <li>左右チャンネルの確認：左右のテスト音がそれぞれ正しい側から聴こえるかを確認</li>
+     <li>音量キャリブレーション：快適な音量に調整し、実験中は変更しないよう案内</li>
+     <li>リファレンス音の確認</li>
+     <li>聴取評価：3ブロック × 9試行。ブロックごとに9条件をランダムな順序で提示し、刺激は何度でも再生できる。ブロック間に60秒の休憩（スキップ可）</li>
+     <li>結果の確認：全回答の表をコピーして実験者に送付</li>
+    </ol>
+    <p>所要時間は合計約20–30分と案内した<sup class="ref"><a href="#ja-cite-3">[3]</a></sup>。</p>
+    <h4 id="ja-pilot-items">評価項目</h4>
+    <p>各刺激について3項目を3段階（1–3点）で回答する<sup class="ref"><a href="#ja-cite-3">[3]</a></sup>。</p>
+    <div class="tbl-wrap"><table class="wikitable">
+     <thead><tr><th>項目</th><th>設問</th><th>1</th><th>2</th><th>3</th></tr></thead>
+     <tbody>
+      <tr><td>Q1 方向の明瞭さ</td><td>音像は演奏者（舞台中央）の方向に定位していましたか？</td><td>方向がわからなかった</td><td>おそらく舞台方向だが不確か</td><td>演奏者の方向からはっきり聴こえた</td></tr>
+      <tr><td>Q2 音色の自然さ</td><td>リファレンス音と比べて、音色は自然でしたか？</td><td>不自然だった</td><td>やや不自然だった</td><td>自然だった</td></tr>
+      <tr><td>Q3 音像の安定性</td><td>音像は一つの位置で一貫して聴こえましたか？</td><td>一貫しなかった</td><td>少しぶれた</td><td>一貫していた</td></tr>
+     </tbody>
+    </table></div>
+    <h4 id="ja-pilot-qc">品質管理</h4>
+    <ul>
+     <li>実験前に左右チャンネルを確認し、再生機器（ヘッドホン／イヤホン、モデル名）を記録する。</li>
+     <li>音量はキャリブレーションの段階で一度決め、実験中は固定するよう案内する。</li>
+     <li>同一条件を3ブロックにわたって反復提示し、回答の一貫性を確認する。</li>
+     <li>参加は任意でいつでも中止でき、収集データは個人を識別できない匿名・集計形式でのみ用いることを事前に説明する<sup class="ref"><a href="#ja-cite-3">[3]</a></sup>。</li>
+    </ul>
+    <h4 id="ja-pilot-results">結果</h4>
+    <p>12名の参加者から計324件（12名 × 27試行）の回答が得られ、線形混合効果モデルにより傾向を確認した。パイロット段階では、レベル比が評価に強く反映される傾向が観察された<sup class="ref"><a href="#ja-cite-1">[1]</a></sup>。</p>
+    <h4 id="ja-pilot-limits">限界</h4>
+    <ul>
+     <li>オンラインで実施したため、参加者のヘッドホン／イヤホンの種類や聴取環境を完全には統制できない<sup class="ref"><a href="#ja-cite-3">[3]</a></sup>。</li>
+     <li>単一の聴取位置（C8）のダミーヘッドBRIRをヘッドホンで再生した条件である。実際の公演会場のPA環境で同じ傾向が現れるかどうかは、本実験では確認されていない。</li>
+     <li>本実験の設計を点検するための小規模（12名）なパイロットであり、結果は予備的な傾向として解釈すべきである。</li>
+    </ul>
 
     <h3 id="ja-pubs">発表・論文</h3>
     <div class="tbl-wrap"><table class="wikitable">
@@ -487,17 +529,9 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
      <li id="ja-cite-5"><a class="up" href="#ja-ap-limits">↑</a><cite>Aspöck, L., Brinkmann, F., Ackermann, D., Weinzierl, S., Vorländer, M. (2020). <i>BRAS – Benchmark for Room Acoustical Simulation</i>, version 3. TU Berlin DepositOnce.</cite> <a class="ext" href="https://doi.org/10.14279/depositonce-6726.3">doi:10.14279/depositonce-6726.3</a></li>
      <li id="ja-cite-6"><a class="up" href="#ja-ap-limits">↑</a><cite>Fratoni, G. (2021). <i>Materials for calibrating four complex virtual environments through acoustic simulations</i>, version 1. Mendeley Data.</cite> <a class="ext" href="https://doi.org/10.17632/y7xnv6xg5s.1">doi:10.17632/y7xnv6xg5s.1</a></li>
      <li id="ja-cite-7"><a class="up" href="#ja-ap-limits">↑</a><cite>dlrjtt1「AuralPaths」モデル説明書（docs/MODEL_ja.md）.</cite> <a class="ext" href="https://github.com/dlrjtt1/AuralPaths/blob/main/docs/MODEL_ja.md">https://github.com/dlrjtt1/AuralPaths/blob/main/docs/MODEL_ja.md</a></li>
+     <li id="ja-cite-8"><a class="up" href="#ja-pilot-stimuli">↑</a><cite>Bacila, B. I., Lee, H. (2019). "360° Binaural Room Impulse Response (BRIR) Database for 6DOF Spatial Perception Research." AES 146th Convention, Dublin, e-Brief 513. Dataset: Zenodo.</cite> <a class="ext" href="https://doi.org/10.5281/zenodo.2641166">doi:10.5281/zenodo.2641166</a></li>
     </ol></div>
 
-    <h2 id="ja-links">外部リンク</h2>
-    <ul>
-     <li><a class="ext" href="https://www.linkedin.com/in/dong-gyun-you/">LinkedIn — dong-gyun-you</a></li>
-     <li><a class="ext" href="https://dlrjtt1.github.io/AuralPaths/">AuralPaths</a>（室内音響シミュレータ）</li>
-     <li><a class="ext" href="https://github.com/dlrjtt1/AuralPaths">GitHub — dlrjtt1/AuralPaths</a>（ソースコード）</li>
-     <li><a class="ext" href="https://github.com/dlrjtt1/pilot-experiment">GitHub — dlrjtt1/pilot-experiment</a>（パイロット聴取実験の実装）</li>
-     <li><a class="ext" href="https://www.instagram.com/dlrjtt1_/">Instagram — @dlrjtt1_</a></li>
-     <li>E-mail: <a href="mailto:donggyun0920@gmail.com">donggyun0920@gmail.com</a></li>
-    </ul>
    </main>
 
    <div class="navbox">
@@ -583,8 +617,50 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
     </ul>
 
     <h3 id="ko-research-pilot">파일럿 청취실험</h3>
-    <p>2026년 5월부터 7월까지, 콘서트홀 무대 직접음과 PA 보강음의 시간차(ITDG: 0/20/40 ms) 및 레벨비(−6/0/+6 dB)를 조합한 9개 조건을 대상으로 바이노럴 실내 임펄스 응답(BRIR)을 이용한 웹 기반 청취실험 시스템을 설계·구현하였다. 자극은 무작위 순서로 제시되었으며, 음상 방향의 명료성·음색의 자연스러움·음상의 안정성 3항목에 대해 응답을 수집하였다. 품질 관리를 위해 좌우 채널 확인 절차, 재생 기기(헤드폰/이어폰) 신고, 동일 조건 반복 제시를 통한 응답 일관성 확인을 도입하였다<sup class="ref"><a href="#ko-cite-3">[3]</a></sup>.</p>
-    <p>참가자 12명으로부터 총 324건의 응답을 수집하였고, 선형혼합효과모형(LMM)으로 경향을 확인하였다. 파일럿 단계에서는 레벨비가 평가에 강하게 반영되는 경향이 관찰되었다<sup class="ref"><a href="#ko-cite-1">[1]</a></sup>.</p>
+    <p class="mainlink">실험 페이지: <a class="ext" href="https://dlrjtt1.github.io/pilot-experiment/">dlrjtt1.github.io/pilot-experiment</a> · 저장소: <a class="ext" href="https://github.com/dlrjtt1/pilot-experiment">github.com/dlrjtt1/pilot-experiment</a></p>
+    <p>2026년 5월부터 7월까지 설계·구현·실시한 브라우저 기반 온라인 청취실험이다. 콘서트홀을 모의한 조건에서 무대 직접음과 PA 보강음 사이의 시간차(ITDG)와 레벨비가 음상정위 판단에 미치는 영향을 예비적으로 조사하였다<sup class="ref"><a href="#ko-cite-1">[1]</a></sup>. 본 실험에 앞서 평가 인터페이스, 질문 문구, 응답 분포의 적절성을 확인하는 것이 목적이며, 실험 화면은 일본어와 한국어로 제공된다<sup class="ref"><a href="#ko-cite-3">[3]</a></sup>.</p>
+    <h4 id="ko-pilot-stimuli">자극과 조건</h4>
+    <ul>
+     <li><b>조건</b>: ITDG 0 / 20 / 40 ms × 레벨비 −6 / 0 / +6 dB의 9개 조건.</li>
+     <li><b>자극</b>: 공개 BRIR 데이터베이스(잔향이 있는 콘서트홀에서 Neumann KU100 더미 헤드로 측정)<sup class="ref"><a href="#ko-cite-8">[8]</a></sup>의 청취 위치 C8(무대에서 8 m 떨어진 중앙석) BRIR로 합성한 바이노럴 음원. 소리는 무대 중앙(직접음)과 좌우 스피커(PA 보강음) 두 방향에서 동시에 재생된다<sup class="ref"><a href="#ko-cite-3">[3]</a></sup>.</li>
+     <li><b>레퍼런스</b>: 직접음 경로만 재생하는 기준음. 실험 중 언제든 다시 들으며 비교할 수 있다.</li>
+    </ul>
+    <h4 id="ko-pilot-procedure">실험 절차</h4>
+    <ol>
+     <li>언어 선택과 연구 참여 설명·동의</li>
+     <li>사용 기기 기록: 헤드폰·이어폰·기타 중 선택, 모델명(선택)</li>
+     <li>좌우 채널 확인: 왼쪽·오른쪽 테스트음이 각각 맞는 쪽에서 들리는지 확인</li>
+     <li>음량 캘리브레이션: 편안한 음량으로 맞추고 실험 중에는 바꾸지 않도록 안내</li>
+     <li>레퍼런스 음원 확인</li>
+     <li>청취 평가: 3블록 × 9시행. 블록마다 9개 조건을 무작위 순서로 제시하며, 자극은 몇 번이든 다시 재생할 수 있다. 블록 사이에는 60초 휴식(건너뛰기 가능)</li>
+     <li>결과 확인: 전체 응답 표를 복사해 실험자에게 전달</li>
+    </ol>
+    <p>총 소요 시간은 약 20–30분으로 안내하였다<sup class="ref"><a href="#ko-cite-3">[3]</a></sup>.</p>
+    <h4 id="ko-pilot-items">평가 항목</h4>
+    <p>각 자극에 대해 세 항목을 3단계로 응답한다(1–3점)<sup class="ref"><a href="#ko-cite-3">[3]</a></sup>.</p>
+    <div class="tbl-wrap"><table class="wikitable">
+     <thead><tr><th>항목</th><th>질문</th><th>1</th><th>2</th><th>3</th></tr></thead>
+     <tbody>
+      <tr><td>Q1 방향 명료성</td><td>소리의 음상이 연주자(무대 중앙) 방향에 정위되어 있었나요?</td><td>방향을 알 수 없었다</td><td>대략 무대 방향 같았다</td><td>연주자 방향에서 확실히 들렸다</td></tr>
+      <tr><td>Q2 음색 자연성</td><td>레퍼런스 음원과 비교하여 소리의 음색이 자연스러웠나요?</td><td>부자연스러웠다</td><td>약간 부자연스러웠다</td><td>자연스러웠다</td></tr>
+      <tr><td>Q3 음상 안정성</td><td>소리의 음상이 하나의 위치에서 일관되게 들렸나요?</td><td>일관되지 않았다</td><td>조금 흔들렸다</td><td>일관됐다</td></tr>
+     </tbody>
+    </table></div>
+    <h4 id="ko-pilot-qc">품질 관리</h4>
+    <ul>
+     <li>실험 전 좌우 채널 확인과 재생 기기(헤드폰/이어폰, 모델명) 기록.</li>
+     <li>음량은 캘리브레이션 단계에서 한 번 정하고 실험 중에는 고정하도록 안내.</li>
+     <li>같은 조건을 세 블록에 걸쳐 반복 제시하여 응답 일관성을 확인.</li>
+     <li>참여는 자발적이며 언제든 중단할 수 있고, 수집한 데이터는 개인을 식별할 수 없는 익명·집계 형태로만 사용한다고 사전에 안내<sup class="ref"><a href="#ko-cite-3">[3]</a></sup>.</li>
+    </ul>
+    <h4 id="ko-pilot-results">결과</h4>
+    <p>참가자 12명으로부터 총 324건(12명 × 27시행)의 응답을 수집하였고, 선형혼합효과모형(LMM)으로 경향을 확인하였다. 파일럿 단계에서는 레벨비가 평가에 강하게 반영되는 경향이 관찰되었다<sup class="ref"><a href="#ko-cite-1">[1]</a></sup>.</p>
+    <h4 id="ko-pilot-limits">한계</h4>
+    <ul>
+     <li>온라인으로 실시하였기 때문에 참가자의 헤드폰·이어폰 종류와 청취 환경을 완전히 통제할 수 없다<sup class="ref"><a href="#ko-cite-3">[3]</a></sup>.</li>
+     <li>청취 위치 하나(C8)의 더미 헤드 BRIR을 헤드폰으로 재생한 조건이다. 실제 공연장의 PA 환경에서 같은 경향이 나타나는지는 이 실험으로 확인되지 않는다.</li>
+     <li>본 실험 설계를 점검하기 위한 소규모(12명) 파일럿이며, 결과는 예비적인 경향으로만 해석해야 한다.</li>
+    </ul>
 
     <h3 id="ko-pubs">발표·논문</h3>
     <div class="tbl-wrap"><table class="wikitable">
@@ -702,17 +778,9 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
      <li id="ko-cite-5"><a class="up" href="#ko-ap-limits">↑</a><cite>Aspöck, L., Brinkmann, F., Ackermann, D., Weinzierl, S., Vorländer, M. (2020). <i>BRAS – Benchmark for Room Acoustical Simulation</i>, version 3. TU Berlin DepositOnce.</cite> <a class="ext" href="https://doi.org/10.14279/depositonce-6726.3">doi:10.14279/depositonce-6726.3</a></li>
      <li id="ko-cite-6"><a class="up" href="#ko-ap-limits">↑</a><cite>Fratoni, G. (2021). <i>Materials for calibrating four complex virtual environments through acoustic simulations</i>, version 1. Mendeley Data.</cite> <a class="ext" href="https://doi.org/10.17632/y7xnv6xg5s.1">doi:10.17632/y7xnv6xg5s.1</a></li>
      <li id="ko-cite-7"><a class="up" href="#ko-ap-limits">↑</a><cite>dlrjtt1, 「AuralPaths」 모델 설명서 (docs/MODEL_ko.md).</cite> <a class="ext" href="https://github.com/dlrjtt1/AuralPaths/blob/main/docs/MODEL_ko.md">https://github.com/dlrjtt1/AuralPaths/blob/main/docs/MODEL_ko.md</a></li>
+     <li id="ko-cite-8"><a class="up" href="#ko-pilot-stimuli">↑</a><cite>Bacila, B. I., Lee, H. (2019). "360° Binaural Room Impulse Response (BRIR) Database for 6DOF Spatial Perception Research." AES 146th Convention, Dublin, e-Brief 513. Dataset: Zenodo.</cite> <a class="ext" href="https://doi.org/10.5281/zenodo.2641166">doi:10.5281/zenodo.2641166</a></li>
     </ol></div>
 
-    <h2 id="ko-links">외부 링크</h2>
-    <ul>
-     <li><a class="ext" href="https://www.linkedin.com/in/dong-gyun-you/">LinkedIn — dong-gyun-you</a></li>
-     <li><a class="ext" href="https://dlrjtt1.github.io/AuralPaths/">AuralPaths</a> (실내음향 시뮬레이터)</li>
-     <li><a class="ext" href="https://github.com/dlrjtt1/AuralPaths">GitHub — dlrjtt1/AuralPaths</a> (소스 코드)</li>
-     <li><a class="ext" href="https://github.com/dlrjtt1/pilot-experiment">GitHub — dlrjtt1/pilot-experiment</a> (파일럿 청취실험 구현)</li>
-     <li><a class="ext" href="https://www.instagram.com/dlrjtt1_/">Instagram — @dlrjtt1_</a></li>
-     <li>이메일: <a href="mailto:donggyun0920@gmail.com">donggyun0920@gmail.com</a></li>
-    </ul>
    </main>
 
    <div class="navbox">
@@ -797,8 +865,50 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
     </ul>
 
     <h3 id="en-research-pilot">Pilot listening experiment</h3>
-    <p>Between May and July 2026 he designed and implemented a web-based listening experiment using binaural room impulse responses (BRIRs) covering nine combinations of ITDG (0/20/40 ms) and level ratio (−6/0/+6 dB) between direct stage sound and PA-reinforced sound in a concert hall. Stimuli were presented in randomised order, and responses were collected on three items: clarity of image direction, naturalness of timbre, and stability of the auditory image. Quality control included a left/right channel check, self-reported playback device (headphones/earphones), and a consistency check through repeated presentation of identical conditions<sup class="ref"><a href="#en-cite-3">[3]</a></sup>.</p>
-    <p>324 responses were collected from 12 participants and analysed with a linear mixed-effects model. At the pilot stage, the level ratio was observed to have a strong effect on the ratings<sup class="ref"><a href="#en-cite-1">[1]</a></sup>.</p>
+    <p class="mainlink">Experiment page: <a class="ext" href="https://dlrjtt1.github.io/pilot-experiment/">dlrjtt1.github.io/pilot-experiment</a> · Repository: <a class="ext" href="https://github.com/dlrjtt1/pilot-experiment">github.com/dlrjtt1/pilot-experiment</a></p>
+    <p>A browser-based online listening experiment designed, implemented and run between May and July 2026. It made a preliminary investigation of how the time gap (ITDG) and level ratio between direct stage sound and PA-reinforced sound affect localization judgments under simulated concert-hall conditions<sup class="ref"><a href="#en-cite-1">[1]</a></sup>. Its purpose was to check the evaluation interface, the wording of the questions and the distribution of responses before the main experiment; the experiment interface is available in Japanese and Korean<sup class="ref"><a href="#en-cite-3">[3]</a></sup>.</p>
+    <h4 id="en-pilot-stimuli">Stimuli and conditions</h4>
+    <ul>
+     <li><b>Conditions</b>: nine combinations of ITDG 0 / 20 / 40 ms × level ratio −6 / 0 / +6 dB.</li>
+     <li><b>Stimuli</b>: binaural signals rendered with the BRIRs of listening position C8 (centre seat 8 m from the stage) from a public BRIR database (measured with a Neumann KU100 dummy head in a reverberant concert hall)<sup class="ref"><a href="#en-cite-8">[8]</a></sup>. Sound is played simultaneously from two directions: the stage centre (direct sound) and the left and right loudspeakers (PA reinforcement)<sup class="ref"><a href="#en-cite-3">[3]</a></sup>.</li>
+     <li><b>Reference</b>: the direct path only, available for comparison at any time during the experiment.</li>
+    </ul>
+    <h4 id="en-pilot-procedure">Procedure</h4>
+    <ol>
+     <li>Language selection and informed consent</li>
+     <li>Playback device record: headphones, earphones or other, with the model name (optional)</li>
+     <li>Left/right channel check: confirm that the left and right test tones come from the correct side</li>
+     <li>Level calibration: set a comfortable level and keep it unchanged during the experiment</li>
+     <li>Listening to the reference</li>
+     <li>Listening test: 3 blocks × 9 trials, with the nine conditions in random order in each block; stimuli can be replayed any number of times; a 60 s break (skippable) between blocks</li>
+     <li>Results: the full response table is copied and sent to the experimenter</li>
+    </ol>
+    <p>Participants were told the session would take about 20–30 minutes<sup class="ref"><a href="#en-cite-3">[3]</a></sup>.</p>
+    <h4 id="en-pilot-items">Evaluation items</h4>
+    <p>Each stimulus is rated on three items, each on a three-point scale (1–3)<sup class="ref"><a href="#en-cite-3">[3]</a></sup>. The wording below is translated from the Japanese and Korean interface.</p>
+    <div class="tbl-wrap"><table class="wikitable">
+     <thead><tr><th>Item</th><th>Question</th><th>1</th><th>2</th><th>3</th></tr></thead>
+     <tbody>
+      <tr><td>Q1 Clarity of image direction</td><td>Was the sound image localized in the direction of the performer (stage centre)?</td><td>Could not tell the direction</td><td>Roughly towards the stage</td><td>Clearly from the performer's direction</td></tr>
+      <tr><td>Q2 Timbral naturalness</td><td>Compared with the reference, was the timbre natural?</td><td>Unnatural</td><td>Slightly unnatural</td><td>Natural</td></tr>
+      <tr><td>Q3 Image stability</td><td>Was the sound image heard consistently at one position?</td><td>Not consistent</td><td>Wavered a little</td><td>Consistent</td></tr>
+     </tbody>
+    </table></div>
+    <h4 id="en-pilot-qc">Quality control</h4>
+    <ul>
+     <li>Left/right channel check and a record of the playback device (headphones/earphones, model name) before the session.</li>
+     <li>The level is set once in the calibration step and kept fixed during the experiment.</li>
+     <li>Each condition is presented once in each of the three blocks to check response consistency.</li>
+     <li>Participants are told beforehand that participation is voluntary, that they may stop at any time, and that the data are used only in anonymous, aggregated form<sup class="ref"><a href="#en-cite-3">[3]</a></sup>.</li>
+    </ul>
+    <h4 id="en-pilot-results">Results</h4>
+    <p>324 responses (12 participants × 27 trials) were collected and analysed with a linear mixed-effects model. At the pilot stage, the level ratio was observed to have a strong effect on the ratings<sup class="ref"><a href="#en-cite-1">[1]</a></sup>.</p>
+    <h4 id="en-pilot-limits">Limitations</h4>
+    <ul>
+     <li>Because the experiment was run online, participants' headphones or earphones and listening environments could not be fully controlled<sup class="ref"><a href="#en-cite-3">[3]</a></sup>.</li>
+     <li>The condition is headphone playback of dummy-head BRIRs from a single listening position (C8). Whether the same tendencies appear under PA conditions in a real venue was not tested by this experiment.</li>
+     <li>This is a small pilot (12 participants) intended to check the design of the main experiment; its results should be read only as preliminary tendencies.</li>
+    </ul>
 
     <h3 id="en-pubs">Presentations</h3>
     <div class="tbl-wrap"><table class="wikitable">
@@ -916,17 +1026,9 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
      <li id="en-cite-5"><a class="up" href="#en-ap-limits">↑</a><cite>Aspöck, L., Brinkmann, F., Ackermann, D., Weinzierl, S., Vorländer, M. (2020). <i>BRAS – Benchmark for Room Acoustical Simulation</i>, version 3. TU Berlin DepositOnce.</cite> <a class="ext" href="https://doi.org/10.14279/depositonce-6726.3">doi:10.14279/depositonce-6726.3</a></li>
      <li id="en-cite-6"><a class="up" href="#en-ap-limits">↑</a><cite>Fratoni, G. (2021). <i>Materials for calibrating four complex virtual environments through acoustic simulations</i>, version 1. Mendeley Data.</cite> <a class="ext" href="https://doi.org/10.17632/y7xnv6xg5s.1">doi:10.17632/y7xnv6xg5s.1</a></li>
      <li id="en-cite-7"><a class="up" href="#en-ap-limits">↑</a><cite>dlrjtt1, "AuralPaths", model documentation (docs/MODEL_en.md).</cite> <a class="ext" href="https://github.com/dlrjtt1/AuralPaths/blob/main/docs/MODEL_en.md">https://github.com/dlrjtt1/AuralPaths/blob/main/docs/MODEL_en.md</a></li>
+     <li id="en-cite-8"><a class="up" href="#en-pilot-stimuli">↑</a><cite>Bacila, B. I., Lee, H. (2019). "360° Binaural Room Impulse Response (BRIR) Database for 6DOF Spatial Perception Research." AES 146th Convention, Dublin, e-Brief 513. Dataset: Zenodo.</cite> <a class="ext" href="https://doi.org/10.5281/zenodo.2641166">doi:10.5281/zenodo.2641166</a></li>
     </ol></div>
 
-    <h2 id="en-links">External links</h2>
-    <ul>
-     <li><a class="ext" href="https://www.linkedin.com/in/dong-gyun-you/">LinkedIn — dong-gyun-you</a></li>
-     <li><a class="ext" href="https://dlrjtt1.github.io/AuralPaths/">AuralPaths</a> (room-acoustic simulator)</li>
-     <li><a class="ext" href="https://github.com/dlrjtt1/AuralPaths">GitHub — dlrjtt1/AuralPaths</a> (source code)</li>
-     <li><a class="ext" href="https://github.com/dlrjtt1/pilot-experiment">GitHub — dlrjtt1/pilot-experiment</a> (pilot listening experiment)</li>
-     <li><a class="ext" href="https://www.instagram.com/dlrjtt1_/">Instagram — @dlrjtt1_</a></li>
-     <li>E-mail: <a href="mailto:donggyun0920@gmail.com">donggyun0920@gmail.com</a></li>
-    </ul>
    </main>
 
    <div class="navbox">
@@ -973,7 +1075,7 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
 (function(){
   var LANGS = ['ja','ko','en'];
   var DEFAULT = 'ja';
-  var BUILD_DATE = '2026-11-06T17:30:00+09:00';
+  var BUILD_DATE = '2026-11-06T18:00:00+09:00';
   var META = {
     ja: { title: '柳 東均 (Dong-Gyun You) — 音響学研究者',
           desc: '柳東均（Dong-Gyun You）は、東京藝術大学 音楽音響創造科の研究生として、拡声システム・ミキシング・空間オーディオを研究する音響学研究者である。' },
