@@ -211,7 +211,7 @@ table.wikitable caption{font-weight:700;padding:4px 0;text-align:center}
 /* refs */
 .refs{font-size:.88rem}
 .refs ol{margin:.3em 0 .5em 2.4em}
-.refs li{margin:.2em 0}
+.refs li{margin:.2em 0;overflow-wrap:anywhere}
 .refs li:target{background:var(--hl)}
 .refs .up{margin-right:.35em;font-weight:700}
 .refs cite{font-style:normal}
@@ -343,7 +343,7 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
 
     <p><b><ruby>柳<rt>ゆ</rt></ruby> <ruby>東均<rt>どんぎゅん</rt></ruby></b>（유동균、<i>Dong-Gyun You</i>、2000年 - ）は、日本を拠点に活動する大韓民国出身の音響学研究者である。<b>東京藝術大学 音楽音響創造科 研究生</b>として、<b>拡声（PA）システム</b>、<b>ミキシング</b>、<b>空間オーディオ</b>を主な分野として研究に従事しており、2027年4月からは同大学大学院 音楽研究科 音楽音響創造 修士課程に進学する予定である<sup class="ref"><a href="#ja-cite-1">[1]</a></sup>。</p>
     <p>研究上の主な関心は、コンサートホールにおける舞台からの直接音と拡声音との時間差（ITDG）およびレベル比が、聴衆の音像定位判断に及ぼす影響である。ホール環境シミュレーション下で聴取実験を設計・実施し、実験室条件で得られた先行音効果に関する知見が、残響やスピーカー指向性を含む実際の拡声環境にどこまで適用可能かを検証している<sup class="ref"><a href="#ja-cite-1">[1]</a></sup>。</p>
-    <p>個人プロジェクトとして、<b>LABO 1557</b>の名義でミキシングを支援するオーディオプラグインのほか、直接音と拡声音の経路を比較するブラウザベースのバイノーラル室内音響シミュレータ<b><a href="#ja-auralpaths">AuralPaths</a></b>を制作・公開している<sup class="ref"><a href="#ja-cite-2">[2]</a></sup>。研究の予備的成果は韓国音響学会 2026年度 第5回 電気音響・舞台音響学術大会にて発表され、<b>優秀発表賞</b>を受賞した<sup class="ref"><a href="#ja-cite-1">[1]</a></sup>。</p>
+    <p>個人プロジェクトとして、<b>LABO 1557</b>の名義でミキシングを支援するオーディオプラグインのほか、拡声（PA）環境における先行音効果の研究と教育のためのシミュレーションツール<b><a href="#ja-auralpaths">AuralPaths</a></b>を制作・公開している<sup class="ref"><a href="#ja-cite-2">[2]</a></sup>。研究の予備的成果は韓国音響学会 2026年度 第5回 電気音響・舞台音響学術大会にて発表され、<b>優秀発表賞</b>を受賞した<sup class="ref"><a href="#ja-cite-1">[1]</a></sup>。</p>
 
     <h2 id="ja-life">生涯</h2>
     <h3 id="ja-life-edu">学業</h3>
@@ -396,19 +396,32 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
 
     <h3 id="ja-auralpaths">AuralPaths</h3>
     <p class="mainlink">シミュレータ: <a class="ext" href="https://dlrjtt1.github.io/AuralPaths/">dlrjtt1.github.io/AuralPaths</a> ・ リポジトリ: <a class="ext" href="https://github.com/dlrjtt1/AuralPaths">github.com/dlrjtt1/AuralPaths</a></p>
-    <p><b>AuralPaths</b>は、舞台からの直接音と拡声スピーカー（PA）の経路を比較するための、ブラウザベースのバイノーラル室内音響シミュレータである。平面図と断面図からホールを作図し、舞台音源とPAスピーカー1対を配置すると、客席位置ごとに両経路間の到達時間差（ITDG）とレベル比がどのように変化するかを聴取・測定できる。処理はすべてブラウザ内で行われ、読み込んだ図面や音声ファイルは利用者のコンピュータの外に送信されない<sup class="ref"><a href="#ja-cite-2">[2]</a></sup>。</p>
+    <p><b>AuralPaths</b>は、拡声（PA）環境における先行音効果の研究と教育のためのシミュレーションツールである。ホール・スピーカー・座席の配置と遅延・レベル条件を変えながらバイノーラル応答を計算し、試聴し、実験刺激として書き出せる。舞台音源とPAスピーカー1対を配置すると、客席位置ごとに両経路間の到達時間差（ITDG）とレベル比がどのように変化するかを確認できる。処理はすべてブラウザ内で行われ、読み込んだ図面や音声ファイルは利用者のコンピュータの外に送信されない。起動時には日本語・韓国語・英語の簡単な使い方ガイドが表示される<sup class="ref"><a href="#ja-cite-2">[2]</a></sup>。</p>
     <h4 id="ja-ap-features">機能</h4>
     <ul>
-     <li><b>ホール</b>：直方体（シューボックス）、または利用者自身のPDF／画像図面をトレースした2.5次元ホール（平面形状 × 床・天井断面）。既知の寸法による縮尺設定と、PDFの線へのスナップに対応する。</li>
-     <li><b>音響モデル</b>：初期部分に鏡像法、拡散部分に音線追跡法、一次エッジ回折（UTD）を用いる。Neumann KU100のHRIRによるバイノーラル再生を行い、後期残響は音線追跡で得た到来方向の両耳エネルギーおよび両耳間コヒーレンスに基づいて生成する。</li>
-     <li><b>出力</b>：エコーグラム、方向別の到来音、C80 / D50 / Ts / EDT / T30 / IACC、実効ITDGおよびレベル比の客席分布図、利用者自身のドライ録音を用いたA/B聴取（Sennheiser HD600用ヘッドホン補正は任意）。</li>
+     <li><b>ホール</b>：直方体（シューボックス）、利用者自身のPDF／画像図面をトレースした2.5次元の作図ホール（平面形状 × 床・天井断面。既知の寸法による縮尺設定とPDFの線へのスナップに対応）、またはSketchUp・Blenderなどから書き出した3Dモデル（Wavefront OBJ）。3Dモデルでは面グループ（名前）ごとに材料を割り当て、2次までの鏡像法と音線追跡法で計算する。</li>
+     <li><b>音響モデル</b>：初期部分に鏡像法、拡散部分に音線追跡法を用いる。一次エッジ回折（UTD）は作図（2.5次元）ホールにのみ適用される。Neumann KU100のHRIRによるバイノーラル再生を行い、後期残響は音線追跡で得た到来方向の両耳エネルギーおよび両耳間コヒーレンスに基づいて生成する。</li>
+     <li><b>出力</b>：エコーグラム、方向別の到来音、C80 / D50 / Ts / EDT / T30 / IACC、実効ITDGおよびレベル比の客席分布図、利用者自身のドライ録音を用いた試聴（Sennheiser HD600用ヘッドホン補正は任意）。同じ座席で2つの条件（ITDG・レベル比）を切り替えて聴くA/B比較（ブラインドオプション付き）。BRIRの書き出し：全座席 × 音源をまとめたSOFA（AES69, SingleRoomSRIR）ファイル、および表示中の座席・条件の32-bit floatステレオWAV。</li>
+     <li><b>研究用機能</b>：
+      <ul>
+       <li>実測T30のCSVから吸音率を補正するページ内のCalibrate機能。<code>role=check</code>を指定した位置は補正に使わず、検証にのみ用いる。</li>
+       <li>信頼度の表示：モデルの種類・材料の状態・音線数とともに、そのモデルの種類に該当する実測照合の結果を表示する。また、音線のシードを変えて再計算するRay-tracing spreadにより、C80・D50・Ts・EDT・T30のばらつきをJND単位で示す。</li>
+       <li>再現性の記録：保存したconfigと書き出したSOFAファイルに、ページのバージョン、エンジンおよび3DモデルのSHA-256、計算設定（音線数、鏡像法の次数、回折、シード）を記録する。</li>
+       <li>利用者のHRIRセット（SOFA）の読み込み（既定はKU100）。</li>
+       <li>複数のワーカーによる音線追跡の並列計算。</li>
+      </ul>
+     </li>
      <li><b>研究用Pythonツール</b>：同一モデルによるBRIRセット生成（<code>run.py</code>）、聴取実験用刺激の生成（<code>make_stimuli.py</code>）、実測T30への吸音率の当てはめ（<code>calibrate.py</code>）、BRASを用いた回折の検証（<code>validate_bras.py</code>）。</li>
     </ul>
     <h4 id="ja-ap-limits">精度と限界</h4>
-    <p>AuralPathsは実在のホールを再現することを主張するものではない。室内音響シミュレーションツールの結果は実測と無視できない差を示すことが報告されており<sup class="ref"><a href="#ja-cite-4">[4]</a></sup>、実在の空間について結論を導く前に、実測T30による吸音率の校正と実測値との照合が求められる。幾何形状は2.5次元（幅方向に断面が一様）であり、回折は一次のみ、座席ディップ効果は扱わず、散乱はランダム（ランベルト）モデル、HRIRは最近傍方向、HRTFは非個人化（ダミーヘッド）である<sup class="ref"><a href="#ja-cite-2">[2]</a></sup>。</p>
-    <p>回折の検証として、BRASのシーンRS5（硬い床面上の高さ2.07 mの衝立、16受音点）と比較した結果、500 Hz–2 kHzの1/3オクターブ帯域における平均絶対差は1.8 dB（陰領域の11点では2.2 dB）であった。ただしこれは単純な1シーンに対する結果であり、ホール全体の精度を示すものではない<sup class="ref"><a href="#ja-cite-2">[2]</a></sup><sup class="ref"><a href="#ja-cite-5">[5]</a></sup>。スピーカー指向性ファイルは近似値である。</p>
+    <p>AuralPathsは実在のホールを再現することを主張するものではない。複数の室内音響シミュレーションツールを比較したラウンドロビン研究でも、シミュレーション結果は実測と無視できない差を示し、オーラリゼーションは「おおむね妥当（plausible）だが本物（authentic）ではない」と報告されている<sup class="ref"><a href="#ja-cite-4">[4]</a></sup>。</p>
+    <p>実測ホールとの照合として、Fratoniデータセットの段床式講義室（ULH）にデータセット収録の境界条件をそのまま与えて計算した結果、500 Hz–4 kHzにおいてEDT・T30・C50・Tsが実測と約±1 JND以内であった（125–250 HzではT30が1–2 JND短い）。同データセットの楕円形ドーム天井のホール（STC）ではT30が約15 %長く、拡散的でない音場では独自の補正が必要である。この照合は受音点平均値のみを扱うため、初期到来音やPA経路は検証していない<sup class="ref"><a href="#ja-cite-6">[6]</a></sup><sup class="ref"><a href="#ja-cite-7">[7]</a></sup>。</p>
+    <p>BRASの実在ホール2件（室内楽ホールCR3、大学講堂CR4。各ホールで位置別のRIR 10本）と位置ごとに照合した結果、BRASの材料値をそのまま入力するとT30は8–11 %長くなった（500 Hz–2 kHzの帯域平均）。一方の音源位置で補正した後、補正に用いなかった位置では、両ホールともT30の差は平均0.8 JNDであった。補正前のC80・C50・Tsの差は、CR3で約0.8–1.0 JND、CR4で1.6–2.3 JNDであった<sup class="ref"><a href="#ja-cite-5">[5]</a></sup><sup class="ref"><a href="#ja-cite-7">[7]</a></sup>。</p>
+    <p>一次反射は、CR3では時刻とレベルが実測と一致した（レベル差の中央値+1.6 dB）。CR4では予測時刻の1 ms窓で見るとレベルが過大（中央値+4.9 dB）であるが、予測時刻前後（−1.5 … +2.5 ms）の窓のエネルギーで見ると+0.2 dBで一致し、実際の到来が時間的に広がるか、わずかにずれていると解釈される。また、バルコニーを持つホールを2.5次元に単純化した作図ホールでは、個々の初期反射は再現されなかった。したがって、反射一つひとつの時刻とレベル、およびそれに基づく座席ごとのITDGは、形状の単純化の程度に応じてホールごとに実測との照合が必要である<sup class="ref"><a href="#ja-cite-7">[7]</a></sup>。結果は、実測T30で補正し、初期反射を実測と照合したうえで用いるべきである。</p>
+    <p>回折の検証として、BRASのシーンRS5（硬い床面上の高さ2.07 mの衝立、16受音点）と比較した結果、500 Hz–2 kHzの1/3オクターブ帯域における平均絶対差は1.8 dB（陰領域の11点では2.2 dB）であった。ただしこれは単純な1シーンに対する結果であり、ホール全体の精度を示すものではない<sup class="ref"><a href="#ja-cite-2">[2]</a></sup><sup class="ref"><a href="#ja-cite-5">[5]</a></sup>。</p>
+    <p>このほか、座席ディップ効果は扱わず、回折は作図ホールの一次のみで、3Dモデルにはエッジ回折がない。散乱はランダム（ランベルト）モデル、HRIRは最近傍方向であり、既定のHRTFは非個人化（ダミーヘッド）である（利用者のHRIRセットを読み込むことはできる）。スピーカー指向性ファイルは近似値である<sup class="ref"><a href="#ja-cite-2">[2]</a></sup>。</p>
     <h4 id="ja-ap-license">ライセンス</h4>
-    <p>ソースコードはMITライセンスで公開されている。第三者データはそれぞれのライセンスに従う（KU100 HRIRおよびヘッドホン補正フィルタ：CC BY 3.0、BRAS由来の検証結果：CC BY-SA 4.0）<sup class="ref"><a href="#ja-cite-2">[2]</a></sup>。</p>
+    <p>ソースコードはMITライセンスで公開されている。第三者データはそれぞれのライセンスに従う（KU100 HRIRおよびヘッドホン補正フィルタ：CC BY 3.0、BRAS由来の検証結果：CC BY-SA 4.0、Fratoniデータセット由来の検証結果および変換ホール：CC BY 4.0）<sup class="ref"><a href="#ja-cite-2">[2]</a></sup>。</p>
 
     <h2 id="ja-awards">受賞歴</h2>
     <div class="tbl-wrap"><table class="wikitable">
@@ -472,6 +485,8 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
      <li id="ja-cite-3"><a class="up" href="#ja-research-pilot">↑</a><cite>dlrjtt1「pilot-experiment」GitHubリポジトリ.</cite> <a class="ext" href="https://github.com/dlrjtt1/pilot-experiment">https://github.com/dlrjtt1/pilot-experiment</a></li>
      <li id="ja-cite-4"><a class="up" href="#ja-ap-limits">↑</a><cite>Brinkmann, F. et al. (2019). "A round robin on room acoustical simulation and auralization." <i>The Journal of the Acoustical Society of America</i>.</cite> <a class="ext" href="https://doi.org/10.1121/1.5096178">doi:10.1121/1.5096178</a></li>
      <li id="ja-cite-5"><a class="up" href="#ja-ap-limits">↑</a><cite>Aspöck, L., Brinkmann, F., Ackermann, D., Weinzierl, S., Vorländer, M. (2020). <i>BRAS – Benchmark for Room Acoustical Simulation</i>, version 3. TU Berlin DepositOnce.</cite> <a class="ext" href="https://doi.org/10.14279/depositonce-6726.3">doi:10.14279/depositonce-6726.3</a></li>
+     <li id="ja-cite-6"><a class="up" href="#ja-ap-limits">↑</a><cite>Fratoni, G. (2021). <i>Materials for calibrating four complex virtual environments through acoustic simulations</i>, version 1. Mendeley Data.</cite> <a class="ext" href="https://doi.org/10.17632/y7xnv6xg5s.1">doi:10.17632/y7xnv6xg5s.1</a></li>
+     <li id="ja-cite-7"><a class="up" href="#ja-ap-limits">↑</a><cite>dlrjtt1「AuralPaths」モデル説明書（docs/MODEL_ja.md）.</cite> <a class="ext" href="https://github.com/dlrjtt1/AuralPaths/blob/main/docs/MODEL_ja.md">https://github.com/dlrjtt1/AuralPaths/blob/main/docs/MODEL_ja.md</a></li>
     </ol></div>
 
     <h2 id="ja-links">外部リンク</h2>
@@ -543,7 +558,7 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
 
     <p><b>유동균</b>(柳 東均, <i>Dong-Gyun You</i>, 2000년 ~ )은 일본을 거점으로 활동하는 대한민국의 음향학 연구자이다. <b>도쿄예술대학 음악음향창조과 연구생</b>으로서 <b>확성(PA) 시스템</b>, <b>믹싱</b>, <b>공간 오디오</b>를 주요 분야로 연구하고 있으며, 2027년 4월부터 같은 대학 대학원 음악연구과 음악음향창조 석사과정에 진학할 예정이다<sup class="ref"><a href="#ko-cite-1">[1]</a></sup>.</p>
     <p>주요 관심사는 콘서트홀에서 무대로부터의 직접음과 확성음 사이의 시간차(ITDG) 및 레벨비가 청중의 음상정위 판단에 미치는 영향이다. 홀 환경 시뮬레이션 하에서 청취실험을 설계·수행하며, 실험실 조건에서 얻어진 선행음 효과(precedence effect)에 관한 지식이 잔향과 스피커 지향성을 포함한 실제 확성 환경에 어디까지 적용 가능한지를 검증하고 있다<sup class="ref"><a href="#ko-cite-1">[1]</a></sup>.</p>
-    <p>개인 프로젝트로 <b>LABO 1557</b>이라는 이름 아래 믹싱을 돕는 오디오 플러그인을 만들고 있으며, 직접음과 확성음의 경로를 비교하는 브라우저 기반 바이노럴 실내음향 시뮬레이터 <b><a href="#ko-auralpaths">AuralPaths</a></b>를 제작·공개하였다<sup class="ref"><a href="#ko-cite-2">[2]</a></sup>. 연구의 예비 성과는 한국음향학회 2026년도 제5회 전기음향·무대음향 학술대회에서 발표되어 <b>우수발표상</b>을 수상하였다<sup class="ref"><a href="#ko-cite-1">[1]</a></sup>.</p>
+    <p>개인 프로젝트로 <b>LABO 1557</b>이라는 이름 아래 믹싱을 돕는 오디오 플러그인을 만들고 있으며, PA 환경에서의 선행음 효과를 연구하고 가르치기 위한 시뮬레이션 도구 <b><a href="#ko-auralpaths">AuralPaths</a></b>를 제작·공개하였다<sup class="ref"><a href="#ko-cite-2">[2]</a></sup>. 연구의 예비 성과는 한국음향학회 2026년도 제5회 전기음향·무대음향 학술대회에서 발표되어 <b>우수발표상</b>을 수상하였다<sup class="ref"><a href="#ko-cite-1">[1]</a></sup>.</p>
 
     <h2 id="ko-life">생애</h2>
     <h3 id="ko-life-edu">학업</h3>
@@ -596,19 +611,32 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
 
     <h3 id="ko-auralpaths">AuralPaths</h3>
     <p class="mainlink">시뮬레이터: <a class="ext" href="https://dlrjtt1.github.io/AuralPaths/">dlrjtt1.github.io/AuralPaths</a> · 저장소: <a class="ext" href="https://github.com/dlrjtt1/AuralPaths">github.com/dlrjtt1/AuralPaths</a></p>
-    <p><b>AuralPaths</b>는 무대 직접음과 확성 스피커(PA) 경로를 비교하기 위한 브라우저 기반 바이노럴 실내음향 시뮬레이터이다. 평면도와 단면도로 홀을 그리고 무대 음원과 PA 스피커 한 쌍을 배치하면, 객석 위치에 따라 두 경로 사이의 도달 시간차(ITDG)와 레벨비가 어떻게 달라지는지 듣고 측정할 수 있다. 모든 처리는 브라우저 안에서 이루어지며, 불러온 도면과 음원 파일은 사용자의 컴퓨터 밖으로 전송되지 않는다<sup class="ref"><a href="#ko-cite-2">[2]</a></sup>.</p>
+    <p><b>AuralPaths</b>는 PA 환경에서의 선행음 효과를 연구하고 가르치기 위한 시뮬레이션 도구이다. 홀·스피커·좌석 배치와 딜레이·레벨 조건을 바꿔 가며 바이노럴 응답을 계산하고, 들어 보고, 실험 자극으로 내보낼 수 있다. 무대 음원과 PA 스피커 한 쌍을 배치하면 객석 위치에 따라 두 경로 사이의 도달 시간차(ITDG)와 레벨비가 어떻게 달라지는지 확인할 수 있다. 모든 처리는 브라우저 안에서 이루어지며, 불러온 도면과 음원 파일은 사용자의 컴퓨터 밖으로 전송되지 않는다. 첫 화면에는 한국어·일본어·영어 간단 사용 안내가 표시된다<sup class="ref"><a href="#ko-cite-2">[2]</a></sup>.</p>
     <h4 id="ko-ap-features">기능</h4>
     <ul>
-     <li><b>홀</b>: 직육면체(슈박스) 또는 사용자 자신의 PDF·이미지 도면을 따라 그린 2.5차원 홀(평면 윤곽 × 바닥·천장 단면). 알고 있는 치수로 축척을 맞추고 PDF의 선에 스냅할 수 있다.</li>
-     <li><b>음향 모델</b>: 초기 부분은 허상법(image source), 확산 부분은 음선 추적(ray tracing), 여기에 1차 모서리 회절(UTD)을 더한다. Neumann KU100 HRIR로 바이노럴 렌더링을 하며, 후기 잔향은 음선 추적으로 얻은 도래 방향의 양이 에너지와 양이간 코히어런스를 반영해 생성한다.</li>
-     <li><b>출력</b>: 에코그램, 방향별 도래음, C80 / D50 / Ts / EDT / T30 / IACC, 유효 ITDG 및 레벨비의 객석 분포도, 사용자의 드라이 녹음을 이용한 A/B 청취(Sennheiser HD600용 헤드폰 보정은 선택).</li>
+     <li><b>홀</b>: 직육면체(슈박스), 사용자 자신의 PDF·이미지 도면을 따라 그린 2.5차원 작도 홀(평면 윤곽 × 바닥·천장 단면. 알고 있는 치수로 축척을 맞추고 PDF의 선에 스냅할 수 있다), 또는 SketchUp·Blender 등에서 내보낸 3D 모델(Wavefront OBJ). 3D 모델은 면 그룹(이름)별로 재료를 지정하며, 2차까지의 허상법과 음선 추적으로 계산한다.</li>
+     <li><b>음향 모델</b>: 초기 부분은 허상법(image source), 확산 부분은 음선 추적(ray tracing)으로 계산한다. 1차 모서리 회절(UTD)은 작도(2.5차원) 홀에만 적용된다. Neumann KU100 HRIR로 바이노럴 렌더링을 하며, 후기 잔향은 음선 추적으로 얻은 도래 방향의 양이 에너지와 양이간 코히어런스를 반영해 생성한다.</li>
+     <li><b>출력</b>: 에코그램, 방향별 도래음, C80 / D50 / Ts / EDT / T30 / IACC, 유효 ITDG 및 레벨비의 객석 분포도, 사용자의 드라이 녹음을 이용한 청취(Sennheiser HD600용 헤드폰 보정은 선택). 같은 좌석에서 두 조건(ITDG·레벨비)을 바꿔 듣는 A/B 비교(블라인드 옵션 포함). BRIR 내보내기: 전 좌석 × 음원을 담은 SOFA(AES69, SingleRoomSRIR) 파일과, 표시 중인 좌석·조건의 32-bit float 스테레오 WAV.</li>
+     <li><b>연구용 기능</b>:
+      <ul>
+       <li>실측 T30 CSV로 흡음률을 보정하는 페이지 안 Calibrate 기능. <code>role=check</code>로 지정한 위치는 보정에 쓰지 않고 검증에만 사용한다.</li>
+       <li>신뢰도 표시: 모델 종류·재료 상태·광선 수와 함께 해당 모델 종류에 적용되는 실측 대조 결과를 보여 준다. 또한 광선 시드를 바꿔 다시 계산하는 Ray-tracing spread로 C80·D50·Ts·EDT·T30의 흩어짐을 JND 단위로 표시한다.</li>
+       <li>재현성 기록: 저장한 config와 내보낸 SOFA 파일에 페이지 버전, 엔진 및 3D 모델의 SHA-256, 계산 설정(광선 수, 허상법 차수, 회절, 시드)을 기록한다.</li>
+       <li>사용자 HRIR 세트(SOFA) 불러오기(기본은 KU100).</li>
+       <li>여러 워커를 이용한 음선 추적 병렬 계산.</li>
+      </ul>
+     </li>
      <li><b>연구용 Python 도구</b>: 같은 모델로 BRIR 세트 생성(<code>run.py</code>), 청취실험 자극 생성(<code>make_stimuli.py</code>), 실측 T30에 맞춘 흡음률 보정(<code>calibrate.py</code>), BRAS를 이용한 회절 검증(<code>validate_bras.py</code>).</li>
     </ul>
     <h4 id="ko-ap-limits">정확도와 한계</h4>
-    <p>AuralPaths는 실제 홀을 재현한다고 주장하지 않는다. 실내음향 시뮬레이션 도구들의 결과는 실측과 눈에 띄는 차이를 보인다고 보고되어 있으며<sup class="ref"><a href="#ko-cite-4">[4]</a></sup>, 실제 공간에 대한 결론을 내리기 전에 실측 T30으로 흡음률을 보정하고 측정값과 대조해야 한다. 형상은 2.5차원(폭 방향으로 단면이 동일)이고, 회절은 1차까지만 다루며, 객석 딥(seat-dip) 효과는 포함하지 않는다. 산란은 랜덤(램버트) 모델, HRIR은 최근접 방향, HRTF는 비개인화(더미 헤드) 데이터이다<sup class="ref"><a href="#ko-cite-2">[2]</a></sup>.</p>
-    <p>회절 검증으로 BRAS의 RS5 장면(단단한 바닥 위 높이 2.07 m 칸막이, 수음점 16곳)과 비교한 결과, 500 Hz–2 kHz 1/3옥타브 대역에서 평균 절대 차이는 1.8 dB(음영 영역 11곳에서는 2.2 dB)였다. 다만 이는 단순한 한 장면에 대한 결과일 뿐 홀 전체의 정확도를 뜻하지는 않는다<sup class="ref"><a href="#ko-cite-2">[2]</a></sup><sup class="ref"><a href="#ko-cite-5">[5]</a></sup>. 스피커 지향성 파일은 근삿값이다.</p>
+    <p>AuralPaths는 실제 홀을 재현한다고 주장하지 않는다. 여러 실내음향 시뮬레이션 도구를 비교한 라운드 로빈 연구에서도 시뮬레이션 결과는 실측과 눈에 띄는 차이를 보였으며, 가청화는 "대부분 그럴듯하지만(plausible) 실제와 같지는(authentic) 않다"고 보고되었다<sup class="ref"><a href="#ko-cite-4">[4]</a></sup>.</p>
+    <p>실측 홀과의 대조로, Fratoni 데이터셋의 계단식 강의실(ULH)에 데이터셋에 수록된 경계 조건을 그대로 넣어 계산한 결과 500 Hz–4 kHz에서 EDT·T30·C50·Ts가 실측과 약 ±1 JND 이내였다(125–250 Hz에서는 T30이 1–2 JND 짧음). 같은 데이터셋의 타원형 돔 천장 홀(STC)에서는 T30이 약 15 % 길게 나와, 확산되지 않은 음장에서는 자체 보정이 필요하다. 이 대조는 수음점 평균값만 다루므로 초기 도래음이나 PA 경로는 검증하지 않는다<sup class="ref"><a href="#ko-cite-6">[6]</a></sup><sup class="ref"><a href="#ko-cite-7">[7]</a></sup>.</p>
+    <p>BRAS의 실제 홀 2곳(실내악 홀 CR3, 대학 강당 CR4. 홀마다 위치별 RIR 10개)과 위치별로 대조한 결과, BRAS의 재료값을 그대로 넣으면 T30이 8–11 % 길게 나왔다(500 Hz–2 kHz 대역 평균). 한 음원 위치로 보정한 뒤 보정에 쓰지 않은 위치에서는 두 홀 모두 T30 차이가 평균 0.8 JND였다. 보정 전 C80·C50·Ts의 차이는 CR3에서 약 0.8–1.0 JND, CR4에서 1.6–2.3 JND였다<sup class="ref"><a href="#ko-cite-5">[5]</a></sup><sup class="ref"><a href="#ko-cite-7">[7]</a></sup>.</p>
+    <p>1차 반사는 CR3에서 시각과 레벨이 실측과 맞았다(레벨 차 중앙값 +1.6 dB). CR4에서는 예측 시각의 1 ms 창으로 보면 레벨이 과대(중앙값 +4.9 dB)했지만, 예측 시각 전후(−1.5 … +2.5 ms) 창의 에너지로 보면 +0.2 dB로 맞아, 실제 도착이 시간적으로 퍼지거나 조금 어긋난 것으로 해석된다. 또한 발코니가 있는 홀을 2.5차원으로 단순화한 작도 홀에서는 개별 초기 반사가 재현되지 않았다. 따라서 반사 하나하나의 시각과 레벨, 그리고 이에 따른 좌석별 ITDG는 형상 단순화 정도에 따라 홀마다 실측과 대조해야 한다<sup class="ref"><a href="#ko-cite-7">[7]</a></sup>. 결과는 실측 T30으로 보정하고 초기 반사를 실측과 대조한 뒤에 사용해야 한다.</p>
+    <p>회절 검증으로 BRAS의 RS5 장면(단단한 바닥 위 높이 2.07 m 칸막이, 수음점 16곳)과 비교한 결과, 500 Hz–2 kHz 1/3옥타브 대역에서 평균 절대 차이는 1.8 dB(음영 영역 11곳에서는 2.2 dB)였다. 다만 이는 단순한 한 장면에 대한 결과일 뿐 홀 전체의 정확도를 뜻하지는 않는다<sup class="ref"><a href="#ko-cite-2">[2]</a></sup><sup class="ref"><a href="#ko-cite-5">[5]</a></sup>.</p>
+    <p>이 밖에 객석 딥(seat-dip) 효과는 포함하지 않으며, 회절은 작도 홀의 1차까지만 다루고 3D 모델에는 모서리 회절이 없다. 산란은 랜덤(램버트) 모델, HRIR은 최근접 방향이며, 기본 HRTF는 비개인화(더미 헤드) 데이터이다(사용자 HRIR 세트를 불러올 수 있다). 스피커 지향성 파일은 근삿값이다<sup class="ref"><a href="#ko-cite-2">[2]</a></sup>.</p>
     <h4 id="ko-ap-license">라이선스</h4>
-    <p>소스 코드는 MIT 라이선스로 공개되어 있다. 제3자 데이터는 각자의 라이선스를 따른다(KU100 HRIR 및 헤드폰 보정 필터: CC BY 3.0, BRAS에서 파생된 검증 결과: CC BY-SA 4.0)<sup class="ref"><a href="#ko-cite-2">[2]</a></sup>.</p>
+    <p>소스 코드는 MIT 라이선스로 공개되어 있다. 제3자 데이터는 각자의 라이선스를 따른다(KU100 HRIR 및 헤드폰 보정 필터: CC BY 3.0, BRAS에서 파생된 검증 결과: CC BY-SA 4.0, Fratoni 데이터셋에서 파생된 검증 결과와 변환 홀: CC BY 4.0)<sup class="ref"><a href="#ko-cite-2">[2]</a></sup>.</p>
 
     <h2 id="ko-awards">수상</h2>
     <div class="tbl-wrap"><table class="wikitable">
@@ -672,6 +700,8 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
      <li id="ko-cite-3"><a class="up" href="#ko-research-pilot">↑</a><cite>dlrjtt1, 「pilot-experiment」 GitHub 저장소.</cite> <a class="ext" href="https://github.com/dlrjtt1/pilot-experiment">https://github.com/dlrjtt1/pilot-experiment</a></li>
      <li id="ko-cite-4"><a class="up" href="#ko-ap-limits">↑</a><cite>Brinkmann, F. et al. (2019). "A round robin on room acoustical simulation and auralization." <i>The Journal of the Acoustical Society of America</i>.</cite> <a class="ext" href="https://doi.org/10.1121/1.5096178">doi:10.1121/1.5096178</a></li>
      <li id="ko-cite-5"><a class="up" href="#ko-ap-limits">↑</a><cite>Aspöck, L., Brinkmann, F., Ackermann, D., Weinzierl, S., Vorländer, M. (2020). <i>BRAS – Benchmark for Room Acoustical Simulation</i>, version 3. TU Berlin DepositOnce.</cite> <a class="ext" href="https://doi.org/10.14279/depositonce-6726.3">doi:10.14279/depositonce-6726.3</a></li>
+     <li id="ko-cite-6"><a class="up" href="#ko-ap-limits">↑</a><cite>Fratoni, G. (2021). <i>Materials for calibrating four complex virtual environments through acoustic simulations</i>, version 1. Mendeley Data.</cite> <a class="ext" href="https://doi.org/10.17632/y7xnv6xg5s.1">doi:10.17632/y7xnv6xg5s.1</a></li>
+     <li id="ko-cite-7"><a class="up" href="#ko-ap-limits">↑</a><cite>dlrjtt1, 「AuralPaths」 모델 설명서 (docs/MODEL_ko.md).</cite> <a class="ext" href="https://github.com/dlrjtt1/AuralPaths/blob/main/docs/MODEL_ko.md">https://github.com/dlrjtt1/AuralPaths/blob/main/docs/MODEL_ko.md</a></li>
     </ol></div>
 
     <h2 id="ko-links">외부 링크</h2>
@@ -742,7 +772,7 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
 
     <p><b>Dong-Gyun You</b> (Korean: 유동균; Japanese: 柳 東均; born 2000) is a Korean acoustics researcher based in Japan. He is a <b>Research Student in the Department of Musical Creativity and the Environment, Tokyo University of the Arts</b>, working mainly on <b>sound reinforcement (PA) systems</b>, <b>mixing</b> and <b>spatial audio</b>, and is scheduled to enter the master's programme in Musical Creativity and the Environment at the university's Graduate School of Music in April 2027<sup class="ref"><a href="#en-cite-1">[1]</a></sup>.</p>
     <p>His primary research interest is the effect of the time gap (ITDG) and level ratio between direct stage sound and reinforced sound on listeners' localization judgments in concert halls. He designs and conducts listening experiments under simulated hall conditions, testing how far laboratory findings on the precedence effect extend to realistic reinforcement environments involving reverberation and loudspeaker directivity<sup class="ref"><a href="#en-cite-1">[1]</a></sup>.</p>
-    <p>As personal projects under the name <b>LABO 1557</b>, he builds audio plug-ins that help with mixing and has released <b><a href="#en-auralpaths">AuralPaths</a></b>, a browser-based binaural room simulator for comparing direct and loudspeaker paths<sup class="ref"><a href="#en-cite-2">[2]</a></sup>. Preliminary results of his research were presented at the Acoustical Society of Korea (ASK) 2026 5th Conference on Electroacoustics and Stage Acoustics, where the work received the <b>Best Presentation Award</b><sup class="ref"><a href="#en-cite-1">[1]</a></sup>.</p>
+    <p>As personal projects under the name <b>LABO 1557</b>, he builds audio plug-ins that help with mixing and has released <b><a href="#en-auralpaths">AuralPaths</a></b>, a research and teaching tool for the precedence effect in sound reinforcement<sup class="ref"><a href="#en-cite-2">[2]</a></sup>. Preliminary results of his research were presented at the Acoustical Society of Korea (ASK) 2026 5th Conference on Electroacoustics and Stage Acoustics, where the work received the <b>Best Presentation Award</b><sup class="ref"><a href="#en-cite-1">[1]</a></sup>.</p>
 
     <h2 id="en-life">Life</h2>
     <h3 id="en-life-edu">Education</h3>
@@ -795,19 +825,32 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
 
     <h3 id="en-auralpaths">AuralPaths</h3>
     <p class="mainlink">Simulator: <a class="ext" href="https://dlrjtt1.github.io/AuralPaths/">dlrjtt1.github.io/AuralPaths</a> · Repository: <a class="ext" href="https://github.com/dlrjtt1/AuralPaths">github.com/dlrjtt1/AuralPaths</a></p>
-    <p><b>AuralPaths</b> is a browser-based binaural room simulator for comparing direct and loudspeaker (PA) paths. The user draws a hall from its plan and section, places a stage source and a pair of PA loudspeakers, and can then hear and measure how the arrival-time gap (ITDG) and the level ratio between the paths change from seat to seat. Everything runs in the browser; drawings and audio files loaded by the user stay on their computer<sup class="ref"><a href="#en-cite-2">[2]</a></sup>.</p>
+    <p><b>AuralPaths</b> is a research and teaching tool for the precedence effect in sound reinforcement: vary hall, loudspeaker and seat positions, delay and level, then compute, listen to and export binaural room responses. With a stage source and a pair of PA loudspeakers in place, the user can see how the arrival-time gap (ITDG) and the level ratio between the paths change from seat to seat. Everything runs in the browser; drawings and audio files loaded by the user stay on their computer. A short quick guide in Korean, Japanese and English opens on the first screen<sup class="ref"><a href="#en-cite-2">[2]</a></sup>.</p>
     <h4 id="en-ap-features">Features</h4>
     <ul>
-     <li><b>Hall</b>: a shoebox, or a 2.5D hall (plan outline × floor and ceiling profile) traced over the user's own PDF or image drawings, with scale from a known dimension and snapping to the PDF's lines.</li>
-     <li><b>Acoustics</b>: image sources for the early part, ray tracing for the diffuse part, and first-order edge diffraction (UTD); binaural rendering with Neumann KU100 HRIRs; late reverberation built from the ear energies and interaural coherence of the ray-traced arrival directions.</li>
-     <li><b>Output</b>: echogram, arrivals by direction, C80 / D50 / Ts / EDT / T30 / IACC, seat maps of effective ITDG and level ratio, and A/B listening with the user's own dry recordings (optional headphone EQ for Sennheiser HD600).</li>
+     <li><b>Hall</b>: a shoebox; a 2.5D drawn hall (plan outline × floor and ceiling profile) traced over the user's own PDF or image drawings, with scale from a known dimension and snapping to the PDF's lines; or a 3D model (Wavefront OBJ, e.g. exported from SketchUp or Blender). In a 3D model each surface group (name) is assigned a material, and the hall is computed with image sources up to second order plus ray tracing.</li>
+     <li><b>Acoustics</b>: image sources for the early part and ray tracing for the diffuse part; first-order edge diffraction (UTD) applies to drawn (2.5D) halls only. Binaural rendering with Neumann KU100 HRIRs; late reverberation built from the ear energies and interaural coherence of the ray-traced arrival directions.</li>
+     <li><b>Output</b>: echogram, arrivals by direction, C80 / D50 / Ts / EDT / T30 / IACC, seat maps of effective ITDG and level ratio, and listening with the user's own dry recordings (optional headphone EQ for Sennheiser HD600). A/B comparison of two conditions (ITDG and level ratio) at the same seat, with a blind option. BRIR export: one SOFA file (AES69, SingleRoomSRIR) with all seats × sources, and a 32-bit float stereo WAV of the seat and condition on display.</li>
+     <li><b>Research features</b>:
+      <ul>
+       <li>An in-page Calibrate function that fits absorption to measured T30 from a CSV file; positions marked <code>role=check</code> are kept out of the fit and used only to check it.</li>
+       <li>Trust indicators: the model type, material status and ray count are shown together with the measured-hall checks that apply to that model type, and a Ray-tracing spread re-runs the ray tracing with other seeds to show the range of C80, D50, Ts, EDT and T30 in JND.</li>
+       <li>Reproducibility record: saved configs and exported SOFA files carry the page version, the SHA-256 of the engine and of a 3D model, and the computation settings (ray count, image-source order, diffraction, seeds).</li>
+       <li>Loading the user's own HRIR set (SOFA); KU100 by default.</li>
+       <li>Parallel ray tracing in several workers.</li>
+      </ul>
+     </li>
      <li><b>Python tools for research</b>: BRIR sets from the same model (<code>run.py</code>), listening-test stimuli (<code>make_stimuli.py</code>), fitting absorption to measured T30 (<code>calibrate.py</code>), and a diffraction check against BRAS (<code>validate_bras.py</code>).</li>
     </ul>
     <h4 id="en-ap-limits">Accuracy and limitations</h4>
-    <p>AuralPaths does not claim to reproduce a real hall. Room-acoustic simulation tools have been reported to differ noticeably from measurements<sup class="ref"><a href="#en-cite-4">[4]</a></sup>, so absorption should be calibrated with measured T30 and results checked against measurements before conclusions are drawn about a real room. The geometry is 2.5D (the cross-section is the same across the width); diffraction is first-order only; the seat-dip effect is not modelled; scattering uses a random (Lambert) model; HRIRs are taken from the nearest direction; and the HRTFs are non-individual (dummy head)<sup class="ref"><a href="#en-cite-2">[2]</a></sup>.</p>
-    <p>As a diffraction check against BRAS scene RS5 (a 2.07 m partition on a hard floor, 16 receiver positions), the mean absolute difference in third-octave bands from 500 Hz to 2 kHz was 1.8 dB (2.2 dB at the 11 shadow-zone positions). This is a single simple scene, not a measure of whole-hall accuracy<sup class="ref"><a href="#en-cite-2">[2]</a></sup><sup class="ref"><a href="#en-cite-5">[5]</a></sup>. Loudspeaker directivity files are approximations.</p>
+    <p>AuralPaths does not claim to reproduce a real hall. In a round robin comparing several room-acoustic simulation tools, simulated results differed noticeably from measurements and the auralizations were found to be "mostly plausible but not authentic"<sup class="ref"><a href="#en-cite-4">[4]</a></sup>.</p>
+    <p>As a check against measured halls, the raked lecture hall (ULH) of the Fratoni dataset, computed with the dataset's boundary conditions unchanged, came within about ±1 JND of the measurement in EDT, T30, C50 and Ts from 500 Hz to 4 kHz (T30 1–2 JND short at 125–250 Hz). In the dataset's elliptical domed hall (STC), T30 came out about 15 % too long, so halls with a non-diffuse field need their own calibration. This check covers receiver means only and does not test early arrivals or PA paths<sup class="ref"><a href="#en-cite-6">[6]</a></sup><sup class="ref"><a href="#en-cite-7">[7]</a></sup>.</p>
+    <p>A position-by-position check against two real halls in BRAS (chamber music hall CR3 and university auditorium CR4, 10 RIRs per hall) gave T30 8–11 % too long with the BRAS material values as given (band means 500 Hz–2 kHz). After calibration on one source position, the positions not used in the calibration came within a mean of 0.8 JND in T30 in both halls. Before calibration, C80, C50 and Ts differed by about 0.8–1.0 JND in CR3 and 1.6–2.3 JND in CR4<sup class="ref"><a href="#en-cite-5">[5]</a></sup><sup class="ref"><a href="#en-cite-7">[7]</a></sup>.</p>
+    <p>First-order reflections match the measurement in time and level in CR3 (median level difference +1.6 dB). In CR4 their level looks too high in a 1 ms window at the predicted time (median +4.9 dB), but agrees within +0.2 dB in the energy of a window around it (−1.5 … +2.5 ms), which indicates arrivals that are spread in time or slightly displaced. A drawn 2.5D version of a hall with balconies did not reproduce its individual early reflections. The time and level of each reflection, and so the ITDG of a seat, therefore need to be checked against measurements hall by hall, depending on how much the geometry is simplified<sup class="ref"><a href="#en-cite-7">[7]</a></sup>. Results should be used only after calibration with measured T30 and a check of the early reflections against measurements.</p>
+    <p>As a diffraction check against BRAS scene RS5 (a 2.07 m partition on a hard floor, 16 receiver positions), the mean absolute difference in third-octave bands from 500 Hz to 2 kHz was 1.8 dB (2.2 dB at the 11 shadow-zone positions). This is a single simple scene, not a measure of whole-hall accuracy<sup class="ref"><a href="#en-cite-2">[2]</a></sup><sup class="ref"><a href="#en-cite-5">[5]</a></sup>.</p>
+    <p>In addition, the seat-dip effect is not modelled; diffraction is first-order only and limited to drawn halls, and 3D models have no edge diffraction. Scattering uses a random (Lambert) model, HRIRs are taken from the nearest direction, and the default HRTFs are non-individual (dummy head), although the user's own HRIR set can be loaded. Loudspeaker directivity files are approximations<sup class="ref"><a href="#en-cite-2">[2]</a></sup>.</p>
     <h4 id="en-ap-license">Licence</h4>
-    <p>The source code is released under the MIT License. Third-party data keep their own licences (KU100 HRIRs and headphone filter: CC BY 3.0; BRAS-derived validation results: CC BY-SA 4.0)<sup class="ref"><a href="#en-cite-2">[2]</a></sup>.</p>
+    <p>The source code is released under the MIT License. Third-party data keep their own licences (KU100 HRIRs and headphone filter: CC BY 3.0; BRAS-derived validation results: CC BY-SA 4.0; Fratoni-derived validation results and converted halls: CC BY 4.0)<sup class="ref"><a href="#en-cite-2">[2]</a></sup>.</p>
 
     <h2 id="en-awards">Awards</h2>
     <div class="tbl-wrap"><table class="wikitable">
@@ -871,6 +914,8 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
      <li id="en-cite-3"><a class="up" href="#en-research-pilot">↑</a><cite>dlrjtt1, "pilot-experiment", GitHub repository.</cite> <a class="ext" href="https://github.com/dlrjtt1/pilot-experiment">https://github.com/dlrjtt1/pilot-experiment</a></li>
      <li id="en-cite-4"><a class="up" href="#en-ap-limits">↑</a><cite>Brinkmann, F. et al. (2019). "A round robin on room acoustical simulation and auralization." <i>The Journal of the Acoustical Society of America</i>.</cite> <a class="ext" href="https://doi.org/10.1121/1.5096178">doi:10.1121/1.5096178</a></li>
      <li id="en-cite-5"><a class="up" href="#en-ap-limits">↑</a><cite>Aspöck, L., Brinkmann, F., Ackermann, D., Weinzierl, S., Vorländer, M. (2020). <i>BRAS – Benchmark for Room Acoustical Simulation</i>, version 3. TU Berlin DepositOnce.</cite> <a class="ext" href="https://doi.org/10.14279/depositonce-6726.3">doi:10.14279/depositonce-6726.3</a></li>
+     <li id="en-cite-6"><a class="up" href="#en-ap-limits">↑</a><cite>Fratoni, G. (2021). <i>Materials for calibrating four complex virtual environments through acoustic simulations</i>, version 1. Mendeley Data.</cite> <a class="ext" href="https://doi.org/10.17632/y7xnv6xg5s.1">doi:10.17632/y7xnv6xg5s.1</a></li>
+     <li id="en-cite-7"><a class="up" href="#en-ap-limits">↑</a><cite>dlrjtt1, "AuralPaths", model documentation (docs/MODEL_en.md).</cite> <a class="ext" href="https://github.com/dlrjtt1/AuralPaths/blob/main/docs/MODEL_en.md">https://github.com/dlrjtt1/AuralPaths/blob/main/docs/MODEL_en.md</a></li>
     </ol></div>
 
     <h2 id="en-links">External links</h2>
@@ -928,7 +973,7 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
 (function(){
   var LANGS = ['ja','ko','en'];
   var DEFAULT = 'ja';
-  var BUILD_DATE = '2026-11-05T00:00:00+09:00';
+  var BUILD_DATE = '2026-11-06T17:30:00+09:00';
   var META = {
     ja: { title: '柳 東均 (Dong-Gyun You) — 音響学研究者',
           desc: '柳東均（Dong-Gyun You）は、東京藝術大学 音楽音響創造科の研究生として、拡声システム・ミキシング・空間オーディオを研究する音響学研究者である。' },
