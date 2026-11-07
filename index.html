@@ -174,6 +174,14 @@ main h4{font-size:1.05rem;font-weight:700;margin:.8em 0 .2em}
 main ul,main ol{margin:.3em 0 .6em 1.6em;padding:0}
 main li{margin:.15em 0}
 main h2,main h3,main h4{scroll-margin-top:64px}
+main h3.collapsible{cursor:pointer;display:flex;align-items:center;gap:4px;margin-left:-26px}
+main h3.collapsible .sec-tg{flex:0 0 auto;width:22px;height:22px;border:0;background:none;padding:0;cursor:pointer;color:var(--fg-sub);display:grid;place-items:center;border-radius:2px}
+main h3.collapsible .sec-tg:hover{background:var(--bg-sub)}
+main h3.collapsible .sec-tg svg{width:12px;height:12px;fill:currentColor;transform:rotate(90deg);transition:transform .15s}
+main h3.collapsible.collapsed .sec-tg svg{transform:none}
+main h3 .sec-date{font-weight:400;font-size:.8em;color:var(--fg-sub);margin-left:.35em}
+.sec-body[hidden]{display:none}
+@media (max-width:720px){main h3.collapsible{margin-left:-4px}}
 .hatnote{padding-left:1.6em;margin:.2em 0 .8em;font-size:.9rem;color:var(--fg)}
 .hatnote:before{content:"";display:inline-block;width:14px;height:14px;margin-right:6px;vertical-align:-2px;background:currentColor;opacity:.55;
   -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 0a10 10 0 1 0 0 20 10 10 0 0 0 0-20m1 15H9V9h2zm0-8H9V5h2z'/%3E%3C/svg%3E") center/contain no-repeat;
@@ -367,7 +375,8 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
      <li>空間オーディオ（Spatial audio）</li>
     </ul>
 
-    <h3 id="ja-research-pilot">パイロット聴取実験</h3>
+    <h3 id="ja-research-pilot" class="collapsible"><button type="button" class="sec-tg" aria-expanded="true" aria-controls="ja-research-pilot-body" aria-label="折りたたむ"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 1.5 8.5 6 4 10.5 3 9.5 6.5 6 3 2.5z"/></svg></button>パイロット聴取実験 <span class="sec-date">(2026.05–07)</span></h3>
+    <div class="sec-body" id="ja-research-pilot-body">
     <p class="mainlink">実験ページ: <a class="ext" href="https://dlrjtt1.github.io/pilot-experiment/">dlrjtt1.github.io/pilot-experiment</a> ・ リポジトリ: <a class="ext" href="https://github.com/dlrjtt1/pilot-experiment">github.com/dlrjtt1/pilot-experiment</a></p>
     <p>2026年5月から7月にかけて設計・実装・実施したブラウザベースのオンライン聴取実験である。コンサートホールを模擬した条件において、舞台直接音とPA補強音との時間差（ITDG）およびレベル比が音像定位判断に及ぼす影響を予備的に調べた<sup class="ref"><a href="#ja-cite-1">[1]</a></sup>。本実験に先立ち、評価インターフェース、設問文、回答分布の妥当性を確認することを目的としており、実験画面は日本語と韓国語で提供される<sup class="ref"><a href="#ja-cite-3">[3]</a></sup>。</p>
     <h4 id="ja-pilot-stimuli">刺激と条件</h4>
@@ -412,6 +421,7 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
      <li>単一の聴取位置（C8）のダミーヘッドBRIRをヘッドホンで再生した条件である。実際の公演会場のPA環境で同じ傾向が現れるかどうかは、本実験では確認されていない。</li>
      <li>本実験の設計を点検するための小規模（12名）なパイロットであり、結果は予備的な傾向として解釈すべきである。</li>
     </ul>
+    </div>
 
     <h3 id="ja-pubs">発表・論文</h3>
     <div class="tbl-wrap"><table class="wikitable">
@@ -436,7 +446,8 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
     <h3 id="ja-labo">LABO 1557</h3>
     <p><b>LABO 1557</b>は、「誰もが速く、簡単にミキシングできるようにしたい」という思いから始めた柳の個人プロジェクトである。この名義のもとで、ミキシング作業を手助けするオーディオプラグインを自ら設計・制作している。後述のAuralPathsもLABO 1557の名義で公開されている<sup class="ref"><a href="#ja-cite-2">[2]</a></sup>。</p>
 
-    <h3 id="ja-auralpaths">AuralPaths</h3>
+    <h3 id="ja-auralpaths" class="collapsible"><button type="button" class="sec-tg" aria-expanded="true" aria-controls="ja-auralpaths-body" aria-label="折りたたむ"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 1.5 8.5 6 4 10.5 3 9.5 6.5 6 3 2.5z"/></svg></button>AuralPaths</h3>
+    <div class="sec-body" id="ja-auralpaths-body">
     <p class="mainlink">シミュレータ: <a class="ext" href="https://dlrjtt1.github.io/AuralPaths/">dlrjtt1.github.io/AuralPaths</a> ・ リポジトリ: <a class="ext" href="https://github.com/dlrjtt1/AuralPaths">github.com/dlrjtt1/AuralPaths</a></p>
     <p><b>AuralPaths</b>は、拡声（PA）環境における先行音効果の研究と教育のためのシミュレーションツールである。ホール・スピーカー・座席の配置と遅延・レベル条件を変えながらバイノーラル応答を計算し、試聴し、実験刺激として書き出せる。舞台音源とPAスピーカー1対を配置すると、客席位置ごとに両経路間の到達時間差（ITDG）とレベル比がどのように変化するかを確認できる。処理はすべてブラウザ内で行われ、読み込んだ図面や音声ファイルは利用者のコンピュータの外に送信されない。起動時には日本語・韓国語・英語の簡単な使い方ガイドが表示される<sup class="ref"><a href="#ja-cite-2">[2]</a></sup>。</p>
     <h4 id="ja-ap-features">機能</h4>
@@ -464,6 +475,7 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
     <p>このほか、座席ディップ効果は扱わず、回折は作図ホールの一次のみで、3Dモデルにはエッジ回折がない。散乱はランダム（ランベルト）モデル、HRIRは最近傍方向であり、既定のHRTFは非個人化（ダミーヘッド）である（利用者のHRIRセットを読み込むことはできる）。スピーカー指向性ファイルは近似値である<sup class="ref"><a href="#ja-cite-2">[2]</a></sup>。</p>
     <h4 id="ja-ap-license">ライセンス</h4>
     <p>ソースコードはMITライセンスで公開されている。第三者データはそれぞれのライセンスに従う（KU100 HRIRおよびヘッドホン補正フィルタ：CC BY 3.0、BRAS由来の検証結果：CC BY-SA 4.0、Fratoniデータセット由来の検証結果および変換ホール：CC BY 4.0）<sup class="ref"><a href="#ja-cite-2">[2]</a></sup>。</p>
+    </div>
 
     <h2 id="ja-awards">受賞歴</h2>
     <div class="tbl-wrap"><table class="wikitable">
@@ -616,7 +628,8 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
      <li>공간 오디오 (Spatial audio)</li>
     </ul>
 
-    <h3 id="ko-research-pilot">파일럿 청취실험</h3>
+    <h3 id="ko-research-pilot" class="collapsible"><button type="button" class="sec-tg" aria-expanded="true" aria-controls="ko-research-pilot-body" aria-label="접기/펼치기"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 1.5 8.5 6 4 10.5 3 9.5 6.5 6 3 2.5z"/></svg></button>파일럿 청취실험 <span class="sec-date">(2026.05–07)</span></h3>
+    <div class="sec-body" id="ko-research-pilot-body">
     <p class="mainlink">실험 페이지: <a class="ext" href="https://dlrjtt1.github.io/pilot-experiment/">dlrjtt1.github.io/pilot-experiment</a> · 저장소: <a class="ext" href="https://github.com/dlrjtt1/pilot-experiment">github.com/dlrjtt1/pilot-experiment</a></p>
     <p>2026년 5월부터 7월까지 설계·구현·실시한 브라우저 기반 온라인 청취실험이다. 콘서트홀을 모의한 조건에서 무대 직접음과 PA 보강음 사이의 시간차(ITDG)와 레벨비가 음상정위 판단에 미치는 영향을 예비적으로 조사하였다<sup class="ref"><a href="#ko-cite-1">[1]</a></sup>. 본 실험에 앞서 평가 인터페이스, 질문 문구, 응답 분포의 적절성을 확인하는 것이 목적이며, 실험 화면은 일본어와 한국어로 제공된다<sup class="ref"><a href="#ko-cite-3">[3]</a></sup>.</p>
     <h4 id="ko-pilot-stimuli">자극과 조건</h4>
@@ -661,6 +674,7 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
      <li>청취 위치 하나(C8)의 더미 헤드 BRIR을 헤드폰으로 재생한 조건이다. 실제 공연장의 PA 환경에서 같은 경향이 나타나는지는 이 실험으로 확인되지 않는다.</li>
      <li>본 실험 설계를 점검하기 위한 소규모(12명) 파일럿이며, 결과는 예비적인 경향으로만 해석해야 한다.</li>
     </ul>
+    </div>
 
     <h3 id="ko-pubs">발표·논문</h3>
     <div class="tbl-wrap"><table class="wikitable">
@@ -685,7 +699,8 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
     <h3 id="ko-labo">LABO 1557</h3>
     <p><b>LABO 1557</b>은 "누구라도 빠르고 쉽게 믹싱을 할 수 있도록 만들고 싶다"는 생각에서 시작한 유동균의 개인 프로젝트이다. 이 이름 아래 믹싱 작업을 돕는 오디오 플러그인을 직접 설계·제작하고 있다. 아래의 AuralPaths도 LABO 1557 이름으로 공개되었다<sup class="ref"><a href="#ko-cite-2">[2]</a></sup>.</p>
 
-    <h3 id="ko-auralpaths">AuralPaths</h3>
+    <h3 id="ko-auralpaths" class="collapsible"><button type="button" class="sec-tg" aria-expanded="true" aria-controls="ko-auralpaths-body" aria-label="접기/펼치기"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 1.5 8.5 6 4 10.5 3 9.5 6.5 6 3 2.5z"/></svg></button>AuralPaths</h3>
+    <div class="sec-body" id="ko-auralpaths-body">
     <p class="mainlink">시뮬레이터: <a class="ext" href="https://dlrjtt1.github.io/AuralPaths/">dlrjtt1.github.io/AuralPaths</a> · 저장소: <a class="ext" href="https://github.com/dlrjtt1/AuralPaths">github.com/dlrjtt1/AuralPaths</a></p>
     <p><b>AuralPaths</b>는 PA 환경에서의 선행음 효과를 연구하고 가르치기 위한 시뮬레이션 도구이다. 홀·스피커·좌석 배치와 딜레이·레벨 조건을 바꿔 가며 바이노럴 응답을 계산하고, 들어 보고, 실험 자극으로 내보낼 수 있다. 무대 음원과 PA 스피커 한 쌍을 배치하면 객석 위치에 따라 두 경로 사이의 도달 시간차(ITDG)와 레벨비가 어떻게 달라지는지 확인할 수 있다. 모든 처리는 브라우저 안에서 이루어지며, 불러온 도면과 음원 파일은 사용자의 컴퓨터 밖으로 전송되지 않는다. 첫 화면에는 한국어·일본어·영어 간단 사용 안내가 표시된다<sup class="ref"><a href="#ko-cite-2">[2]</a></sup>.</p>
     <h4 id="ko-ap-features">기능</h4>
@@ -713,6 +728,7 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
     <p>이 밖에 객석 딥(seat-dip) 효과는 포함하지 않으며, 회절은 작도 홀의 1차까지만 다루고 3D 모델에는 모서리 회절이 없다. 산란은 랜덤(램버트) 모델, HRIR은 최근접 방향이며, 기본 HRTF는 비개인화(더미 헤드) 데이터이다(사용자 HRIR 세트를 불러올 수 있다). 스피커 지향성 파일은 근삿값이다<sup class="ref"><a href="#ko-cite-2">[2]</a></sup>.</p>
     <h4 id="ko-ap-license">라이선스</h4>
     <p>소스 코드는 MIT 라이선스로 공개되어 있다. 제3자 데이터는 각자의 라이선스를 따른다(KU100 HRIR 및 헤드폰 보정 필터: CC BY 3.0, BRAS에서 파생된 검증 결과: CC BY-SA 4.0, Fratoni 데이터셋에서 파생된 검증 결과와 변환 홀: CC BY 4.0)<sup class="ref"><a href="#ko-cite-2">[2]</a></sup>.</p>
+    </div>
 
     <h2 id="ko-awards">수상</h2>
     <div class="tbl-wrap"><table class="wikitable">
@@ -864,7 +880,8 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
      <li>Spatial audio</li>
     </ul>
 
-    <h3 id="en-research-pilot">Pilot listening experiment</h3>
+    <h3 id="en-research-pilot" class="collapsible"><button type="button" class="sec-tg" aria-expanded="true" aria-controls="en-research-pilot-body" aria-label="Collapse or expand"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 1.5 8.5 6 4 10.5 3 9.5 6.5 6 3 2.5z"/></svg></button>Pilot listening experiment <span class="sec-date">(2026.05–07)</span></h3>
+    <div class="sec-body" id="en-research-pilot-body">
     <p class="mainlink">Experiment page: <a class="ext" href="https://dlrjtt1.github.io/pilot-experiment/">dlrjtt1.github.io/pilot-experiment</a> · Repository: <a class="ext" href="https://github.com/dlrjtt1/pilot-experiment">github.com/dlrjtt1/pilot-experiment</a></p>
     <p>A browser-based online listening experiment designed, implemented and run between May and July 2026. It made a preliminary investigation of how the time gap (ITDG) and level ratio between direct stage sound and PA-reinforced sound affect localization judgments under simulated concert-hall conditions<sup class="ref"><a href="#en-cite-1">[1]</a></sup>. Its purpose was to check the evaluation interface, the wording of the questions and the distribution of responses before the main experiment; the experiment interface is available in Japanese and Korean<sup class="ref"><a href="#en-cite-3">[3]</a></sup>.</p>
     <h4 id="en-pilot-stimuli">Stimuli and conditions</h4>
@@ -909,6 +926,7 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
      <li>The condition is headphone playback of dummy-head BRIRs from a single listening position (C8). Whether the same tendencies appear under PA conditions in a real venue was not tested by this experiment.</li>
      <li>This is a small pilot (12 participants) intended to check the design of the main experiment; its results should be read only as preliminary tendencies.</li>
     </ul>
+    </div>
 
     <h3 id="en-pubs">Presentations</h3>
     <div class="tbl-wrap"><table class="wikitable">
@@ -933,7 +951,8 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
     <h3 id="en-labo">LABO 1557</h3>
     <p><b>LABO 1557</b> is a personal project that began from his wish to let anyone mix quickly and easily. Under this name he designs and builds audio plug-ins that help with the mixing process. AuralPaths, described below, is also released under the LABO 1557 name<sup class="ref"><a href="#en-cite-2">[2]</a></sup>.</p>
 
-    <h3 id="en-auralpaths">AuralPaths</h3>
+    <h3 id="en-auralpaths" class="collapsible"><button type="button" class="sec-tg" aria-expanded="true" aria-controls="en-auralpaths-body" aria-label="Collapse or expand"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 1.5 8.5 6 4 10.5 3 9.5 6.5 6 3 2.5z"/></svg></button>AuralPaths</h3>
+    <div class="sec-body" id="en-auralpaths-body">
     <p class="mainlink">Simulator: <a class="ext" href="https://dlrjtt1.github.io/AuralPaths/">dlrjtt1.github.io/AuralPaths</a> · Repository: <a class="ext" href="https://github.com/dlrjtt1/AuralPaths">github.com/dlrjtt1/AuralPaths</a></p>
     <p><b>AuralPaths</b> is a research and teaching tool for the precedence effect in sound reinforcement: vary hall, loudspeaker and seat positions, delay and level, then compute, listen to and export binaural room responses. With a stage source and a pair of PA loudspeakers in place, the user can see how the arrival-time gap (ITDG) and the level ratio between the paths change from seat to seat. Everything runs in the browser; drawings and audio files loaded by the user stay on their computer. A short quick guide in Korean, Japanese and English opens on the first screen<sup class="ref"><a href="#en-cite-2">[2]</a></sup>.</p>
     <h4 id="en-ap-features">Features</h4>
@@ -961,6 +980,7 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
     <p>In addition, the seat-dip effect is not modelled; diffraction is first-order only and limited to drawn halls, and 3D models have no edge diffraction. Scattering uses a random (Lambert) model, HRIRs are taken from the nearest direction, and the default HRTFs are non-individual (dummy head), although the user's own HRIR set can be loaded. Loudspeaker directivity files are approximations<sup class="ref"><a href="#en-cite-2">[2]</a></sup>.</p>
     <h4 id="en-ap-license">Licence</h4>
     <p>The source code is released under the MIT License. Third-party data keep their own licences (KU100 HRIRs and headphone filter: CC BY 3.0; BRAS-derived validation results: CC BY-SA 4.0; Fratoni-derived validation results and converted halls: CC BY 4.0)<sup class="ref"><a href="#en-cite-2">[2]</a></sup>.</p>
+    </div>
 
     <h2 id="en-awards">Awards</h2>
     <div class="tbl-wrap"><table class="wikitable">
@@ -1075,7 +1095,7 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
 (function(){
   var LANGS = ['ja','ko','en'];
   var DEFAULT = 'ja';
-  var BUILD_DATE = '2026-11-06T18:00:00+09:00';
+  var BUILD_DATE = '2026-11-07T19:30:00+09:00';
   var META = {
     ja: { title: '柳 東均 (Dong-Gyun You) — 音響学研究者',
           desc: '柳東均（Dong-Gyun You）は、東京藝術大学 音楽音響創造科の研究生として、拡声システム・ミキシング・空間オーディオを研究する音響学研究者である。' },
@@ -1098,7 +1118,10 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
   function block(){ return $('[data-lang="'+cur+'"]'); }
 
   /* ---------- TOC ---------- */
-  function headingText(h){ return h.textContent.trim(); }
+  function headingText(h){ var c = h.cloneNode(true); $$('.sec-date,.sec-tg', c).forEach(function(e){ e.remove(); }); return c.textContent.trim(); }
+  function setSec(h, open){ var body = document.getElementById(h.id+'-body'); if(!body) return; body.hidden = !open; h.classList.toggle('collapsed', !open); var b = h.querySelector('.sec-tg'); if(b) b.setAttribute('aria-expanded', open ? 'true' : 'false'); }
+  function revealFor(el){ var body = el.closest && el.closest('.sec-body[hidden]'); if(body){ var h = document.getElementById(body.id.replace(/-body$/,'')); if(h) setSec(h, true); } }
+  document.addEventListener('click', function(e){ var h = e.target.closest('main h3.collapsible'); if(!h || e.target.closest('a')) return; setSec(h, h.classList.contains('collapsed')); if(window.__spy) window.__spy(); });
   function buildToc(b){
     var lang = b.getAttribute('data-lang'), nav = $('.sidetoc', b), main = $('main', b), t = L[lang];
     nav.innerHTML = '';
@@ -1140,6 +1163,7 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
   }
   function jump(id){
     var el = document.getElementById(id); if(!el) return;
+    revealFor(el);
     var y = el.getBoundingClientRect().top + window.pageYOffset - (id.indexOf('top-')===0 ? 80 : 58);
     window.scrollTo({top: Math.max(0,y), behavior:'smooth'});
   }
@@ -1149,7 +1173,7 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
   function spy(){
     ticking = false;
     var b = block(); if(!b) return;
-    var hs = $$('main h2[id], main h3[id], main h4[id]', b), activeId = 'top-'+cur, activeText = '';
+    var hs = $$('main h2[id], main h3[id], main h4[id]', b).filter(function(h){ return h.offsetParent !== null; }), activeId = 'top-'+cur, activeText = '';
     for(var i=0;i<hs.length;i++){ if(hs[i].getBoundingClientRect().top < 90){ activeId = hs[i].id; activeText = headingText(hs[i]); } else break; }
     $$('.sidetoc a', b).forEach(function(a){
       var on = a.getAttribute('data-target') === activeId;
@@ -1163,6 +1187,7 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
     $('#st-title').textContent = h1.firstChild.textContent.trim();
     $('#st-sec').textContent = activeText; $('#st-sec').style.display = activeText ? '' : 'none';
   }
+  window.__spy = spy;
   window.addEventListener('scroll', function(){ if(!ticking){ ticking = true; requestAnimationFrame(spy); } }, {passive:true});
   window.addEventListener('resize', function(){ closePop(); spy(); });
 
@@ -1307,6 +1332,8 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
     var pop = clone.querySelector('#toc-pop'); if (pop) { pop.innerHTML = ''; pop.classList.remove('show'); }
     clone.querySelectorAll('.show').forEach(function(el){ el.classList.remove('show'); });
     clone.querySelectorAll('.flash').forEach(function(el){ el.classList.remove('flash'); });
+    clone.querySelectorAll('.sec-body').forEach(function(el){ el.removeAttribute('hidden'); });
+    clone.querySelectorAll('h3.collapsible').forEach(function(el){ el.classList.remove('collapsed'); var b = el.querySelector('.sec-tg'); if (b) b.setAttribute('aria-expanded','true'); });
     clone.removeAttribute('data-theme'); clone.removeAttribute('data-size'); clone.classList.remove('toc-hidden');
     var b = clone.querySelector('body'); if (b) { b.classList.remove('editing'); b.classList.remove('stuck'); }
     return '<!doctype html>\n' + clone.outerHTML + '\n';
