@@ -446,30 +446,51 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
     <h3 id="ja-auralpaths" class="collapsible">AuralPaths<button type="button" class="sec-tg" aria-expanded="true" aria-controls="ja-auralpaths-body" data-hide="折りたたむ" data-show="展開する">[折りたたむ]</button></h3>
     <div class="sec-body" id="ja-auralpaths-body">
     <p class="mainlink">シミュレータ: <a class="ext" href="https://dlrjtt1.github.io/AuralPaths/">dlrjtt1.github.io/AuralPaths</a> ・ リポジトリ: <a class="ext" href="https://github.com/dlrjtt1/AuralPaths">github.com/dlrjtt1/AuralPaths</a></p>
-    <p><b>AuralPaths</b>は、拡声（PA）環境における先行音効果の研究と教育のためのシミュレーションツールである。ホール・スピーカー・座席の配置と遅延・レベル条件を変えながらバイノーラル応答を計算し、試聴し、実験刺激として書き出せる。舞台音源とPAスピーカー1対を配置すると、客席位置ごとに両経路間の到達時間差（ITDG）とレベル比がどのように変化するかを確認できる。処理はすべてブラウザ内で行われ、読み込んだ図面や音声ファイルは利用者のコンピュータの外に送信されない。起動時には日本語・韓国語・英語の簡単な使い方ガイドが表示される<sup class="ref"><a href="#ja-cite-2">[2]</a></sup>。</p>
+    <p><b>AuralPaths</b>は、拡声（PA）環境における先行音効果の研究と教育のためのシミュレーションツールである。ホール・スピーカー・座席の配置と遅延・レベル条件を変えながらバイノーラル応答を計算し、試聴し、実験刺激として書き出せる。舞台音源とPAスピーカー1対を配置すると、客席位置ごとに両経路間の到達時間差（ITDG）とレベル比がどのように変化するかを確認できる。処理はすべてブラウザ内で行われ、読み込んだ図面や音声ファイルは利用者のコンピュータの外に送信されない。起動時には日本語・韓国語・英語の簡単な使い方ガイドが表示される。現行バージョンは0.8.1（2026年11月）であり、引用情報はリポジトリの<code>CITATION.cff</code>に記載されている<sup class="ref"><a href="#ja-cite-2">[2]</a></sup>。</p>
     <h4 id="ja-ap-features">機能</h4>
     <ul>
      <li><b>ホール</b>：直方体（シューボックス）、利用者自身のPDF／画像図面をトレースした2.5次元の作図ホール（平面形状 × 床・天井断面。既知の寸法による縮尺設定とPDFの線へのスナップに対応）、またはSketchUp・Blenderなどから書き出した3Dモデル（Wavefront OBJ）。3Dモデルでは面グループ（名前）ごとに材料を割り当て、2次までの鏡像法と音線追跡法で計算する。</li>
-     <li><b>音響モデル</b>：初期部分に鏡像法、拡散部分に音線追跡法を用いる。一次エッジ回折（UTD）は作図（2.5次元）ホールにのみ適用される。Neumann KU100のHRIRによるバイノーラル再生を行い、後期残響は音線追跡で得た到来方向の両耳エネルギーおよび両耳間コヒーレンスに基づいて生成する。</li>
-     <li><b>出力</b>：エコーグラム、方向別の到来音、C80 / D50 / Ts / EDT / T30 / IACC、実効ITDGおよびレベル比の客席分布図、利用者自身のドライ録音を用いた試聴（Sennheiser HD600用ヘッドホン補正は任意）。同じ座席で2つの条件（ITDG・レベル比）を切り替えて聴くA/B比較（ブラインドオプション付き）。BRIRの書き出し：全座席 × 音源をまとめたSOFA（AES69, SingleRoomSRIR）ファイル、および表示中の座席・条件の32-bit floatステレオWAV。</li>
+     <li><b>音響モデル</b>：初期部分に鏡像法、拡散部分に音線追跡法を用いる。Neumann KU100のHRIRによるバイノーラル再生を行い、後期残響は音線追跡で得た到来方向の両耳エネルギーおよび両耳間コヒーレンスに基づいて生成する。初期の残余成分も到来方向に応じた両耳間コヒーレンスで描画する（初期方向オプション、既定で有効）<sup class="ref"><a href="#ja-cite-7">[7]</a></sup>。</li>
+     <li><b>回折</b>：作図ホールにのみ適用され、3Dモデルには回折がない。既定は経路あたり1つのエッジに対する一次回折（UTD）である。その前後に反射を1回ずつ加える経路（<code>diffraction_refl</code> 1）と、2つのエッジを連続して通る二次回折（<code>diffraction_order</code> 2）は選択可能である。二次回折は孤立した厚い障害物にのみ用いる。客席のように列をなす箇所に用いると、かえって7–31 dB過大となる<sup class="ref"><a href="#ja-cite-7">[7]</a></sup>。</li>
+     <li><b>座席ディップ（任意）</b>：一般的な座席を仮定した2次元境界要素法（BEM）モデル。既定では無効であり、作図ホールと3Dホールの両方で有効にできる。特定のホールの実測座席ディップフィルタではない<sup class="ref"><a href="#ja-cite-7">[7]</a></sup>。</li>
+     <li><b>出力</b>：エコーグラム、方向別の到来音、C80 / D50 / Ts / EDT / T30 / IACC、実効ITDGおよびレベル比の客席分布図、利用者自身のドライ録音を用いた試聴（Sennheiser HD600用ヘッドホン補正は任意）。同じ座席で2つの条件（ITDG・レベル比）を切り替えて聴くA/B比較（ブラインドオプション付き）。BRIRの書き出し：全座席 × 音源をまとめたSOFA（AES69, SingleRoomSRIR）ファイル、および表示中の座席・条件の32-bit floatステレオWAV。レベル比は基準座席におけるPA耳信号のエネルギーと直接音耳信号のエネルギーの比であり、ドライファイルを読み込むとその信号で計算され、<code>make_stimuli.py</code>と同じ定義となる<sup class="ref"><a href="#ja-cite-7">[7]</a></sup>。</li>
      <li><b>研究用機能</b>：
       <ul>
-       <li>実測T30のCSVから吸音率を補正するページ内のCalibrate機能。<code>role=check</code>を指定した位置は補正に使わず、検証にのみ用いる。</li>
+       <li>実測T30のCSVから吸音率を補正するページ内のCalibrate機能。複数の位置は中央値で統合し、音源あたり最低3万本の音線を用いる。<code>role=check</code>を指定した位置は補正に使わず、検証にのみ用いる。作図ホールではページとPythonの散乱方式が異なるため計算に用いるエンジンで個別に補正する必要があり、3Dホールでは両エンジンが約2 %以内で一致する<sup class="ref"><a href="#ja-cite-7">[7]</a></sup>。</li>
        <li>信頼度の表示：モデルの種類・材料の状態・音線数とともに、そのモデルの種類に該当する実測照合の結果を表示する。また、音線のシードを変えて再計算するRay-tracing spreadにより、C80・D50・Ts・EDT・T30のばらつきをJND単位で示す。</li>
        <li>再現性の記録：保存したconfigと書き出したSOFAファイルに、ページのバージョン、エンジンおよび3DモデルのSHA-256、計算設定（音線数、鏡像法の次数、回折、シード）を記録する。</li>
        <li>利用者のHRIRセット（SOFA）の読み込み（既定はKU100）。</li>
        <li>複数のワーカーによる音線追跡の並列計算。</li>
       </ul>
      </li>
-     <li><b>研究用Pythonツール</b>：同一モデルによるBRIRセット生成（<code>run.py</code>）、聴取実験用刺激の生成（<code>make_stimuli.py</code>）、実測T30への吸音率の当てはめ（<code>calibrate.py</code>）、BRASを用いた回折の検証（<code>validate_bras.py</code>）。</li>
+     <li><b>研究用Pythonツール</b>：同一モデルによるBRIRセット生成（<code>run.py</code>）、聴取実験用刺激の生成（<code>make_stimuli.py</code>、ページが書き出したSOFAも読み込む）、実測T30への吸音率の当てはめ（<code>calibrate.py</code>）、BRASを用いた回折の検証（<code>validate_bras.py</code>）、3D OBJホールをページで開ける作図ホールへ変換（<code>obj_to_hall.py</code>）、実測ホールとの指標照合（<code>validate_fratoni.py</code>、<code>validate_bras_cr.py</code>）、ページのエンジンをPythonから呼び出す（<code>engine_js.py</code>）。外部データを要しない回帰テストは、mainブランチへのpushごとにGitHub上で自動実行される<sup class="ref"><a href="#ja-cite-2">[2]</a></sup>。</li>
     </ul>
     <h4 id="ja-ap-limits">精度と限界</h4>
-    <p>AuralPathsは実在のホールを再現することを主張するものではない。複数の室内音響シミュレーションツールを比較したラウンドロビン研究でも、シミュレーション結果は実測と無視できない差を示し、オーラリゼーションは「おおむね妥当（plausible）だが本物（authentic）ではない」と報告されている<sup class="ref"><a href="#ja-cite-4">[4]</a></sup>。</p>
-    <p>実測ホールとの照合として、Fratoniデータセットの段床式講義室（ULH）にデータセット収録の境界条件をそのまま与えて計算した結果、500 Hz–4 kHzにおいてEDT・T30・C50・Tsが実測と約±1 JND以内であった（125–250 HzではT30が1–2 JND短い）。同データセットの楕円形ドーム天井のホール（STC）ではT30が約15 %長く、拡散的でない音場では独自の補正が必要である。この照合は受音点平均値のみを扱うため、初期到来音やPA経路は検証していない<sup class="ref"><a href="#ja-cite-6">[6]</a></sup><sup class="ref"><a href="#ja-cite-7">[7]</a></sup>。</p>
-    <p>BRASの実在ホール2件（室内楽ホールCR3、大学講堂CR4。各ホールで位置別のRIR 10本）と位置ごとに照合した結果、BRASの材料値をそのまま入力するとT30は8–11 %長くなった（500 Hz–2 kHzの帯域平均）。一方の音源位置で補正した後、補正に用いなかった位置では、両ホールともT30の差は平均0.8 JNDであった。補正前のC80・C50・Tsの差は、CR3で約0.8–1.0 JND、CR4で1.6–2.3 JNDであった<sup class="ref"><a href="#ja-cite-5">[5]</a></sup><sup class="ref"><a href="#ja-cite-7">[7]</a></sup>。</p>
-    <p>一次反射は、CR3では時刻とレベルが実測と一致した（レベル差の中央値+1.6 dB）。CR4では予測時刻の1 ms窓で見るとレベルが過大（中央値+4.9 dB）であるが、予測時刻前後（−1.5 … +2.5 ms）の窓のエネルギーで見ると+0.2 dBで一致し、実際の到来が時間的に広がるか、わずかにずれていると解釈される。また、バルコニーを持つホールを2.5次元に単純化した作図ホールでは、個々の初期反射は再現されなかった。したがって、反射一つひとつの時刻とレベル、およびそれに基づく座席ごとのITDGは、形状の単純化の程度に応じてホールごとに実測との照合が必要である<sup class="ref"><a href="#ja-cite-7">[7]</a></sup>。結果は、実測T30で補正し、初期反射を実測と照合したうえで用いるべきである。</p>
-    <p>回折の検証として、BRASのシーンRS5（硬い床面上の高さ2.07 mの衝立、16受音点）と比較した結果、500 Hz–2 kHzの1/3オクターブ帯域における平均絶対差は1.8 dB（陰領域の11点では2.2 dB）であった。ただしこれは単純な1シーンに対する結果であり、ホール全体の精度を示すものではない<sup class="ref"><a href="#ja-cite-2">[2]</a></sup><sup class="ref"><a href="#ja-cite-5">[5]</a></sup>。</p>
-    <p>このほか、座席ディップ効果は扱わず、回折は作図ホールの一次のみで、3Dモデルにはエッジ回折がない。散乱はランダム（ランベルト）モデル、HRIRは最近傍方向であり、既定のHRTFは非個人化（ダミーヘッド）である（利用者のHRIRセットを読み込むことはできる）。スピーカー指向性ファイルは近似値である<sup class="ref"><a href="#ja-cite-2">[2]</a></sup>。</p>
+    <p>AuralPathsは実在のホールを再現することを主張するものではない。複数の室内音響シミュレーションツールを比較したラウンドロビン研究でも、シミュレーション結果は実測と無視できない差を示し、オーラリゼーションは「おおむね妥当（plausible）だが本物（authentic）ではない」と報告されている<sup class="ref"><a href="#ja-cite-4">[4]</a></sup>。以下は公開実測データ（BRAS<sup class="ref"><a href="#ja-cite-5">[5]</a></sup>、Fratoniデータセット<sup class="ref"><a href="#ja-cite-6">[6]</a></sup>など）との物理的な照合であり、知覚的な検証ではない。照合したホールの数は少なく、結果はそれらのホールに関するものである。詳細な数値と方法は検証の要約<sup class="ref"><a href="#ja-cite-9">[9]</a></sup>およびベンチマーク文書<sup class="ref"><a href="#ja-cite-10">[10]</a></sup>にある。</p>
+    <ul>
+     <li><b>検証済みで一致したもの</b>
+      <ul>
+       <li>直接音の到達時刻（実測に対し−0.67 … +0.07 ms）とITD・ILD（測定と同じダミーヘッドで0–5 µs、0.3–0.5 dB、KU100で14–18 µs、0.8–0.9 dB）。</li>
+       <li>刺激生成器が設定するITDGとレベル比（基準座席で公称値と一致）。</li>
+       <li>実測T30で補正した後、補正に用いなかった位置のT30（BRAS CR3・CR4で0.8 JND）。</li>
+       <li>他のプログラムで補正された入力による室内音響指標（Fratoni ULH：500 Hz–4 kHzで約1 JND以内）。</li>
+       <li>回折の基準シーン：BRAS RS5で500 Hz–2 kHzの平均絶対差1.8 dB（陰領域2.2 dB）、二次回折を用いたRS6でレベルの偏り−0.6 … +1.6 dB、1/3オクターブ平均絶対差2.3–2.8 dB。単純なシーンに対する結果であり、ホール全体の精度ではない。</li>
+      </ul>
+     </li>
+     <li><b>検証済みで差があるもの</b>
+      <ul>
+       <li>補正前のT30は、BRASの材料値のままでは8–11 %長い。</li>
+       <li>一次反射のレベル：全反射の中央値はCR3で+1.6 dB、CR4で+2.7 dBである。CR4で他の反射と重ならない28本のみを見ると、予測時刻の1 ms窓では+4.9 dBであるが、前後（−1.5 … +2.5 ms）の窓のエネルギーでは+0.2 dBであり、実際の到来が時間的に広がるか、ずれていると解釈される。バルコニーを持つホールを2.5次元に単純化した作図ホールは、個々の初期反射を再現しない。</li>
+       <li>バイノーラル受聴位置で500 Hz–1 kHzのC80が1–4 dB低く、初期の空間印象（IACC_E3）はやや低く、後期のIACC_Lは実測の1/3–1/2である。</li>
+       <li>指向性スピーカーの2–4 kHzは根拠が分かれる。したがって、PA条件の分析は500 Hz–1 kHzで最も根拠がある。</li>
+       <li>入力の仮定から離れたホール：楕円形ドーム天井のホール（STC）はT30が約15 %長く、ボックス席のオペラハウス（TCB）は成功した検証として数えない。</li>
+       <li>座席ディップ：モデルなしでは最前列の後方で5–11 dB過大である。モデルを有効にすると、音源が見える位置で1.8–2.5 dB、最初のブロックの後方で3.3–6.2 dBの差となり、400–500 Hzのディップは3 dB以内であるが約1/3オクターブ低く始まる（BRAS RS7）。実在のホールでは既定の座席設定で1か所のみ確認した。</li>
+      </ul>
+     </li>
+     <li><b>未検証またはモデル化していないもの</b>：計算BRIRと実測BRIRが同じに聴こえるか（聴取実験なし）、遅延したPA条件と実測との照合、照合したホール以外のホールおよび測定位置以外の座席、スピーカーの周波数特性（指向パターンのみモデル化）、個人HRTF（既定は非個人化ダミーヘッドで最近傍方向のHRIRを用いる。利用者のHRIRセットは読み込める）。散乱はランダム（ランベルト）モデルであり、スピーカー指向性ファイルは近似値である。</li>
+    </ul>
+    <p>2019年のラウンドロビンと同じデータ・同じ指標で評価すると、AuralPathsは参加した6つのシミュレーションプログラムと同じ範囲にあった。材料データのみを用いた室内楽ホール（CR3）の残響・明瞭度の平均誤差は7つの中で最も小さく、音源の左右定位誤差は0.3–0.6°（参加プログラムは0.2–14.2°）であった。ただし、参加プログラムは実測を知らずに結果を提出したのに対し、AuralPathsは実測を見た後に計算した<b>事後比較</b>であるため、同一条件の順位とはみなせない<sup class="ref"><a href="#ja-cite-10">[10]</a></sup>。</p>
+    <p>計算BRIRはホールのモデルであり、それを用いた聴取実験は実験室実験である。その結果のみから実在のホールにおける拡声で何が起こるかを示すことはできない。室内音響指標をあるホールの性質として報告する前にはそのホールの実測T30で補正し、特定のホールの初期反射に依存する結果はまずそのホールの測定と照合する必要がある<sup class="ref"><a href="#ja-cite-9">[9]</a></sup>。</p>
     <h4 id="ja-ap-license">ライセンス</h4>
     <p>ソースコードはMITライセンスで公開されている。第三者データはそれぞれのライセンスに従う（KU100 HRIRおよびヘッドホン補正フィルタ：CC BY 3.0、BRAS由来の検証結果：CC BY-SA 4.0、Fratoniデータセット由来の検証結果および変換ホール：CC BY 4.0）<sup class="ref"><a href="#ja-cite-2">[2]</a></sup>。</p>
     </div>
@@ -539,6 +560,8 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
      <li id="ja-cite-6"><a class="up" href="#ja-ap-limits">↑</a><cite>Fratoni, G. (2021). <i>Materials for calibrating four complex virtual environments through acoustic simulations</i>, version 1. Mendeley Data.</cite> <a class="ext" href="https://doi.org/10.17632/y7xnv6xg5s.1">doi:10.17632/y7xnv6xg5s.1</a></li>
      <li id="ja-cite-7"><a class="up" href="#ja-ap-limits">↑</a><cite>dlrjtt1「AuralPaths」モデル説明書（docs/MODEL_ja.md）.</cite> <a class="ext" href="https://github.com/dlrjtt1/AuralPaths/blob/main/docs/MODEL_ja.md">https://github.com/dlrjtt1/AuralPaths/blob/main/docs/MODEL_ja.md</a></li>
      <li id="ja-cite-8"><a class="up" href="#ja-pilot-stimuli">↑</a><cite>Bacila, B. I., Lee, H. (2019). "360° Binaural Room Impulse Response (BRIR) Database for 6DOF Spatial Perception Research." AES 146th Convention, Dublin, e-Brief 513. Dataset: Zenodo.</cite> <a class="ext" href="https://doi.org/10.5281/zenodo.2641166">doi:10.5281/zenodo.2641166</a></li>
+     <li id="ja-cite-9"><a class="up" href="#ja-ap-limits">↑</a><cite>dlrjtt1「AuralPaths」検証の要約（docs/VALIDITY_ja.md）.</cite> <a class="ext" href="https://github.com/dlrjtt1/AuralPaths/blob/main/docs/VALIDITY_ja.md">https://github.com/dlrjtt1/AuralPaths/blob/main/docs/VALIDITY_ja.md</a></li>
+     <li id="ja-cite-10"><a class="up" href="#ja-ap-limits">↑</a><cite>dlrjtt1「AuralPaths」ベンチマーク（docs/BENCHMARK_ja.md）.</cite> <a class="ext" href="https://github.com/dlrjtt1/AuralPaths/blob/main/docs/BENCHMARK_ja.md">https://github.com/dlrjtt1/AuralPaths/blob/main/docs/BENCHMARK_ja.md</a></li>
     </ol></div>
 
    </main>
@@ -699,30 +722,51 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
     <h3 id="ko-auralpaths" class="collapsible">AuralPaths<button type="button" class="sec-tg" aria-expanded="true" aria-controls="ko-auralpaths-body" data-hide="접기" data-show="펼치기">[접기]</button></h3>
     <div class="sec-body" id="ko-auralpaths-body">
     <p class="mainlink">시뮬레이터: <a class="ext" href="https://dlrjtt1.github.io/AuralPaths/">dlrjtt1.github.io/AuralPaths</a> · 저장소: <a class="ext" href="https://github.com/dlrjtt1/AuralPaths">github.com/dlrjtt1/AuralPaths</a></p>
-    <p><b>AuralPaths</b>는 PA 환경에서의 선행음 효과를 연구하고 가르치기 위한 시뮬레이션 도구이다. 홀·스피커·좌석 배치와 딜레이·레벨 조건을 바꿔 가며 바이노럴 응답을 계산하고, 들어 보고, 실험 자극으로 내보낼 수 있다. 무대 음원과 PA 스피커 한 쌍을 배치하면 객석 위치에 따라 두 경로 사이의 도달 시간차(ITDG)와 레벨비가 어떻게 달라지는지 확인할 수 있다. 모든 처리는 브라우저 안에서 이루어지며, 불러온 도면과 음원 파일은 사용자의 컴퓨터 밖으로 전송되지 않는다. 첫 화면에는 한국어·일본어·영어 간단 사용 안내가 표시된다<sup class="ref"><a href="#ko-cite-2">[2]</a></sup>.</p>
+    <p><b>AuralPaths</b>는 PA 환경에서의 선행음 효과를 연구하고 가르치기 위한 시뮬레이션 도구이다. 홀·스피커·좌석 배치와 딜레이·레벨 조건을 바꿔 가며 바이노럴 응답을 계산하고, 들어 보고, 실험 자극으로 내보낼 수 있다. 무대 음원과 PA 스피커 한 쌍을 배치하면 객석 위치에 따라 두 경로 사이의 도달 시간차(ITDG)와 레벨비가 어떻게 달라지는지 확인할 수 있다. 모든 처리는 브라우저 안에서 이루어지며, 불러온 도면과 음원 파일은 사용자의 컴퓨터 밖으로 전송되지 않는다. 첫 화면에는 한국어·일본어·영어 간단 사용 안내가 표시된다. 현재 버전은 0.8.1(2026년 11월)이며, 인용 정보는 저장소의 <code>CITATION.cff</code>에 있다<sup class="ref"><a href="#ko-cite-2">[2]</a></sup>.</p>
     <h4 id="ko-ap-features">기능</h4>
     <ul>
      <li><b>홀</b>: 직육면체(슈박스), 사용자 자신의 PDF·이미지 도면을 따라 그린 2.5차원 작도 홀(평면 윤곽 × 바닥·천장 단면. 알고 있는 치수로 축척을 맞추고 PDF의 선에 스냅할 수 있다), 또는 SketchUp·Blender 등에서 내보낸 3D 모델(Wavefront OBJ). 3D 모델은 면 그룹(이름)별로 재료를 지정하며, 2차까지의 허상법과 음선 추적으로 계산한다.</li>
-     <li><b>음향 모델</b>: 초기 부분은 허상법(image source), 확산 부분은 음선 추적(ray tracing)으로 계산한다. 1차 모서리 회절(UTD)은 작도(2.5차원) 홀에만 적용된다. Neumann KU100 HRIR로 바이노럴 렌더링을 하며, 후기 잔향은 음선 추적으로 얻은 도래 방향의 양이 에너지와 양이간 코히어런스를 반영해 생성한다.</li>
-     <li><b>출력</b>: 에코그램, 방향별 도래음, C80 / D50 / Ts / EDT / T30 / IACC, 유효 ITDG 및 레벨비의 객석 분포도, 사용자의 드라이 녹음을 이용한 청취(Sennheiser HD600용 헤드폰 보정은 선택). 같은 좌석에서 두 조건(ITDG·레벨비)을 바꿔 듣는 A/B 비교(블라인드 옵션 포함). BRIR 내보내기: 전 좌석 × 음원을 담은 SOFA(AES69, SingleRoomSRIR) 파일과, 표시 중인 좌석·조건의 32-bit float 스테레오 WAV.</li>
+     <li><b>음향 모델</b>: 초기 부분은 허상법(image source), 확산 부분은 음선 추적(ray tracing)으로 계산한다. Neumann KU100 HRIR로 바이노럴 렌더링을 하며, 후기 잔향은 음선 추적으로 얻은 도래 방향의 양이 에너지와 양이간 코히어런스를 반영해 생성한다. 초기 잔여분도 도래 방향에 따른 양이간 코히어런스로 렌더링한다(초기 방향 옵션, 기본 켜짐)<sup class="ref"><a href="#ko-cite-7">[7]</a></sup>.</li>
+     <li><b>회절</b>: 작도 홀에만 적용되며, 3D 모델에는 회절이 없다. 기본은 경로당 모서리 하나에 대한 1차 회절(UTD)이다. 그 앞뒤에 반사를 한 번씩 더하는 경로(<code>diffraction_refl</code> 1)와 두 모서리를 연달아 지나는 2차 회절(<code>diffraction_order</code> 2)은 선택 사항이다. 2차 회절은 고립된 두꺼운 장애물에만 쓴다. 객석처럼 줄지어 있는 곳에 쓰면 오히려 7–31 dB 크게 나온다<sup class="ref"><a href="#ko-cite-7">[7]</a></sup>.</li>
+     <li><b>객석 딥(선택 사항)</b>: 일반적인 의자를 가정한 2차원 경계요소법(BEM) 모델. 기본은 꺼져 있으며 작도 홀과 3D 홀 모두에서 켤 수 있다. 어떤 홀의 실측 객석 딥 필터는 아니다<sup class="ref"><a href="#ko-cite-7">[7]</a></sup>.</li>
+     <li><b>출력</b>: 에코그램, 방향별 도래음, C80 / D50 / Ts / EDT / T30 / IACC, 유효 ITDG 및 레벨비의 객석 분포도, 사용자의 드라이 녹음을 이용한 청취(Sennheiser HD600용 헤드폰 보정은 선택). 같은 좌석에서 두 조건(ITDG·레벨비)을 바꿔 듣는 A/B 비교(블라인드 옵션 포함). BRIR 내보내기: 전 좌석 × 음원을 담은 SOFA(AES69, SingleRoomSRIR) 파일과, 표시 중인 좌석·조건의 32-bit float 스테레오 WAV. 레벨비는 기준 좌석에서 PA 귀 신호의 에너지를 직접음 귀 신호의 에너지로 나눈 값이며, 드라이 파일을 올리면 그 신호로 계산하여 <code>make_stimuli.py</code>와 같은 정의가 된다<sup class="ref"><a href="#ko-cite-7">[7]</a></sup>.</li>
      <li><b>연구용 기능</b>:
       <ul>
-       <li>실측 T30 CSV로 흡음률을 보정하는 페이지 안 Calibrate 기능. <code>role=check</code>로 지정한 위치는 보정에 쓰지 않고 검증에만 사용한다.</li>
+       <li>실측 T30 CSV로 흡음률을 보정하는 페이지 안 Calibrate 기능. 여러 위치는 중앙값으로 합치고, 음원당 광선을 최소 3만 개 쓴다. <code>role=check</code>로 지정한 위치는 보정에 쓰지 않고 검증에만 사용한다. 작도 홀은 페이지와 Python의 산란 방식이 달라 계산할 엔진으로 따로 보정해야 하며, 3D 홀에서는 두 엔진이 약 2 % 이내로 일치한다<sup class="ref"><a href="#ko-cite-7">[7]</a></sup>.</li>
        <li>신뢰도 표시: 모델 종류·재료 상태·광선 수와 함께 해당 모델 종류에 적용되는 실측 대조 결과를 보여 준다. 또한 광선 시드를 바꿔 다시 계산하는 Ray-tracing spread로 C80·D50·Ts·EDT·T30의 흩어짐을 JND 단위로 표시한다.</li>
        <li>재현성 기록: 저장한 config와 내보낸 SOFA 파일에 페이지 버전, 엔진 및 3D 모델의 SHA-256, 계산 설정(광선 수, 허상법 차수, 회절, 시드)을 기록한다.</li>
        <li>사용자 HRIR 세트(SOFA) 불러오기(기본은 KU100).</li>
        <li>여러 워커를 이용한 음선 추적 병렬 계산.</li>
       </ul>
      </li>
-     <li><b>연구용 Python 도구</b>: 같은 모델로 BRIR 세트 생성(<code>run.py</code>), 청취실험 자극 생성(<code>make_stimuli.py</code>), 실측 T30에 맞춘 흡음률 보정(<code>calibrate.py</code>), BRAS를 이용한 회절 검증(<code>validate_bras.py</code>).</li>
+     <li><b>연구용 Python 도구</b>: 같은 모델로 BRIR 세트 생성(<code>run.py</code>), 청취실험 자극 생성(<code>make_stimuli.py</code>, 페이지가 내보낸 SOFA도 읽음), 실측 T30에 맞춘 흡음률 보정(<code>calibrate.py</code>), BRAS를 이용한 회절 검증(<code>validate_bras.py</code>), 3D OBJ 홀을 페이지에서 여는 작도 홀로 변환(<code>obj_to_hall.py</code>), 실측 홀과의 지표 대조(<code>validate_fratoni.py</code>, <code>validate_bras_cr.py</code>), 페이지 엔진을 Python에서 호출(<code>engine_js.py</code>). 외부 데이터가 필요 없는 회귀 테스트는 main 브랜치에 push할 때마다 GitHub에서 자동으로 실행된다<sup class="ref"><a href="#ko-cite-2">[2]</a></sup>.</li>
     </ul>
     <h4 id="ko-ap-limits">정확도와 한계</h4>
-    <p>AuralPaths는 실제 홀을 재현한다고 주장하지 않는다. 여러 실내음향 시뮬레이션 도구를 비교한 라운드 로빈 연구에서도 시뮬레이션 결과는 실측과 눈에 띄는 차이를 보였으며, 가청화는 "대부분 그럴듯하지만(plausible) 실제와 같지는(authentic) 않다"고 보고되었다<sup class="ref"><a href="#ko-cite-4">[4]</a></sup>.</p>
-    <p>실측 홀과의 대조로, Fratoni 데이터셋의 계단식 강의실(ULH)에 데이터셋에 수록된 경계 조건을 그대로 넣어 계산한 결과 500 Hz–4 kHz에서 EDT·T30·C50·Ts가 실측과 약 ±1 JND 이내였다(125–250 Hz에서는 T30이 1–2 JND 짧음). 같은 데이터셋의 타원형 돔 천장 홀(STC)에서는 T30이 약 15 % 길게 나와, 확산되지 않은 음장에서는 자체 보정이 필요하다. 이 대조는 수음점 평균값만 다루므로 초기 도래음이나 PA 경로는 검증하지 않는다<sup class="ref"><a href="#ko-cite-6">[6]</a></sup><sup class="ref"><a href="#ko-cite-7">[7]</a></sup>.</p>
-    <p>BRAS의 실제 홀 2곳(실내악 홀 CR3, 대학 강당 CR4. 홀마다 위치별 RIR 10개)과 위치별로 대조한 결과, BRAS의 재료값을 그대로 넣으면 T30이 8–11 % 길게 나왔다(500 Hz–2 kHz 대역 평균). 한 음원 위치로 보정한 뒤 보정에 쓰지 않은 위치에서는 두 홀 모두 T30 차이가 평균 0.8 JND였다. 보정 전 C80·C50·Ts의 차이는 CR3에서 약 0.8–1.0 JND, CR4에서 1.6–2.3 JND였다<sup class="ref"><a href="#ko-cite-5">[5]</a></sup><sup class="ref"><a href="#ko-cite-7">[7]</a></sup>.</p>
-    <p>1차 반사는 CR3에서 시각과 레벨이 실측과 맞았다(레벨 차 중앙값 +1.6 dB). CR4에서는 예측 시각의 1 ms 창으로 보면 레벨이 과대(중앙값 +4.9 dB)했지만, 예측 시각 전후(−1.5 … +2.5 ms) 창의 에너지로 보면 +0.2 dB로 맞아, 실제 도착이 시간적으로 퍼지거나 조금 어긋난 것으로 해석된다. 또한 발코니가 있는 홀을 2.5차원으로 단순화한 작도 홀에서는 개별 초기 반사가 재현되지 않았다. 따라서 반사 하나하나의 시각과 레벨, 그리고 이에 따른 좌석별 ITDG는 형상 단순화 정도에 따라 홀마다 실측과 대조해야 한다<sup class="ref"><a href="#ko-cite-7">[7]</a></sup>. 결과는 실측 T30으로 보정하고 초기 반사를 실측과 대조한 뒤에 사용해야 한다.</p>
-    <p>회절 검증으로 BRAS의 RS5 장면(단단한 바닥 위 높이 2.07 m 칸막이, 수음점 16곳)과 비교한 결과, 500 Hz–2 kHz 1/3옥타브 대역에서 평균 절대 차이는 1.8 dB(음영 영역 11곳에서는 2.2 dB)였다. 다만 이는 단순한 한 장면에 대한 결과일 뿐 홀 전체의 정확도를 뜻하지는 않는다<sup class="ref"><a href="#ko-cite-2">[2]</a></sup><sup class="ref"><a href="#ko-cite-5">[5]</a></sup>.</p>
-    <p>이 밖에 객석 딥(seat-dip) 효과는 포함하지 않으며, 회절은 작도 홀의 1차까지만 다루고 3D 모델에는 모서리 회절이 없다. 산란은 랜덤(램버트) 모델, HRIR은 최근접 방향이며, 기본 HRTF는 비개인화(더미 헤드) 데이터이다(사용자 HRIR 세트를 불러올 수 있다). 스피커 지향성 파일은 근삿값이다<sup class="ref"><a href="#ko-cite-2">[2]</a></sup>.</p>
+    <p>AuralPaths는 실제 홀을 재현한다고 주장하지 않는다. 여러 실내음향 시뮬레이션 도구를 비교한 라운드 로빈 연구에서도 시뮬레이션 결과는 실측과 눈에 띄는 차이를 보였으며, 가청화는 "대부분 그럴듯하지만(plausible) 실제와 같지는(authentic) 않다"고 보고되었다<sup class="ref"><a href="#ko-cite-4">[4]</a></sup>. 아래는 공개 실측 데이터(BRAS<sup class="ref"><a href="#ko-cite-5">[5]</a></sup>, Fratoni 데이터셋<sup class="ref"><a href="#ko-cite-6">[6]</a></sup> 등)와의 물리적 대조이며 지각적 검증이 아니다. 대조한 홀의 수가 적으므로 결과는 그 홀들에 대한 것이다. 세부 수치와 방법은 검증 요약<sup class="ref"><a href="#ko-cite-9">[9]</a></sup>과 벤치마크 문서<sup class="ref"><a href="#ko-cite-10">[10]</a></sup>에 있다.</p>
+    <ul>
+     <li><b>검증했고 일치하는 것</b>
+      <ul>
+       <li>직접음의 도달 시각(실측 대비 −0.67 … +0.07 ms)과 ITD·ILD(측정과 같은 더미 헤드로 0–5 µs, 0.3–0.5 dB; KU100으로 14–18 µs, 0.8–0.9 dB).</li>
+       <li>자극 생성기가 설정한 ITDG와 레벨비(기준 좌석에서 공칭값과 같음).</li>
+       <li>실측 T30으로 보정한 뒤, 보정에 쓰지 않은 위치의 T30(BRAS CR3·CR4에서 0.8 JND).</li>
+       <li>다른 프로그램으로 보정된 입력에서의 실내음향 지표(Fratoni ULH: 500 Hz–4 kHz에서 약 1 JND 이내).</li>
+       <li>회절 기준 장면: BRAS RS5에서 500 Hz–2 kHz 평균 절대 차이 1.8 dB(음영 영역 2.2 dB), 2차 회절을 쓴 RS6에서 레벨 치우침 −0.6 … +1.6 dB, 1/3옥타브 평균 절대 차이 2.3–2.8 dB. 단순한 장면에 대한 결과이며 홀 전체의 정확도는 아니다.</li>
+      </ul>
+     </li>
+     <li><b>검증했고 차이가 있는 것</b>
+      <ul>
+       <li>보정 전 T30은 BRAS 재료값 그대로 8–11 % 길다.</li>
+       <li>1차 반사 레벨: 전체 반사의 중앙값은 CR3 +1.6 dB, CR4 +2.7 dB이다. CR4에서 다른 반사와 겹치지 않는 28개만 보면 예측 시각의 1 ms 창으로는 +4.9 dB이지만 전후(−1.5 … +2.5 ms) 창의 에너지로는 +0.2 dB로, 실제 도착이 시간적으로 퍼지거나 어긋난 것으로 해석된다. 발코니가 있는 홀을 2.5차원으로 단순화한 작도 홀은 개별 초기 반사를 재현하지 못한다.</li>
+       <li>바이노럴 청취 위치에서 500 Hz–1 kHz의 C80이 1–4 dB 낮고, 초기 공간감(IACC_E3)은 조금 낮으며 후기 IACC_L은 실측의 1/3–1/2이다.</li>
+       <li>지향성 스피커의 2–4 kHz는 근거가 엇갈린다. 따라서 PA 조건의 분석은 500 Hz–1 kHz에서 가장 근거가 있다.</li>
+       <li>입력의 가정과 거리가 먼 홀: 타원형 돔 천장 홀(STC)은 T30이 약 15 % 길고, 박스석 오페라 극장(TCB)은 성공한 검증으로 세지 않는다.</li>
+       <li>객석 딥: 모델 없이는 첫 열 뒤에서 5–11 dB 크다. 모델을 켜면 음원이 보이는 위치에서 1.8–2.5 dB, 첫 블록 뒤에서 3.3–6.2 dB 차이이며, 400–500 Hz의 dip은 3 dB 이내지만 약 1/3옥타브 낮게 시작한다(BRAS RS7). 실제 홀에서는 기본 의자 설정으로 한 곳만 확인했다.</li>
+      </ul>
+     </li>
+     <li><b>검증하지 않았거나 모델링하지 않은 것</b>: 계산 BRIR과 실측 BRIR을 청취자가 같게 듣는지(청취 실험 없음), 지연된 PA 조건과 실측의 대조, 대조한 홀 이외의 홀과 측정 위치 이외의 좌석, 스피커의 주파수 특성(지향 패턴만 모델링), 개인 HRTF(기본은 비개인화 더미 헤드이며 최근접 방향 HRIR을 쓴다. 사용자 HRIR 세트는 불러올 수 있다). 산란은 랜덤(램버트) 모델이고 스피커 지향성 파일은 근삿값이다.</li>
+    </ul>
+    <p>2019년 라운드 로빈과 같은 데이터·같은 지표로 점수를 내 보면, AuralPaths는 참가한 시뮬레이션 프로그램 6개와 같은 범위에 있었다. 재료 데이터만 쓴 실내악 홀(CR3)의 잔향·명료도 평균 오차는 7개 중 가장 작았고, 음원 좌우 정위 오차는 0.3–0.6°(참가 프로그램 0.2–14.2°)였다. 다만 참가 프로그램들은 실측을 모른 채 결과를 제출했고 AuralPaths는 실측을 본 뒤 계산한 <b>사후 비교</b>이므로, 같은 조건의 순위로 볼 수 없다<sup class="ref"><a href="#ko-cite-10">[10]</a></sup>.</p>
+    <p>계산 BRIR은 홀의 모델이며, 그것으로 하는 청취 실험은 실험실 실험이다. 그 결과만으로 실제 홀의 확성에서 일어나는 일을 보여 주지는 못한다. 실내음향 지표를 어떤 홀의 성질로 보고하기 전에는 그 홀의 실측 T30으로 보정하고, 특정 홀의 초기 반사에 의존하는 결과는 먼저 그 홀의 측정과 대조해야 한다<sup class="ref"><a href="#ko-cite-9">[9]</a></sup>.</p>
     <h4 id="ko-ap-license">라이선스</h4>
     <p>소스 코드는 MIT 라이선스로 공개되어 있다. 제3자 데이터는 각자의 라이선스를 따른다(KU100 HRIR 및 헤드폰 보정 필터: CC BY 3.0, BRAS에서 파생된 검증 결과: CC BY-SA 4.0, Fratoni 데이터셋에서 파생된 검증 결과와 변환 홀: CC BY 4.0)<sup class="ref"><a href="#ko-cite-2">[2]</a></sup>.</p>
     </div>
@@ -792,6 +836,8 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
      <li id="ko-cite-6"><a class="up" href="#ko-ap-limits">↑</a><cite>Fratoni, G. (2021). <i>Materials for calibrating four complex virtual environments through acoustic simulations</i>, version 1. Mendeley Data.</cite> <a class="ext" href="https://doi.org/10.17632/y7xnv6xg5s.1">doi:10.17632/y7xnv6xg5s.1</a></li>
      <li id="ko-cite-7"><a class="up" href="#ko-ap-limits">↑</a><cite>dlrjtt1, 「AuralPaths」 모델 설명서 (docs/MODEL_ko.md).</cite> <a class="ext" href="https://github.com/dlrjtt1/AuralPaths/blob/main/docs/MODEL_ko.md">https://github.com/dlrjtt1/AuralPaths/blob/main/docs/MODEL_ko.md</a></li>
      <li id="ko-cite-8"><a class="up" href="#ko-pilot-stimuli">↑</a><cite>Bacila, B. I., Lee, H. (2019). "360° Binaural Room Impulse Response (BRIR) Database for 6DOF Spatial Perception Research." AES 146th Convention, Dublin, e-Brief 513. Dataset: Zenodo.</cite> <a class="ext" href="https://doi.org/10.5281/zenodo.2641166">doi:10.5281/zenodo.2641166</a></li>
+     <li id="ko-cite-9"><a class="up" href="#ko-ap-limits">↑</a><cite>dlrjtt1, 「AuralPaths」 검증 요약 (docs/VALIDITY_ko.md).</cite> <a class="ext" href="https://github.com/dlrjtt1/AuralPaths/blob/main/docs/VALIDITY_ko.md">https://github.com/dlrjtt1/AuralPaths/blob/main/docs/VALIDITY_ko.md</a></li>
+     <li id="ko-cite-10"><a class="up" href="#ko-ap-limits">↑</a><cite>dlrjtt1, 「AuralPaths」 벤치마크 (docs/BENCHMARK_ko.md).</cite> <a class="ext" href="https://github.com/dlrjtt1/AuralPaths/blob/main/docs/BENCHMARK_ko.md">https://github.com/dlrjtt1/AuralPaths/blob/main/docs/BENCHMARK_ko.md</a></li>
     </ol></div>
 
    </main>
@@ -951,30 +997,51 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
     <h3 id="en-auralpaths" class="collapsible">AuralPaths<button type="button" class="sec-tg" aria-expanded="true" aria-controls="en-auralpaths-body" data-hide="hide" data-show="show">[hide]</button></h3>
     <div class="sec-body" id="en-auralpaths-body">
     <p class="mainlink">Simulator: <a class="ext" href="https://dlrjtt1.github.io/AuralPaths/">dlrjtt1.github.io/AuralPaths</a> · Repository: <a class="ext" href="https://github.com/dlrjtt1/AuralPaths">github.com/dlrjtt1/AuralPaths</a></p>
-    <p><b>AuralPaths</b> is a research and teaching tool for the precedence effect in sound reinforcement: vary hall, loudspeaker and seat positions, delay and level, then compute, listen to and export binaural room responses. With a stage source and a pair of PA loudspeakers in place, the user can see how the arrival-time gap (ITDG) and the level ratio between the paths change from seat to seat. Everything runs in the browser; drawings and audio files loaded by the user stay on their computer. A short quick guide in Korean, Japanese and English opens on the first screen<sup class="ref"><a href="#en-cite-2">[2]</a></sup>.</p>
+    <p><b>AuralPaths</b> is a research and teaching tool for the precedence effect in sound reinforcement: vary hall, loudspeaker and seat positions, delay and level, then compute, listen to and export binaural room responses. With a stage source and a pair of PA loudspeakers in place, the user can see how the arrival-time gap (ITDG) and the level ratio between the paths change from seat to seat. Everything runs in the browser; drawings and audio files loaded by the user stay on their computer. A short quick guide in Korean, Japanese and English opens on the first screen. The current version is 0.8.1 (November 2026); citation details are in the repository's <code>CITATION.cff</code><sup class="ref"><a href="#en-cite-2">[2]</a></sup>.</p>
     <h4 id="en-ap-features">Features</h4>
     <ul>
      <li><b>Hall</b>: a shoebox; a 2.5D drawn hall (plan outline × floor and ceiling profile) traced over the user's own PDF or image drawings, with scale from a known dimension and snapping to the PDF's lines; or a 3D model (Wavefront OBJ, e.g. exported from SketchUp or Blender). In a 3D model each surface group (name) is assigned a material, and the hall is computed with image sources up to second order plus ray tracing.</li>
-     <li><b>Acoustics</b>: image sources for the early part and ray tracing for the diffuse part; first-order edge diffraction (UTD) applies to drawn (2.5D) halls only. Binaural rendering with Neumann KU100 HRIRs; late reverberation built from the ear energies and interaural coherence of the ray-traced arrival directions.</li>
-     <li><b>Output</b>: echogram, arrivals by direction, C80 / D50 / Ts / EDT / T30 / IACC, seat maps of effective ITDG and level ratio, and listening with the user's own dry recordings (optional headphone EQ for Sennheiser HD600). A/B comparison of two conditions (ITDG and level ratio) at the same seat, with a blind option. BRIR export: one SOFA file (AES69, SingleRoomSRIR) with all seats × sources, and a 32-bit float stereo WAV of the seat and condition on display.</li>
+     <li><b>Acoustics</b>: image sources for the early part and ray tracing for the diffuse part. Binaural rendering with Neumann KU100 HRIRs; late reverberation built from the ear energies and interaural coherence of the ray-traced arrival directions. The early residual is also rendered with direction-dependent interaural coherence (early-direction option, on by default)<sup class="ref"><a href="#en-cite-7">[7]</a></sup>.</li>
+     <li><b>Diffraction</b>: drawn halls only; 3D models have no diffraction. By default, first-order diffraction (UTD) at one edge per path. Paths with one reflection before and after the edge (<code>diffraction_refl</code> 1) and second-order diffraction over two edges in sequence (<code>diffraction_order</code> 2) are options. Second-order diffraction is for isolated thick obstacles only; over rows such as seating it comes out 7–31 dB too loud<sup class="ref"><a href="#en-cite-7">[7]</a></sup>.</li>
+     <li><b>Seat dip (optional)</b>: a two-dimensional boundary-element (BEM) model of generic seats, off by default and available for drawn and 3D halls. It is not the measured seat-dip filter of any hall<sup class="ref"><a href="#en-cite-7">[7]</a></sup>.</li>
+     <li><b>Output</b>: echogram, arrivals by direction, C80 / D50 / Ts / EDT / T30 / IACC, seat maps of effective ITDG and level ratio, and listening with the user's own dry recordings (optional headphone EQ for Sennheiser HD600). A/B comparison of two conditions (ITDG and level ratio) at the same seat, with a blind option. BRIR export: one SOFA file (AES69, SingleRoomSRIR) with all seats × sources, and a 32-bit float stereo WAV of the seat and condition on display. The level ratio is the energy of the PA ear signals over that of the direct-sound ear signals at the reference seat; with dry files loaded it is computed from those signals, the same definition as in <code>make_stimuli.py</code><sup class="ref"><a href="#en-cite-7">[7]</a></sup>.</li>
      <li><b>Research features</b>:
       <ul>
-       <li>An in-page Calibrate function that fits absorption to measured T30 from a CSV file; positions marked <code>role=check</code> are kept out of the fit and used only to check it.</li>
+       <li>An in-page Calibrate function that fits absorption to measured T30 from a CSV file. Positions are combined by the median, with at least 30 000 rays per source; positions marked <code>role=check</code> are kept out of the fit and used only to check it. Drawn halls must be calibrated separately for the engine that will compute them, because the page and Python scatter differently; in 3D halls the two engines agree within about 2 %<sup class="ref"><a href="#en-cite-7">[7]</a></sup>.</li>
        <li>Trust indicators: the model type, material status and ray count are shown together with the measured-hall checks that apply to that model type, and a Ray-tracing spread re-runs the ray tracing with other seeds to show the range of C80, D50, Ts, EDT and T30 in JND.</li>
        <li>Reproducibility record: saved configs and exported SOFA files carry the page version, the SHA-256 of the engine and of a 3D model, and the computation settings (ray count, image-source order, diffraction, seeds).</li>
        <li>Loading the user's own HRIR set (SOFA); KU100 by default.</li>
        <li>Parallel ray tracing in several workers.</li>
       </ul>
      </li>
-     <li><b>Python tools for research</b>: BRIR sets from the same model (<code>run.py</code>), listening-test stimuli (<code>make_stimuli.py</code>), fitting absorption to measured T30 (<code>calibrate.py</code>), and a diffraction check against BRAS (<code>validate_bras.py</code>).</li>
+     <li><b>Python tools for research</b>: BRIR sets from the same model (<code>run.py</code>), listening-test stimuli (<code>make_stimuli.py</code>, which also reads the SOFA files the page exports), fitting absorption to measured T30 (<code>calibrate.py</code>), a diffraction check against BRAS (<code>validate_bras.py</code>), conversion of a 3D OBJ hall into a drawn hall the page can open (<code>obj_to_hall.py</code>), room-criteria checks against measured halls (<code>validate_fratoni.py</code>, <code>validate_bras_cr.py</code>), and the page's engine called from Python (<code>engine_js.py</code>). Regression checks that need no external data run on GitHub for every push to main<sup class="ref"><a href="#en-cite-2">[2]</a></sup>.</li>
     </ul>
     <h4 id="en-ap-limits">Accuracy and limitations</h4>
-    <p>AuralPaths does not claim to reproduce a real hall. In a round robin comparing several room-acoustic simulation tools, simulated results differed noticeably from measurements and the auralizations were found to be "mostly plausible but not authentic"<sup class="ref"><a href="#en-cite-4">[4]</a></sup>.</p>
-    <p>As a check against measured halls, the raked lecture hall (ULH) of the Fratoni dataset, computed with the dataset's boundary conditions unchanged, came within about ±1 JND of the measurement in EDT, T30, C50 and Ts from 500 Hz to 4 kHz (T30 1–2 JND short at 125–250 Hz). In the dataset's elliptical domed hall (STC), T30 came out about 15 % too long, so halls with a non-diffuse field need their own calibration. This check covers receiver means only and does not test early arrivals or PA paths<sup class="ref"><a href="#en-cite-6">[6]</a></sup><sup class="ref"><a href="#en-cite-7">[7]</a></sup>.</p>
-    <p>A position-by-position check against two real halls in BRAS (chamber music hall CR3 and university auditorium CR4, 10 RIRs per hall) gave T30 8–11 % too long with the BRAS material values as given (band means 500 Hz–2 kHz). After calibration on one source position, the positions not used in the calibration came within a mean of 0.8 JND in T30 in both halls. Before calibration, C80, C50 and Ts differed by about 0.8–1.0 JND in CR3 and 1.6–2.3 JND in CR4<sup class="ref"><a href="#en-cite-5">[5]</a></sup><sup class="ref"><a href="#en-cite-7">[7]</a></sup>.</p>
-    <p>First-order reflections match the measurement in time and level in CR3 (median level difference +1.6 dB). In CR4 their level looks too high in a 1 ms window at the predicted time (median +4.9 dB), but agrees within +0.2 dB in the energy of a window around it (−1.5 … +2.5 ms), which indicates arrivals that are spread in time or slightly displaced. A drawn 2.5D version of a hall with balconies did not reproduce its individual early reflections. The time and level of each reflection, and so the ITDG of a seat, therefore need to be checked against measurements hall by hall, depending on how much the geometry is simplified<sup class="ref"><a href="#en-cite-7">[7]</a></sup>. Results should be used only after calibration with measured T30 and a check of the early reflections against measurements.</p>
-    <p>As a diffraction check against BRAS scene RS5 (a 2.07 m partition on a hard floor, 16 receiver positions), the mean absolute difference in third-octave bands from 500 Hz to 2 kHz was 1.8 dB (2.2 dB at the 11 shadow-zone positions). This is a single simple scene, not a measure of whole-hall accuracy<sup class="ref"><a href="#en-cite-2">[2]</a></sup><sup class="ref"><a href="#en-cite-5">[5]</a></sup>.</p>
-    <p>In addition, the seat-dip effect is not modelled; diffraction is first-order only and limited to drawn halls, and 3D models have no edge diffraction. Scattering uses a random (Lambert) model, HRIRs are taken from the nearest direction, and the default HRTFs are non-individual (dummy head), although the user's own HRIR set can be loaded. Loudspeaker directivity files are approximations<sup class="ref"><a href="#en-cite-2">[2]</a></sup>.</p>
+    <p>AuralPaths does not claim to reproduce a real hall. In a round robin comparing several room-acoustic simulation tools, simulated results differed noticeably from measurements and the auralizations were found to be "mostly plausible but not authentic"<sup class="ref"><a href="#en-cite-4">[4]</a></sup>. The points below are physical checks against public measured data (BRAS<sup class="ref"><a href="#en-cite-5">[5]</a></sup>, the Fratoni dataset<sup class="ref"><a href="#en-cite-6">[6]</a></sup> and others), not perceptual validation. Few halls were checked, so the results apply to those halls. Detailed figures and methods are in the validity summary<sup class="ref"><a href="#en-cite-9">[9]</a></sup> and the benchmark document<sup class="ref"><a href="#en-cite-10">[10]</a></sup>.</p>
+    <ul>
+     <li><b>Checked and in agreement</b>
+      <ul>
+       <li>Direct-sound arrival time (−0.67 … +0.07 ms against measurement) and ITD / ILD (0–5 µs, 0.3–0.5 dB with the same dummy head as the measurement; 14–18 µs, 0.8–0.9 dB with KU100).</li>
+       <li>The ITDG and level ratio set by the stimulus generator (equal to the nominal values at the reference seat).</li>
+       <li>T30 after calibration with measured T30, at positions not used in the fit (0.8 JND in BRAS CR3 and CR4).</li>
+       <li>Room criteria from inputs calibrated with another program (Fratoni ULH: within about 1 JND at 500 Hz–4 kHz).</li>
+       <li>Diffraction reference scenes: BRAS RS5, mean absolute difference 1.8 dB at 500 Hz–2 kHz (2.2 dB in the shadow zone); RS6 with second-order diffraction, level bias −0.6 … +1.6 dB and third-octave mean absolute difference 2.3–2.8 dB. These are simple scenes, not a measure of whole-hall accuracy.</li>
+      </ul>
+     </li>
+     <li><b>Checked, with known differences</b>
+      <ul>
+       <li>Uncalibrated T30 is 8–11 % long with the BRAS material values as given.</li>
+       <li>First-order reflection level: median over all reflections +1.6 dB in CR3 and +2.7 dB in CR4. For the 28 reflections in CR4 that do not overlap with others, the level is +4.9 dB in a 1 ms window at the predicted time but +0.2 dB in the energy of a window around it (−1.5 … +2.5 ms), indicating arrivals that are spread in time or displaced. A drawn 2.5D version of a hall with balconies does not reproduce its individual early reflections.</li>
+       <li>At the binaural listening position, C80 is 1–4 dB low at 500 Hz–1 kHz; early spaciousness (IACC_E3) is somewhat low and late IACC_L is one third to one half of the measured value.</li>
+       <li>For directional loudspeakers at 2–4 kHz the evidence is mixed, so analyses of PA conditions are best supported at 500 Hz–1 kHz.</li>
+       <li>Halls far from the input assumptions: the elliptical domed hall (STC) gives T30 about 15 % too long, and the box-tier opera house (TCB) is not counted as a successful check.</li>
+       <li>Seat dip: without the model, 5–11 dB too loud behind the first row. With the model, 1.8–2.5 dB off where the source is visible and 3.3–6.2 dB behind the first block; the 400–500 Hz dip is within 3 dB but starts about a third octave low (BRAS RS7). In a real hall it has been checked at one site only, with the default seat setting.</li>
+      </ul>
+     </li>
+     <li><b>Not checked or not modelled</b>: whether listeners hear computed and measured BRIRs as the same (no listening test); a comparison of delayed PA conditions with measurements; halls other than those checked and seats other than measured positions; loudspeaker frequency response (only directivity patterns are modelled); individual HRTFs (non-individual dummy-head HRIRs from the nearest direction by default; the user's own HRIR set can be loaded). Scattering uses a random (Lambert) model, and loudspeaker directivity files are approximations.</li>
+    </ul>
+    <p>Scored on the same data and criteria as the 2019 round robin, AuralPaths falls within the range of the six participating simulation programs. With material data only, its mean error in reverberation and clarity for the chamber music hall (CR3) was the smallest of the seven, and its source lateralization error was 0.3–0.6° (participants: 0.2–14.2°). However, the participants submitted their results without knowing the measurements, whereas AuralPaths was computed after seeing them; this is a <b>post-hoc comparison</b> and not a ranking under equal conditions<sup class="ref"><a href="#en-cite-10">[10]</a></sup>.</p>
+    <p>A computed BRIR is a model of a hall, and a listening test that uses it is a laboratory experiment; its results alone cannot show what happens with real sound reinforcement in a real hall. Before reporting room criteria as properties of a hall, calibrate with that hall's measured T30, and check results that depend on a particular hall's early reflections against its measurements first<sup class="ref"><a href="#en-cite-9">[9]</a></sup>.</p>
     <h4 id="en-ap-license">Licence</h4>
     <p>The source code is released under the MIT License. Third-party data keep their own licences (KU100 HRIRs and headphone filter: CC BY 3.0; BRAS-derived validation results: CC BY-SA 4.0; Fratoni-derived validation results and converted halls: CC BY 4.0)<sup class="ref"><a href="#en-cite-2">[2]</a></sup>.</p>
     </div>
@@ -1044,6 +1111,8 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
      <li id="en-cite-6"><a class="up" href="#en-ap-limits">↑</a><cite>Fratoni, G. (2021). <i>Materials for calibrating four complex virtual environments through acoustic simulations</i>, version 1. Mendeley Data.</cite> <a class="ext" href="https://doi.org/10.17632/y7xnv6xg5s.1">doi:10.17632/y7xnv6xg5s.1</a></li>
      <li id="en-cite-7"><a class="up" href="#en-ap-limits">↑</a><cite>dlrjtt1, "AuralPaths", model documentation (docs/MODEL_en.md).</cite> <a class="ext" href="https://github.com/dlrjtt1/AuralPaths/blob/main/docs/MODEL_en.md">https://github.com/dlrjtt1/AuralPaths/blob/main/docs/MODEL_en.md</a></li>
      <li id="en-cite-8"><a class="up" href="#en-pilot-stimuli">↑</a><cite>Bacila, B. I., Lee, H. (2019). "360° Binaural Room Impulse Response (BRIR) Database for 6DOF Spatial Perception Research." AES 146th Convention, Dublin, e-Brief 513. Dataset: Zenodo.</cite> <a class="ext" href="https://doi.org/10.5281/zenodo.2641166">doi:10.5281/zenodo.2641166</a></li>
+     <li id="en-cite-9"><a class="up" href="#en-ap-limits">↑</a><cite>dlrjtt1, "AuralPaths", validity summary (docs/VALIDITY_en.md).</cite> <a class="ext" href="https://github.com/dlrjtt1/AuralPaths/blob/main/docs/VALIDITY_en.md">https://github.com/dlrjtt1/AuralPaths/blob/main/docs/VALIDITY_en.md</a></li>
+     <li id="en-cite-10"><a class="up" href="#en-ap-limits">↑</a><cite>dlrjtt1, "AuralPaths", benchmark (docs/BENCHMARK_en.md).</cite> <a class="ext" href="https://github.com/dlrjtt1/AuralPaths/blob/main/docs/BENCHMARK_en.md">https://github.com/dlrjtt1/AuralPaths/blob/main/docs/BENCHMARK_en.md</a></li>
     </ol></div>
 
    </main>
@@ -1092,7 +1161,7 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
 (function(){
   var LANGS = ['ja','ko','en'];
   var DEFAULT = 'ja';
-  var BUILD_DATE = '2026-11-07T19:30:00+09:00';
+  var BUILD_DATE = '2026-11-15T20:30:00+09:00';
   var META = {
     ja: { title: '柳 東均 (Dong-Gyun You) — 音響学研究者',
           desc: '柳東均（Dong-Gyun You）は、東京藝術大学 音楽音響創造科の研究生として、拡声システム・ミキシング・空間オーディオを研究する音響学研究者である。' },
