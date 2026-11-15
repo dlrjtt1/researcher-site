@@ -341,7 +341,7 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
      <table><tbody>
       <tr class="sec"><td colspan="2">基本情報</td></tr>
       <tr><th>開発</th><td>柳 東均（LABO 1557）</td></tr>
-      <tr><th>最新版</th><td>1.0.0</td></tr>
+      <tr><th>最新版</th><td>0.10.1</td></tr>
       <tr><th>種類</th><td>リファレンス比較トーンバランス・アナライザー</td></tr>
       <tr><th>形式</th><td>VST3, AU (macOS), Standalone</td></tr>
       <tr><th>OS</th><td>Windows 10 / 11 (64-bit)<br>macOS 11+ (Apple Silicon / Intel)</td></tr>
@@ -350,15 +350,15 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
      </tbody></table>
     </aside>
     <p><b>DRAVEN</b>（Dynamic Reference Analysis and Verification Engine for Normalization）は、自分のミックスをリファレンス曲（WAVまたはMP3、最大4曲）と比較するトーンバランス・アナライザー・プラグインである。周波数バランス曲線と4帯域の要約を表示し、グラフ上で直接編集するEQ（提案機能は任意）と、ラウドネスを揃えた状態でのA/B試聴を提供する<sup class="ref"><a href="#ja-cite-1">[1]</a></sup>。ラウドネスの測定にはITU-R BS.1770のアルゴリズムを用いる<sup class="ref"><a href="#ja-cite-4">[4]</a></sup>。DRAVENは差を示すのみであり、どの音が良いかを判断するものではないため、結果は必ず耳で確認する必要がある。</p>
-    <figure class="figure"><img src="assets/draven-0.9.1.jpg" alt="DRAVENの画面" width="1064" height="738" loading="lazy"><figcaption>DRAVENの画面（0.9.1）。黒線がリファレンス、赤線が自分のミックス、灰色の領域がリファレンスの範囲（P10–P90）である。</figcaption></figure>
+    <figure class="figure"><img src="assets/draven-0.10.1.png" alt="DRAVENの画面" width="1120" height="763" loading="lazy"><figcaption>DRAVENの画面（0.10.1）。黒線がリファレンス、赤線が自分のミックス、灰色の領域がリファレンスの範囲（P10–P90）である。</figcaption></figure>
 
     <h2 id="ja-download">ダウンロード</h2>
     <p>インストーラーはGitHub Releasesに置かれている。登録、ライセンスキー、試用期間の制限はない。</p>
     <div class="tbl-wrap"><table class="wikitable">
      <thead><tr><th>OS</th><th>ファイル</th><th>ダウンロード</th></tr></thead>
      <tbody>
-      <tr><td>Windows 10 / 11（64-bit）</td><td><code>DRAVEN-1.0.0-Windows-Setup.exe</code></td><td><a class="dl-btn" href="https://github.com/dlrjtt1/draven-releases/releases/download/v1.0.0/DRAVEN-1.0.0-Windows-Setup.exe">Windows</a></td></tr>
-      <tr><td>macOS 11以降（Apple Silicon / Intel）</td><td><code>DRAVEN-1.0.0-macOS.pkg</code></td><td><a class="dl-btn" href="https://github.com/dlrjtt1/draven-releases/releases/download/v1.0.0/DRAVEN-1.0.0-macOS.pkg">macOS</a></td></tr>
+      <tr><td>Windows 10 / 11（64-bit）</td><td><code>DRAVEN-0.10.1-Windows-Setup.exe</code></td><td><a class="dl-btn" href="https://github.com/dlrjtt1/draven-releases/releases/download/v0.10.1/DRAVEN-0.10.1-Windows-Setup.exe">Windows</a></td></tr>
+      <tr><td>macOS 11以降（Apple Silicon / Intel）</td><td><code>DRAVEN-0.10.1-macOS.pkg</code></td><td><a class="dl-btn" href="https://github.com/dlrjtt1/draven-releases/releases/download/v0.10.1/DRAVEN-0.10.1-macOS.pkg">macOS</a></td></tr>
      </tbody>
     </table></div>
     <p>すべてのバージョンと変更履歴：<a class="ext" href="https://github.com/dlrjtt1/draven-releases/releases">github.com/dlrjtt1/draven-releases/releases</a></p>
@@ -373,14 +373,14 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
     <p>現在配布しているインストーラーとプラグインはコード署名されていない。そのため、初回実行時にOSが警告を表示する。</p>
     <h3 id="ja-install-win">Windows</h3>
     <ol>
-     <li><code>DRAVEN-1.0.0-Windows-Setup.exe</code>を実行する。</li>
+     <li><code>DRAVEN-0.10.1-Windows-Setup.exe</code>を実行する。</li>
      <li>「WindowsによってPCが保護されました」と表示された場合は、<b>詳細情報</b>を押してから<b>実行</b>を押す。</li>
      <li>インストーラーの案内に従う。スタンドアロン・アプリは任意である。</li>
     </ol>
     <p>インストール先：VST3プラグイン<code>C:\Program Files\Common Files\VST3\DRAVEN.vst3</code>、スタンドアロン・アプリ<code>C:\Program Files\LABO 1557\DRAVEN\DRAVEN.exe</code>（選択した場合）。アンインストール：設定 › アプリ › DRAVEN › アンインストール。</p>
     <h3 id="ja-install-mac">macOS（未署名の警告への対処）</h3>
     <ol>
-     <li><code>DRAVEN-1.0.0-macOS.pkg</code>をダブルクリックする。</li>
+     <li><code>DRAVEN-0.10.1-macOS.pkg</code>をダブルクリックする。</li>
      <li>macOSが「開発元を検証できません」という警告を表示する。
       <ul>
        <li>macOS 15（Sequoia）以降：<b>完了</b>を押し、システム設定 › プライバシーとセキュリティを開き、下方のDRAVENのメッセージの横にある<b>このまま開く</b>を押してパスワードで確認する。</li>
@@ -440,7 +440,7 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
 
     <h2 id="ja-refs">脚注</h2>
     <div class="refs"><ol>
-     <li id="ja-cite-1"><a class="up" href="#top-ja">↑</a><cite>LABO 1557「DRAVEN」インストール案内およびサードパーティ告知（インストーラーに同梱の<code>NOTICE.txt</code>）。</cite> <a class="ext" href="https://github.com/dlrjtt1/draven-releases/releases/tag/v1.0.0">https://github.com/dlrjtt1/draven-releases/releases/tag/v1.0.0</a></li>
+     <li id="ja-cite-1"><a class="up" href="#top-ja">↑</a><cite>LABO 1557「DRAVEN」インストール案内およびサードパーティ告知（インストーラーに同梱の<code>NOTICE.txt</code>）。</cite> <a class="ext" href="https://github.com/dlrjtt1/draven-releases/releases/tag/v0.10.1">https://github.com/dlrjtt1/draven-releases/releases/tag/v0.10.1</a></li>
      <li id="ja-cite-2"><a class="up" href="#top-ja">↑</a><cite>JUCE「JUCE 8 End User Licence Agreement」。</cite> <a class="ext" href="https://juce.com/legal/juce-8-licence/">https://juce.com/legal/juce-8-licence/</a></li>
      <li id="ja-cite-3"><a class="up" href="#top-ja">↑</a><cite>Steinberg Media Technologies「VST 3 License」。</cite> <a class="ext" href="https://steinbergmedia.github.io/vst3_dev_portal/pages/VST+3+Licensing/VST3+License">https://steinbergmedia.github.io/vst3_dev_portal/pages/VST+3+Licensing/VST3+License</a></li>
      <li id="ja-cite-4"><a class="up" href="#top-ja">↑</a><cite>ITU-R「Recommendation BS.1770: Algorithms to measure audio programme loudness and true-peak audio level」。</cite> <a class="ext" href="https://www.itu.int/rec/R-REC-BS.1770">https://www.itu.int/rec/R-REC-BS.1770</a></li>
@@ -473,7 +473,7 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
      <table><tbody>
       <tr class="sec"><td colspan="2">기본 정보</td></tr>
       <tr><th>개발</th><td>유동균 (LABO 1557)</td></tr>
-      <tr><th>최신 버전</th><td>1.0.0</td></tr>
+      <tr><th>최신 버전</th><td>0.10.1</td></tr>
       <tr><th>종류</th><td>레퍼런스 비교 톤 밸런스 분석기</td></tr>
       <tr><th>형식</th><td>VST3, AU (macOS), Standalone</td></tr>
       <tr><th>운영체제</th><td>Windows 10 / 11 (64-bit)<br>macOS 11+ (Apple Silicon / Intel)</td></tr>
@@ -482,15 +482,15 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
      </tbody></table>
     </aside>
     <p><b>DRAVEN</b>(Dynamic Reference Analysis and Verification Engine for Normalization)은 자신의 믹스를 레퍼런스 곡(WAV 또는 MP3, 최대 4곡)과 비교하는 톤 밸런스 분석 플러그인이다. 주파수 밸런스 곡선과 4대역 요약을 보여 주고, 그래프 위에서 직접 편집하는 EQ(제안 기능은 선택), 라우드니스를 맞춘 상태에서의 A/B 청취를 제공한다<sup class="ref"><a href="#ko-cite-1">[1]</a></sup>. 라우드니스 측정에는 ITU-R BS.1770의 알고리즘을 쓴다<sup class="ref"><a href="#ko-cite-4">[4]</a></sup>. DRAVEN은 차이를 보여 줄 뿐 어떤 소리가 좋은지를 판단하지 않으므로, 결과는 반드시 귀로 확인해야 한다.</p>
-    <figure class="figure"><img src="assets/draven-0.9.1.jpg" alt="DRAVEN 화면" width="1064" height="738" loading="lazy"><figcaption>DRAVEN 화면(0.9.1). 검은 선은 레퍼런스, 빨간 선은 내 믹스, 회색 영역은 레퍼런스의 범위(P10–P90)이다.</figcaption></figure>
+    <figure class="figure"><img src="assets/draven-0.10.1.png" alt="DRAVEN 화면" width="1120" height="763" loading="lazy"><figcaption>DRAVEN 화면(0.10.1). 검은 선은 레퍼런스, 빨간 선은 내 믹스, 회색 영역은 레퍼런스의 범위(P10–P90)이다.</figcaption></figure>
 
     <h2 id="ko-download">다운로드</h2>
     <p>설치 파일은 GitHub Releases에 있다. 등록, 라이선스 키, 체험 기간 제한은 없다.</p>
     <div class="tbl-wrap"><table class="wikitable">
      <thead><tr><th>운영체제</th><th>파일</th><th>내려받기</th></tr></thead>
      <tbody>
-      <tr><td>Windows 10 / 11 (64-bit)</td><td><code>DRAVEN-1.0.0-Windows-Setup.exe</code></td><td><a class="dl-btn" href="https://github.com/dlrjtt1/draven-releases/releases/download/v1.0.0/DRAVEN-1.0.0-Windows-Setup.exe">Windows</a></td></tr>
-      <tr><td>macOS 11 이상 (Apple Silicon / Intel)</td><td><code>DRAVEN-1.0.0-macOS.pkg</code></td><td><a class="dl-btn" href="https://github.com/dlrjtt1/draven-releases/releases/download/v1.0.0/DRAVEN-1.0.0-macOS.pkg">macOS</a></td></tr>
+      <tr><td>Windows 10 / 11 (64-bit)</td><td><code>DRAVEN-0.10.1-Windows-Setup.exe</code></td><td><a class="dl-btn" href="https://github.com/dlrjtt1/draven-releases/releases/download/v0.10.1/DRAVEN-0.10.1-Windows-Setup.exe">Windows</a></td></tr>
+      <tr><td>macOS 11 이상 (Apple Silicon / Intel)</td><td><code>DRAVEN-0.10.1-macOS.pkg</code></td><td><a class="dl-btn" href="https://github.com/dlrjtt1/draven-releases/releases/download/v0.10.1/DRAVEN-0.10.1-macOS.pkg">macOS</a></td></tr>
      </tbody>
     </table></div>
     <p>모든 버전과 변경 내역: <a class="ext" href="https://github.com/dlrjtt1/draven-releases/releases">github.com/dlrjtt1/draven-releases/releases</a></p>
@@ -505,14 +505,14 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
     <p>지금 배포하는 설치 파일과 플러그인은 코드 서명이 되어 있지 않다. 그래서 처음 실행할 때 운영체제가 경고를 띄운다.</p>
     <h3 id="ko-install-win">Windows</h3>
     <ol>
-     <li><code>DRAVEN-1.0.0-Windows-Setup.exe</code>를 실행한다.</li>
+     <li><code>DRAVEN-0.10.1-Windows-Setup.exe</code>를 실행한다.</li>
      <li>"Windows의 PC 보호" 창이 뜨면 <b>추가 정보</b>를 누른 뒤 <b>실행</b>을 누른다.</li>
      <li>설치 안내를 따른다. 단독 실행 앱(Standalone)은 선택 사항이다.</li>
     </ol>
     <p>설치 위치: VST3 플러그인 <code>C:\Program Files\Common Files\VST3\DRAVEN.vst3</code>, 단독 실행 앱 <code>C:\Program Files\LABO 1557\DRAVEN\DRAVEN.exe</code>(선택한 경우). 제거: 설정 › 앱 › DRAVEN › 제거.</p>
     <h3 id="ko-install-mac">macOS (미서명 경고 대처)</h3>
     <ol>
-     <li><code>DRAVEN-1.0.0-macOS.pkg</code>를 더블클릭한다.</li>
+     <li><code>DRAVEN-0.10.1-macOS.pkg</code>를 더블클릭한다.</li>
      <li>macOS가 "개발자를 확인할 수 없다"는 경고를 띄운다.
       <ul>
        <li>macOS 15(Sequoia) 이상: <b>완료</b>를 누르고 시스템 설정 › 개인정보 보호 및 보안으로 가서, 아래쪽 DRAVEN 메시지 옆의 <b>그래도 열기</b>를 누르고 암호로 확인한다.</li>
@@ -572,7 +572,7 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
 
     <h2 id="ko-refs">각주</h2>
     <div class="refs"><ol>
-     <li id="ko-cite-1"><a class="up" href="#top-ko">↑</a><cite>LABO 1557, 「DRAVEN」 설치 안내 및 서드파티 고지(설치 파일에 포함된 <code>NOTICE.txt</code>).</cite> <a class="ext" href="https://github.com/dlrjtt1/draven-releases/releases/tag/v1.0.0">https://github.com/dlrjtt1/draven-releases/releases/tag/v1.0.0</a></li>
+     <li id="ko-cite-1"><a class="up" href="#top-ko">↑</a><cite>LABO 1557, 「DRAVEN」 설치 안내 및 서드파티 고지(설치 파일에 포함된 <code>NOTICE.txt</code>).</cite> <a class="ext" href="https://github.com/dlrjtt1/draven-releases/releases/tag/v0.10.1">https://github.com/dlrjtt1/draven-releases/releases/tag/v0.10.1</a></li>
      <li id="ko-cite-2"><a class="up" href="#top-ko">↑</a><cite>JUCE, 「JUCE 8 End User Licence Agreement」.</cite> <a class="ext" href="https://juce.com/legal/juce-8-licence/">https://juce.com/legal/juce-8-licence/</a></li>
      <li id="ko-cite-3"><a class="up" href="#top-ko">↑</a><cite>Steinberg Media Technologies, 「VST 3 License」.</cite> <a class="ext" href="https://steinbergmedia.github.io/vst3_dev_portal/pages/VST+3+Licensing/VST3+License">https://steinbergmedia.github.io/vst3_dev_portal/pages/VST+3+Licensing/VST3+License</a></li>
      <li id="ko-cite-4"><a class="up" href="#top-ko">↑</a><cite>ITU-R, 「Recommendation BS.1770: Algorithms to measure audio programme loudness and true-peak audio level」.</cite> <a class="ext" href="https://www.itu.int/rec/R-REC-BS.1770">https://www.itu.int/rec/R-REC-BS.1770</a></li>
@@ -605,7 +605,7 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
      <table><tbody>
       <tr class="sec"><td colspan="2">Overview</td></tr>
       <tr><th>Developer</th><td>Dong-Gyun You (LABO 1557)</td></tr>
-      <tr><th>Latest version</th><td>1.0.0</td></tr>
+      <tr><th>Latest version</th><td>0.10.1</td></tr>
       <tr><th>Type</th><td>Reference-matching tonal-balance analyser</td></tr>
       <tr><th>Formats</th><td>VST3, AU (macOS), Standalone</td></tr>
       <tr><th>OS</th><td>Windows 10 / 11 (64-bit)<br>macOS 11+ (Apple Silicon / Intel)</td></tr>
@@ -614,15 +614,15 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
      </tbody></table>
     </aside>
     <p><b>DRAVEN</b> (Dynamic Reference Analysis and Verification Engine for Normalization) is a tonal-balance analyser plug-in that compares your mix with reference tracks (WAV or MP3, up to four). It shows the frequency balance and a four-band summary, an EQ you edit on the graph (with an optional suggestion), and A/B listening at matched loudness<sup class="ref"><a href="#en-cite-1">[1]</a></sup>. Loudness is measured with the algorithm of ITU-R BS.1770<sup class="ref"><a href="#en-cite-4">[4]</a></sup>. DRAVEN shows differences; it does not decide what sounds good, so always check by ear.</p>
-    <figure class="figure"><img src="assets/draven-0.9.1.jpg" alt="DRAVEN screen" width="1064" height="738" loading="lazy"><figcaption>DRAVEN (0.9.1). Black: reference; red: your mix; grey band: reference range (P10–P90).</figcaption></figure>
+    <figure class="figure"><img src="assets/draven-0.10.1.png" alt="DRAVEN screen" width="1120" height="763" loading="lazy"><figcaption>DRAVEN (0.10.1). Black: reference; red: your mix; grey band: reference range (P10–P90).</figcaption></figure>
 
     <h2 id="en-download">Download</h2>
     <p>The installers are on GitHub Releases. There is no registration, no licence key and no trial limit.</p>
     <div class="tbl-wrap"><table class="wikitable">
      <thead><tr><th>OS</th><th>File</th><th>Download</th></tr></thead>
      <tbody>
-      <tr><td>Windows 10 / 11 (64-bit)</td><td><code>DRAVEN-1.0.0-Windows-Setup.exe</code></td><td><a class="dl-btn" href="https://github.com/dlrjtt1/draven-releases/releases/download/v1.0.0/DRAVEN-1.0.0-Windows-Setup.exe">Windows</a></td></tr>
-      <tr><td>macOS 11 or later (Apple Silicon / Intel)</td><td><code>DRAVEN-1.0.0-macOS.pkg</code></td><td><a class="dl-btn" href="https://github.com/dlrjtt1/draven-releases/releases/download/v1.0.0/DRAVEN-1.0.0-macOS.pkg">macOS</a></td></tr>
+      <tr><td>Windows 10 / 11 (64-bit)</td><td><code>DRAVEN-0.10.1-Windows-Setup.exe</code></td><td><a class="dl-btn" href="https://github.com/dlrjtt1/draven-releases/releases/download/v0.10.1/DRAVEN-0.10.1-Windows-Setup.exe">Windows</a></td></tr>
+      <tr><td>macOS 11 or later (Apple Silicon / Intel)</td><td><code>DRAVEN-0.10.1-macOS.pkg</code></td><td><a class="dl-btn" href="https://github.com/dlrjtt1/draven-releases/releases/download/v0.10.1/DRAVEN-0.10.1-macOS.pkg">macOS</a></td></tr>
      </tbody>
     </table></div>
     <p>All versions and release notes: <a class="ext" href="https://github.com/dlrjtt1/draven-releases/releases">github.com/dlrjtt1/draven-releases/releases</a></p>
@@ -637,14 +637,14 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
     <p>The installers and the plug-in are not code-signed yet, so the operating system shows a warning the first time.</p>
     <h3 id="en-install-win">Windows</h3>
     <ol>
-     <li>Run <code>DRAVEN-1.0.0-Windows-Setup.exe</code>.</li>
+     <li>Run <code>DRAVEN-0.10.1-Windows-Setup.exe</code>.</li>
      <li>If Windows shows "Windows protected your PC", click <b>More info</b>, then <b>Run anyway</b>.</li>
      <li>Follow the installer. The standalone app is optional.</li>
     </ol>
     <p>Installed to: VST3 plug-in <code>C:\Program Files\Common Files\VST3\DRAVEN.vst3</code>; standalone <code>C:\Program Files\LABO 1557\DRAVEN\DRAVEN.exe</code> (if chosen). Uninstall: Settings › Apps › DRAVEN › Uninstall.</p>
     <h3 id="en-install-mac">macOS (unsigned-installer warning)</h3>
     <ol>
-     <li>Double-click <code>DRAVEN-1.0.0-macOS.pkg</code>.</li>
+     <li>Double-click <code>DRAVEN-0.10.1-macOS.pkg</code>.</li>
      <li>macOS says it cannot verify the developer.
       <ul>
        <li>macOS 15 (Sequoia) or later: click <b>Done</b>, open System Settings › Privacy &amp; Security, scroll down, click <b>Open Anyway</b> next to the DRAVEN message and confirm with your password.</li>
@@ -704,7 +704,7 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
 
     <h2 id="en-refs">References</h2>
     <div class="refs"><ol>
-     <li id="en-cite-1"><a class="up" href="#top-en">↑</a><cite>LABO 1557, "DRAVEN" installation notes and third-party notices (<code>NOTICE.txt</code> in the installer).</cite> <a class="ext" href="https://github.com/dlrjtt1/draven-releases/releases/tag/v1.0.0">https://github.com/dlrjtt1/draven-releases/releases/tag/v1.0.0</a></li>
+     <li id="en-cite-1"><a class="up" href="#top-en">↑</a><cite>LABO 1557, "DRAVEN" installation notes and third-party notices (<code>NOTICE.txt</code> in the installer).</cite> <a class="ext" href="https://github.com/dlrjtt1/draven-releases/releases/tag/v0.10.1">https://github.com/dlrjtt1/draven-releases/releases/tag/v0.10.1</a></li>
      <li id="en-cite-2"><a class="up" href="#top-en">↑</a><cite>JUCE, "JUCE 8 End User Licence Agreement".</cite> <a class="ext" href="https://juce.com/legal/juce-8-licence/">https://juce.com/legal/juce-8-licence/</a></li>
      <li id="en-cite-3"><a class="up" href="#top-en">↑</a><cite>Steinberg Media Technologies, "VST 3 License".</cite> <a class="ext" href="https://steinbergmedia.github.io/vst3_dev_portal/pages/VST+3+Licensing/VST3+License">https://steinbergmedia.github.io/vst3_dev_portal/pages/VST+3+Licensing/VST3+License</a></li>
      <li id="en-cite-4"><a class="up" href="#top-en">↑</a><cite>ITU-R, "Recommendation BS.1770: Algorithms to measure audio programme loudness and true-peak audio level".</cite> <a class="ext" href="https://www.itu.int/rec/R-REC-BS.1770">https://www.itu.int/rec/R-REC-BS.1770</a></li>
