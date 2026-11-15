@@ -266,12 +266,6 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
 #edit-toggle.show{display:flex}
 
 /* ===== DRAVEN page ===== */
-.draft{border:1px solid #d5a020;background:color-mix(in srgb,#fef6e7 85%,transparent);padding:8px 12px;margin:.6em 0 .8em;font-size:.9rem}
-:root[data-theme="dark"] .draft{background:#3a3220;border-color:#a67c00}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .draft{background:#3a3220;border-color:#a67c00}}
-.draft b{color:#a15c00}
-:root[data-theme="dark"] .draft b{color:#f0c060}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .draft b{color:#f0c060}}
 .dl-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:620px;margin:.6em 0 .8em}
 .dl-card{border:1px solid var(--border-soft);background:var(--bg-sub);padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px;min-width:0}
 .dl-os{font-weight:700;font-size:1.05rem}
@@ -282,6 +276,10 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
 :root[data-theme="dark"] .dl-btn{color:#101418!important}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .dl-btn{color:#101418!important}}
 @media (max-width:560px){.dl-grid{grid-template-columns:minmax(0,1fr)}}
+.lightbox{position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.82);display:none;align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+.lightbox.show{display:flex}
+.lightbox img{max-width:min(1120px,100%);max-height:100%;width:auto;height:auto;box-shadow:0 4px 24px rgba(0,0,0,.5);background:#fff}
+.lightbox .lb-close{position:absolute;top:12px;right:16px;background:none;border:0;color:#fff;font-size:28px;line-height:1;cursor:pointer;padding:4px 8px}
 .infobox .ib-img a{display:block}
 .infobox .ib-img img{width:100%;max-width:100%;aspect-ratio:auto;object-fit:contain;border:1px solid var(--border-soft);cursor:zoom-in}
 main code{overflow-wrap:anywhere}
@@ -417,7 +415,6 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
     </ol>
 
     <h2 id="ja-terms">使用条件</h2>
-    <p class="draft"><b>草案・要検討</b> — 以下の文言は法律の専門家による検討を受けていない草案である。</p>
     <ol>
      <li>DRAVENは無償で配布される。個人的な用途と商業的な用途（例：DRAVENを用いて制作した音楽の発表・販売）のいずれにも無料で使用できる。</li>
      <li>DRAVEN自体を販売し、または有償で再配布してはならない。他の人に紹介する際は、インストーラーではなくこのページのリンクを共有されたい。</li>
@@ -442,7 +439,7 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
     </table></div>
     <p>VSTはSteinberg Media Technologies GmbHの商標である。</p>
 
-    <h2 id="ja-limits">既知の制限</h2>
+    <h2 id="ja-limits">注意点</h2>
     <ul>
      <li>インストーラーとプラグインはコード署名・公証されていない（上記のインストール案内を参照）。</li>
      <li>AAX（Pro Tools）形式は提供していない。</li>
@@ -557,7 +554,6 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
     </ol>
 
     <h2 id="ko-terms">사용 조건</h2>
-    <p class="draft"><b>초안 · 검토 필요</b> — 아래 문구는 법률 전문가의 검토를 받지 않은 초안이다.</p>
     <ol>
      <li>DRAVEN은 무상으로 배포된다. 개인적 용도와 상업적 용도(예: DRAVEN을 쓰며 만든 음악의 발표·판매) 모두에 무료로 사용할 수 있다.</li>
      <li>DRAVEN 자체를 판매하거나 유료로 재배포해서는 안 된다. 다른 사람에게 알릴 때는 설치 파일 대신 이 페이지의 링크를 공유해 주기 바란다.</li>
@@ -582,7 +578,7 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
     </table></div>
     <p>VST는 Steinberg Media Technologies GmbH의 상표이다.</p>
 
-    <h2 id="ko-limits">알려진 제한</h2>
+    <h2 id="ko-limits">주의할 점</h2>
     <ul>
      <li>설치 파일과 플러그인은 코드 서명·공증이 되어 있지 않다(위 설치 안내 참조).</li>
      <li>AAX(Pro Tools) 형식은 제공하지 않는다.</li>
@@ -697,7 +693,6 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
     </ol>
 
     <h2 id="en-terms">Terms of use</h2>
-    <p class="draft"><b>Draft · review needed</b> — the wording below has not been reviewed by a legal professional.</p>
     <ol>
      <li>DRAVEN is distributed free of charge. You may use it free of charge for personal and commercial purposes (for example, releasing or selling music you made while using DRAVEN).</li>
      <li>You may not sell DRAVEN itself or redistribute it for a fee. When telling others about it, please share a link to this page rather than the installer file.</li>
@@ -722,7 +717,7 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
     </table></div>
     <p>VST is a trademark of Steinberg Media Technologies GmbH.</p>
 
-    <h2 id="en-limits">Known limitations</h2>
+    <h2 id="en-limits">Things to note</h2>
     <ul>
      <li>The installers and the plug-in are not code-signed or notarised (see the installation notes above).</li>
      <li>No AAX (Pro Tools) format.</li>
@@ -971,6 +966,19 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
   apply(initial);
 })();
 
+</script>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="DRAVEN"><button class="lb-close" type="button" aria-label="Close">×</button><img alt=""></div>
+<script>
+(function(){
+  var lb = document.getElementById('lightbox'), img = lb.querySelector('img');
+  function close(){ lb.classList.remove('show'); document.body.style.overflow = ''; }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('.ib-img a');
+    if(a){ e.preventDefault(); var i = a.querySelector('img'); img.src = a.getAttribute('href'); img.alt = i ? i.alt : ''; lb.classList.add('show'); document.body.style.overflow = 'hidden'; return; }
+    if(e.target.closest('#lightbox')) close();
+  });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && lb.classList.contains('show')) close(); });
+})();
 </script>
 </body>
 </html>
