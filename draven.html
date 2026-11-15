@@ -266,17 +266,24 @@ body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
 #edit-toggle.show{display:flex}
 
 /* ===== DRAVEN page ===== */
-.figure{margin:.4em 0 1em;max-width:100%}
-.figure img{display:block;max-width:100%;height:auto;border:1px solid var(--border-soft)}
-.figure figcaption{font-size:.85rem;color:var(--fg-sub);margin-top:4px}
 .draft{border:1px solid #d5a020;background:color-mix(in srgb,#fef6e7 85%,transparent);padding:8px 12px;margin:.6em 0 .8em;font-size:.9rem}
 :root[data-theme="dark"] .draft{background:#3a3220;border-color:#a67c00}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .draft{background:#3a3220;border-color:#a67c00}}
 .draft b{color:#a15c00}
 :root[data-theme="dark"] .draft b{color:#f0c060}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .draft b{color:#f0c060}}
-.dl-btn{display:inline-block;padding:6px 14px;border:1px solid var(--accent);border-radius:2px;font-weight:700;white-space:nowrap}
-.dl-btn:hover{background:var(--bg-sub);text-decoration:none}
+.dl-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:620px;margin:.6em 0 .8em}
+.dl-card{border:1px solid var(--border-soft);background:var(--bg-sub);padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.dl-os{font-weight:700;font-size:1.05rem}
+.dl-req{font-size:.82rem;color:var(--fg-sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dl-file{font-size:.78rem;color:var(--fg-sub);background:none;padding:0;margin-bottom:8px}
+.dl-btn{display:block;text-align:center;margin-top:auto;padding:8px 12px;border-radius:2px;background:var(--accent);color:#fff!important;font-weight:700;font-size:.9rem}
+.dl-btn:hover{filter:brightness(1.1);text-decoration:none}
+:root[data-theme="dark"] .dl-btn{color:#101418!important}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .dl-btn{color:#101418!important}}
+@media (max-width:560px){.dl-grid{grid-template-columns:minmax(0,1fr)}}
+.infobox .ib-img a{display:block}
+.infobox .ib-img img{width:100%;max-width:100%;aspect-ratio:auto;object-fit:contain;border:1px solid var(--border-soft);cursor:zoom-in}
 main code{overflow-wrap:anywhere}
 pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px 10px;overflow-x:auto;font-size:.82rem;white-space:pre}
 </style>
@@ -338,6 +345,8 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
     <p class="hatnote">DRAVENは柳 東均の個人プロジェクト<a href="./#/ja">LABO 1557</a>で制作したプラグインである。個人プロジェクトとして<b>無償で配布</b>しており、販売・寄付・広告はない。</p>
     <aside class="infobox" aria-label="Infobox">
      <div class="ib-title">DRAVEN<small>Dynamic Reference Analysis and Verification Engine for Normalization</small></div>
+     <div class="ib-img"><a href="assets/draven-0.10.1.png"><img src="assets/draven-0.10.1.png" alt="DRAVENの画面" width="1120" height="763" loading="lazy"></a></div>
+     <div class="ib-cap">DRAVENの画面（0.10.1）。クリックで拡大。</div>
      <table><tbody>
       <tr class="sec"><td colspan="2">基本情報</td></tr>
       <tr><th>開発</th><td>柳 東均（LABO 1557）</td></tr>
@@ -350,17 +359,23 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
      </tbody></table>
     </aside>
     <p><b>DRAVEN</b>（Dynamic Reference Analysis and Verification Engine for Normalization）は、自分のミックスをリファレンス曲（WAVまたはMP3、最大4曲）と比較するトーンバランス・アナライザー・プラグインである。周波数バランス曲線と4帯域の要約を表示し、グラフ上で直接編集するEQ（提案機能は任意）と、ラウドネスを揃えた状態でのA/B試聴を提供する<sup class="ref"><a href="#ja-cite-1">[1]</a></sup>。ラウドネスの測定にはITU-R BS.1770のアルゴリズムを用いる<sup class="ref"><a href="#ja-cite-4">[4]</a></sup>。DRAVENは差を示すのみであり、どの音が良いかを判断するものではないため、結果は必ず耳で確認する必要がある。</p>
-    <figure class="figure"><img src="assets/draven-0.10.1.png" alt="DRAVENの画面" width="1120" height="763" loading="lazy"><figcaption>DRAVENの画面（0.10.1）。黒線がリファレンス、赤線が自分のミックス、灰色の領域がリファレンスの範囲（P10–P90）である。</figcaption></figure>
 
     <h2 id="ja-download">ダウンロード</h2>
     <p>インストーラーはGitHub Releasesに置かれている。登録、ライセンスキー、試用期間の制限はない。</p>
-    <div class="tbl-wrap"><table class="wikitable">
-     <thead><tr><th>OS</th><th>ファイル</th><th>ダウンロード</th></tr></thead>
-     <tbody>
-      <tr><td>Windows 10 / 11（64-bit）</td><td><code>DRAVEN-0.10.1-Windows-Setup.exe</code></td><td><a class="dl-btn" href="https://github.com/dlrjtt1/draven-releases/releases/download/v0.10.1/DRAVEN-0.10.1-Windows-Setup.exe">Windows</a></td></tr>
-      <tr><td>macOS 11以降（Apple Silicon / Intel）</td><td><code>DRAVEN-0.10.1-macOS.pkg</code></td><td><a class="dl-btn" href="https://github.com/dlrjtt1/draven-releases/releases/download/v0.10.1/DRAVEN-0.10.1-macOS.pkg">macOS</a></td></tr>
-     </tbody>
-    </table></div>
+    <div class="dl-grid">
+     <div class="dl-card">
+      <div class="dl-os">Windows</div>
+      <div class="dl-req">Windows 10 / 11 (64-bit)</div>
+      <code class="dl-file">DRAVEN-0.10.1-Windows-Setup.exe</code>
+      <a class="dl-btn" href="https://github.com/dlrjtt1/draven-releases/releases/download/v0.10.1/DRAVEN-0.10.1-Windows-Setup.exe">Windows版をダウンロード</a>
+     </div>
+     <div class="dl-card">
+      <div class="dl-os">macOS</div>
+      <div class="dl-req">macOS 11+ (Apple Silicon / Intel)</div>
+      <code class="dl-file">DRAVEN-0.10.1-macOS.pkg</code>
+      <a class="dl-btn" href="https://github.com/dlrjtt1/draven-releases/releases/download/v0.10.1/DRAVEN-0.10.1-macOS.pkg">macOS版をダウンロード</a>
+     </div>
+    </div>
     <p>すべてのバージョンと変更履歴：<a class="ext" href="https://github.com/dlrjtt1/draven-releases/releases">github.com/dlrjtt1/draven-releases/releases</a></p>
     <h3 id="ja-req">動作環境</h3>
     <ul>
@@ -470,6 +485,8 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
     <p class="hatnote">DRAVEN은 유동균의 개인 프로젝트 <a href="./#/ko">LABO 1557</a>에서 만든 플러그인이다. 개인 프로젝트로서 <b>무상으로 배포</b>하며, 판매·후원·광고는 없다.</p>
     <aside class="infobox" aria-label="Infobox">
      <div class="ib-title">DRAVEN<small>Dynamic Reference Analysis and Verification Engine for Normalization</small></div>
+     <div class="ib-img"><a href="assets/draven-0.10.1.png"><img src="assets/draven-0.10.1.png" alt="DRAVEN 화면" width="1120" height="763" loading="lazy"></a></div>
+     <div class="ib-cap">DRAVEN 화면(0.10.1). 클릭하면 크게 볼 수 있다.</div>
      <table><tbody>
       <tr class="sec"><td colspan="2">기본 정보</td></tr>
       <tr><th>개발</th><td>유동균 (LABO 1557)</td></tr>
@@ -482,17 +499,23 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
      </tbody></table>
     </aside>
     <p><b>DRAVEN</b>(Dynamic Reference Analysis and Verification Engine for Normalization)은 자신의 믹스를 레퍼런스 곡(WAV 또는 MP3, 최대 4곡)과 비교하는 톤 밸런스 분석 플러그인이다. 주파수 밸런스 곡선과 4대역 요약을 보여 주고, 그래프 위에서 직접 편집하는 EQ(제안 기능은 선택), 라우드니스를 맞춘 상태에서의 A/B 청취를 제공한다<sup class="ref"><a href="#ko-cite-1">[1]</a></sup>. 라우드니스 측정에는 ITU-R BS.1770의 알고리즘을 쓴다<sup class="ref"><a href="#ko-cite-4">[4]</a></sup>. DRAVEN은 차이를 보여 줄 뿐 어떤 소리가 좋은지를 판단하지 않으므로, 결과는 반드시 귀로 확인해야 한다.</p>
-    <figure class="figure"><img src="assets/draven-0.10.1.png" alt="DRAVEN 화면" width="1120" height="763" loading="lazy"><figcaption>DRAVEN 화면(0.10.1). 검은 선은 레퍼런스, 빨간 선은 내 믹스, 회색 영역은 레퍼런스의 범위(P10–P90)이다.</figcaption></figure>
 
     <h2 id="ko-download">다운로드</h2>
     <p>설치 파일은 GitHub Releases에 있다. 등록, 라이선스 키, 체험 기간 제한은 없다.</p>
-    <div class="tbl-wrap"><table class="wikitable">
-     <thead><tr><th>운영체제</th><th>파일</th><th>내려받기</th></tr></thead>
-     <tbody>
-      <tr><td>Windows 10 / 11 (64-bit)</td><td><code>DRAVEN-0.10.1-Windows-Setup.exe</code></td><td><a class="dl-btn" href="https://github.com/dlrjtt1/draven-releases/releases/download/v0.10.1/DRAVEN-0.10.1-Windows-Setup.exe">Windows</a></td></tr>
-      <tr><td>macOS 11 이상 (Apple Silicon / Intel)</td><td><code>DRAVEN-0.10.1-macOS.pkg</code></td><td><a class="dl-btn" href="https://github.com/dlrjtt1/draven-releases/releases/download/v0.10.1/DRAVEN-0.10.1-macOS.pkg">macOS</a></td></tr>
-     </tbody>
-    </table></div>
+    <div class="dl-grid">
+     <div class="dl-card">
+      <div class="dl-os">Windows</div>
+      <div class="dl-req">Windows 10 / 11 (64-bit)</div>
+      <code class="dl-file">DRAVEN-0.10.1-Windows-Setup.exe</code>
+      <a class="dl-btn" href="https://github.com/dlrjtt1/draven-releases/releases/download/v0.10.1/DRAVEN-0.10.1-Windows-Setup.exe">Windows용 내려받기</a>
+     </div>
+     <div class="dl-card">
+      <div class="dl-os">macOS</div>
+      <div class="dl-req">macOS 11+ (Apple Silicon / Intel)</div>
+      <code class="dl-file">DRAVEN-0.10.1-macOS.pkg</code>
+      <a class="dl-btn" href="https://github.com/dlrjtt1/draven-releases/releases/download/v0.10.1/DRAVEN-0.10.1-macOS.pkg">macOS용 내려받기</a>
+     </div>
+    </div>
     <p>모든 버전과 변경 내역: <a class="ext" href="https://github.com/dlrjtt1/draven-releases/releases">github.com/dlrjtt1/draven-releases/releases</a></p>
     <h3 id="ko-req">동작 환경</h3>
     <ul>
@@ -602,6 +625,8 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
     <p class="hatnote">DRAVEN is a plug-in made in <a href="./#/en">LABO 1557</a>, Dong-Gyun You's personal project. It is <b>distributed free of charge</b> as a personal project; there are no sales, donations or advertising.</p>
     <aside class="infobox" aria-label="Infobox">
      <div class="ib-title">DRAVEN<small>Dynamic Reference Analysis and Verification Engine for Normalization</small></div>
+     <div class="ib-img"><a href="assets/draven-0.10.1.png"><img src="assets/draven-0.10.1.png" alt="DRAVEN screen" width="1120" height="763" loading="lazy"></a></div>
+     <div class="ib-cap">DRAVEN (0.10.1). Click to enlarge.</div>
      <table><tbody>
       <tr class="sec"><td colspan="2">Overview</td></tr>
       <tr><th>Developer</th><td>Dong-Gyun You (LABO 1557)</td></tr>
@@ -614,17 +639,23 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
      </tbody></table>
     </aside>
     <p><b>DRAVEN</b> (Dynamic Reference Analysis and Verification Engine for Normalization) is a tonal-balance analyser plug-in that compares your mix with reference tracks (WAV or MP3, up to four). It shows the frequency balance and a four-band summary, an EQ you edit on the graph (with an optional suggestion), and A/B listening at matched loudness<sup class="ref"><a href="#en-cite-1">[1]</a></sup>. Loudness is measured with the algorithm of ITU-R BS.1770<sup class="ref"><a href="#en-cite-4">[4]</a></sup>. DRAVEN shows differences; it does not decide what sounds good, so always check by ear.</p>
-    <figure class="figure"><img src="assets/draven-0.10.1.png" alt="DRAVEN screen" width="1120" height="763" loading="lazy"><figcaption>DRAVEN (0.10.1). Black: reference; red: your mix; grey band: reference range (P10–P90).</figcaption></figure>
 
     <h2 id="en-download">Download</h2>
     <p>The installers are on GitHub Releases. There is no registration, no licence key and no trial limit.</p>
-    <div class="tbl-wrap"><table class="wikitable">
-     <thead><tr><th>OS</th><th>File</th><th>Download</th></tr></thead>
-     <tbody>
-      <tr><td>Windows 10 / 11 (64-bit)</td><td><code>DRAVEN-0.10.1-Windows-Setup.exe</code></td><td><a class="dl-btn" href="https://github.com/dlrjtt1/draven-releases/releases/download/v0.10.1/DRAVEN-0.10.1-Windows-Setup.exe">Windows</a></td></tr>
-      <tr><td>macOS 11 or later (Apple Silicon / Intel)</td><td><code>DRAVEN-0.10.1-macOS.pkg</code></td><td><a class="dl-btn" href="https://github.com/dlrjtt1/draven-releases/releases/download/v0.10.1/DRAVEN-0.10.1-macOS.pkg">macOS</a></td></tr>
-     </tbody>
-    </table></div>
+    <div class="dl-grid">
+     <div class="dl-card">
+      <div class="dl-os">Windows</div>
+      <div class="dl-req">Windows 10 / 11 (64-bit)</div>
+      <code class="dl-file">DRAVEN-0.10.1-Windows-Setup.exe</code>
+      <a class="dl-btn" href="https://github.com/dlrjtt1/draven-releases/releases/download/v0.10.1/DRAVEN-0.10.1-Windows-Setup.exe">Download for Windows</a>
+     </div>
+     <div class="dl-card">
+      <div class="dl-os">macOS</div>
+      <div class="dl-req">macOS 11+ (Apple Silicon / Intel)</div>
+      <code class="dl-file">DRAVEN-0.10.1-macOS.pkg</code>
+      <a class="dl-btn" href="https://github.com/dlrjtt1/draven-releases/releases/download/v0.10.1/DRAVEN-0.10.1-macOS.pkg">Download for macOS</a>
+     </div>
+    </div>
     <p>All versions and release notes: <a class="ext" href="https://github.com/dlrjtt1/draven-releases/releases">github.com/dlrjtt1/draven-releases/releases</a></p>
     <h3 id="en-req">Requirements</h3>
     <ul>
