@@ -1,0 +1,1020 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SHOWMAKER — LABO 1557</title>
+<meta name="description" content="SHOWMAKER by LABO 1557: a free reverb plug-in for the spot microphones of live recordings (VST3 / AU / Standalone). Distributed free of charge.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SHOWMAKER — LABO 1557">
+<meta property="og:description" content="Free reverb plug-in for the spot microphones of live recordings, by LABO 1557.">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<link rel="canonical" href="./showmaker.html">
+<link rel="alternate" hreflang="ja" href="./showmaker.html#/ja">
+<link rel="alternate" hreflang="ko" href="./showmaker.html#/ko">
+<link rel="alternate" hreflang="en" href="./showmaker.html#/en">
+<link rel="alternate" hreflang="x-default" href="./showmaker.html#/ja">
+<script>
+/* apply saved appearance before first paint */
+(function(){try{
+  var t=localStorage.getItem('theme'); if(t==='light'||t==='dark') document.documentElement.setAttribute('data-theme',t);
+  var s=localStorage.getItem('textsize'); if(s==='small'||s==='large') document.documentElement.setAttribute('data-size',s);
+  if(localStorage.getItem('tochidden')==='1') document.documentElement.classList.add('toc-hidden');
+}catch(e){}})();
+</script>
+<style>
+:root{
+  --bg:#ffffff;
+  --bg-sub:#f8f9fa;
+  --bg-head:#eaecf0;
+  --ib-head:#cedff2;
+  --fg:#202122;
+  --fg-sub:#54595d;
+  --fg-faint:#72777d;
+  --link:#3366cc;
+  --link-visited:#795cb2;
+  --link-ext:#3366cc;
+  --border:#a2a9b1;
+  --border-soft:#c8ccd1;
+  --border-faint:#eaecf0;
+  --accent:#36c;
+  --hl:#fef6e7;
+  --shadow:0 2px 6px rgba(0,0,0,.18);
+  --sans:sans-serif;
+  --serif:var(--sans);
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#101418; --bg-sub:#202122; --bg-head:#27292d; --ib-head:#233044;
+    --fg:#eaecf0; --fg-sub:#a2a9b1; --fg-faint:#8c9196;
+    --link:#88a3e8; --link-visited:#a799cd; --link-ext:#88a3e8;
+    --border:#72777d; --border-soft:#54595d; --border-faint:#2e3136;
+    --accent:#88a3e8; --hl:#3a3220; --shadow:0 2px 8px rgba(0,0,0,.6);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101418; --bg-sub:#202122; --bg-head:#27292d; --ib-head:#233044;
+  --fg:#eaecf0; --fg-sub:#a2a9b1; --fg-faint:#8c9196;
+  --link:#88a3e8; --link-visited:#a799cd; --link-ext:#88a3e8;
+  --border:#72777d; --border-soft:#54595d; --border-faint:#2e3136;
+  --accent:#88a3e8; --hl:#3a3220; --shadow:0 2px 8px rgba(0,0,0,.6);
+  color-scheme:dark;
+}
+html{font-size:16px}
+html[data-size="small"]{font-size:14px}
+html[data-size="large"]{font-size:18px}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:1rem;line-height:1.6;-webkit-text-size-adjust:100%}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+a:visited{color:var(--link-visited)}
+main a.ext:after,.refs a.ext:after{content:"";display:inline-block;width:.7em;height:.7em;margin-left:.2em;vertical-align:baseline;
+  background:currentColor;opacity:.75;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M6 1h5v5L8.86 3.85 4.7 8 4 7.3l4.15-4.16zM2 3h2v1H2v6h6V8h1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1'/%3E%3C/svg%3E") center/contain no-repeat;
+          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M6 1h5v5L8.86 3.85 4.7 8 4 7.3l4.15-4.16zM2 3h2v1H2v6h6V8h1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1'/%3E%3C/svg%3E") center/contain no-repeat}
+button,input,code{font-family:var(--sans)}
+button{font:inherit;color:inherit}
+.skip{position:absolute;left:-9999px;top:0}
+.skip:focus{left:8px;top:8px;background:var(--bg);padding:6px 10px;border:1px solid var(--border);z-index:300}
+
+[data-lang]{display:none}
+[data-lang].active{display:block}
+[data-lang-inline]{display:none}
+[data-lang-inline].active{display:inline}
+
+/* ===== header ===== */
+.vh{max-width:1596px;margin:0 auto;padding:6px 24px 0;display:flex;align-items:center;gap:16px;min-height:40px}
+.logo{display:flex;align-items:center;gap:10px;color:var(--fg)!important;text-decoration:none!important;flex:0 0 auto}
+.logo-mark{width:40px;height:40px;border-radius:50%;border:1px solid var(--border-soft);display:grid;place-items:center;font-family:var(--serif);font-size:22px;background:var(--bg-sub)}
+.logo-text{display:flex;flex-direction:column;line-height:1.15}
+.logo-text b{font-family:var(--serif);font-weight:400;font-size:1.15rem;letter-spacing:.01em}
+.logo-text small{font-size:.72rem;color:var(--fg-sub)}
+.vh-right{margin-left:auto;display:flex;align-items:center;gap:4px;flex:0 0 auto}
+.icon-btn{background:none;border:0;border-radius:2px;padding:6px 8px;cursor:pointer;display:flex;align-items:center;gap:6px;font-size:.875rem;color:var(--fg)}
+.icon-btn:hover{background:var(--bg-sub)}
+.icon-btn svg{width:18px;height:18px;fill:currentColor}
+.dropdown{position:relative}
+.menu{position:absolute;right:0;top:calc(100% + 4px);background:var(--bg);border:1px solid var(--border-soft);box-shadow:var(--shadow);z-index:160;min-width:220px;padding:10px 14px;display:none;font-size:.875rem}
+.menu.show{display:block}
+.menu .mh{font-weight:700;margin:4px 0 4px}
+.menu .mh:not(:first-child){margin-top:12px;padding-top:10px;border-top:1px solid var(--border-faint)}
+.menu label{display:flex;align-items:center;gap:8px;padding:3px 0;cursor:pointer}
+.menu a{display:block;padding:4px 0}
+.menu a[aria-current="true"]{color:var(--fg);font-weight:700;pointer-events:none}
+
+/* ===== sticky header ===== */
+.sticky{position:fixed;top:0;left:0;right:0;z-index:120;background:var(--bg);box-shadow:0 1px 1px rgba(0,0,0,.08),0 1px 3px rgba(0,0,0,.12);transform:translateY(-110%);transition:transform .2s ease;}
+.sticky.show{transform:none}
+.sticky-in{max-width:1596px;margin:0 auto;padding:6px 24px;display:flex;align-items:center;gap:10px;min-height:48px}
+.sticky .st-title{font-family:var(--serif);font-size:1.2rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sticky .st-sec{color:var(--fg-sub);font-size:.85rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sticky .st-sec:before{content:"/";margin:0 8px;color:var(--border)}
+
+/* ===== page grid ===== */
+.page{max-width:1596px;margin:0 auto;padding:0 24px}
+.cols{display:grid;grid-template-columns:15.5rem minmax(0,1fr);column-gap:28px;align-items:start}
+html.toc-hidden .cols{grid-template-columns:minmax(0,1fr)}
+html.toc-hidden .sidetoc{display:none}
+@media (max-width:1000px){
+  .cols{grid-template-columns:minmax(0,1fr)}
+  .sidetoc{display:none}
+}
+
+/* ===== sidebar toc ===== */
+.sidetoc{position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto;padding:14px 0 24px;font-size:.875rem;transition:top .2s}
+body.stuck .sidetoc{top:60px;max-height:calc(100vh - 72px)}
+.toc-head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border-soft);padding-bottom:6px;margin-bottom:6px}
+.toc-head .tt{font-weight:700}
+.toc-hide{background:var(--bg-sub);border:1px solid var(--border-soft);border-radius:2px;font-size:.78rem;padding:1px 8px;cursor:pointer}
+.toc-hide:hover{background:var(--bg-head)}
+.toc ul{list-style:none;margin:0;padding:0}
+.toc ul ul{padding-left:14px;display:none}
+.toc li.open>ul{display:block}
+.toc li{position:relative;margin:0}
+.toc a{display:block;padding:4px 0 4px 18px;color:var(--link);line-height:1.35}
+.toc a.active{color:var(--fg);font-weight:700}
+.toc .tg{position:absolute;left:-4px;top:3px;width:20px;height:20px;border:0;background:none;cursor:pointer;padding:0;color:var(--fg-sub);display:grid;place-items:center;border-radius:2px}
+.toc .tg:hover{background:var(--bg-sub)}
+.toc .tg svg{width:12px;height:12px;fill:currentColor;transition:transform .15s}
+.toc li.open>.tg svg{transform:rotate(90deg)}
+
+/* toc popup (hidden sidebar / narrow) */
+.toc-btn{display:none;flex:0 0 auto;width:32px;height:32px;border:1px solid var(--border-soft);border-radius:2px;background:var(--bg);cursor:pointer;margin-right:10px;padding:0;place-items:center}
+.toc-btn svg{width:18px;height:18px;fill:var(--fg)}
+.toc-btn:hover{background:var(--bg-sub)}
+html.toc-hidden .toc-btn{display:grid}
+@media (max-width:1000px){.toc-btn{display:grid}.toc-head .toc-hide{display:none}}
+.sticky .toc-btn{display:grid}
+#toc-pop{position:fixed;z-index:200;background:var(--bg);border:1px solid var(--border-soft);box-shadow:var(--shadow);padding:10px 14px 12px;width:min(320px,calc(100vw - 32px));max-height:70vh;overflow:auto;display:none;font-size:.875rem}
+#toc-pop.show{display:block}
+
+/* ===== title area ===== */
+.content{min-width:0;padding-top:14px}
+.title-row{display:flex;align-items:flex-end;gap:12px;border-bottom:1px solid var(--border);padding-bottom:2px}
+.title-row h1{font-family:var(--serif);font-weight:400;font-size:1.8rem;line-height:1.3;margin:0;flex:1 1 auto;min-width:0;padding:2px 0}
+.title-row h1 .alt{font-size:.6em;color:var(--fg-sub);margin-left:.4em;white-space:nowrap}
+.lang-btn{display:flex;align-items:center;gap:6px;background:none;border:0;cursor:pointer;color:var(--link);font-weight:700;font-size:.875rem;padding:4px 6px;border-radius:2px;white-space:nowrap}
+.lang-btn:hover{background:var(--bg-sub)}
+.lang-btn svg{width:16px;height:16px;fill:currentColor}
+.tabs{display:flex;justify-content:space-between;align-items:flex-end;font-size:.875rem;margin-bottom:6px;flex-wrap:wrap}
+.tabs ul{list-style:none;margin:0;padding:0;display:flex;gap:2px}
+.tabs li a,.tabs li span{display:block;padding:8px 8px 6px;color:var(--link)}
+.tabs li.sel a,.tabs li.sel span{color:var(--fg);border-bottom:2px solid var(--fg);text-decoration:none}
+
+/* ===== article body ===== */
+main{min-width:0;font-size:.95rem}
+main p{margin:.5em 0 .7em}
+main h2{font-family:var(--serif);font-weight:400;font-size:1.5rem;line-height:1.3;margin:1.2em 0 .3em;padding-bottom:2px;border-bottom:1px solid var(--border);overflow:hidden}
+main h3{font-size:1.2rem;font-weight:700;line-height:1.5;margin:.9em 0 .2em}
+main h4{font-size:1.05rem;font-weight:700;margin:.8em 0 .2em}
+main ul,main ol{margin:.3em 0 .6em 1.6em;padding:0}
+main li{margin:.15em 0}
+main h2,main h3,main h4{scroll-margin-top:64px}
+main h3.collapsible{display:flex;align-items:baseline;gap:4px;flex-wrap:wrap}
+main h3.collapsible .sec-tg{margin-left:.6em;border:0;background:none;padding:0 2px;cursor:pointer;color:var(--link);font-size:.85rem;font-weight:400;white-space:nowrap}
+main h3.collapsible .sec-tg:hover{text-decoration:underline}
+main h3 .sec-date{font-weight:400;font-size:.8em;color:var(--fg-sub);margin-left:.35em}
+.sec-body[hidden]{display:none}
+.hatnote{padding-left:1.6em;margin:.2em 0 .8em;font-size:.9rem;color:var(--fg)}
+.hatnote:before{content:"";display:inline-block;width:14px;height:14px;margin-right:6px;vertical-align:-2px;background:currentColor;opacity:.55;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 0a10 10 0 1 0 0 20 10 10 0 0 0 0-20m1 15H9V9h2zm0-8H9V5h2z'/%3E%3C/svg%3E") center/contain no-repeat;
+          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 0a10 10 0 1 0 0 20 10 10 0 0 0 0-20m1 15H9V9h2zm0-8H9V5h2z'/%3E%3C/svg%3E") center/contain no-repeat}
+.mainlink{padding-left:1.6em;margin:-.1em 0 .6em;font-size:.9rem;font-style:italic;color:var(--fg-sub)}
+sup.ref{line-height:1;font-size:.75em;white-space:nowrap}
+sup.ref a{padding:0 1px}
+.flash{animation:flash 1.6s ease}
+@keyframes flash{0%,40%{background:var(--hl)}100%{background:transparent}}
+
+/* infobox */
+.infobox{float:right;clear:right;width:22em;margin:.2em 0 1em 1.4em;border:1px solid var(--border);background:var(--bg-sub);font-size:.85rem;line-height:1.45;padding:3px;border-collapse:separate}
+.infobox .ib-title{background:var(--ib-head);text-align:center;font-size:1.25em;font-weight:700;padding:6px 4px;line-height:1.3}
+.infobox .ib-title small{display:block;font-weight:400;font-size:.72em;color:var(--fg-sub)}
+.infobox .ib-img{text-align:center;padding:8px 4px 2px}
+.infobox .ib-img img{width:170px;height:auto;aspect-ratio:3/4;object-fit:cover;display:inline-block;border:1px solid var(--border-faint);background:var(--bg-head)}
+.infobox .ib-cap{text-align:center;font-size:.92em;color:var(--fg);padding:0 4px 6px}
+.infobox table{width:100%;border-collapse:collapse}
+.infobox th,.infobox td{text-align:left;vertical-align:top;padding:4px 6px}
+.infobox th{width:35%;font-weight:700}
+.infobox .sec td{background:var(--ib-head);text-align:center;font-weight:700;padding:4px}
+@media (max-width:720px){
+  .infobox{float:none;width:100%;margin:0 0 1em}
+}
+
+/* tables */
+table.wikitable{border-collapse:collapse;margin:.6em 0 1em;background:var(--bg-sub);color:var(--fg);border:1px solid var(--border);font-size:.9rem;max-width:100%}
+table.wikitable th,table.wikitable td{border:1px solid var(--border);padding:.25em .6em;vertical-align:top;text-align:left}
+table.wikitable th{background:var(--bg-head);text-align:center}
+table.wikitable caption{font-weight:700;padding:4px 0;text-align:center}
+.tbl-wrap{overflow-x:auto;max-width:100%}
+.muted{color:var(--fg-sub);font-size:.88em}
+@media (min-width:721px){table.wikitable td:first-child{white-space:nowrap}}
+
+/* refs */
+.refs{font-size:.88rem}
+.refs ol{margin:.3em 0 .5em 2.4em}
+.refs li{margin:.2em 0;overflow-wrap:anywhere}
+.refs li:target{background:var(--hl)}
+.refs .up{margin-right:.35em;font-weight:700}
+.refs cite{font-style:normal}
+
+/* navbox */
+.navbox{clear:both;border:1px solid var(--border);margin:1.6em 0 0;font-size:.85rem;background:var(--bg)}
+.navbox .nb-title{background:var(--ib-head);text-align:center;font-weight:700;padding:3px 52px;position:relative}
+.navbox .nb-toggle{position:absolute;right:6px;top:2px;background:none;border:0;color:var(--link);cursor:pointer;font-size:.85em;font-weight:400}
+.navbox table{width:100%;border-collapse:separate;border-spacing:2px}
+.navbox th{background:var(--bg-head);text-align:right;padding:3px 8px;white-space:nowrap;width:1%;font-weight:700}
+.navbox td{padding:3px 8px;background:var(--bg-sub)}
+.navbox td a:not(:last-child):after{content:" · ";color:var(--fg);font-weight:700}
+.navbox.collapsed table{display:none}
+
+/* category bar */
+.catlinks{border:1px solid var(--border);background:var(--bg-sub);padding:5px 8px;margin:1em 0 0;font-size:.85rem}
+.catlinks b{font-weight:400}
+.catlinks span:not(:last-child):after{content:" | ";color:var(--fg-sub)}
+
+/* footer */
+footer.site{max-width:1596px;margin:2.5em auto 0;padding:14px 24px 40px;font-size:.78rem;color:var(--fg)}
+footer.site .in{border-top:1px solid var(--border-soft);padding-top:14px}
+footer.site .in p{margin:.3em 0}
+footer.site ul{list-style:none;padding:0;margin:.8em 0 0;display:flex;flex-wrap:wrap;gap:4px 16px}
+
+@media (max-width:720px){
+  .vh{padding:8px 12px;gap:10px}
+  .page{padding:0 16px}
+  .logo-text{display:none}
+  #appear-btn > span{display:none}
+  .tabs li a,.tabs li span{padding:8px 6px 6px}
+  .sticky-in{padding:6px 12px}
+  footer.site{padding:14px 16px 40px}
+  .title-row h1{font-size:1.55rem}
+}
+
+/* ===== in-page editor ===== */
+#edit-bar{position:fixed;left:0;right:0;bottom:0;z-index:250;background:#202122;color:#fff;padding:10px 16px;display:none;align-items:center;gap:10px;flex-wrap:wrap;font-size:13px;box-shadow:0 -2px 8px rgba(0,0,0,.15)}
+#edit-bar.show{display:flex}
+#edit-bar button{background:#36c;color:#fff;border:0;padding:6px 12px;border-radius:2px;cursor:pointer;font-size:13px}
+#edit-bar button.secondary{background:#54595d}
+#edit-bar button:disabled{opacity:.5;cursor:not-allowed}
+#edit-bar .status{margin-left:auto;color:#dcdcdc}
+body.editing [data-lang].active main{outline:2px dashed #36c;outline-offset:4px}
+body.editing [contenteditable="true"]:focus{outline:2px solid #ffa500}
+#edit-toggle{display:none}
+#edit-toggle.show{display:flex}
+
+/* ===== product page ===== */
+.dl-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:620px;margin:.6em 0 .8em}
+.dl-card{border:1px solid var(--border-soft);background:var(--bg-sub);padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.dl-os{font-weight:700;font-size:1.05rem}
+.dl-req{font-size:.82rem;color:var(--fg-sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dl-file{font-size:.78rem;color:var(--fg-sub);background:none;padding:0;margin-bottom:8px}
+.dl-btn{display:block;text-align:center;margin-top:auto;padding:8px 12px;border-radius:2px;background:var(--accent);color:#fff!important;font-weight:700;font-size:.9rem}
+.dl-btn:hover{filter:brightness(1.1);text-decoration:none}
+:root[data-theme="dark"] .dl-btn{color:#101418!important}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .dl-btn{color:#101418!important}}
+@media (max-width:560px){.dl-grid{grid-template-columns:minmax(0,1fr)}}
+.lightbox{position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.82);display:none;align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+.lightbox.show{display:flex}
+.lightbox img{max-width:min(1120px,100%);max-height:100%;width:auto;height:auto;box-shadow:0 4px 24px rgba(0,0,0,.5);background:#fff}
+.lightbox .lb-close{position:absolute;top:12px;right:16px;background:none;border:0;color:#fff;font-size:28px;line-height:1;cursor:pointer;padding:4px 8px}
+.infobox .ib-img a{display:block}
+.infobox .ib-img img{width:100%;max-width:100%;aspect-ratio:auto;object-fit:contain;border:1px solid var(--border-soft);cursor:zoom-in}
+main code{overflow-wrap:anywhere}
+pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px 10px;overflow-x:auto;font-size:.82rem;white-space:pre}
+</style>
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<!-- ============ header ============ -->
+<header class="vh">
+  <div class="vh-right">
+    <div class="dropdown">
+      <button class="icon-btn" id="appear-btn" aria-haspopup="true" aria-expanded="false" title="Appearance">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0a10 10 0 1 0 0 20 1.9 1.9 0 0 0 1.4-3.2 1.9 1.9 0 0 1 1.4-3.2H15a5 5 0 0 0 5-5C20 3.9 15.5 0 10 0M4.5 10a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m3-4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m3 4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/></svg>
+        <span><span data-lang-inline="ja">表示</span><span data-lang-inline="ko" class="active">보기</span><span data-lang-inline="en">Appearance</span></span>
+      </button>
+      <div class="menu" id="appear-menu">
+        <div class="mh"><span data-lang-inline="ja">文字サイズ</span><span data-lang-inline="ko" class="active">글자 크기</span><span data-lang-inline="en">Text</span></div>
+        <label><input type="radio" name="size" value="small"> <span data-lang-inline="ja">小</span><span data-lang-inline="ko" class="active">작게</span><span data-lang-inline="en">Small</span></label>
+        <label><input type="radio" name="size" value="standard"> <span data-lang-inline="ja">標準</span><span data-lang-inline="ko" class="active">표준</span><span data-lang-inline="en">Standard</span></label>
+        <label><input type="radio" name="size" value="large"> <span data-lang-inline="ja">大</span><span data-lang-inline="ko" class="active">크게</span><span data-lang-inline="en">Large</span></label>
+        <div class="mh"><span data-lang-inline="ja">色</span><span data-lang-inline="ko" class="active">색</span><span data-lang-inline="en">Color</span></div>
+        <label><input type="radio" name="theme" value="auto"> <span data-lang-inline="ja">自動</span><span data-lang-inline="ko" class="active">자동</span><span data-lang-inline="en">Automatic</span></label>
+        <label><input type="radio" name="theme" value="light"> <span data-lang-inline="ja">ライト</span><span data-lang-inline="ko" class="active">라이트</span><span data-lang-inline="en">Light</span></label>
+        <label><input type="radio" name="theme" value="dark"> <span data-lang-inline="ja">ダーク</span><span data-lang-inline="ko" class="active">다크</span><span data-lang-inline="en">Dark</span></label>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="sticky" id="sticky" aria-hidden="true">
+  <div class="sticky-in">
+    <button class="toc-btn" id="st-toc" title="Contents"><svg viewBox="0 0 20 20"><path d="M1 3h18v2H1zm0 6h18v2H1zm0 6h18v2H1z"/></svg></button>
+    <span class="st-title" id="st-title"></span>
+    <span class="st-sec" id="st-sec"></span>
+  </div>
+</div>
+<div id="toc-pop" class="toc" role="dialog" aria-label="Contents"></div>
+
+
+<div class="page" id="content">
+
+<div data-lang="ja" lang="ja">
+ <div class="cols">
+  <nav class="sidetoc toc" aria-label="目次"></nav>
+  <div class="content">
+   <div class="title-row">
+    <button class="toc-btn" title="目次"><svg viewBox="0 0 20 20"><path d="M1 3h18v2H1zm0 6h18v2H1zm0 6h18v2H1z"/></svg></button>
+    <h1 id="top-ja">SHOWMAKER<span class="alt">LABO 1557</span></h1>
+    <div class="dropdown">
+     <button class="lang-btn" aria-haspopup="true"><svg viewBox="0 0 20 20"><path d="M20 18h-1.4l-1.1-3H12l-1.1 3H9.5L14 6h1.5zm-3-4.1-2-5.5-2 5.5zM11 5V3H7V1H5v2H1v2h7a10 10 0 0 1-2.4 4.7A10 10 0 0 1 4 7H2a12 12 0 0 0 2.2 4L1 13.6l1.3 1.4 3.3-2.6 2.1 1.7.7-1.9-1.3-1A12 12 0 0 0 10 5z"/></svg>3言語 ▾</button>
+     <div class="menu lang-menu"><a href="#/ja" data-set="ja">日本語</a><a href="#/ko" data-set="ko">한국어</a><a href="#/en" data-set="en">English</a></div>
+    </div>
+   </div>
+   <div class="tabs">
+    <ul><li class="sel"><span>記事</span></li></ul>
+    <ul><li class="sel"><span>閲覧</span></li><li><a href="https://github.com/dlrjtt1/researcher-site/blob/main/showmaker.html">ソースを閲覧</a></li><li><a href="https://github.com/dlrjtt1/researcher-site/commits/main/showmaker.html">履歴表示</a></li></ul>
+   </div>
+   <main>
+    <p class="hatnote">SHOWMAKERは柳 東均の個人プロジェクト<a href="./#/ja">LABO 1557</a>で制作したプラグインである。個人プロジェクトとして<b>無償で配布</b>しており、販売・寄付・広告はない。</p>
+    <aside class="infobox" aria-label="Infobox">
+     <div class="ib-title">SHOWMAKER<small>Stage &amp; Hall Optimization Workflow for Music, Atmosphere, Kinetics, Enhancement &amp; Reconstruction</small></div>
+     <table><tbody>
+      <tr class="sec"><td colspan="2">基本情報</td></tr>
+      <tr><th>開発</th><td>柳 東均（LABO 1557）</td></tr>
+      <tr><th>最新版</th><td>0.6.0</td></tr>
+      <tr><th>種類</th><td>スポットマイク用リバーブ</td></tr>
+      <tr><th>形式</th><td>VST3, AU (macOS), Standalone</td></tr>
+      <tr><th>OS</th><td>Windows 10 / 11 (64-bit)<br>macOS 11+ (Apple Silicon / Intel)</td></tr>
+      <tr><th>価格</th><td>無料（無償配布）</td></tr>
+      <tr><th>ダウンロード</th><td><a href="#ja-download">ダウンロード</a></td></tr>
+     </tbody></table>
+    </aside>
+    <p><b>SHOWMAKER</b>（Stage &amp; Hall Optimization Workflow for Music, Atmosphere, Kinetics, Enhancement &amp; Reconstruction）は、ライブ録音の近接（スポット）マイクのためのリバーブ・プラグインである。スポットマイクは舞台上方のメインペアよりもはるかにドライに収録される。SHOWMAKERは各スポットをメインペアへの到達時刻に合わせて遅延させ、ステレオの広がりがメインペアに従う残響を加えることで、スポットがメインペアの捉えた空間の中に収まるよう助ける<sup class="ref"><a href="#ja-cite-1">[1]</a></sup>。</p>
+    <p>SHOWMAKERはホールの残響を再現するものでも測定するものでもない。加えられるのは人工残響であり、録音に従うのはタイミングとステレオの広がりのみである。残響の長さと量は利用者が決めるため、結果は必ず耳で確認する必要がある<sup class="ref"><a href="#ja-cite-1">[1]</a></sup>。</p>
+
+    <h2 id="ja-download">ダウンロード</h2>
+    <p>インストーラーはGitHub Releasesに置かれている。登録、ライセンスキー、試用期間の制限はない。</p>
+    <div class="dl-grid">
+     <div class="dl-card">
+      <div class="dl-os">Windows</div>
+      <div class="dl-req">Windows 10 / 11 (64-bit)</div>
+      <code class="dl-file">SHOWMAKER-0.6.0-Windows-Setup.exe</code>
+      <a class="dl-btn" href="https://github.com/dlrjtt1/showmaker-releases/releases/download/v0.6.0/SHOWMAKER-0.6.0-Windows-Setup.exe">Windows版をダウンロード</a>
+     </div>
+     <div class="dl-card">
+      <div class="dl-os">macOS</div>
+      <div class="dl-req">macOS 11+ (Apple Silicon / Intel)</div>
+      <code class="dl-file">SHOWMAKER-0.6.0-macOS.pkg</code>
+      <a class="dl-btn" href="https://github.com/dlrjtt1/showmaker-releases/releases/download/v0.6.0/SHOWMAKER-0.6.0-macOS.pkg">macOS版をダウンロード</a>
+     </div>
+    </div>
+    <p>すべてのバージョンと変更履歴：<a class="ext" href="https://github.com/dlrjtt1/showmaker-releases/releases">github.com/dlrjtt1/showmaker-releases/releases</a></p>
+    <h3 id="ja-req">動作環境</h3>
+    <ul>
+     <li>Windows：Windows 10または11（64-bit）、VST3ホスト（REAPER、Cubase、Nuendo、Studio One、Pyramix（VST3）など）。</li>
+     <li>macOS：macOS 11以降、Apple SiliconまたはIntel。VST3ホストおよびAudio Unitホスト（Logic Pro）。</li>
+     <li>セッションのサンプルレートは44.1 kHz以上。</li>
+    </ul>
+
+    <h2 id="ja-install">インストールと初回起動</h2>
+    <p>現在配布しているインストーラーとプラグインはコード署名されていない。そのため、初回実行時にOSが警告を表示する。</p>
+    <h3 id="ja-install-win">Windows</h3>
+    <ol>
+     <li><code>SHOWMAKER-0.6.0-Windows-Setup.exe</code>を実行する。</li>
+     <li>「WindowsによってPCが保護されました」と表示された場合は、<b>詳細情報</b>を押してから<b>実行</b>を押す。</li>
+     <li>インストーラーの案内に従う。スタンドアロン・アプリは任意である。</li>
+    </ol>
+    <p>インストール先：VST3プラグイン<code>C:\Program Files\Common Files\VST3\SHOWMAKER.vst3</code>、スタンドアロン・アプリ<code>C:\Program Files\LABO 1557\SHOWMAKER\SHOWMAKER.exe</code>（選択した場合）。アンインストール：設定 › アプリ › SHOWMAKER › アンインストール。</p>
+    <h3 id="ja-install-mac">macOS（未署名の警告への対処）</h3>
+    <ol>
+     <li><code>SHOWMAKER-0.6.0-macOS.pkg</code>をダブルクリックする。</li>
+     <li>macOSが「開発元を検証できません」という警告を表示する。
+      <ul>
+       <li>macOS 15（Sequoia）以降：<b>完了</b>を押し、システム設定 › プライバシーとセキュリティを開き、下方のSHOWMAKERのメッセージの横にある<b>このまま開く</b>を押してパスワードで確認する。</li>
+       <li>macOS 14以前：.pkgをControlキーを押しながらクリック（右クリック）して<b>開く</b>を選び、もう一度<b>開く</b>を押す。</li>
+      </ul>
+     </li>
+     <li>インストーラーの案内に従う。</li>
+    </ol>
+    <p>インストール先：<code>/Library/Audio/Plug-Ins/VST3/SHOWMAKER.vst3</code>、<code>/Library/Audio/Plug-Ins/Components/SHOWMAKER.component</code>、<code>/Applications/SHOWMAKER.app</code>。DAWがプラグインを「壊れている」と表示する、または読み込まない場合は、ターミナルに次の1行を貼り付け（パスワードを求められる）、DAWを再起動する。</p>
+    <pre class="cmd">sudo xattr -dr com.apple.quarantine "/Library/Audio/Plug-Ins/VST3/SHOWMAKER.vst3" "/Library/Audio/Plug-Ins/Components/SHOWMAKER.component" "/Applications/SHOWMAKER.app"</pre>
+    <p>アンインストール：上記の3項目を削除する。</p>
+    <h3 id="ja-firstrun">初めて使うとき</h3>
+    <ol>
+     <li>SHOWMAKERをスポットマイクのトラック（または1つのセクションのスポットをまとめたバス）に挿入する。そのトラックのDAWのパンは中央にしておく。</li>
+     <li><b>POSITION</b>：楽器が左右のどこにあるかを設定する。</li>
+     <li><b>DISTANCE</b>：楽器（スポットマイク）からメインペアまでの距離（m）。おおよその値でよい。SHOWMAKERは距離 ÷ 343 m/sだけスポットを遅延させ、メインペアと同じ時刻に到達させる。</li>
+     <li><b>SHOW</b>：加える空間の量。50 %が出発点である。</li>
+     <li><b>DECAY</b>：加える残響の長さ。ホールの残響時間ではない。スポットにはすでにホールの響きの一部が含まれている。</li>
+     <li><b>ALIGN ON / OFF</b>：再生しながら切り替えて比較する。違いは、露出していてレベルの大きいスポット（ピアノソロ、独奏者）で最も明瞭である。</li>
+    </ol>
+    <p>折りたたまれたMOREパネルには、LF DAMP / HF DAMP（低域・高域の残響の長さ）、WET HPF、ALIGN TRIM（微小な遅延）、SPREAD（ステレオのスポットペアの左右間隔）、WIDTH（帯域ごとの残響の広がり：Default / Learned / Off）、INPUT（ステレオトラックの読み方）がある。</p>
+    <h3 id="ja-learn">LEARN（任意）</h3>
+    <p>LEARNは遅延を微調整し（DISTANCEを基準に2 ms以内）、メインペアのステレオの広がりを取り込む。プラグインのサイドチェイン入力にメインペアが入っている必要がある。</p>
+    <ul>
+     <li><b>REAPER</b>：スポットトラックのROUTEで「Track channels」を4にし、マスターセンドは1-2のみにする。メインペアのトラックのROUTEでスポットトラックへのセンドを追加する（オーディオ1/2 → 3/4、Pre-Fader (Post-FX)、0 dB）。SHOWMAKERのウィンドウのピンコネクタで、ステレオトラックはSpot L/R = 1/2、Main pair L/R = 3/4、モノトラックはSpot = 1、Main pair L = 3、R = 4とする。</li>
+     <li><b>Logic Pro</b>：SHOWMAKERのウィンドウ右上の「Side Chain」メニューでメインペアのトラックまたはバスを選ぶ。</li>
+    </ul>
+    <ol>
+     <li>先にDISTANCEを設定する。</li>
+     <li>このスポットの楽器が露出している箇所を再生する。</li>
+     <li>LEARNを押して10–60秒待ち、STOPを押す。</li>
+     <li>結果がALIGNの行の下に表示される（例：「Delay 10.63 ms (Weak, 46 %) | Width learned」）。「Unreliable」の場合はDISTANCEがそのまま保たれるので、別の箇所で試す。</li>
+     <li>その後、センドは削除してよい。結果はプロジェクトとともに保存される。</li>
+    </ol>
+
+    <h2 id="ja-terms">使用条件</h2>
+    <ol>
+     <li>SHOWMAKERは無償で配布される。個人的な用途と商業的な用途（例：SHOWMAKERを用いて制作したミックスの発表・販売）のいずれにも無料で使用できる。</li>
+     <li>SHOWMAKER自体を販売し、または有償で再配布してはならない。他の人に紹介する際は、インストーラーではなくこのページのリンクを共有されたい。</li>
+     <li>SHOWMAKERは「現状のまま（as is）」提供され、商品性、特定目的への適合性、誤りがないことを含め、明示・黙示を問わずいかなる保証も行わない。</li>
+     <li>SHOWMAKERの使用または使用不能により生じた損害（データ・作業の損失、システムの不具合など）について、開発者は法が許す最大限の範囲で責任を負わない。</li>
+     <li>SHOWMAKERに含まれるサードパーティ構成要素は、それぞれのライセンスに従う（下記のサードパーティ告知）。</li>
+     <li>SHOWMAKERにはインターネットに接続する機能がなく、利用者の情報を収集・送信しない。</li>
+    </ol>
+
+    <h2 id="ja-notice">サードパーティ告知</h2>
+    <p>SHOWMAKERは以下の構成要素を使用している。各ライセンスの原文はインストーラーに同梱の<code>NOTICE.txt</code>にある<sup class="ref"><a href="#ja-cite-1">[1]</a></sup>。DSP（整列用の遅延、初期反射、フィードバック・ディレイ・ネットワーク、帯域ごとの広がり、LEARNの分析）はすべてSHOWMAKERのために新たに書かれたコードであり、サードパーティのDSPコードは含まない。</p>
+    <div class="tbl-wrap"><table class="wikitable">
+     <thead><tr><th>構成要素</th><th>用途</th><th>ライセンス</th></tr></thead>
+     <tbody>
+      <tr><td>JUCE 8.0.15</td><td>プラグイン・フレームワーク</td><td>JUCE 8 EULA (Starter)<sup class="ref"><a href="#ja-cite-2">[2]</a></sup></td></tr>
+      <tr><td>VST 3 SDK</td><td>VST3プラグイン・インターフェース</td><td>MIT<sup class="ref"><a href="#ja-cite-3">[3]</a></sup></td></tr>
+      <tr><td>AudioUnitSDK</td><td>Audio Unit（macOS）</td><td>Apache 2.0</td></tr>
+      <tr><td>Space Grotesk, Space Mono</td><td>UIフォント</td><td>SIL OFL 1.1</td></tr>
+      <tr><td>zlib, libpng, jpeglib, FLAC, Ogg Vorbis, SheenBidi</td><td>JUCEに含まれ共にビルドされる構成要素</td><td>zlib / libpng / IJG / BSD / Apache 2.0</td></tr>
+     </tbody>
+    </table></div>
+    <p>VSTはSteinberg Media Technologies GmbHの商標である。</p>
+
+    <h2 id="ja-limits">注意点</h2>
+    <ul>
+     <li>インストーラーとプラグインはコード署名・公証されていない（上記のインストール案内を参照）。</li>
+     <li>AAX（Pro Tools）形式は提供していない。</li>
+     <li>スポットトラックまたはスポットのバスに挿入するプラグインであり、マスターバス用ではない。</li>
+     <li>報告するレイテンシーは意図的に0である。ALIGNの遅延をホストが補正すると、整列が失われるためである。</li>
+     <li>ALIGNの違いは、スポットを低いレベルで混ぜる場合には聴き取れないことがある。</li>
+     <li>ウィンドウの大きさは右下の角をドラッグして変更できる。</li>
+     <li>サポートは個人で対応できる範囲に限られ、更新や回答は保証しない。不具合の報告は<a href="mailto:donggyun0920@gmail.com">メール</a>で受け付ける。</li>
+    </ul>
+
+    <h2 id="ja-refs">脚注</h2>
+    <div class="refs"><ol>
+     <li id="ja-cite-1"><a class="up" href="#top-ja">↑</a><cite>LABO 1557「SHOWMAKER」インストール案内（<code>SHOWMAKER - Read Me First.txt</code>）およびサードパーティ告知（インストーラーに同梱の<code>NOTICE.txt</code>）。</cite> <a class="ext" href="https://github.com/dlrjtt1/showmaker-releases/releases/tag/v0.6.0">https://github.com/dlrjtt1/showmaker-releases/releases/tag/v0.6.0</a></li>
+     <li id="ja-cite-2"><a class="up" href="#top-ja">↑</a><cite>JUCE「JUCE 8 End User Licence Agreement」。</cite> <a class="ext" href="https://juce.com/legal/juce-8-licence/">https://juce.com/legal/juce-8-licence/</a></li>
+     <li id="ja-cite-3"><a class="up" href="#top-ja">↑</a><cite>Steinberg Media Technologies「VST 3 License」。</cite> <a class="ext" href="https://steinbergmedia.github.io/vst3_dev_portal/pages/VST+3+Licensing/VST3+License">https://steinbergmedia.github.io/vst3_dev_portal/pages/VST+3+Licensing/VST3+License</a></li>
+    </ol></div>
+   </main>
+  </div>
+ </div>
+</div>
+
+<div data-lang="ko" lang="ko" class="active">
+ <div class="cols">
+  <nav class="sidetoc toc" aria-label="목차"></nav>
+  <div class="content">
+   <div class="title-row">
+    <button class="toc-btn" title="목차"><svg viewBox="0 0 20 20"><path d="M1 3h18v2H1zm0 6h18v2H1zm0 6h18v2H1z"/></svg></button>
+    <h1 id="top-ko">SHOWMAKER<span class="alt">LABO 1557</span></h1>
+    <div class="dropdown">
+     <button class="lang-btn" aria-haspopup="true"><svg viewBox="0 0 20 20"><path d="M20 18h-1.4l-1.1-3H12l-1.1 3H9.5L14 6h1.5zm-3-4.1-2-5.5-2 5.5zM11 5V3H7V1H5v2H1v2h7a10 10 0 0 1-2.4 4.7A10 10 0 0 1 4 7H2a12 12 0 0 0 2.2 4L1 13.6l1.3 1.4 3.3-2.6 2.1 1.7.7-1.9-1.3-1A12 12 0 0 0 10 5z"/></svg>3개 언어 ▾</button>
+     <div class="menu lang-menu"><a href="#/ja" data-set="ja">日本語</a><a href="#/ko" data-set="ko">한국어</a><a href="#/en" data-set="en">English</a></div>
+    </div>
+   </div>
+   <div class="tabs">
+    <ul><li class="sel"><span>문서</span></li></ul>
+    <ul><li class="sel"><span>읽기</span></li><li><a href="https://github.com/dlrjtt1/researcher-site/blob/main/showmaker.html">원본 보기</a></li><li><a href="https://github.com/dlrjtt1/researcher-site/commits/main/showmaker.html">역사 보기</a></li></ul>
+   </div>
+   <main>
+    <p class="hatnote">SHOWMAKER는 유동균의 개인 프로젝트 <a href="./#/ko">LABO 1557</a>에서 만든 플러그인이다. 개인 프로젝트로서 <b>무상으로 배포</b>하며, 판매·후원·광고는 없다.</p>
+    <aside class="infobox" aria-label="Infobox">
+     <div class="ib-title">SHOWMAKER<small>Stage &amp; Hall Optimization Workflow for Music, Atmosphere, Kinetics, Enhancement &amp; Reconstruction</small></div>
+     <table><tbody>
+      <tr class="sec"><td colspan="2">기본 정보</td></tr>
+      <tr><th>개발</th><td>유동균 (LABO 1557)</td></tr>
+      <tr><th>최신 버전</th><td>0.6.0</td></tr>
+      <tr><th>종류</th><td>스폿 마이크용 리버브</td></tr>
+      <tr><th>형식</th><td>VST3, AU (macOS), Standalone</td></tr>
+      <tr><th>운영체제</th><td>Windows 10 / 11 (64-bit)<br>macOS 11+ (Apple Silicon / Intel)</td></tr>
+      <tr><th>가격</th><td>무료 (무상 배포)</td></tr>
+      <tr><th>다운로드</th><td><a href="#ko-download">다운로드</a></td></tr>
+     </tbody></table>
+    </aside>
+    <p><b>SHOWMAKER</b>(Stage &amp; Hall Optimization Workflow for Music, Atmosphere, Kinetics, Enhancement &amp; Reconstruction)는 라이브 녹음의 근접(스폿) 마이크를 위한 리버브 플러그인이다. 스폿 마이크는 무대 위의 메인 페어보다 훨씬 건조하게 녹음된다. SHOWMAKER는 각 스폿을 메인 페어에 소리가 도달하는 시각에 맞춰 지연시키고, 스테레오 넓이가 메인 페어를 따르는 잔향을 더해, 스폿이 메인 페어가 담은 공간 안에 자리 잡도록 돕는다<sup class="ref"><a href="#ko-cite-1">[1]</a></sup>.</p>
+    <p>SHOWMAKER는 홀의 잔향을 재현하거나 측정하지 않는다. 더해지는 것은 인공 잔향이며, 녹음을 따르는 것은 타이밍과 스테레오 넓이뿐이다. 잔향의 길이와 양은 사용자가 정하므로, 결과는 반드시 귀로 확인해야 한다<sup class="ref"><a href="#ko-cite-1">[1]</a></sup>.</p>
+
+    <h2 id="ko-download">다운로드</h2>
+    <p>설치 파일은 GitHub Releases에 있다. 등록, 라이선스 키, 체험 기간 제한은 없다.</p>
+    <div class="dl-grid">
+     <div class="dl-card">
+      <div class="dl-os">Windows</div>
+      <div class="dl-req">Windows 10 / 11 (64-bit)</div>
+      <code class="dl-file">SHOWMAKER-0.6.0-Windows-Setup.exe</code>
+      <a class="dl-btn" href="https://github.com/dlrjtt1/showmaker-releases/releases/download/v0.6.0/SHOWMAKER-0.6.0-Windows-Setup.exe">Windows용 내려받기</a>
+     </div>
+     <div class="dl-card">
+      <div class="dl-os">macOS</div>
+      <div class="dl-req">macOS 11+ (Apple Silicon / Intel)</div>
+      <code class="dl-file">SHOWMAKER-0.6.0-macOS.pkg</code>
+      <a class="dl-btn" href="https://github.com/dlrjtt1/showmaker-releases/releases/download/v0.6.0/SHOWMAKER-0.6.0-macOS.pkg">macOS용 내려받기</a>
+     </div>
+    </div>
+    <p>모든 버전과 변경 내역: <a class="ext" href="https://github.com/dlrjtt1/showmaker-releases/releases">github.com/dlrjtt1/showmaker-releases/releases</a></p>
+    <h3 id="ko-req">동작 환경</h3>
+    <ul>
+     <li>Windows: Windows 10 또는 11(64-bit), VST3 호스트(REAPER, Cubase, Nuendo, Studio One, Pyramix(VST3) 등).</li>
+     <li>macOS: macOS 11 이상, Apple Silicon 또는 Intel. VST3 호스트와 Audio Unit 호스트(Logic Pro).</li>
+     <li>세션 샘플레이트 44.1 kHz 이상.</li>
+    </ul>
+
+    <h2 id="ko-install">설치와 첫 실행</h2>
+    <p>지금 배포하는 설치 파일과 플러그인은 코드 서명이 되어 있지 않다. 그래서 처음 실행할 때 운영체제가 경고를 띄운다.</p>
+    <h3 id="ko-install-win">Windows</h3>
+    <ol>
+     <li><code>SHOWMAKER-0.6.0-Windows-Setup.exe</code>를 실행한다.</li>
+     <li>"Windows의 PC 보호" 창이 뜨면 <b>추가 정보</b>를 누른 뒤 <b>실행</b>을 누른다.</li>
+     <li>설치 안내를 따른다. 단독 실행 앱(Standalone)은 선택 사항이다.</li>
+    </ol>
+    <p>설치 위치: VST3 플러그인 <code>C:\Program Files\Common Files\VST3\SHOWMAKER.vst3</code>, 단독 실행 앱 <code>C:\Program Files\LABO 1557\SHOWMAKER\SHOWMAKER.exe</code>(선택한 경우). 제거: 설정 › 앱 › SHOWMAKER › 제거.</p>
+    <h3 id="ko-install-mac">macOS (미서명 경고 대처)</h3>
+    <ol>
+     <li><code>SHOWMAKER-0.6.0-macOS.pkg</code>를 더블클릭한다.</li>
+     <li>macOS가 "개발자를 확인할 수 없다"는 경고를 띄운다.
+      <ul>
+       <li>macOS 15(Sequoia) 이상: <b>완료</b>를 누르고 시스템 설정 › 개인정보 보호 및 보안으로 가서, 아래쪽 SHOWMAKER 메시지 옆의 <b>그래도 열기</b>를 누르고 암호로 확인한다.</li>
+       <li>macOS 14 이하: .pkg를 Control-클릭(오른쪽 클릭)하여 <b>열기</b>를 고르고, 다시 <b>열기</b>를 누른다.</li>
+      </ul>
+     </li>
+     <li>설치 안내를 따른다.</li>
+    </ol>
+    <p>설치 위치: <code>/Library/Audio/Plug-Ins/VST3/SHOWMAKER.vst3</code>, <code>/Library/Audio/Plug-Ins/Components/SHOWMAKER.component</code>, <code>/Applications/SHOWMAKER.app</code>. DAW가 플러그인이 "손상되었다"고 하거나 불러오지 않으면, 터미널에 아래 한 줄을 붙여 넣고(암호를 묻는다) DAW를 다시 시작한다.</p>
+    <pre class="cmd">sudo xattr -dr com.apple.quarantine "/Library/Audio/Plug-Ins/VST3/SHOWMAKER.vst3" "/Library/Audio/Plug-Ins/Components/SHOWMAKER.component" "/Applications/SHOWMAKER.app"</pre>
+    <p>제거: 위 세 항목을 삭제한다.</p>
+    <h3 id="ko-firstrun">처음 사용할 때</h3>
+    <ol>
+     <li>SHOWMAKER를 스폿 마이크 트랙(또는 한 섹션의 스폿을 모은 버스)에 넣는다. 그 트랙의 DAW 팬은 가운데로 둔다.</li>
+     <li><b>POSITION</b>: 악기가 좌우 어디에 있는지 정한다.</li>
+     <li><b>DISTANCE</b>: 악기(스폿 마이크)에서 메인 페어까지의 거리(m). 대략적인 값이면 된다. SHOWMAKER는 거리 ÷ 343 m/s만큼 스폿을 지연시켜 메인 페어와 같은 시각에 도달하게 한다.</li>
+     <li><b>SHOW</b>: 더할 공간의 양. 50 %가 출발점이다.</li>
+     <li><b>DECAY</b>: 더할 잔향의 길이. 홀의 잔향 시간이 아니다. 스폿에는 이미 홀의 울림이 일부 담겨 있다.</li>
+     <li><b>ALIGN ON / OFF</b>: 재생하면서 바꿔 가며 비교한다. 차이는 드러나 있고 레벨이 큰 스폿(피아노 솔로, 독주자)에서 가장 뚜렷하다.</li>
+    </ol>
+    <p>접힌 MORE 패널에는 LF DAMP / HF DAMP(저역·고역의 잔향 길이), WET HPF, ALIGN TRIM(미세 지연), SPREAD(스테레오 스폿 페어의 좌우 간격), WIDTH(대역별 잔향 넓이: Default / Learned / Off), INPUT(스테레오 트랙을 읽는 방식)이 있다.</p>
+    <h3 id="ko-learn">LEARN (선택 사항)</h3>
+    <p>LEARN은 지연을 미세 조정하고(DISTANCE 기준 2 ms 이내) 메인 페어의 스테레오 넓이를 가져온다. 플러그인의 사이드체인 입력에 메인 페어가 들어와야 한다.</p>
+    <ul>
+     <li><b>REAPER</b>: 스폿 트랙의 ROUTE에서 "Track channels"를 4로 하고 마스터 센드는 1-2만 둔다. 메인 페어 트랙의 ROUTE에서 스폿 트랙으로 센드를 추가한다(오디오 1/2 → 3/4, Pre-Fader (Post-FX), 0 dB). SHOWMAKER 창의 핀 커넥터에서 스테레오 트랙은 Spot L/R = 1/2, Main pair L/R = 3/4로, 모노 트랙은 Spot = 1, Main pair L = 3, R = 4로 둔다.</li>
+     <li><b>Logic Pro</b>: SHOWMAKER 창 오른쪽 위의 "Side Chain" 메뉴에서 메인 페어 트랙이나 버스를 고른다.</li>
+    </ul>
+    <ol>
+     <li>DISTANCE를 먼저 정한다.</li>
+     <li>이 스폿의 악기가 드러나는 구간을 재생한다.</li>
+     <li>LEARN을 누르고 10–60초 동안 둔 뒤 STOP을 누른다.</li>
+     <li>결과가 ALIGN 줄 아래에 나타난다(예: "Delay 10.63 ms (Weak, 46 %) | Width learned"). "Unreliable"이면 DISTANCE를 그대로 유지하므로, 다른 구간에서 다시 시도한다.</li>
+     <li>이후 센드는 지워도 된다. 결과는 프로젝트와 함께 저장된다.</li>
+    </ol>
+
+    <h2 id="ko-terms">사용 조건</h2>
+    <ol>
+     <li>SHOWMAKER는 무상으로 배포된다. 개인적 용도와 상업적 용도(예: SHOWMAKER를 쓰며 만든 믹스의 발표·판매) 모두에 무료로 사용할 수 있다.</li>
+     <li>SHOWMAKER 자체를 판매하거나 유료로 재배포해서는 안 된다. 다른 사람에게 알릴 때는 설치 파일 대신 이 페이지의 링크를 공유해 주기 바란다.</li>
+     <li>SHOWMAKER는 "있는 그대로(as is)" 제공되며, 상품성, 특정 목적에의 적합성, 오류가 없음 등 어떠한 명시적·묵시적 보증도 하지 않는다.</li>
+     <li>SHOWMAKER의 사용 또는 사용 불능으로 생긴 손해(데이터·작업물 손실, 시스템 문제 등)에 대해 개발자는 법이 허용하는 최대 범위에서 책임을 지지 않는다.</li>
+     <li>SHOWMAKER에 포함된 서드파티 구성요소는 각자의 라이선스를 따른다(아래 서드파티 고지).</li>
+     <li>SHOWMAKER에는 인터넷에 연결하는 기능이 없으며, 사용자 정보를 수집하거나 전송하지 않는다.</li>
+    </ol>
+
+    <h2 id="ko-notice">서드파티 고지</h2>
+    <p>SHOWMAKER는 아래 구성요소를 사용한다. 각 라이선스 원문은 설치 파일에 포함된 <code>NOTICE.txt</code>에 있다<sup class="ref"><a href="#ko-cite-1">[1]</a></sup>. DSP(정렬 지연, 초기 반사, 피드백 지연 네트워크, 대역별 넓이, LEARN 분석)는 모두 SHOWMAKER를 위해 새로 작성한 코드이며, 서드파티 DSP 코드는 포함하지 않는다.</p>
+    <div class="tbl-wrap"><table class="wikitable">
+     <thead><tr><th>구성요소</th><th>용도</th><th>라이선스</th></tr></thead>
+     <tbody>
+      <tr><td>JUCE 8.0.15</td><td>플러그인 프레임워크</td><td>JUCE 8 EULA (Starter)<sup class="ref"><a href="#ko-cite-2">[2]</a></sup></td></tr>
+      <tr><td>VST 3 SDK</td><td>VST3 플러그인 인터페이스</td><td>MIT<sup class="ref"><a href="#ko-cite-3">[3]</a></sup></td></tr>
+      <tr><td>AudioUnitSDK</td><td>Audio Unit(macOS)</td><td>Apache 2.0</td></tr>
+      <tr><td>Space Grotesk, Space Mono</td><td>UI 글꼴</td><td>SIL OFL 1.1</td></tr>
+      <tr><td>zlib, libpng, jpeglib, FLAC, Ogg Vorbis, SheenBidi</td><td>JUCE에 포함되어 함께 빌드되는 구성요소</td><td>zlib / libpng / IJG / BSD / Apache 2.0</td></tr>
+     </tbody>
+    </table></div>
+    <p>VST는 Steinberg Media Technologies GmbH의 상표이다.</p>
+
+    <h2 id="ko-limits">주의할 점</h2>
+    <ul>
+     <li>설치 파일과 플러그인은 코드 서명·공증이 되어 있지 않다(위 설치 안내 참조).</li>
+     <li>AAX(Pro Tools) 형식은 제공하지 않는다.</li>
+     <li>스폿 트랙이나 스폿 버스에 넣는 플러그인이며, 마스터 버스용이 아니다.</li>
+     <li>보고하는 지연시간(latency)은 일부러 0이다. ALIGN의 지연을 호스트가 보정해 버리면 정렬이 사라지기 때문이다.</li>
+     <li>ALIGN의 차이는 스폿을 낮게 깔아 쓰는 경우에는 들리지 않을 수 있다.</li>
+     <li>창 크기는 오른쪽 아래 모서리를 끌어 바꿀 수 있다.</li>
+     <li>지원은 개인이 할 수 있는 범위에서만 가능하며, 업데이트나 답변을 보장하지 않는다. 문제 보고는 <a href="mailto:donggyun0920@gmail.com">이메일</a>로 받는다.</li>
+    </ul>
+
+    <h2 id="ko-refs">각주</h2>
+    <div class="refs"><ol>
+     <li id="ko-cite-1"><a class="up" href="#top-ko">↑</a><cite>LABO 1557, 「SHOWMAKER」 설치 안내(<code>SHOWMAKER - Read Me First.txt</code>) 및 서드파티 고지(설치 파일에 포함된 <code>NOTICE.txt</code>).</cite> <a class="ext" href="https://github.com/dlrjtt1/showmaker-releases/releases/tag/v0.6.0">https://github.com/dlrjtt1/showmaker-releases/releases/tag/v0.6.0</a></li>
+     <li id="ko-cite-2"><a class="up" href="#top-ko">↑</a><cite>JUCE, 「JUCE 8 End User Licence Agreement」.</cite> <a class="ext" href="https://juce.com/legal/juce-8-licence/">https://juce.com/legal/juce-8-licence/</a></li>
+     <li id="ko-cite-3"><a class="up" href="#top-ko">↑</a><cite>Steinberg Media Technologies, 「VST 3 License」.</cite> <a class="ext" href="https://steinbergmedia.github.io/vst3_dev_portal/pages/VST+3+Licensing/VST3+License">https://steinbergmedia.github.io/vst3_dev_portal/pages/VST+3+Licensing/VST3+License</a></li>
+    </ol></div>
+   </main>
+  </div>
+ </div>
+</div>
+
+<div data-lang="en" lang="en">
+ <div class="cols">
+  <nav class="sidetoc toc" aria-label="Contents"></nav>
+  <div class="content">
+   <div class="title-row">
+    <button class="toc-btn" title="Contents"><svg viewBox="0 0 20 20"><path d="M1 3h18v2H1zm0 6h18v2H1zm0 6h18v2H1z"/></svg></button>
+    <h1 id="top-en">SHOWMAKER<span class="alt">LABO 1557</span></h1>
+    <div class="dropdown">
+     <button class="lang-btn" aria-haspopup="true"><svg viewBox="0 0 20 20"><path d="M20 18h-1.4l-1.1-3H12l-1.1 3H9.5L14 6h1.5zm-3-4.1-2-5.5-2 5.5zM11 5V3H7V1H5v2H1v2h7a10 10 0 0 1-2.4 4.7A10 10 0 0 1 4 7H2a12 12 0 0 0 2.2 4L1 13.6l1.3 1.4 3.3-2.6 2.1 1.7.7-1.9-1.3-1A12 12 0 0 0 10 5z"/></svg>3 languages ▾</button>
+     <div class="menu lang-menu"><a href="#/ja" data-set="ja">日本語</a><a href="#/ko" data-set="ko">한국어</a><a href="#/en" data-set="en">English</a></div>
+    </div>
+   </div>
+   <div class="tabs">
+    <ul><li class="sel"><span>Article</span></li></ul>
+    <ul><li class="sel"><span>Read</span></li><li><a href="https://github.com/dlrjtt1/researcher-site/blob/main/showmaker.html">View source</a></li><li><a href="https://github.com/dlrjtt1/researcher-site/commits/main/showmaker.html">View history</a></li></ul>
+   </div>
+   <main>
+    <p class="hatnote">SHOWMAKER is a plug-in made in <a href="./#/en">LABO 1557</a>, Dong-Gyun You's personal project. It is <b>distributed free of charge</b> as a personal project; there are no sales, donations or advertising.</p>
+    <aside class="infobox" aria-label="Infobox">
+     <div class="ib-title">SHOWMAKER<small>Stage &amp; Hall Optimization Workflow for Music, Atmosphere, Kinetics, Enhancement &amp; Reconstruction</small></div>
+     <table><tbody>
+      <tr class="sec"><td colspan="2">Overview</td></tr>
+      <tr><th>Developer</th><td>Dong-Gyun You (LABO 1557)</td></tr>
+      <tr><th>Latest version</th><td>0.6.0</td></tr>
+      <tr><th>Type</th><td>Reverb for spot microphones</td></tr>
+      <tr><th>Formats</th><td>VST3, AU (macOS), Standalone</td></tr>
+      <tr><th>OS</th><td>Windows 10 / 11 (64-bit)<br>macOS 11+ (Apple Silicon / Intel)</td></tr>
+      <tr><th>Price</th><td>Free (distributed free of charge)</td></tr>
+      <tr><th>Download</th><td><a href="#en-download">Download</a></td></tr>
+     </tbody></table>
+    </aside>
+    <p><b>SHOWMAKER</b> (Stage &amp; Hall Optimization Workflow for Music, Atmosphere, Kinetics, Enhancement &amp; Reconstruction) is a reverb plug-in for the close (spot) microphones of live recordings. Spot mics are much drier than the main pair above the stage. SHOWMAKER delays each spot to the main pair's arrival time and adds a reverb whose stereo width follows the main pair, to help the spot sit inside the room the main pair already captured<sup class="ref"><a href="#en-cite-1">[1]</a></sup>.</p>
+    <p>SHOWMAKER does not reproduce or measure the hall's reverb. What it adds is an artificial reverb; only its timing and stereo width follow the recording. Its length and amount are set by the user, so always check by ear<sup class="ref"><a href="#en-cite-1">[1]</a></sup>.</p>
+
+    <h2 id="en-download">Download</h2>
+    <p>The installers are on GitHub Releases. There is no registration, no licence key and no trial limit.</p>
+    <div class="dl-grid">
+     <div class="dl-card">
+      <div class="dl-os">Windows</div>
+      <div class="dl-req">Windows 10 / 11 (64-bit)</div>
+      <code class="dl-file">SHOWMAKER-0.6.0-Windows-Setup.exe</code>
+      <a class="dl-btn" href="https://github.com/dlrjtt1/showmaker-releases/releases/download/v0.6.0/SHOWMAKER-0.6.0-Windows-Setup.exe">Download for Windows</a>
+     </div>
+     <div class="dl-card">
+      <div class="dl-os">macOS</div>
+      <div class="dl-req">macOS 11+ (Apple Silicon / Intel)</div>
+      <code class="dl-file">SHOWMAKER-0.6.0-macOS.pkg</code>
+      <a class="dl-btn" href="https://github.com/dlrjtt1/showmaker-releases/releases/download/v0.6.0/SHOWMAKER-0.6.0-macOS.pkg">Download for macOS</a>
+     </div>
+    </div>
+    <p>All versions and release notes: <a class="ext" href="https://github.com/dlrjtt1/showmaker-releases/releases">github.com/dlrjtt1/showmaker-releases/releases</a></p>
+    <h3 id="en-req">Requirements</h3>
+    <ul>
+     <li>Windows: Windows 10 or 11 (64-bit); any VST3 host (REAPER, Cubase, Nuendo, Studio One, Pyramix via VST3, …).</li>
+     <li>macOS: macOS 11 or later, Apple Silicon or Intel; VST3 hosts and Audio Unit hosts (Logic Pro).</li>
+     <li>Session sample rate 44.1 kHz or higher.</li>
+    </ul>
+
+    <h2 id="en-install">Installation and first launch</h2>
+    <p>The installers and the plug-in are not code-signed yet, so the operating system shows a warning the first time.</p>
+    <h3 id="en-install-win">Windows</h3>
+    <ol>
+     <li>Run <code>SHOWMAKER-0.6.0-Windows-Setup.exe</code>.</li>
+     <li>If Windows shows "Windows protected your PC", click <b>More info</b>, then <b>Run anyway</b>.</li>
+     <li>Follow the installer. The standalone app is optional.</li>
+    </ol>
+    <p>Installed to: VST3 plug-in <code>C:\Program Files\Common Files\VST3\SHOWMAKER.vst3</code>; standalone <code>C:\Program Files\LABO 1557\SHOWMAKER\SHOWMAKER.exe</code> (if chosen). Uninstall: Settings › Apps › SHOWMAKER › Uninstall.</p>
+    <h3 id="en-install-mac">macOS (unsigned-installer warning)</h3>
+    <ol>
+     <li>Double-click <code>SHOWMAKER-0.6.0-macOS.pkg</code>.</li>
+     <li>macOS says it cannot verify the developer.
+      <ul>
+       <li>macOS 15 (Sequoia) or later: click <b>Done</b>, open System Settings › Privacy &amp; Security, scroll down, click <b>Open Anyway</b> next to the SHOWMAKER message and confirm with your password.</li>
+       <li>macOS 14 or earlier: Control-click (right-click) the .pkg, choose <b>Open</b>, then <b>Open</b> again.</li>
+      </ul>
+     </li>
+     <li>Follow the installer.</li>
+    </ol>
+    <p>Installed to: <code>/Library/Audio/Plug-Ins/VST3/SHOWMAKER.vst3</code>, <code>/Library/Audio/Plug-Ins/Components/SHOWMAKER.component</code>, <code>/Applications/SHOWMAKER.app</code>. If your DAW says the plug-in is "damaged" or will not load it, paste this line into Terminal (it asks for your password), then restart the DAW:</p>
+    <pre class="cmd">sudo xattr -dr com.apple.quarantine "/Library/Audio/Plug-Ins/VST3/SHOWMAKER.vst3" "/Library/Audio/Plug-Ins/Components/SHOWMAKER.component" "/Applications/SHOWMAKER.app"</pre>
+    <p>Uninstall: delete the three items above.</p>
+    <h3 id="en-firstrun">First use</h3>
+    <ol>
+     <li>Insert SHOWMAKER on a spot-mic track (or a bus of the spots of one section). Keep the DAW pan of that track centred.</li>
+     <li><b>POSITION</b>: where the instrument sits left to right.</li>
+     <li><b>DISTANCE</b>: distance from the instrument (its spot mic) to the main pair, in metres. A rough value is enough. SHOWMAKER delays the spot by distance ÷ 343 m/s so that it arrives with the main pair.</li>
+     <li><b>SHOW</b>: the amount of added room. 50 % is the starting point.</li>
+     <li><b>DECAY</b>: the length of the added reverb. This is not the hall's reverberation time; the spot already carries part of the hall.</li>
+     <li><b>ALIGN ON / OFF</b>: switch while playing to compare. The difference is clearest on exposed, louder spots (solo piano, soloists).</li>
+    </ol>
+    <p>The fold-out MORE panel has LF DAMP / HF DAMP (reverb length in the low and high bands), WET HPF, ALIGN TRIM (fine delay), SPREAD (distance between L and R of a stereo spot pair), WIDTH (stereo width of the reverb per band: Default / Learned / Off) and INPUT (how a stereo track is read).</p>
+    <h3 id="en-learn">LEARN (optional)</h3>
+    <p>LEARN fine-tunes the delay (within 2 ms of DISTANCE) and copies the stereo width of the main pair. It needs the main pair on the plug-in's sidechain input.</p>
+    <ul>
+     <li><b>REAPER</b>: on the spot track, set ROUTE › "Track channels" to 4 and keep the master send on 1-2 only. On the main pair track, add a send to the spot track (audio 1/2 → 3/4, Pre-Fader (Post-FX), 0 dB). In the pin connector of the SHOWMAKER window, use Spot L/R = 1/2 and Main pair L/R = 3/4 for a stereo track, or Spot = 1, Main pair L = 3, R = 4 for a mono track.</li>
+     <li><b>Logic Pro</b>: choose the main pair track or bus in the "Side Chain" menu at the top right of the SHOWMAKER window.</li>
+    </ul>
+    <ol>
+     <li>Set DISTANCE first.</li>
+     <li>Play a passage where this spot's instrument is exposed.</li>
+     <li>Press LEARN, let it run for 10 to 60 seconds, then press STOP.</li>
+     <li>The result appears under the ALIGN row, e.g. "Delay 10.63 ms (Weak, 46 %) | Width learned". "Unreliable" keeps your DISTANCE unchanged; try another passage.</li>
+     <li>The send can be removed afterwards; the result is saved with the project.</li>
+    </ol>
+
+    <h2 id="en-terms">Terms of use</h2>
+    <ol>
+     <li>SHOWMAKER is distributed free of charge. You may use it free of charge for personal and commercial purposes (for example, releasing or selling mixes you made while using SHOWMAKER).</li>
+     <li>You may not sell SHOWMAKER itself or redistribute it for a fee. When telling others about it, please share a link to this page rather than the installer file.</li>
+     <li>SHOWMAKER is provided "as is", without warranty of any kind, express or implied, including merchantability, fitness for a particular purpose and freedom from errors.</li>
+     <li>To the maximum extent permitted by law, the developer is not liable for any damage arising from the use of, or inability to use, SHOWMAKER (including loss of data or work and system problems).</li>
+     <li>Third-party components included in SHOWMAKER are subject to their own licences (see Third-party notices below).</li>
+     <li>SHOWMAKER has no function that connects to the internet and does not collect or transmit user information.</li>
+    </ol>
+
+    <h2 id="en-notice">Third-party notices</h2>
+    <p>SHOWMAKER uses the components below. The full licence texts are in <code>NOTICE.txt</code>, included with the installer<sup class="ref"><a href="#en-cite-1">[1]</a></sup>. All DSP (alignment delay, early reflections, feedback delay network, band width, LEARN analysis) is original code written for SHOWMAKER; no third-party DSP code is included.</p>
+    <div class="tbl-wrap"><table class="wikitable">
+     <thead><tr><th>Component</th><th>Use</th><th>Licence</th></tr></thead>
+     <tbody>
+      <tr><td>JUCE 8.0.15</td><td>Plug-in framework</td><td>JUCE 8 EULA (Starter)<sup class="ref"><a href="#en-cite-2">[2]</a></sup></td></tr>
+      <tr><td>VST 3 SDK</td><td>VST3 plug-in interface</td><td>MIT<sup class="ref"><a href="#en-cite-3">[3]</a></sup></td></tr>
+      <tr><td>AudioUnitSDK</td><td>Audio Unit (macOS)</td><td>Apache 2.0</td></tr>
+      <tr><td>Space Grotesk, Space Mono</td><td>UI fonts</td><td>SIL OFL 1.1</td></tr>
+      <tr><td>zlib, libpng, jpeglib, FLAC, Ogg Vorbis, SheenBidi</td><td>Components included in JUCE and built with it</td><td>zlib / libpng / IJG / BSD / Apache 2.0</td></tr>
+     </tbody>
+    </table></div>
+    <p>VST is a trademark of Steinberg Media Technologies GmbH.</p>
+
+    <h2 id="en-limits">Things to note</h2>
+    <ul>
+     <li>The installers and the plug-in are not code-signed or notarised (see the installation notes above).</li>
+     <li>No AAX (Pro Tools) format.</li>
+     <li>The plug-in goes on spot tracks or spot buses; it is not meant for the master bus.</li>
+     <li>The reported latency is zero on purpose: if the host compensated the ALIGN delay, the alignment would be lost.</li>
+     <li>The effect of ALIGN may not be audible when a spot is mixed in at a low level.</li>
+     <li>The window can be resized from the bottom-right corner.</li>
+     <li>Support is limited to what one person can offer; updates and replies are not guaranteed. Please report problems by <a href="mailto:donggyun0920@gmail.com">e-mail</a>.</li>
+    </ul>
+
+    <h2 id="en-refs">References</h2>
+    <div class="refs"><ol>
+     <li id="en-cite-1"><a class="up" href="#top-en">↑</a><cite>LABO 1557, "SHOWMAKER" installation notes (<code>SHOWMAKER - Read Me First.txt</code>) and third-party notices (<code>NOTICE.txt</code> in the installer).</cite> <a class="ext" href="https://github.com/dlrjtt1/showmaker-releases/releases/tag/v0.6.0">https://github.com/dlrjtt1/showmaker-releases/releases/tag/v0.6.0</a></li>
+     <li id="en-cite-2"><a class="up" href="#top-en">↑</a><cite>JUCE, "JUCE 8 End User Licence Agreement".</cite> <a class="ext" href="https://juce.com/legal/juce-8-licence/">https://juce.com/legal/juce-8-licence/</a></li>
+     <li id="en-cite-3"><a class="up" href="#top-en">↑</a><cite>Steinberg Media Technologies, "VST 3 License".</cite> <a class="ext" href="https://steinbergmedia.github.io/vst3_dev_portal/pages/VST+3+Licensing/VST3+License">https://steinbergmedia.github.io/vst3_dev_portal/pages/VST+3+Licensing/VST3+License</a></li>
+    </ol></div>
+   </main>
+  </div>
+ </div>
+</div>
+
+</div><!-- /page -->
+
+<footer class="site">
+ <div class="in">
+  <p id="lastmod"></p>
+  <p>
+   <span data-lang-inline="ja">SHOWMAKERはLABO 1557（柳 東均）の個人プロジェクトとして無償で配布されている。</span>
+   <span data-lang-inline="ko" class="active">SHOWMAKER는 LABO 1557(유동균)의 개인 프로젝트로 무상 배포된다.</span>
+   <span data-lang-inline="en">SHOWMAKER is distributed free of charge as a personal project of LABO 1557 (Dong-Gyun You).</span>
+  </p>
+  <ul>
+   <li><a href="https://www.linkedin.com/in/dong-gyun-you/">LinkedIn</a></li>
+   <li><a href="https://github.com/dlrjtt1">GitHub</a></li>
+   <li><a href="https://www.instagram.com/dlrjtt1_/">Instagram</a></li>
+   <li><a href="mailto:donggyun0920@gmail.com">E-mail</a></li>
+  </ul>
+ </div>
+</footer>
+
+<script>
+(function(){
+  var LANGS = ['ja','ko','en'];
+  var DEFAULT = 'ja';
+  var BUILD_DATE = '2026-11-16T22:15:00+09:00';
+  var META = {
+    ja: { title: 'SHOWMAKER — LABO 1557', desc: 'LABO 1557のSHOWMAKER：ライブ録音のスポットマイク用リバーブ・プラグイン（無償配布）。' },
+    ko: { title: 'SHOWMAKER — LABO 1557', desc: 'LABO 1557의 SHOWMAKER: 라이브 녹음의 스폿 마이크용 리버브 플러그인(무상 배포).' },
+    en: { title: 'SHOWMAKER — LABO 1557', desc: 'SHOWMAKER by LABO 1557: a free reverb plug-in for the spot microphones of live recordings.' }
+  };
+  var L = {
+    ja: { toc:'目次', hide:'非表示', show:'表示', top:'（トップ）', search:'このページを検索', go:'検索', none:'一致する項目はありません' },
+    ko: { toc:'목차', hide:'숨기기', show:'보이기', top:'처음 위치', search:'이 문서 검색', go:'검색', none:'일치하는 항목이 없습니다' },
+    en: { toc:'Contents', hide:'hide', show:'show', top:'(Top)', search:'Search this page', go:'Search', none:'No matches' }
+  };
+  var CHEV = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 1.5 8.5 6 4 10.5 3 9.5 6.5 6 3 2.5z"/></svg>';
+  var cur = DEFAULT;
+  function $(s,r){ return (r||document).querySelector(s); }
+  function $$(s,r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); }
+  function store(k,v){ try{ if(v===null) localStorage.removeItem(k); else localStorage.setItem(k,v); }catch(e){} }
+  function read(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function block(){ return $('[data-lang="'+cur+'"]'); }
+
+  /* ---------- TOC ---------- */
+  function headingText(h){ var c = h.cloneNode(true); $$('.sec-date,.sec-tg', c).forEach(function(e){ e.remove(); }); return c.textContent.trim(); }
+  function setSec(h, open){ var body = document.getElementById(h.id+'-body'); if(!body) return; body.hidden = !open; h.classList.toggle('collapsed', !open); var b = h.querySelector('.sec-tg'); if(b){ b.setAttribute('aria-expanded', open ? 'true' : 'false'); b.textContent = '[' + b.getAttribute(open ? 'data-hide' : 'data-show') + ']'; } }
+  function revealFor(el){ var body = el.closest && el.closest('.sec-body[hidden]'); if(body){ var h = document.getElementById(body.id.replace(/-body$/,'')); if(h) setSec(h, true); } }
+  document.addEventListener('click', function(e){ var t = e.target.closest('main h3.collapsible .sec-tg'); if(!t) return; var h = t.closest('h3'); setSec(h, h.classList.contains('collapsed')); if(window.__spy) window.__spy(); });
+  function buildToc(b){
+    var lang = b.getAttribute('data-lang'), nav = $('.sidetoc', b), main = $('main', b), t = L[lang];
+    nav.innerHTML = '';
+    var head = document.createElement('div'); head.className = 'toc-head';
+    head.innerHTML = '<span class="tt"></span><button class="toc-hide" type="button"></button>';
+    head.firstChild.textContent = t.toc; head.lastChild.textContent = t.hide;
+    nav.appendChild(head);
+    var root = document.createElement('ul');
+    var top = document.createElement('li'); top.innerHTML = '<a></a>';
+    top.firstChild.textContent = t.top; top.firstChild.href = '#top-'+lang; top.firstChild.setAttribute('data-target','top-'+lang);
+    root.appendChild(top);
+    var stack = [{lvl:1, ul:root, li:null}];
+    $$('h2,h3,h4', main).forEach(function(h){
+      if(!h.id) return;
+      var lvl = +h.tagName[1];
+      while(stack.length>1 && stack[stack.length-1].lvl >= lvl) stack.pop();
+      var parent = stack[stack.length-1];
+      if(parent.li && !parent.ul.parentNode){ parent.li.appendChild(parent.ul); }
+      var li = document.createElement('li'); var a = document.createElement('a');
+      a.href = '#'+h.id; a.textContent = headingText(h); a.setAttribute('data-target', h.id);
+      li.appendChild(a); parent.ul.appendChild(li);
+      if(parent.li && !parent.li.querySelector(':scope > .tg')){
+        var tg = document.createElement('button'); tg.type='button'; tg.className='tg'; tg.innerHTML=CHEV;
+        tg.setAttribute('aria-label','toggle'); parent.li.insertBefore(tg, parent.li.firstChild);
+      }
+      stack.push({lvl:lvl, ul:document.createElement('ul'), li:li});
+    });
+    nav.appendChild(root);
+  }
+  function wireToc(container){
+    container.addEventListener('click', function(e){
+      var tg = e.target.closest('.tg');
+      if(tg){ tg.parentNode.classList.toggle('open'); e.preventDefault(); return; }
+      var hide = e.target.closest('.toc-hide');
+      if(hide && !hide.classList.contains('toc-show')){ document.documentElement.classList.add('toc-hidden'); store('tochidden','1'); return; }
+      var a = e.target.closest('a[data-target]');
+      if(a){ e.preventDefault(); jump(a.getAttribute('data-target')); closePop(); }
+    });
+  }
+  function jump(id){
+    var el = document.getElementById(id); if(!el) return;
+    revealFor(el);
+    var y = el.getBoundingClientRect().top + window.pageYOffset - (id.indexOf('top-')===0 ? 80 : 58);
+    window.scrollTo({top: Math.max(0,y), behavior:'smooth'});
+  }
+
+  /* ---------- scroll spy + sticky header ---------- */
+  var ticking = false;
+  function spy(){
+    ticking = false;
+    var b = block(); if(!b) return;
+    var hs = $$('main h2[id], main h3[id], main h4[id]', b).filter(function(h){ return h.offsetParent !== null; }), activeId = 'top-'+cur, activeText = '';
+    for(var i=0;i<hs.length;i++){ if(hs[i].getBoundingClientRect().top < 90){ activeId = hs[i].id; activeText = headingText(hs[i]); } else break; }
+    $$('.sidetoc a', b).forEach(function(a){
+      var on = a.getAttribute('data-target') === activeId;
+      a.classList.toggle('active', on);
+      if(on){ var p = a.parentNode; while(p && p.tagName==='LI'){ var lis = p.parentNode && p.parentNode.closest('li'); if(lis) lis.classList.add('open'); p = lis; } if(a.parentNode.querySelector('ul')) a.parentNode.classList.add('open'); }
+    });
+    var h1 = $('h1', b), st = $('#sticky');
+    var stuck = h1.getBoundingClientRect().bottom < 0;
+    st.classList.toggle('show', stuck); document.body.classList.toggle('stuck', stuck);
+    st.setAttribute('aria-hidden', stuck ? 'false' : 'true');
+    $('#st-title').textContent = h1.firstChild.textContent.trim();
+    $('#st-sec').textContent = activeText; $('#st-sec').style.display = activeText ? '' : 'none';
+  }
+  window.__spy = spy;
+  window.addEventListener('scroll', function(){ if(!ticking){ ticking = true; requestAnimationFrame(spy); } }, {passive:true});
+  window.addEventListener('resize', function(){ closePop(); spy(); });
+
+  /* ---------- floating TOC ---------- */
+  var pop = $('#toc-pop');
+  function openPop(btn){
+    var src = $('.sidetoc', block()); if(!src) return;
+    pop.innerHTML = src.innerHTML;
+    var hb = $('.toc-hide', pop);
+    if(document.documentElement.classList.contains('toc-hidden') && window.innerWidth > 1000){
+      hb.textContent = L[cur].show; hb.className = 'toc-hide toc-show';
+    } else if(hb){ hb.remove(); }
+    var r = btn.getBoundingClientRect();
+    pop.style.top = (r.bottom + 6) + 'px';
+    pop.style.left = Math.max(16, Math.min(r.left, window.innerWidth - pop.offsetWidth - 16)) + 'px';
+    pop.classList.add('show');
+    pop.style.left = Math.max(16, Math.min(r.left, window.innerWidth - pop.offsetWidth - 16)) + 'px';
+  }
+  function closePop(){ pop.classList.remove('show'); }
+  wireToc(pop);
+  pop.addEventListener('click', function(e){
+    if(e.target.closest('.toc-show')){ document.documentElement.classList.remove('toc-hidden'); store('tochidden',null); closePop(); spy(); }
+  });
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('.toc-btn');
+    if(btn){ e.stopPropagation(); if(pop.classList.contains('show')) closePop(); else openPop(btn); return; }
+    if(!e.target.closest('#toc-pop')) closePop();
+  });
+
+  /* ---------- dropdown menus ---------- */
+  function closeMenus(except){ $$('.menu.show').forEach(function(m){ if(m!==except) m.classList.remove('show'); }); }
+  document.addEventListener('click', function(e){
+    var lb = e.target.closest('.lang-btn, #appear-btn');
+    if(lb){ var m = lb.parentNode.querySelector('.menu'); closeMenus(m); m.classList.toggle('show'); lb.setAttribute('aria-expanded', m.classList.contains('show')); return; }
+    if(!e.target.closest('.menu')) closeMenus();
+  });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ closeMenus(); closePop(); } });
+
+  /* ---------- appearance ---------- */
+  function initAppearance(){
+    var size = read('textsize') || 'standard', theme = read('theme') || 'auto';
+    $$('#appear-menu input[name="size"]').forEach(function(i){ i.checked = i.value===size; });
+    $$('#appear-menu input[name="theme"]').forEach(function(i){ i.checked = i.value===theme; });
+    $('#appear-menu').addEventListener('change', function(e){
+      var i = e.target, de = document.documentElement;
+      if(i.name==='size'){ if(i.value==='standard'){ de.removeAttribute('data-size'); store('textsize',null);} else { de.setAttribute('data-size', i.value); store('textsize', i.value);} }
+      if(i.name==='theme'){ if(i.value==='auto'){ de.removeAttribute('data-theme'); store('theme',null);} else { de.setAttribute('data-theme', i.value); store('theme', i.value);} }
+      spy();
+    });
+  }
+
+  /* ---------- navbox ---------- */
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('.nb-toggle'); if(!t) return;
+    var nb = t.closest('.navbox'); nb.classList.toggle('collapsed');
+    var lang = t.closest('[data-lang]').getAttribute('data-lang');
+    t.textContent = '[' + (nb.classList.contains('collapsed') ? L[lang].show : L[lang].hide) + ']';
+  });
+
+  /* in-article anchor links: smooth jump with sticky offset */
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('main a[href^="#"], .navbox a[href^="#"], .infobox a[href^="#"]');
+    if(!a || a.closest('.sidetoc')) return;
+    var id = a.getAttribute('href').slice(1);
+    if(!id || id.charAt(0)==='/') return;
+    var el = document.getElementById(id); if(!el) return;
+    e.preventDefault(); jump(id);
+    if(el.tagName==='LI'){ el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash'); }
+  });
+  $$('[data-top]').forEach(function(a){ a.addEventListener('click', function(e){ e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}); }); });
+
+  /* ---------- last modified ---------- */
+  function lastMod(lang){
+    var d = new Date(document.lastModified);
+    if(isNaN(d) || Math.abs(Date.now() - d.getTime()) < 10000) d = new Date(BUILD_DATE);
+    var p = $('#lastmod'), pad = function(n){ return (n<10?'0':'')+n; };
+    var hm = pad(d.getHours()) + ':' + pad(d.getMinutes());
+    if(lang==='ko'){ var wk='일월화수목금토'[d.getDay()]; p.textContent = '이 문서는 '+d.getFullYear()+'년 '+(d.getMonth()+1)+'월 '+d.getDate()+'일 ('+wk+') '+hm+'에 마지막으로 편집되었습니다.'; }
+    else if(lang==='ja'){ var wj='日月火水木金土'[d.getDay()]; p.textContent = 'このページの最終更新日時は '+d.getFullYear()+'年'+(d.getMonth()+1)+'月'+d.getDate()+'日 ('+wj+') '+hm+' です。'; }
+    else { var M=['January','February','March','April','May','June','July','August','September','October','November','December']; p.textContent = 'This page was last edited on '+d.getDate()+' '+M[d.getMonth()]+' '+d.getFullYear()+', at '+hm+'.'; }
+  }
+
+  /* ---------- language ---------- */
+  function parseHash(){ var m = location.hash.match(/^#\/(ja|ko|en)(?:\/|$)/); return m ? m[1] : null; }
+  function pick(){ var h = parseHash(); if(h) return h; var s = read('lang'); if(s && LANGS.indexOf(s)>=0) return s; return DEFAULT; }
+  function apply(lang){
+    if(LANGS.indexOf(lang)<0) lang = DEFAULT;
+    cur = lang;
+    document.documentElement.lang = lang;
+    $$('[data-lang]').forEach(function(el){ el.classList.toggle('active', el.getAttribute('data-lang')===lang); });
+    $$('[data-lang-inline]').forEach(function(el){ el.classList.toggle('active', el.getAttribute('data-lang-inline')===lang); });
+    $$('.lang-menu a').forEach(function(a){ if(a.getAttribute('data-set')===lang) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current'); });
+    document.title = META[lang].title;
+    var d = $('meta[name="description"]'); if(d) d.setAttribute('content', META[lang].desc);
+    lastMod(lang); store('lang', lang); closePop(); spy();
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('.lang-menu a[data-set]'); if(!a) return;
+    e.preventDefault(); closeMenus();
+    history.replaceState(null,'','#/'+a.getAttribute('data-set'));
+    apply(a.getAttribute('data-set')); window.scrollTo({top:0});
+  });
+  window.addEventListener('hashchange', function(){ var h = parseHash(); if(h) apply(h); });
+
+  /* ---------- init ---------- */
+  $$('[data-lang]').forEach(function(b){ buildToc(b); wireToc($('.sidetoc', b)); });
+  window.__rebuildToc = function(){ $$('[data-lang]').forEach(buildToc); spy(); };
+  initAppearance();
+  var initial = pick();
+  if(!parseHash()) history.replaceState(null,'','#/'+initial);
+  apply(initial);
+})();
+
+</script>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="SHOWMAKER"><button class="lb-close" type="button" aria-label="Close">×</button><img alt=""></div>
+<script>
+(function(){
+  var lb = document.getElementById('lightbox'), img = lb.querySelector('img');
+  function close(){ lb.classList.remove('show'); document.body.style.overflow = ''; }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('.ib-img a');
+    if(a){ e.preventDefault(); var i = a.querySelector('img'); img.src = a.getAttribute('href'); img.alt = i ? i.alt : ''; lb.classList.add('show'); document.body.style.overflow = 'hidden'; return; }
+    if(e.target.closest('#lightbox')) close();
+  });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && lb.classList.contains('show')) close(); });
+})();
+</script>
+</body>
+</html>
