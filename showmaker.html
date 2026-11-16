@@ -349,6 +349,7 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
       <tr><th>開発</th><td>柳 東均（LABO 1557）</td></tr>
       <tr><th>最新版</th><td>0.6.0</td></tr>
       <tr><th>種類</th><td>スポットマイク用リバーブ</td></tr>
+      <tr><th>中核機能</th><td><a href="#ja-learn">LEARN（サイドチェイン分析）</a></td></tr>
       <tr><th>形式</th><td>VST3, AU (macOS), Standalone</td></tr>
       <tr><th>OS</th><td>Windows 10 / 11 (64-bit)<br>macOS 11+ (Apple Silicon / Intel)</td></tr>
       <tr><th>価格</th><td>無料（無償配布）</td></tr>
@@ -356,7 +357,8 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
      </tbody></table>
     </aside>
     <p><b>SHOWMAKER</b>（Stage &amp; Hall Optimization Workflow for Music, Atmosphere, Kinetics, Enhancement &amp; Reconstruction）は、ライブ録音の近接（スポット）マイクのためのリバーブ・プラグインである。スポットマイクは舞台上方のメインペアよりもはるかにドライに収録される。SHOWMAKERは、スポットマイクがメインペアの音とひとつの空間のように溶け合うよう助ける。そのために、スポットをメインペアへの到達時刻に合わせ、ステレオの広がりがメインペアに従う残響を加える<sup class="ref"><a href="#ja-cite-1">[1]</a></sup>。</p>
-    <p>SHOWMAKERはホールの残響を再現するものでも測定するものでもない。加えられるのは人工残響であり、録音に従うのはタイミングとステレオの広がりのみである。残響の長さと量は利用者が決めるため、結果は必ず耳で確認する必要がある<sup class="ref"><a href="#ja-cite-1">[1]</a></sup>。</p>
+    <p>そのタイミングと広がりを録音から直接読み取る機能が、SHOWMAKERの中核である<b><a href="#ja-learn">LEARN</a></b>である。メインペアをサイドチェインで受けて再生中の音を分析し、スポットとメインペアの間の実際の遅延を求めて整列を詰め、メインペアの帯域ごとのステレオの広がりを残響に移す。遅延は信頼度の判定とともに表示され、判定が低い場合は整列を変更しない<sup class="ref"><a href="#ja-cite-1">[1]</a></sup>。</p>
+    <p>SHOWMAKERはホールの残響を再現するものでも測定するものでもない。加えられるのは人工残響であり、LEARNが録音から読み取るのはタイミングとステレオの広がりのみである。残響の長さと量は利用者が決めるため、結果は必ず耳で確認する必要がある<sup class="ref"><a href="#ja-cite-1">[1]</a></sup>。</p>
 
     <h2 id="ja-download">ダウンロード</h2>
     <p>インストーラーはGitHub Releasesに置かれている。登録、ライセンスキー、試用期間の制限はない。</p>
@@ -413,21 +415,42 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
      <li><b>SHOW</b>：加える空間の量。50 %が出発点である。</li>
      <li><b>DECAY</b>：加える残響の長さ。ホールの残響時間ではない。スポットにはすでにホールの響きの一部が含まれている。</li>
      <li><b>ALIGN ON / OFF</b>：再生しながら切り替えて比較する。違いは、露出していてレベルの大きいスポット（ピアノソロ、独奏者）で最も明瞭である。</li>
+     <li><b>LEARN</b>：メインペアをサイドチェインに接続してLEARNを押し、遅延と広がりを録音に合わせる（下記の<a href="#ja-learn">LEARN</a>の節）。</li>
     </ol>
     <p>折りたたまれたMOREパネルには、LF DAMP / HF DAMP（低域・高域の残響の長さ）、WET HPF、ALIGN TRIM（微小な遅延）、SPREAD（ステレオのスポットペアの左右間隔）、WIDTH（帯域ごとの残響の広がり：Default / Learned / Off）、INPUT（ステレオトラックの読み方）がある。</p>
-    <h3 id="ja-learn">LEARN（任意）</h3>
-    <p>LEARNは遅延を微調整し（DISTANCEを基準に2 ms以内）、メインペアのステレオの広がりを取り込む。プラグインのサイドチェイン入力にメインペアが入っている必要がある。</p>
+    <h2 id="ja-learn">LEARN</h2>
+    <p>LEARNはSHOWMAKERの中核機能であり、スポットとメインペアを同時に聴いて録音の中の実際の関係を読み取る。DISTANCEだけで決めた遅延は巻尺で測った値であるが、LEARNはそれを録音された音から確かめ、詰める<sup class="ref"><a href="#ja-cite-1">[1]</a></sup>。</p>
+    <h3 id="ja-learn-what">機能</h3>
+    <ul>
+     <li><b>遅延</b>：再生中の10–60秒を取り込み、2秒の窓ごとにスポットとメインペアの相互相関（GCC-PHAT<sup class="ref"><a href="#ja-cite-4">[4]</a></sup>、400 Hz–6 kHz）を求め、DISTANCEで決めた遅延の±2 msの範囲で最も多くの窓が示す遅延を探す。その差がALIGN TRIMに入る。</li>
+     <li><b>広がり</b>：メインペアの左右の相関を帯域ごとに測り、残響のステレオの広がりの目標とする（WIDTH = Learned）。</li>
+     <li>分析はオーディオ処理とは別のスレッドで行われる。結果はプロジェクトとともに保存され、オートメーションの対象ではない。</li>
+    </ul>
+    <h3 id="ja-learn-route">サイドチェインの接続</h3>
     <ul>
      <li><b>REAPER</b>：スポットトラックのROUTEで「Track channels」を4にし、マスターセンドは1-2のみにする。メインペアのトラックのROUTEでスポットトラックへのセンドを追加する（オーディオ1/2 → 3/4、Pre-Fader (Post-FX)、0 dB）。SHOWMAKERのウィンドウのピンコネクタで、ステレオトラックはSpot L/R = 1/2、Main pair L/R = 3/4、モノトラックはSpot = 1、Main pair L = 3、R = 4とする。</li>
      <li><b>Logic Pro</b>：SHOWMAKERのウィンドウ右上の「Side Chain」メニューでメインペアのトラックまたはバスを選ぶ。</li>
     </ul>
+    <h3 id="ja-learn-steps">使用手順</h3>
     <ol>
      <li>先にDISTANCEを設定する。</li>
      <li>このスポットの楽器が露出している箇所を再生する。</li>
      <li>LEARNを押して10–60秒待ち、STOPを押す。</li>
-     <li>結果がALIGNの行の下に表示される（例：「Delay 10.63 ms (Weak, 46 %) | Width learned」）。「Unreliable」の場合はDISTANCEがそのまま保たれるので、別の箇所で試す。</li>
+     <li>結果がALIGNの行の下に表示される（例：「Delay 10.63 ms (Weak, 46 %) | Width learned」）。</li>
      <li>その後、センドは削除してよい。結果はプロジェクトとともに保存される。</li>
     </ol>
+    <h3 id="ja-learn-result">結果の読み方</h3>
+    <p>括弧内の百分率は、分析した窓のうち同じ遅延を示した割合である。</p>
+    <div class="tbl-wrap"><table class="wikitable">
+     <thead><tr><th>判定</th><th>基準</th><th>処理</th></tr></thead>
+     <tbody>
+      <tr><td>Reliable</td><td>50 %以上</td><td>遅延を適用する。</td></tr>
+      <tr><td>Weak</td><td>25–50 %</td><td>遅延を適用する。ON/OFFで耳で確認する。</td></tr>
+      <tr><td>Ambiguous</td><td>遅延の候補が2つに分かれる</td><td>最も多い遅延を適用する。ON/OFFで確認するか、楽器がより露出している箇所で再度試す。</td></tr>
+      <tr><td>Unreliable</td><td>25 %未満</td><td>「Delay not found (Unreliable) - DISTANCE kept」と表示し、DISTANCEをそのまま保つ。別の箇所で再度試す。</td></tr>
+     </tbody>
+    </table></div>
+    <p>メインペアの左右が事実上同じ（モノのペア）場合、広がりは適用せず既定値を保ち、「Width not applied: main pair is mono」と表示する。箇所によって広がりが大きく異なる場合は「(unstable)」が付く。</p>
 
     <h2 id="ja-terms">使用条件</h2>
     <ol>
@@ -469,6 +492,7 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
      <li id="ja-cite-1"><a class="up" href="#top-ja">↑</a><cite>LABO 1557「SHOWMAKER」インストール案内（<code>SHOWMAKER - Read Me First.txt</code>）およびサードパーティ告知（インストーラーに同梱の<code>NOTICE.txt</code>）。</cite> <a class="ext" href="https://github.com/dlrjtt1/showmaker-releases/releases/tag/v0.6.0">https://github.com/dlrjtt1/showmaker-releases/releases/tag/v0.6.0</a></li>
      <li id="ja-cite-2"><a class="up" href="#top-ja">↑</a><cite>JUCE「JUCE 8 End User Licence Agreement」。</cite> <a class="ext" href="https://juce.com/legal/juce-8-licence/">https://juce.com/legal/juce-8-licence/</a></li>
      <li id="ja-cite-3"><a class="up" href="#top-ja">↑</a><cite>Steinberg Media Technologies「VST 3 License」。</cite> <a class="ext" href="https://steinbergmedia.github.io/vst3_dev_portal/pages/VST+3+Licensing/VST3+License">https://steinbergmedia.github.io/vst3_dev_portal/pages/VST+3+Licensing/VST3+License</a></li>
+     <li id="ja-cite-4"><a class="up" href="#top-ja">↑</a><cite>Knapp, C. H., Carter, G. C. (1976). The generalized correlation method for estimation of time delay. <i>IEEE Transactions on Acoustics, Speech, and Signal Processing</i>, 24(4), 320–327.</cite> <a class="ext" href="https://doi.org/10.1109/TASSP.1976.1162830">https://doi.org/10.1109/TASSP.1976.1162830</a></li>
     </ol></div>
    </main>
   </div>
@@ -501,6 +525,7 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
       <tr><th>개발</th><td>유동균 (LABO 1557)</td></tr>
       <tr><th>최신 버전</th><td>0.6.0</td></tr>
       <tr><th>종류</th><td>스폿 마이크용 리버브</td></tr>
+      <tr><th>핵심 기능</th><td><a href="#ko-learn">LEARN (사이드체인 분석)</a></td></tr>
       <tr><th>형식</th><td>VST3, AU (macOS), Standalone</td></tr>
       <tr><th>운영체제</th><td>Windows 10 / 11 (64-bit)<br>macOS 11+ (Apple Silicon / Intel)</td></tr>
       <tr><th>가격</th><td>무료 (무상 배포)</td></tr>
@@ -508,7 +533,8 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
      </tbody></table>
     </aside>
     <p><b>SHOWMAKER</b>(Stage &amp; Hall Optimization Workflow for Music, Atmosphere, Kinetics, Enhancement &amp; Reconstruction)는 라이브 녹음의 근접(스폿) 마이크를 위한 리버브 플러그인이다. 스폿 마이크는 무대 위의 메인 페어보다 훨씬 건조하게 녹음된다. SHOWMAKER는 스폿 마이크가 메인 페어의 소리와 한 공간처럼 어우러지도록 돕는다. 이를 위해 스폿을 메인 페어의 도달 시각에 맞추고, 스테레오 넓이가 메인 페어를 따르는 잔향을 더한다<sup class="ref"><a href="#ko-cite-1">[1]</a></sup>.</p>
-    <p>SHOWMAKER는 홀의 잔향을 재현하거나 측정하지 않는다. 더해지는 것은 인공 잔향이며, 녹음을 따르는 것은 타이밍과 스테레오 넓이뿐이다. 잔향의 길이와 양은 사용자가 정하므로, 결과는 반드시 귀로 확인해야 한다<sup class="ref"><a href="#ko-cite-1">[1]</a></sup>.</p>
+    <p>그 타이밍과 넓이를 녹음에서 직접 읽어 오는 기능이 SHOWMAKER의 핵심인 <b><a href="#ko-learn">LEARN</a></b>이다. 메인 페어를 사이드체인으로 받아 재생 중의 소리를 분석하고, 스폿과 메인 페어 사이의 실제 지연을 찾아 정렬을 다듬으며, 메인 페어의 대역별 스테레오 넓이를 잔향에 옮긴다. 지연은 신뢰도 판정과 함께 표시되고, 판정이 낮으면 정렬을 바꾸지 않는다<sup class="ref"><a href="#ko-cite-1">[1]</a></sup>.</p>
+    <p>SHOWMAKER는 홀의 잔향을 재현하거나 측정하지 않는다. 더해지는 것은 인공 잔향이며, LEARN이 녹음에서 읽는 것은 타이밍과 스테레오 넓이뿐이다. 잔향의 길이와 양은 사용자가 정하므로, 결과는 반드시 귀로 확인해야 한다<sup class="ref"><a href="#ko-cite-1">[1]</a></sup>.</p>
 
     <h2 id="ko-download">다운로드</h2>
     <p>설치 파일은 GitHub Releases에 있다. 등록, 라이선스 키, 체험 기간 제한은 없다.</p>
@@ -565,21 +591,42 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
      <li><b>SHOW</b>: 더할 공간의 양. 50 %가 출발점이다.</li>
      <li><b>DECAY</b>: 더할 잔향의 길이. 홀의 잔향 시간이 아니다. 스폿에는 이미 홀의 울림이 일부 담겨 있다.</li>
      <li><b>ALIGN ON / OFF</b>: 재생하면서 바꿔 가며 비교한다. 차이는 드러나 있고 레벨이 큰 스폿(피아노 솔로, 독주자)에서 가장 뚜렷하다.</li>
+     <li><b>LEARN</b>: 메인 페어를 사이드체인으로 연결하고 LEARN을 눌러, 지연과 넓이를 녹음에 맞춘다(아래 <a href="#ko-learn">LEARN</a> 절).</li>
     </ol>
     <p>접힌 MORE 패널에는 LF DAMP / HF DAMP(저역·고역의 잔향 길이), WET HPF, ALIGN TRIM(미세 지연), SPREAD(스테레오 스폿 페어의 좌우 간격), WIDTH(대역별 잔향 넓이: Default / Learned / Off), INPUT(스테레오 트랙을 읽는 방식)이 있다.</p>
-    <h3 id="ko-learn">LEARN (선택 사항)</h3>
-    <p>LEARN은 지연을 미세 조정하고(DISTANCE 기준 2 ms 이내) 메인 페어의 스테레오 넓이를 가져온다. 플러그인의 사이드체인 입력에 메인 페어가 들어와야 한다.</p>
+    <h2 id="ko-learn">LEARN</h2>
+    <p>LEARN은 SHOWMAKER의 핵심 기능으로, 스폿과 메인 페어를 함께 들으며 녹음 안의 실제 관계를 읽어 온다. DISTANCE만으로 정한 지연은 줄자로 잰 값이지만, LEARN은 녹음된 소리에서 그 값을 확인하고 다듬는다<sup class="ref"><a href="#ko-cite-1">[1]</a></sup>.</p>
+    <h3 id="ko-learn-what">하는 일</h3>
+    <ul>
+     <li><b>지연</b>: 재생 중 10–60초를 캡처해 2초 창마다 스폿과 메인 페어의 상호상관(GCC-PHAT<sup class="ref"><a href="#ko-cite-4">[4]</a></sup>, 400 Hz–6 kHz)을 구하고, DISTANCE로 정한 지연의 ±2 ms 안에서 가장 많은 창이 가리키는 지연을 찾는다. 그 차이가 ALIGN TRIM으로 들어간다.</li>
+     <li><b>넓이</b>: 메인 페어의 좌우 상관을 대역별로 재어 잔향의 스테레오 넓이 목표로 삼는다(WIDTH = Learned).</li>
+     <li>분석은 오디오 처리와 분리된 별도 스레드에서 이루어진다. 결과는 프로젝트와 함께 저장되며, 오토메이션 대상이 아니다.</li>
+    </ul>
+    <h3 id="ko-learn-route">사이드체인 연결</h3>
     <ul>
      <li><b>REAPER</b>: 스폿 트랙의 ROUTE에서 "Track channels"를 4로 하고 마스터 센드는 1-2만 둔다. 메인 페어 트랙의 ROUTE에서 스폿 트랙으로 센드를 추가한다(오디오 1/2 → 3/4, Pre-Fader (Post-FX), 0 dB). SHOWMAKER 창의 핀 커넥터에서 스테레오 트랙은 Spot L/R = 1/2, Main pair L/R = 3/4로, 모노 트랙은 Spot = 1, Main pair L = 3, R = 4로 둔다.</li>
      <li><b>Logic Pro</b>: SHOWMAKER 창 오른쪽 위의 "Side Chain" 메뉴에서 메인 페어 트랙이나 버스를 고른다.</li>
     </ul>
+    <h3 id="ko-learn-steps">사용 순서</h3>
     <ol>
      <li>DISTANCE를 먼저 정한다.</li>
      <li>이 스폿의 악기가 드러나는 구간을 재생한다.</li>
      <li>LEARN을 누르고 10–60초 동안 둔 뒤 STOP을 누른다.</li>
-     <li>결과가 ALIGN 줄 아래에 나타난다(예: "Delay 10.63 ms (Weak, 46 %) | Width learned"). "Unreliable"이면 DISTANCE를 그대로 유지하므로, 다른 구간에서 다시 시도한다.</li>
+     <li>결과가 ALIGN 줄 아래에 나타난다(예: "Delay 10.63 ms (Weak, 46 %) | Width learned").</li>
      <li>이후 센드는 지워도 된다. 결과는 프로젝트와 함께 저장된다.</li>
     </ol>
+    <h3 id="ko-learn-result">결과 읽기</h3>
+    <p>괄호 안의 퍼센트는 분석한 창 가운데 같은 지연을 가리킨 비율이다.</p>
+    <div class="tbl-wrap"><table class="wikitable">
+     <thead><tr><th>판정</th><th>기준</th><th>처리</th></tr></thead>
+     <tbody>
+      <tr><td>Reliable</td><td>50 % 이상</td><td>지연을 적용한다.</td></tr>
+      <tr><td>Weak</td><td>25–50 %</td><td>지연을 적용한다. ON/OFF로 귀로 확인한다.</td></tr>
+      <tr><td>Ambiguous</td><td>지연 후보가 둘로 갈림</td><td>가장 많은 지연을 적용한다. ON/OFF로 확인하거나, 악기가 더 드러나는 구간에서 다시 시도한다.</td></tr>
+      <tr><td>Unreliable</td><td>25 % 미만</td><td>"Delay not found (Unreliable) - DISTANCE kept"로 표시하고 DISTANCE를 그대로 둔다. 다른 구간에서 다시 시도한다.</td></tr>
+     </tbody>
+    </table></div>
+    <p>메인 페어의 좌우가 사실상 같으면(모노 페어) 넓이는 적용하지 않고 기본값을 유지하며, "Width not applied: main pair is mono"로 표시한다. 구간마다 넓이가 크게 달라지면 "(unstable)"이 붙는다.</p>
 
     <h2 id="ko-terms">사용 조건</h2>
     <ol>
@@ -621,6 +668,7 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
      <li id="ko-cite-1"><a class="up" href="#top-ko">↑</a><cite>LABO 1557, 「SHOWMAKER」 설치 안내(<code>SHOWMAKER - Read Me First.txt</code>) 및 서드파티 고지(설치 파일에 포함된 <code>NOTICE.txt</code>).</cite> <a class="ext" href="https://github.com/dlrjtt1/showmaker-releases/releases/tag/v0.6.0">https://github.com/dlrjtt1/showmaker-releases/releases/tag/v0.6.0</a></li>
      <li id="ko-cite-2"><a class="up" href="#top-ko">↑</a><cite>JUCE, 「JUCE 8 End User Licence Agreement」.</cite> <a class="ext" href="https://juce.com/legal/juce-8-licence/">https://juce.com/legal/juce-8-licence/</a></li>
      <li id="ko-cite-3"><a class="up" href="#top-ko">↑</a><cite>Steinberg Media Technologies, 「VST 3 License」.</cite> <a class="ext" href="https://steinbergmedia.github.io/vst3_dev_portal/pages/VST+3+Licensing/VST3+License">https://steinbergmedia.github.io/vst3_dev_portal/pages/VST+3+Licensing/VST3+License</a></li>
+     <li id="ko-cite-4"><a class="up" href="#top-ko">↑</a><cite>Knapp, C. H., Carter, G. C. (1976). The generalized correlation method for estimation of time delay. <i>IEEE Transactions on Acoustics, Speech, and Signal Processing</i>, 24(4), 320–327.</cite> <a class="ext" href="https://doi.org/10.1109/TASSP.1976.1162830">https://doi.org/10.1109/TASSP.1976.1162830</a></li>
     </ol></div>
    </main>
   </div>
@@ -653,6 +701,7 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
       <tr><th>Developer</th><td>Dong-Gyun You (LABO 1557)</td></tr>
       <tr><th>Latest version</th><td>0.6.0</td></tr>
       <tr><th>Type</th><td>Reverb for spot microphones</td></tr>
+      <tr><th>Core feature</th><td><a href="#en-learn">LEARN (sidechain analysis)</a></td></tr>
       <tr><th>Formats</th><td>VST3, AU (macOS), Standalone</td></tr>
       <tr><th>OS</th><td>Windows 10 / 11 (64-bit)<br>macOS 11+ (Apple Silicon / Intel)</td></tr>
       <tr><th>Price</th><td>Free (distributed free of charge)</td></tr>
@@ -660,7 +709,8 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
      </tbody></table>
     </aside>
     <p><b>SHOWMAKER</b> (Stage &amp; Hall Optimization Workflow for Music, Atmosphere, Kinetics, Enhancement &amp; Reconstruction) is a reverb plug-in for the close (spot) microphones of live recordings. Spot mics are much drier than the main pair above the stage. SHOWMAKER helps spot mics blend with the main pair as if they shared one room. To do this, it aligns each spot with the main pair's arrival time and adds a reverb whose stereo width follows the main pair<sup class="ref"><a href="#en-cite-1">[1]</a></sup>.</p>
-    <p>SHOWMAKER does not reproduce or measure the hall's reverb. What it adds is an artificial reverb; only its timing and stereo width follow the recording. Its length and amount are set by the user, so always check by ear<sup class="ref"><a href="#en-cite-1">[1]</a></sup>.</p>
+    <p>At the core of SHOWMAKER is <b><a href="#en-learn">LEARN</a></b>, which reads that timing and width from the recording itself. With the main pair on the sidechain, it analyses the material while it plays, finds the actual delay between the spot and the main pair to refine the alignment, and carries the main pair's stereo width per band over to the reverb. The delay comes with a confidence verdict, and the alignment is left unchanged when confidence is low<sup class="ref"><a href="#en-cite-1">[1]</a></sup>.</p>
+    <p>SHOWMAKER does not reproduce or measure the hall's reverb. What it adds is an artificial reverb; LEARN reads only timing and stereo width from the recording. Its length and amount are set by the user, so always check by ear<sup class="ref"><a href="#en-cite-1">[1]</a></sup>.</p>
 
     <h2 id="en-download">Download</h2>
     <p>The installers are on GitHub Releases. There is no registration, no licence key and no trial limit.</p>
@@ -717,21 +767,42 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
      <li><b>SHOW</b>: the amount of added room. 50 % is the starting point.</li>
      <li><b>DECAY</b>: the length of the added reverb. This is not the hall's reverberation time; the spot already carries part of the hall.</li>
      <li><b>ALIGN ON / OFF</b>: switch while playing to compare. The difference is clearest on exposed, louder spots (solo piano, soloists).</li>
+     <li><b>LEARN</b>: connect the main pair to the sidechain and press LEARN to fit the delay and width to the recording (see <a href="#en-learn">LEARN</a> below).</li>
     </ol>
     <p>The fold-out MORE panel has LF DAMP / HF DAMP (reverb length in the low and high bands), WET HPF, ALIGN TRIM (fine delay), SPREAD (distance between L and R of a stereo spot pair), WIDTH (stereo width of the reverb per band: Default / Learned / Off) and INPUT (how a stereo track is read).</p>
-    <h3 id="en-learn">LEARN (optional)</h3>
-    <p>LEARN fine-tunes the delay (within 2 ms of DISTANCE) and copies the stereo width of the main pair. It needs the main pair on the plug-in's sidechain input.</p>
+    <h2 id="en-learn">LEARN</h2>
+    <p>LEARN is the core of SHOWMAKER: it listens to the spot and the main pair together and reads their actual relationship from the recording. A delay set with DISTANCE alone is a tape-measure value; LEARN checks it against the recorded sound and refines it<sup class="ref"><a href="#en-cite-1">[1]</a></sup>.</p>
+    <h3 id="en-learn-what">What it does</h3>
+    <ul>
+     <li><b>Delay</b>: it captures 10 to 60 seconds while playing, computes the cross-correlation between spot and main pair in 2-second windows (GCC-PHAT<sup class="ref"><a href="#en-cite-4">[4]</a></sup>, 400 Hz–6 kHz), and looks for the delay that most windows agree on within ±2 ms of the DISTANCE delay. The difference goes into ALIGN TRIM.</li>
+     <li><b>Width</b>: it measures the left–right correlation of the main pair per band and uses it as the target stereo width of the reverb (WIDTH = Learned).</li>
+     <li>The analysis runs on a separate thread, apart from the audio processing. The result is saved with the project and is not automatable.</li>
+    </ul>
+    <h3 id="en-learn-route">Sidechain routing</h3>
     <ul>
      <li><b>REAPER</b>: on the spot track, set ROUTE › "Track channels" to 4 and keep the master send on 1-2 only. On the main pair track, add a send to the spot track (audio 1/2 → 3/4, Pre-Fader (Post-FX), 0 dB). In the pin connector of the SHOWMAKER window, use Spot L/R = 1/2 and Main pair L/R = 3/4 for a stereo track, or Spot = 1, Main pair L = 3, R = 4 for a mono track.</li>
      <li><b>Logic Pro</b>: choose the main pair track or bus in the "Side Chain" menu at the top right of the SHOWMAKER window.</li>
     </ul>
+    <h3 id="en-learn-steps">Steps</h3>
     <ol>
      <li>Set DISTANCE first.</li>
      <li>Play a passage where this spot's instrument is exposed.</li>
      <li>Press LEARN, let it run for 10 to 60 seconds, then press STOP.</li>
-     <li>The result appears under the ALIGN row, e.g. "Delay 10.63 ms (Weak, 46 %) | Width learned". "Unreliable" keeps your DISTANCE unchanged; try another passage.</li>
+     <li>The result appears under the ALIGN row, e.g. "Delay 10.63 ms (Weak, 46 %) | Width learned".</li>
      <li>The send can be removed afterwards; the result is saved with the project.</li>
     </ol>
+    <h3 id="en-learn-result">Reading the result</h3>
+    <p>The percentage in brackets is the share of analysed windows that point to the same delay.</p>
+    <div class="tbl-wrap"><table class="wikitable">
+     <thead><tr><th>Verdict</th><th>Criterion</th><th>Action</th></tr></thead>
+     <tbody>
+      <tr><td>Reliable</td><td>50 % or more</td><td>The delay is applied.</td></tr>
+      <tr><td>Weak</td><td>25–50 %</td><td>The delay is applied. Check by ear with ON/OFF.</td></tr>
+      <tr><td>Ambiguous</td><td>The delay candidates split into two</td><td>The most common delay is applied. Check with ON/OFF, or try a passage where the instrument is more exposed.</td></tr>
+      <tr><td>Unreliable</td><td>Below 25 %</td><td>Shown as "Delay not found (Unreliable) - DISTANCE kept"; DISTANCE is kept. Try another passage.</td></tr>
+     </tbody>
+    </table></div>
+    <p>If the left and right of the main pair are practically identical (a mono pair), the width is not applied and the default is kept; the display reads "Width not applied: main pair is mono". If the width varies a lot between parts of the passage, "(unstable)" is added.</p>
 
     <h2 id="en-terms">Terms of use</h2>
     <ol>
@@ -773,6 +844,7 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
      <li id="en-cite-1"><a class="up" href="#top-en">↑</a><cite>LABO 1557, "SHOWMAKER" installation notes (<code>SHOWMAKER - Read Me First.txt</code>) and third-party notices (<code>NOTICE.txt</code> in the installer).</cite> <a class="ext" href="https://github.com/dlrjtt1/showmaker-releases/releases/tag/v0.6.0">https://github.com/dlrjtt1/showmaker-releases/releases/tag/v0.6.0</a></li>
      <li id="en-cite-2"><a class="up" href="#top-en">↑</a><cite>JUCE, "JUCE 8 End User Licence Agreement".</cite> <a class="ext" href="https://juce.com/legal/juce-8-licence/">https://juce.com/legal/juce-8-licence/</a></li>
      <li id="en-cite-3"><a class="up" href="#top-en">↑</a><cite>Steinberg Media Technologies, "VST 3 License".</cite> <a class="ext" href="https://steinbergmedia.github.io/vst3_dev_portal/pages/VST+3+Licensing/VST3+License">https://steinbergmedia.github.io/vst3_dev_portal/pages/VST+3+Licensing/VST3+License</a></li>
+     <li id="en-cite-4"><a class="up" href="#top-en">↑</a><cite>Knapp, C. H., Carter, G. C. (1976). The generalized correlation method for estimation of time delay. <i>IEEE Transactions on Acoustics, Speech, and Signal Processing</i>, 24(4), 320–327.</cite> <a class="ext" href="https://doi.org/10.1109/TASSP.1976.1162830">https://doi.org/10.1109/TASSP.1976.1162830</a></li>
     </ol></div>
    </main>
   </div>
@@ -802,7 +874,7 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
 (function(){
   var LANGS = ['ja','ko','en'];
   var DEFAULT = 'ja';
-  var BUILD_DATE = '2026-11-16T22:15:00+09:00';
+  var BUILD_DATE = '2026-11-16T22:20:00+09:00';
   var META = {
     ja: { title: 'SHOWMAKER — LABO 1557', desc: 'LABO 1557のSHOWMAKER：ライブ録音のスポットマイク用リバーブ・プラグイン（無償配布）。' },
     ko: { title: 'SHOWMAKER — LABO 1557', desc: 'LABO 1557의 SHOWMAKER: 라이브 녹음의 스폿 마이크용 리버브 플러그인(무상 배포).' },
