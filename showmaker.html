@@ -347,7 +347,7 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
      <table><tbody>
       <tr class="sec"><td colspan="2">基本情報</td></tr>
       <tr><th>開発</th><td>柳 東均（LABO 1557）</td></tr>
-      <tr><th>最新版</th><td>0.6.0</td></tr>
+      <tr><th>最新版</th><td>0.6.1</td></tr>
       <tr><th>種類</th><td>スポットマイク用リバーブ</td></tr>
       <tr><th>中核機能</th><td><a href="#ja-learn">LEARN（サイドチェイン分析）</a></td></tr>
       <tr><th>形式</th><td>VST3, AU (macOS), Standalone</td></tr>
@@ -366,14 +366,14 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
      <div class="dl-card">
       <div class="dl-os">Windows</div>
       <div class="dl-req">Windows 10 / 11 (64-bit)</div>
-      <code class="dl-file">SHOWMAKER-0.6.0-Windows-Setup.exe</code>
-      <a class="dl-btn" href="https://github.com/dlrjtt1/showmaker-releases/releases/download/v0.6.0/SHOWMAKER-0.6.0-Windows-Setup.exe">Windows版をダウンロード</a>
+      <code class="dl-file">SHOWMAKER-0.6.1-Windows-Setup.exe</code>
+      <a class="dl-btn" href="https://github.com/dlrjtt1/showmaker-releases/releases/download/v0.6.1/SHOWMAKER-0.6.1-Windows-Setup.exe">Windows版をダウンロード</a>
      </div>
      <div class="dl-card">
       <div class="dl-os">macOS</div>
       <div class="dl-req">macOS 11+ (Apple Silicon / Intel)</div>
-      <code class="dl-file">SHOWMAKER-0.6.0-macOS.pkg</code>
-      <a class="dl-btn" href="https://github.com/dlrjtt1/showmaker-releases/releases/download/v0.6.0/SHOWMAKER-0.6.0-macOS.pkg">macOS版をダウンロード</a>
+      <code class="dl-file">SHOWMAKER-0.6.1-macOS.pkg</code>
+      <a class="dl-btn" href="https://github.com/dlrjtt1/showmaker-releases/releases/download/v0.6.1/SHOWMAKER-0.6.1-macOS.pkg">macOS版をダウンロード</a>
      </div>
     </div>
     <p>すべてのバージョンと変更履歴：<a class="ext" href="https://github.com/dlrjtt1/showmaker-releases/releases">github.com/dlrjtt1/showmaker-releases/releases</a></p>
@@ -388,14 +388,14 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
     <p>現在配布しているインストーラーとプラグインはコード署名されていない。そのため、初回実行時にOSが警告を表示する。</p>
     <h3 id="ja-install-win">Windows</h3>
     <ol>
-     <li><code>SHOWMAKER-0.6.0-Windows-Setup.exe</code>を実行する。</li>
+     <li><code>SHOWMAKER-0.6.1-Windows-Setup.exe</code>を実行する。</li>
      <li>「WindowsによってPCが保護されました」と表示された場合は、<b>詳細情報</b>を押してから<b>実行</b>を押す。</li>
      <li>インストーラーの案内に従う。スタンドアロン・アプリは任意である。</li>
     </ol>
     <p>インストール先：VST3プラグイン<code>C:\Program Files\Common Files\VST3\SHOWMAKER.vst3</code>、スタンドアロン・アプリ<code>C:\Program Files\LABO 1557\SHOWMAKER\SHOWMAKER.exe</code>（選択した場合）。アンインストール：設定 › アプリ › SHOWMAKER › アンインストール。</p>
     <h3 id="ja-install-mac">macOS（未署名の警告への対処）</h3>
     <ol>
-     <li><code>SHOWMAKER-0.6.0-macOS.pkg</code>をダブルクリックする。</li>
+     <li><code>SHOWMAKER-0.6.1-macOS.pkg</code>をダブルクリックする。</li>
      <li>macOSが「開発元を検証できません」という警告を表示する。
       <ul>
        <li>macOS 15（Sequoia）以降：<b>完了</b>を押し、システム設定 › プライバシーとセキュリティを開き、下方のSHOWMAKERのメッセージの横にある<b>このまま開く</b>を押してパスワードで確認する。</li>
@@ -446,7 +446,7 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
      <tbody>
       <tr><td>Reliable</td><td>50 %以上</td><td>遅延を適用する。</td></tr>
       <tr><td>Weak</td><td>25–50 %</td><td>遅延を適用する。ON/OFFで耳で確認する。</td></tr>
-      <tr><td>Ambiguous</td><td>遅延の候補が2つに分かれる</td><td>最も多い遅延を適用する。ON/OFFで確認するか、楽器がより露出している箇所で再度試す。</td></tr>
+      <tr><td>Ambiguous</td><td>2番目の遅延候補の窓数が1番目の半分以上</td><td>1番目の候補を適用し、「two delay candidates, check ALIGN ON/OFF by ear」という警告を付ける。ON/OFFで耳で確認するか、楽器がより露出している箇所で再度試す。</td></tr>
       <tr><td>Unreliable</td><td>25 %未満</td><td>「Delay not found (Unreliable) - DISTANCE kept」と表示し、DISTANCEをそのまま保つ。別の箇所で再度試す。</td></tr>
      </tbody>
     </table></div>
@@ -489,7 +489,7 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
 
     <h2 id="ja-refs">脚注</h2>
     <div class="refs"><ol>
-     <li id="ja-cite-1"><a class="up" href="#top-ja">↑</a><cite>LABO 1557「SHOWMAKER」インストール案内（<code>SHOWMAKER - Read Me First.txt</code>）およびサードパーティ告知（インストーラーに同梱の<code>NOTICE.txt</code>）。</cite> <a class="ext" href="https://github.com/dlrjtt1/showmaker-releases/releases/tag/v0.6.0">https://github.com/dlrjtt1/showmaker-releases/releases/tag/v0.6.0</a></li>
+     <li id="ja-cite-1"><a class="up" href="#top-ja">↑</a><cite>LABO 1557「SHOWMAKER」インストール案内（<code>SHOWMAKER - Read Me First.txt</code>）およびサードパーティ告知（インストーラーに同梱の<code>NOTICE.txt</code>）。</cite> <a class="ext" href="https://github.com/dlrjtt1/showmaker-releases/releases/tag/v0.6.1">https://github.com/dlrjtt1/showmaker-releases/releases/tag/v0.6.1</a></li>
      <li id="ja-cite-2"><a class="up" href="#top-ja">↑</a><cite>JUCE「JUCE 8 End User Licence Agreement」。</cite> <a class="ext" href="https://juce.com/legal/juce-8-licence/">https://juce.com/legal/juce-8-licence/</a></li>
      <li id="ja-cite-3"><a class="up" href="#top-ja">↑</a><cite>Steinberg Media Technologies「VST 3 License」。</cite> <a class="ext" href="https://steinbergmedia.github.io/vst3_dev_portal/pages/VST+3+Licensing/VST3+License">https://steinbergmedia.github.io/vst3_dev_portal/pages/VST+3+Licensing/VST3+License</a></li>
      <li id="ja-cite-4"><a class="up" href="#top-ja">↑</a><cite>Knapp, C. H., Carter, G. C. (1976). The generalized correlation method for estimation of time delay. <i>IEEE Transactions on Acoustics, Speech, and Signal Processing</i>, 24(4), 320–327.</cite> <a class="ext" href="https://doi.org/10.1109/TASSP.1976.1162830">https://doi.org/10.1109/TASSP.1976.1162830</a></li>
@@ -523,7 +523,7 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
      <table><tbody>
       <tr class="sec"><td colspan="2">기본 정보</td></tr>
       <tr><th>개발</th><td>유동균 (LABO 1557)</td></tr>
-      <tr><th>최신 버전</th><td>0.6.0</td></tr>
+      <tr><th>최신 버전</th><td>0.6.1</td></tr>
       <tr><th>종류</th><td>스폿 마이크용 리버브</td></tr>
       <tr><th>핵심 기능</th><td><a href="#ko-learn">LEARN (사이드체인 분석)</a></td></tr>
       <tr><th>형식</th><td>VST3, AU (macOS), Standalone</td></tr>
@@ -542,14 +542,14 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
      <div class="dl-card">
       <div class="dl-os">Windows</div>
       <div class="dl-req">Windows 10 / 11 (64-bit)</div>
-      <code class="dl-file">SHOWMAKER-0.6.0-Windows-Setup.exe</code>
-      <a class="dl-btn" href="https://github.com/dlrjtt1/showmaker-releases/releases/download/v0.6.0/SHOWMAKER-0.6.0-Windows-Setup.exe">Windows용 내려받기</a>
+      <code class="dl-file">SHOWMAKER-0.6.1-Windows-Setup.exe</code>
+      <a class="dl-btn" href="https://github.com/dlrjtt1/showmaker-releases/releases/download/v0.6.1/SHOWMAKER-0.6.1-Windows-Setup.exe">Windows용 내려받기</a>
      </div>
      <div class="dl-card">
       <div class="dl-os">macOS</div>
       <div class="dl-req">macOS 11+ (Apple Silicon / Intel)</div>
-      <code class="dl-file">SHOWMAKER-0.6.0-macOS.pkg</code>
-      <a class="dl-btn" href="https://github.com/dlrjtt1/showmaker-releases/releases/download/v0.6.0/SHOWMAKER-0.6.0-macOS.pkg">macOS용 내려받기</a>
+      <code class="dl-file">SHOWMAKER-0.6.1-macOS.pkg</code>
+      <a class="dl-btn" href="https://github.com/dlrjtt1/showmaker-releases/releases/download/v0.6.1/SHOWMAKER-0.6.1-macOS.pkg">macOS용 내려받기</a>
      </div>
     </div>
     <p>모든 버전과 변경 내역: <a class="ext" href="https://github.com/dlrjtt1/showmaker-releases/releases">github.com/dlrjtt1/showmaker-releases/releases</a></p>
@@ -564,14 +564,14 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
     <p>지금 배포하는 설치 파일과 플러그인은 코드 서명이 되어 있지 않다. 그래서 처음 실행할 때 운영체제가 경고를 띄운다.</p>
     <h3 id="ko-install-win">Windows</h3>
     <ol>
-     <li><code>SHOWMAKER-0.6.0-Windows-Setup.exe</code>를 실행한다.</li>
+     <li><code>SHOWMAKER-0.6.1-Windows-Setup.exe</code>를 실행한다.</li>
      <li>"Windows의 PC 보호" 창이 뜨면 <b>추가 정보</b>를 누른 뒤 <b>실행</b>을 누른다.</li>
      <li>설치 안내를 따른다. 단독 실행 앱(Standalone)은 선택 사항이다.</li>
     </ol>
     <p>설치 위치: VST3 플러그인 <code>C:\Program Files\Common Files\VST3\SHOWMAKER.vst3</code>, 단독 실행 앱 <code>C:\Program Files\LABO 1557\SHOWMAKER\SHOWMAKER.exe</code>(선택한 경우). 제거: 설정 › 앱 › SHOWMAKER › 제거.</p>
     <h3 id="ko-install-mac">macOS (미서명 경고 대처)</h3>
     <ol>
-     <li><code>SHOWMAKER-0.6.0-macOS.pkg</code>를 더블클릭한다.</li>
+     <li><code>SHOWMAKER-0.6.1-macOS.pkg</code>를 더블클릭한다.</li>
      <li>macOS가 "개발자를 확인할 수 없다"는 경고를 띄운다.
       <ul>
        <li>macOS 15(Sequoia) 이상: <b>완료</b>를 누르고 시스템 설정 › 개인정보 보호 및 보안으로 가서, 아래쪽 SHOWMAKER 메시지 옆의 <b>그래도 열기</b>를 누르고 암호로 확인한다.</li>
@@ -622,7 +622,7 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
      <tbody>
       <tr><td>Reliable</td><td>50 % 이상</td><td>지연을 적용한다.</td></tr>
       <tr><td>Weak</td><td>25–50 %</td><td>지연을 적용한다. ON/OFF로 귀로 확인한다.</td></tr>
-      <tr><td>Ambiguous</td><td>지연 후보가 둘로 갈림</td><td>가장 많은 지연을 적용한다. ON/OFF로 확인하거나, 악기가 더 드러나는 구간에서 다시 시도한다.</td></tr>
+      <tr><td>Ambiguous</td><td>두 번째 지연 후보의 창 수가 첫 번째의 절반 이상</td><td>첫 번째 후보를 적용하고 "two delay candidates, check ALIGN ON/OFF by ear" 경고를 붙인다. ON/OFF로 귀로 확인하거나, 악기가 더 드러나는 구간에서 다시 시도한다.</td></tr>
       <tr><td>Unreliable</td><td>25 % 미만</td><td>"Delay not found (Unreliable) - DISTANCE kept"로 표시하고 DISTANCE를 그대로 둔다. 다른 구간에서 다시 시도한다.</td></tr>
      </tbody>
     </table></div>
@@ -665,7 +665,7 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
 
     <h2 id="ko-refs">각주</h2>
     <div class="refs"><ol>
-     <li id="ko-cite-1"><a class="up" href="#top-ko">↑</a><cite>LABO 1557, 「SHOWMAKER」 설치 안내(<code>SHOWMAKER - Read Me First.txt</code>) 및 서드파티 고지(설치 파일에 포함된 <code>NOTICE.txt</code>).</cite> <a class="ext" href="https://github.com/dlrjtt1/showmaker-releases/releases/tag/v0.6.0">https://github.com/dlrjtt1/showmaker-releases/releases/tag/v0.6.0</a></li>
+     <li id="ko-cite-1"><a class="up" href="#top-ko">↑</a><cite>LABO 1557, 「SHOWMAKER」 설치 안내(<code>SHOWMAKER - Read Me First.txt</code>) 및 서드파티 고지(설치 파일에 포함된 <code>NOTICE.txt</code>).</cite> <a class="ext" href="https://github.com/dlrjtt1/showmaker-releases/releases/tag/v0.6.1">https://github.com/dlrjtt1/showmaker-releases/releases/tag/v0.6.1</a></li>
      <li id="ko-cite-2"><a class="up" href="#top-ko">↑</a><cite>JUCE, 「JUCE 8 End User Licence Agreement」.</cite> <a class="ext" href="https://juce.com/legal/juce-8-licence/">https://juce.com/legal/juce-8-licence/</a></li>
      <li id="ko-cite-3"><a class="up" href="#top-ko">↑</a><cite>Steinberg Media Technologies, 「VST 3 License」.</cite> <a class="ext" href="https://steinbergmedia.github.io/vst3_dev_portal/pages/VST+3+Licensing/VST3+License">https://steinbergmedia.github.io/vst3_dev_portal/pages/VST+3+Licensing/VST3+License</a></li>
      <li id="ko-cite-4"><a class="up" href="#top-ko">↑</a><cite>Knapp, C. H., Carter, G. C. (1976). The generalized correlation method for estimation of time delay. <i>IEEE Transactions on Acoustics, Speech, and Signal Processing</i>, 24(4), 320–327.</cite> <a class="ext" href="https://doi.org/10.1109/TASSP.1976.1162830">https://doi.org/10.1109/TASSP.1976.1162830</a></li>
@@ -699,7 +699,7 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
      <table><tbody>
       <tr class="sec"><td colspan="2">Overview</td></tr>
       <tr><th>Developer</th><td>Dong-Gyun You (LABO 1557)</td></tr>
-      <tr><th>Latest version</th><td>0.6.0</td></tr>
+      <tr><th>Latest version</th><td>0.6.1</td></tr>
       <tr><th>Type</th><td>Reverb for spot microphones</td></tr>
       <tr><th>Core feature</th><td><a href="#en-learn">LEARN (sidechain analysis)</a></td></tr>
       <tr><th>Formats</th><td>VST3, AU (macOS), Standalone</td></tr>
@@ -718,14 +718,14 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
      <div class="dl-card">
       <div class="dl-os">Windows</div>
       <div class="dl-req">Windows 10 / 11 (64-bit)</div>
-      <code class="dl-file">SHOWMAKER-0.6.0-Windows-Setup.exe</code>
-      <a class="dl-btn" href="https://github.com/dlrjtt1/showmaker-releases/releases/download/v0.6.0/SHOWMAKER-0.6.0-Windows-Setup.exe">Download for Windows</a>
+      <code class="dl-file">SHOWMAKER-0.6.1-Windows-Setup.exe</code>
+      <a class="dl-btn" href="https://github.com/dlrjtt1/showmaker-releases/releases/download/v0.6.1/SHOWMAKER-0.6.1-Windows-Setup.exe">Download for Windows</a>
      </div>
      <div class="dl-card">
       <div class="dl-os">macOS</div>
       <div class="dl-req">macOS 11+ (Apple Silicon / Intel)</div>
-      <code class="dl-file">SHOWMAKER-0.6.0-macOS.pkg</code>
-      <a class="dl-btn" href="https://github.com/dlrjtt1/showmaker-releases/releases/download/v0.6.0/SHOWMAKER-0.6.0-macOS.pkg">Download for macOS</a>
+      <code class="dl-file">SHOWMAKER-0.6.1-macOS.pkg</code>
+      <a class="dl-btn" href="https://github.com/dlrjtt1/showmaker-releases/releases/download/v0.6.1/SHOWMAKER-0.6.1-macOS.pkg">Download for macOS</a>
      </div>
     </div>
     <p>All versions and release notes: <a class="ext" href="https://github.com/dlrjtt1/showmaker-releases/releases">github.com/dlrjtt1/showmaker-releases/releases</a></p>
@@ -740,14 +740,14 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
     <p>The installers and the plug-in are not code-signed yet, so the operating system shows a warning the first time.</p>
     <h3 id="en-install-win">Windows</h3>
     <ol>
-     <li>Run <code>SHOWMAKER-0.6.0-Windows-Setup.exe</code>.</li>
+     <li>Run <code>SHOWMAKER-0.6.1-Windows-Setup.exe</code>.</li>
      <li>If Windows shows "Windows protected your PC", click <b>More info</b>, then <b>Run anyway</b>.</li>
      <li>Follow the installer. The standalone app is optional.</li>
     </ol>
     <p>Installed to: VST3 plug-in <code>C:\Program Files\Common Files\VST3\SHOWMAKER.vst3</code>; standalone <code>C:\Program Files\LABO 1557\SHOWMAKER\SHOWMAKER.exe</code> (if chosen). Uninstall: Settings › Apps › SHOWMAKER › Uninstall.</p>
     <h3 id="en-install-mac">macOS (unsigned-installer warning)</h3>
     <ol>
-     <li>Double-click <code>SHOWMAKER-0.6.0-macOS.pkg</code>.</li>
+     <li>Double-click <code>SHOWMAKER-0.6.1-macOS.pkg</code>.</li>
      <li>macOS says it cannot verify the developer.
       <ul>
        <li>macOS 15 (Sequoia) or later: click <b>Done</b>, open System Settings › Privacy &amp; Security, scroll down, click <b>Open Anyway</b> next to the SHOWMAKER message and confirm with your password.</li>
@@ -798,7 +798,7 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
      <tbody>
       <tr><td>Reliable</td><td>50 % or more</td><td>The delay is applied.</td></tr>
       <tr><td>Weak</td><td>25–50 %</td><td>The delay is applied. Check by ear with ON/OFF.</td></tr>
-      <tr><td>Ambiguous</td><td>The delay candidates split into two</td><td>The most common delay is applied. Check with ON/OFF, or try a passage where the instrument is more exposed.</td></tr>
+      <tr><td>Ambiguous</td><td>The second delay candidate has at least half as many windows as the first</td><td>The first candidate is applied, with the warning "two delay candidates, check ALIGN ON/OFF by ear". Compare ON/OFF by ear, or try a passage where the instrument is more exposed.</td></tr>
       <tr><td>Unreliable</td><td>Below 25 %</td><td>Shown as "Delay not found (Unreliable) - DISTANCE kept"; DISTANCE is kept. Try another passage.</td></tr>
      </tbody>
     </table></div>
@@ -841,7 +841,7 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
 
     <h2 id="en-refs">References</h2>
     <div class="refs"><ol>
-     <li id="en-cite-1"><a class="up" href="#top-en">↑</a><cite>LABO 1557, "SHOWMAKER" installation notes (<code>SHOWMAKER - Read Me First.txt</code>) and third-party notices (<code>NOTICE.txt</code> in the installer).</cite> <a class="ext" href="https://github.com/dlrjtt1/showmaker-releases/releases/tag/v0.6.0">https://github.com/dlrjtt1/showmaker-releases/releases/tag/v0.6.0</a></li>
+     <li id="en-cite-1"><a class="up" href="#top-en">↑</a><cite>LABO 1557, "SHOWMAKER" installation notes (<code>SHOWMAKER - Read Me First.txt</code>) and third-party notices (<code>NOTICE.txt</code> in the installer).</cite> <a class="ext" href="https://github.com/dlrjtt1/showmaker-releases/releases/tag/v0.6.1">https://github.com/dlrjtt1/showmaker-releases/releases/tag/v0.6.1</a></li>
      <li id="en-cite-2"><a class="up" href="#top-en">↑</a><cite>JUCE, "JUCE 8 End User Licence Agreement".</cite> <a class="ext" href="https://juce.com/legal/juce-8-licence/">https://juce.com/legal/juce-8-licence/</a></li>
      <li id="en-cite-3"><a class="up" href="#top-en">↑</a><cite>Steinberg Media Technologies, "VST 3 License".</cite> <a class="ext" href="https://steinbergmedia.github.io/vst3_dev_portal/pages/VST+3+Licensing/VST3+License">https://steinbergmedia.github.io/vst3_dev_portal/pages/VST+3+Licensing/VST3+License</a></li>
      <li id="en-cite-4"><a class="up" href="#top-en">↑</a><cite>Knapp, C. H., Carter, G. C. (1976). The generalized correlation method for estimation of time delay. <i>IEEE Transactions on Acoustics, Speech, and Signal Processing</i>, 24(4), 320–327.</cite> <a class="ext" href="https://doi.org/10.1109/TASSP.1976.1162830">https://doi.org/10.1109/TASSP.1976.1162830</a></li>
@@ -874,7 +874,7 @@ pre.cmd{background:var(--bg-sub);border:1px solid var(--border-soft);padding:8px
 (function(){
   var LANGS = ['ja','ko','en'];
   var DEFAULT = 'ja';
-  var BUILD_DATE = '2026-11-16T22:20:00+09:00';
+  var BUILD_DATE = '2026-11-16T22:40:00+09:00';
   var META = {
     ja: { title: 'SHOWMAKER — LABO 1557', desc: 'LABO 1557のSHOWMAKER：ライブ録音のスポットマイク用リバーブ・プラグイン（無償配布）。' },
     ko: { title: 'SHOWMAKER — LABO 1557', desc: 'LABO 1557의 SHOWMAKER: 라이브 녹음의 스폿 마이크용 리버브 플러그인(무상 배포).' },
